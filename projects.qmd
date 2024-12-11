@@ -1,0 +1,22 @@
+---
+title: "Applied Time Series Projects"
+subtitle: "Time Series Analysis"
+format: html
+# use quarto markdown to 
+---
+
+
+
+**Applied Time Series Research**
+
+1. **China Export Commodities Time Series Analysis:**
+   - Applied time series techniques to analyze trends, seasonality, and irregularities in China's export commodity data from 1990 to the present.
+   - Conducted a classical multiplicative decomposition to distinguish long-term growth patterns, seasonal cycles, and random shocks influenced by macroeconomic events.
+   - Provided actionable insights into optimizing trade strategies by leveraging seasonal trends and mitigating risks from unpredictable disruptions.  
+- [Time Series Reserach on China's Export Commodities](/projects/project1.qmd)
+
+2. **Project 2: Coming Soon**
+- [project 2](/projects/project2.qmd)
+
+3. **Project 3: Coming Soon**
+- [project 3](/projects/project3.qmd)

@@ -1,0 +1,94 @@
+project: 
+  type: website
+  output-dir: docs # renders htmls to docs folder
+  render:
+    - "*.qmd"
+    - "!extra_files/"
+    
+freeze: auto
+
+website:
+  title: "Applied Time Series Notebook"
+  favicon: Images/favicon.png
+  back-to-top-navigation: true
+  repo-url: https://github.com/1Ramirez7/Applied-Time-Series-Analysis-Notebook
+  #repo-actions: [issue] # to allow others to report issues on the site uncomment this line
+
+  page-footer: 
+    border: true
+    left: "Eduardo Ramirez 2024©"
+    right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/eduardo-ramirez-lds
+
+
+  navbar:
+    background: primary
+    search: true   
+    right:
+      - text: "Master"
+        file: index.qmd
+      - sidebar:projects
+      - sidebar:chapter_4
+      - sidebar:chapter_5
+        
+      
+
+  sidebar:
+    - id: chapter_4
+      title: "Chapter 4"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - section: "Overview"
+          contents:
+            - chapters/chapter_4.qmd
+        - section: "Lesson 1"
+          contents:
+            - chapters/chapter_4_lesson_1.qmd
+        - section: "Lesson 2"
+          contents:
+            - chapters/chapter_4_lesson_2.qmd
+
+    - id: chapter_5
+      title: "Chapter 5"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - section: "Overview"
+          contents:
+            - chapters/chapter_5.qmd
+        - section: "Lesson 1"
+          contents:
+            - chapters/chapter_5_lesson_1.qmd
+
+    - id: projects
+      title: "Applied Time Series Projects"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - section: "Overview"
+          contents:
+            - projects.qmd
+        - section: "Project 1"
+          contents:
+            - projects/project1.qmd
+        - section: "Project 2"
+          contents:
+            - projects/project2.qmd
+        - section: "Project 3"
+          contents:
+            - projects/project3.qmd
+
+
+
+
+format:  
+  html:
+    theme: #see this link to customize the theme with css (https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
+      light: flatly # more themes can be found (https://quarto.org/docs/output-formats/html-themes.html)
+      dark: darkly
+      #light: cosmo
+      #dark: [cosmo, theme-dark.scss]
+    css: styles.css
+    toc: true
