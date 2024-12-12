@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "!extra_files/"
     - "!timeseries/"
+    - "githubpushnotes.md"
     
 freeze: auto
 
@@ -70,6 +71,9 @@ website:
         - section: "Lesson 3"
           contents:
             - chapters/chapter_4_lesson_3.qmd
+        - section: "Lesson 4"
+          contents:
+            - chapters/chapter_4_lesson_4.qmd
 
     - id: chapter_5
       title: "Ch 5"

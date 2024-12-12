@@ -29,12 +29,3 @@ format: html
 
 
 
-
-
-2. **Consumer Credit Data Analysis:**
-   - Examined consumer credit data from the G.19 Statistical Release, focusing on outstanding credit extended to individuals for household and personal expenditures.
-   - Differentiated between revolving credit (e.g., credit card loans) and nonrevolving credit (e.g., motor vehicle and education loans) to identify distinct patterns and trends.
-   - Analyzed the interest rates and terms of credit, including new car loans, personal loans, and credit card plans at commercial banks, and discussed the implications of historical data series.
-   - Provided insights into consumer borrowing behaviors and the potential impact of macroeconomic changes on credit markets.
-- [Project 2: Consumer Credit Data Analysis](/projects/project2.qmd)
-
