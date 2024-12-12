@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     - "!extra_files/"
     - "!timeseries/"
-    - "githubpushnotes.md"
+    - "!githubpushnotes.md"
     
 freeze: auto
 
