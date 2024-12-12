@@ -4951,6 +4951,12 @@ window.Quarto = {
     <a class="dropdown-item" href="./chapters/chapter_4_lesson_2.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Lesson 3</li>
+        <li>
+    <a class="dropdown-item" href="./chapters/chapter_4_lesson_3.html">
+ <span class="dropdown-text">Autoregressive (AR) Models</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -4986,6 +4992,12 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="./tools/stepsforDate_index_formatting.html">
  <span class="dropdown-text">Steps for formatting Date and Creating Index</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Math Formulas</li>
+        <li>
+    <a class="dropdown-item" href="./tools/math_formulas.html">
+ <span class="dropdown-text">Formulas</span></a>
   </li>  
     </ul>
   </li>
@@ -5037,6 +5049,19 @@ window.Quarto = {
   <li><a href="#function-is-linear-vs-quadratic-vs-cubic" id="toc-function-is-linear-vs-quadratic-vs-cubic" class="nav-link" data-scroll-target="#function-is-linear-vs-quadratic-vs-cubic">Function is Linear vs Quadratic vs Cubic</a>
   <ul class="collapse">
   <li><a href="#search-for-words-for-lesson-4.2" id="toc-search-for-words-for-lesson-4.2" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.2">Search for words for lesson 4.2</a></li>
+  <li><a href="#lesson-4.3-autoregressive-ar-models" id="toc-lesson-4.3-autoregressive-ar-models" class="nav-link" data-scroll-target="#lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</a>
+  <ul class="collapse">
+  <li><a href="#properties-of-an-arp-stochastic-process" id="toc-properties-of-an-arp-stochastic-process" class="nav-link" data-scroll-target="#properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</a></li>
+  <li><a href="#exploring-ar1-models" id="toc-exploring-ar1-models" class="nav-link" data-scroll-target="#exploring-ar1-models">Exploring AR(1) Models</a></li>
+  <li><a href="#second-order-properties-of-an-ar1-model" id="toc-second-order-properties-of-an-ar1-model" class="nav-link" data-scroll-target="#second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</a></li>
+  <li><a href="#correlogram-of-an-ar1-model" id="toc-correlogram-of-an-ar1-model" class="nav-link" data-scroll-target="#correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</a></li>
+  <li><a href="#partial-autocorrelation" id="toc-partial-autocorrelation" class="nav-link" data-scroll-target="#partial-autocorrelation">Partial Autocorrelation</a></li>
+  <li><a href="#partial-autocorrelation-plots-of-various-arp-processes" id="toc-partial-autocorrelation-plots-of-various-arp-processes" class="nav-link" data-scroll-target="#partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</a></li>
+  <li><a href="#sationary-and-non-stationary-ar-processes" id="toc-sationary-and-non-stationary-ar-processes" class="nav-link" data-scroll-target="#sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</a></li>
+  <li><a href="#absolute-value-in-the-complex-plane" id="toc-absolute-value-in-the-complex-plane" class="nav-link" data-scroll-target="#absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#search-for-words-for-lesson-4.3" id="toc-search-for-words-for-lesson-4.3" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.3">Search for words for lesson 4.3</a></li>
+  </ul></li>
   <li><a href="#lesson-5.1-unassigned-sections" id="toc-lesson-5.1-unassigned-sections" class="nav-link" data-scroll-target="#lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</a>
   <ul class="collapse">
   <li><a href="#generalized-least-squares-gls" id="toc-generalized-least-squares-gls" class="nav-link" data-scroll-target="#generalized-least-squares-gls">Generalized Least Squares (GLS)</a></li>
@@ -5316,7 +5341,207 @@ Definition of the Difference Operator
 <section id="search-for-words-for-lesson-4.2" class="level3">
 <h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.2">Search for words for lesson 4.2</h3>
 <p>correlogram - successive stock prices -</p>
-<!-- --------------------------------- 5.1 -----------------------------5.1 -------- -->
+<!-- --------------------------------- 4.3 ---------------------------------------------------4.3 -------- -->
+</section>
+<section id="lesson-4.3-autoregressive-ar-models" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of an Autoregressive (AR) Model">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of an Autoregressive (AR) Model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The time series <span class="math inline">\(\{x_t\}\)</span> is an <strong>autoregressive process of order</strong> <span class="math inline">\(p\)</span>, denoted as <span class="math inline">\(AR(p)\)</span>, if <span class="math display">\[
+  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t ~~~~~~~~~~~~~~~~~~~~~~~ (4.15)
+\]</span></p>
+<p>where <span class="math inline">\(\{w_t\}\)</span> is white noise and the <span class="math inline">\(\alpha_i\)</span> are the model parameters with <span class="math inline">\(\alpha_p \ne 0\)</span>.</p>
+</div>
+</div>
+<section id="properties-of-an-arp-stochastic-process" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</h3>
+<p><strong>Autoregressive Properties of an AR model</strong></p>
+<ul>
+<li>The mean of an AR model is a constant.</li>
+<li>The variance of an AR model is finite.</li>
+<li>The covariance of an AR model is a function of the lag.</li>
+<li>The autocorrelation of an AR model is a function of the lag.</li>
+</ul>
+</section>
+<section id="exploring-ar1-models" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-ar1-models">Exploring AR(1) Models</h3>
+<p><strong>Definitino</strong> Recall that an <span class="math inline">\(AR(p)\)</span> model is of the form <span class="math display">\[
+  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t
+\]</span> So, an <span class="math inline">\(AR(1)\)</span> model is expressed as <span class="math display">\[
+  x_t = \alpha x_{t-1} + w_t
+\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a white noise series with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+</section>
+<section id="second-order-properties-of-an-ar1-model" class="level3">
+<h3 class="anchored" data-anchor-id="second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Second-Order Properties of an $AR(1)$ Model">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Second-Order Properties of an <span class="math inline">\(AR(1)\)</span> Model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(\{x_t\}_{t=1}^n\)</span> is an <span class="math inline">\(AR(1)\)</span> prcess, then its the first- and second-order properties are summarized below.</p>
+<p><span class="math display">\[
+\begin{align*}
+  \mu_x &amp;= 0 \\  
+  \gamma_k = cov(x_t, x_{t+k}) &amp;= \frac{\alpha^k \sigma^2}{1-\alpha^2}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="correlogram-of-an-ar1-model" class="level3">
+<h3 class="anchored" data-anchor-id="correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</h3>
+<ul>
+<li>The autocorrelation function of an <span class="math inline">\(AR(1)\)</span> model is a function of the lag.</li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Correlogram of an AR(1) Process">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correlogram of an AR(1) Process
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The autocorrelation function for an AR(1) process is</p>
+<p><span class="math display">\[
+  \rho_k = \alpha^k ~~~~~~ (k \ge 0)
+\]</span> where <span class="math inline">\(|\alpha| &lt; 1\)</span>.</p>
+</div>
+</div>
+<p><strong>Things to do</strong></p>
+<ul>
+<li>DO group activity: Simulation of an AR(1) process</li>
+</ul>
+</section>
+<section id="partial-autocorrelation" class="level3">
+<h3 class="anchored" data-anchor-id="partial-autocorrelation">Partial Autocorrelation</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition: Partial Autocorrleation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Partial Autocorrleation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>partial autocorrelation</strong> at lag <span class="math inline">\(k\)</span> is defined as the portion of the correlation that is not explained by shorter lags.</p>
+</div>
+</div>
+<p>For example, the partial correlation for lag 4 is the correlation not explained by lags 1, 2, or 3.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Check Your Understanding">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check Your Understanding
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What is the value of the partial autocorrelation function for an <span class="math inline">\(AR(2)\)</span> process for all lags greater than 2? answer: 0</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="partial-autocorrelation-plots-of-various-arp-processes" class="level3">
+<h3 class="anchored" data-anchor-id="partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</h3>
+<p><strong>Look at lesson shinny code</strong></p>
+</section>
+<section id="sationary-and-non-stationary-ar-processes" class="level3">
+<h3 class="anchored" data-anchor-id="sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Characteristic Equation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of the Characteristic Equation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Treating the symbol <span class="math inline">\(\mathbf{B}\)</span> formally as a number (either real or complex), the polynomial</p>
+<p><span class="math display">\[
+  \theta_p(\mathbf{B}) x_t = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) x_t
+\]</span></p>
+<p>is called the <strong>characteristic polynomial</strong> of an AR process.</p>
+<p>If we set the characteristic polynomial to zero, we get the <strong>characteristic equation</strong>:</p>
+<p><span class="math display">\[
+  \theta_p(\mathbf{B}) = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) = 0
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Identifying Stationary Processes">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Identifying Stationary Processes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An AR process will be <strong>stationary</strong> if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</p>
+</div>
+</div>
+</section>
+<section id="absolute-value-in-the-complex-plane" class="level3">
+<h3 class="anchored" data-anchor-id="absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of the Absolute Value in the Complex Plane
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
+<p><span class="math display">\[
+  |z| = \sqrt{a^2 + b^2}
+\]</span></p>
+</div>
+</div>
+<p><strong>This sections check for this</strong> - We will now practice assessing whether an AR process is stationary using the characteristic equation.</p>
+<p>co-pilot notes</p>
+<ul>
+<li><strong>Stationary and Non-Stationary AR Processes Lesson 4.3</strong>
+<ul>
+<li>An AR process will be stationary if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</li>
+<li>The characteristic equation of an AR process is the polynomial <span class="math inline">\(\theta_p(\mathbf{B}) = 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p\)</span>.</li>
+<li>The roots of the characteristic polynomial are the solutions of the characteristic equation.</li>
+<li>The absolute value of the roots of the characteristic polynomial must be greater than 1 for the AR process to be stationary.</li>
+</ul></li>
+</ul>
+<p>co-pilot notes end</p>
+</section>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ul>
+<li>What is an exponential smoothing model?</li>
+</ul>
+</section>
+<section id="search-for-words-for-lesson-4.3" class="level3">
+<h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.3">Search for words for lesson 4.3</h3>
+<p>exponential smoothing model - polyroot function -</p>
+<!-- --------------------------------- 5.1 ---------------------------------------------------5.1 -------- -->
+</section>
 </section>
 <section id="lesson-5.1-unassigned-sections" class="level2">
 <h2 class="anchored" data-anchor-id="lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</h2>
@@ -5376,6 +5601,23 @@ Definition of the Difference Operator
   x_{t} = x_{t-1} + w_{t}
 \]</span> where <span class="math inline">\(\{w_t\}\)</span> is a random process.</p>
 <p>The value <span class="math inline">\(x_t\)</span> can be considered as the cumulative summation of the first <span class="math inline">\(t\)</span> values of the <span class="math inline">\(w_t\)</span> series. In many cases, <span class="math inline">\(w_t\)</span> is a discrete white noise series, and it is often modeled as a Gaussian white noise series. However, <span class="math inline">\(w_t\)</span> could be as simple as a coin toss</p>
+<p>Absolute Value in the COmplex Plane</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of the Absolute Value in the Complex Plane
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
+<p><span class="math display">\[
+  |z| = \sqrt{a^2 + b^2}
+\]</span></p>
+</div>
+</div>
 
 
 

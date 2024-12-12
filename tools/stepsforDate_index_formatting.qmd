@@ -184,7 +184,8 @@ has_gaps(df) # false if none and vice versa True
 ```{r, eval=FALSE}
 
 
-wine_dat <- read_table("data/wine.dat") # resource 3.4.2
+# wine_dat <- read_table("data/wine.dat") # resource 3.4.2
+
 ```
 
 

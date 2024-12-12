@@ -1,0 +1,326 @@
+---
+title: "Autocorrelation Concepts"
+subtitle: "Chapter 2: Lesson 2"
+format: html
+editor: source
+sidebar: false
+---
+```{r}
+#| include: false
+source("common_functions.R")
+```
+
+```{r}
+#| include: false
+
+get_data_for_cov_table <- function(offset = 1) {
+  # set random number generator seed
+  set.seed(997)
+  
+  # set parameters
+  n <- 10
+  rho <- 0.99
+  mu <- 0
+  sigma <- 3
+  
+  # build population correlation matrix
+  tmp.r <- matrix(rho, n, n)
+  tmp.r <- tmp.r^abs(row(tmp.r)-col(tmp.r))
+  
+  # simulate correlated normal random data
+  x1 <- round(mvrnorm(1, rep(mu,n), sigma^2 * tmp.r),1) 
+  
+  # build a data frame
+  df <- data.frame(t = 1:length(x1),
+                   x = x1,
+                   y = lead(x1, offset)) %>%
+    mutate(
+      xx = x - mean(x),
+      xx2 = xx^2,
+      yy = y - mean(x),
+      # yy2 = yy^2,
+      xy = xx * yy
+    ) %>% 
+    dplyr::select(t, x, y, xx, xx2, yy, xy)
+  
+  return(df)
+}
+
+make_cov_table_df <- function(df, offset=1, decimals_1st_order = 5, decimals_2nd_order = 5) {
+  # Color vector
+  # oi_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#F5C710", "#CC79A7", "#999999")
+  oi_colors <- c("black", "black", "black", "black", "black", "black", "black", "black", "black") # Handout is in black print
+  
+  df_summary <- df %>% 
+    summarize(
+      x = sum(x),
+      y = sum(y, na.rm = TRUE),
+      xx = sum(xx),
+      yy = sum(yy, na.rm = TRUE),
+      xx2 = sum(xx2),
+      # yy2 = sum(yy2, na.rm = TRUE),
+      xy = sum(xy, na.rm = TRUE)
+    ) %>% 
+    # round_df(3) %>% 
+    mutate(t = paste0("sum")) %>% 
+    mutate(
+      t = paste0("sum"),
+      x = round_as_text(x, 1),
+      y = round_as_text(y, 1),
+      xx = round_as_text(xx, decimals_1st_order),
+      xx2 = round_as_text(xx2, decimals_2nd_order),
+      yy = round_as_text(yy, decimals_1st_order),
+      # yy2 = round_as_text(yy2, decimals_2nd_order),
+      xy = round_as_text(xy, decimals_2nd_order)
+    ) %>% 
+    dplyr::select(t, x, y, xx, xx2, yy, xy)
+  
+  out <- df %>%
+    mutate(
+      t = as.character(t),
+      x = round_as_text(x, 1),
+      y = round_as_text(y, 1),
+      xx = round_as_text(xx, decimals_1st_order),
+      xx2 = round_as_text(xx2, decimals_2nd_order),
+      yy = round_as_text(yy, decimals_1st_order),
+      # yy2 = round_as_text(yy2, decimals_2nd_order),
+      xy = round_as_text(xy, decimals_2nd_order)
+    ) %>% 
+    mutate(
+      x = cell_spec(x, 
+                    color = case_when(
+                      is.na(x) ~ "#999999",
+                      TRUE ~ oi_colors[( row_number() + 0 ) %% 9 + 1]
+                    )
+      ),
+      y = cell_spec(y, 
+                    color = case_when(
+                      is.na(y) ~ "#999999",
+                      TRUE ~ oi_colors[( row_number() + offset ) %% 9 + 1]
+                    )
+      )
+    ) %>% 
+    mutate(
+      # x = ifelse(row_number() > nrow(.) - offset, paste0("[",x,"]"), x),
+      y = ifelse(row_number() > nrow(.) - offset, NA, y),
+    ) %>% 
+    replace(., is.na(.), "—") %>%
+    bind_rows(df_summary) %>% 
+    rename(
+      "x_t" = x,
+      "x_{t+k}" = y,
+      # paste0("x_{t+", offset, "}") = y,
+      "x_t-mean(x)" = xx, 
+      "(x_t-mean(x))^2" = xx2, 
+      "x_{t+k}-mean(x)" = yy,
+      # "(x_{t+k}-mean(x))^2" = yy2, 
+      "(x-mean(x))(x_{t+k}-mean(x))" = xy
+    )
+  
+  return(out)
+}
+
+# Eliminates the values in columns 3 onward for a specified row_num
+make_blank_row_in_cov_table <- function(df, row_num) {
+  for (col_num in 3:ncol(df)) {
+    df[row_num, col_num] = ""
+  }
+  return(df)
+}
+
+# Compute summary values
+compute_summaries <- function(df, digits = 4) {
+  df %>% 
+    summarize(
+      n = n(),
+      mean_x = mean(x),
+      mean_y = mean(y, na.rm = TRUE),
+      ss_x = sum(xx2),
+      # ss_y = sum(yy2, na.rm = TRUE),
+      ss_xy = sum(xy, na.rm = TRUE),
+      c_0 = sum(xx2) / nrow(.),
+      c_k = sum(xy, na.rm = TRUE) / nrow(.),
+      r_k = c_k / c_0
+    ) %>% 
+    round_df(digits)
+}
+
+```
+
+
+<!-- ### Autocovariance and Autocorrelation  -->
+
+```{r}
+#| echo: false
+
+offset_value <- 1
+cov_df <- get_data_for_cov_table(offset = offset_value)
+
+# Obtain the number of data values.
+n <- nrow(cov_df)
+```
+
+
+
+
+#### Lag $k=1$
+
+```{r}
+#| echo: false
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# I could not figure out how to fit the first two tables on one page, so I punted and only displayed part of the table. -- Craig
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+
+offset_value <- 1
+cov_df <- get_data_for_cov_table(offset = offset_value)
+cov_table <- cov_df %>%
+  make_cov_table_df(offset = offset_value)#, decimals_1st_order = 1, decimals_2nd_order = 2) 
+cov_table %>%
+  display_partial_table(4,3) # Partial table
+
+
+summarized <- compute_summaries(cov_df)
+```
+
+
+```{r}
+#| echo: false
+
+# Initialize table
+auto_cov_cor_table <- data.frame(lag = integer(),
+                  autocovariance = double(),
+                  autocorrelation = double())
+```
+
+```{r}
+#| echo: false
+
+# Add rows to the table
+auto_cov_cor_table <- auto_cov_cor_table %>% 
+  bind_rows(c(
+    lag = offset_value, 
+    autocovariance = summarized$c_k, 
+    autocorrelation = summarized$r_k
+    )
+  )
+
+# # Display the table, except row 2
+# auto_cov_cor_table %>%
+#   mutate( ####################################### Suppresses row 2
+#     autocovariance = ifelse(row_number() == 2,"", autocovariance),
+#     autocorrelation = ifelse(row_number() == 2,"", autocorrelation)
+#   ) %>% 
+#   knitr::kable(format = "html", align='ccc', escape = FALSE, width = NA) %>%
+#   kable_styling(full_width = FALSE, "striped") 
+```
+
+#### Lag $k = 2$
+
+```{r}
+#| echo: false
+offset_value <- 2
+cov_df <- get_data_for_cov_table(offset = offset_value)
+cov_table <- cov_df %>%
+  make_cov_table_df(offset = offset_value)#, decimals_1st_order = 1, decimals_2nd_order = 2) 
+cov_table %>%
+  ############ Let students fill in these rows ##########
+  make_blank_row_in_cov_table(4) %>% 
+  make_blank_row_in_cov_table(5) %>% 
+  make_blank_row_in_cov_table(6) %>%
+  make_blank_row_in_cov_table(11) %>% 
+  display_table()
+
+summarized <- compute_summaries(cov_df)
+```
+
+
+<br>
+<br>
+<br>
+
+#### Lag $k = 3$
+
+```{r}
+#| echo: false
+offset_value <- 3
+cov_df <- get_data_for_cov_table(offset = offset_value)
+cov_table <- cov_df %>%
+  make_cov_table_df(offset = offset_value)#, decimals_1st_order = 1, decimals_2nd_order = 2) 
+cov_table %>%
+  display_table()
+
+summarized <- compute_summaries(cov_df)
+```
+
+
+```{r}
+#| echo: false
+
+# Add rows to the table
+auto_cov_cor_table <- auto_cov_cor_table %>% 
+  bind_rows(c(
+    lag = offset_value, 
+    autocovariance = summarized$c_k, 
+    autocorrelation = summarized$r_k
+    )
+  )
+
+# # Display the table, except row 2
+# auto_cov_cor_table %>%
+#   mutate( ####################################### Suppresses row 2
+#     autocovariance = ifelse(row_number() == 2,"", autocovariance),
+#     autocorrelation = ifelse(row_number() == 2,"", autocorrelation)
+#   ) %>% 
+#   knitr::kable(format = "html", align='ccc', escape = FALSE, width = NA) %>%
+#   kable_styling(full_width = FALSE, "striped") 
+```
+
+#### Lag $k = 4$
+
+
+```{r}
+#| echo: false
+offset_value <- 4
+cov_df <- get_data_for_cov_table(offset = offset_value)
+cov_table <- cov_df %>%
+  make_cov_table_df(offset = offset_value)#, decimals_1st_order = 1, decimals_2nd_order = 2) 
+cov_table %>%
+  make_blank_row_in_cov_table(1) %>% 
+  make_blank_row_in_cov_table(2) %>%  
+  make_blank_row_in_cov_table(3) %>%  
+  make_blank_row_in_cov_table(4) %>%  
+  make_blank_row_in_cov_table(5) %>%  
+  make_blank_row_in_cov_table(6) %>%  
+  make_blank_row_in_cov_table(7) %>%  
+  make_blank_row_in_cov_table(8) %>%  
+  make_blank_row_in_cov_table(9) %>%  
+  make_blank_row_in_cov_table(10) %>%  
+  make_blank_row_in_cov_table(11) %>% 
+  display_table()
+
+summarized <- compute_summaries(cov_df)
+```
+
+

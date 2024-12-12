@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!extra_files/"
+    - "!timeseries/"
     
 freeze: auto
 
@@ -66,6 +67,9 @@ website:
         - section: "Lesson 2"
           contents:
             - chapters/chapter_4_lesson_2.qmd
+        - section: "Lesson 3"
+          contents:
+            - chapters/chapter_4_lesson_3.qmd
 
     - id: chapter_5
       title: "Ch 5"
@@ -108,7 +112,9 @@ website:
         - section: "Date & Index formatting"
           contents:
             - tools/stepsforDate_index_formatting.qmd
-
+        - section: "Math Formulas"
+          contents:
+            - tools/math_formulas.qmd
 
 
 

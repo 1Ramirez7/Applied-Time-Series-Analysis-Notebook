@@ -12,8 +12,7 @@ format:
     math: katex # katex, mathjax, none
 ---
 
-I'm first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples. 
-
+I'm first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.
 
 # Sationary vs Non-Stationary TS
 
@@ -24,7 +23,7 @@ I'm first going to work out this index file, to have the whole picture then I wi
 -   **Sationarity of Linear Models Lesson 5.1**
     -   Linear models for time series are non-stationary when they include functions of time.
 -   Differencing can often transform a non-stationary series with a de terministic trend to a stationary series (4.1).
--   In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences (4.2). 
+-   In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences (4.2).
 
 ## Non-Stationary Time Series
 
@@ -174,23 +173,22 @@ x_t - x_{t-1} &= w_t
 
 In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences.
 
-
-
 ### Correlograms & Histogram
-When do we use a correlogram and what do we look for? 
 
-**Correlogram** 
+When do we use a correlogram and what do we look for?
 
-- A correlogram is a plot of the autocorrelation function (ACF) of a time series. The ACF is a measure of the correlation between the time series and a lagged version of itself.
-- Notice that the values in the correlogram of the stock prices start at 1 and slowly decay as k increases. There are no significant autocorrelations in the differenced values. This is exactly what we would expect from a random walk.
+**Correlogram**
+
+-   A correlogram is a plot of the autocorrelation function (ACF) of a time series. The ACF is a measure of the correlation between the time series and a lagged version of itself.
+-   Notice that the values in the correlogram of the stock prices start at 1 and slowly decay as k increases. There are no significant autocorrelations in the differenced values. This is exactly what we would expect from a random walk.
 
 **Histogram**
 
-- Figure 5 is a histogram of the differences. This is a simple measure of volatility of the stock, or in other words, how much the price changes in a day.
-
+-   Figure 5 is a histogram of the differences. This is a simple measure of volatility of the stock, or in other words, how much the price changes in a day.
 
 ### Difference Operator
-- Differencing nonstationary time series often leads to a stationary series, so we will define a formal operator to express this process.
+
+-   Differencing nonstationary time series often leads to a stationary series, so we will define a formal operator to express this process.
 
 ::: {.callout-note icon="false" title="Definition of the Difference Operator"}
 The **difference operator**, $\nabla$, is defined as:
@@ -202,11 +200,9 @@ Higher-order differencing can be denoted
 $$\nabla^n x_t = (1-\mathbf{B})^n x_t$$
 :::
 
-**Things to do**
-- Do excel workout and link to this. So in the website for this. This lesson will be nother tab. Maybe add the option to download the excel sheet. 
+**Things to do** - Do excel workout and link to this. So in the website for this. This lesson will be nother tab. Maybe add the option to download the excel sheet.
 
-**Computing Differences** Small group acitivity 
-The difference operator can be helpful in identifying the functional underpinnings of a trend. If a function **is linear**, then the first differences of equally-spaced values will be constant. If a function **is quadratic**, then the second differences of equally-spaced values will be constant. If a function **is cubic**, then the third differences of equally-spaced values will be constant, and so on.
+**Computing Differences** Small group acitivity The difference operator can be helpful in identifying the functional underpinnings of a trend. If a function **is linear**, then the first differences of equally-spaced values will be constant. If a function **is quadratic**, then the second differences of equally-spaced values will be constant. If a function **is cubic**, then the third differences of equally-spaced values will be constant, and so on.
 
 **differencing Stock Prices** do this group activity
 
@@ -214,29 +210,188 @@ The difference operator can be helpful in identifying the functional underpinnin
 
 **Class Activyt: Random Walk Drift** do this class activity
 
-
 # Function is Linear vs Quadratic vs Cubic
+
 This goes at the top, not in lessons
 
-- **Linear Function**
-    - If a function is linear, then the first differences of equally-spaced values will be constant. (4.2)
-    
-- **Quadratic Function** 
-    - If a function is quadratic, then the second differences of equally-spaced values will be constant. (4.2)
-  
-- **Cubic Function**
-    - If a function is cubic, then the third differences of equally-spaced values will be constant, and so on. (4.2)
-
-
-
-
-
+-   **Linear Function**
+    -   If a function is linear, then the first differences of equally-spaced values will be constant. (4.2)
+-   **Quadratic Function**
+    -   If a function is quadratic, then the second differences of equally-spaced values will be constant. (4.2)
+-   **Cubic Function**
+    -   If a function is cubic, then the third differences of equally-spaced values will be constant, and so on. (4.2)
 
 ### Search for words for lesson 4.2
 
-correlogram - successive stock prices - 
+correlogram - successive stock prices -
 
-<!-- --------------------------------- 5.1 -----------------------------5.1 -------- -->
+
+
+
+<!-- --------------------------------- 4.3 ---------------------------------------------------4.3 -------- -->
+
+
+## Lesson 4.3 Autoregressive (AR) Models
+
+::: {.callout-note icon="false" title="Definition of an Autoregressive (AR) Model"}
+The time series $\{x_t\}$ is an **autoregressive process of order** $p$, denoted as $AR(p)$, if 
+$$
+  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t ~~~~~~~~~~~~~~~~~~~~~~~ (4.15)
+$$
+
+where $\{w_t\}$ is white noise and the $\alpha_i$ are the model parameters with $\alpha_p \ne 0$.
+:::
+
+
+### Properties of an AR(p) Stochastic Process
+
+**Autoregressive Properties of an AR model**
+
+-  The mean of an AR model is a constant.
+-  The variance of an AR model is finite.
+-  The covariance of an AR model is a function of the lag.
+-  The autocorrelation of an AR model is a function of the lag.
+
+
+### Exploring AR(1) Models
+
+**Definitino**
+Recall that an $AR(p)$ model is of the form $$
+  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t
+$$ So, an $AR(1)$ model is expressed as $$
+  x_t = \alpha x_{t-1} + w_t
+$$ where $\{w_t\}$ is a white noise series with mean zero and variance $\sigma^2$.
+
+
+
+### Second-Order Properties of an AR(1) Model
+
+::: {.callout-note icon="false" title="Second-Order Properties of an $AR(1)$ Model"}
+If $\{x_t\}_{t=1}^n$ is an $AR(1)$ prcess, then its the first- and second-order properties are summarized below.
+
+$$
+\begin{align*}
+  \mu_x &= 0 \\  
+  \gamma_k = cov(x_t, x_{t+k}) &= \frac{\alpha^k \sigma^2}{1-\alpha^2}
+\end{align*}
+$$
+
+:::
+
+
+### Correlogram of an AR(1) Model
+
+-  The autocorrelation function of an $AR(1)$ model is a function of the lag.
+
+::: {.callout-note icon="false" title="Correlogram of an AR(1) Process"}
+The autocorrelation function for an AR(1) process is
+
+$$
+  \rho_k = \alpha^k ~~~~~~ (k \ge 0)
+$$ where $|\alpha| < 1$.
+:::
+
+
+**Things to do** 
+
+- DO group activity: Simulation of an AR(1) process
+
+
+### Partial Autocorrelation
+
+::: {.callout-note icon="false" title="Definition: Partial Autocorrleation"}
+The **partial autocorrelation** at lag $k$ is defined as the portion of the correlation that is not explained by shorter lags.
+:::
+
+For example, the partial correlation for lag 4 is the correlation not explained by lags 1, 2, or 3.
+
+
+::: {.callout-tip icon="false" title="Check Your Understanding"}
+-   What is the value of the partial autocorrelation function for an $AR(2)$ process for all lags greater than 2? answer: 0
+:::
+
+
+
+### Partial Autocorrelation Plots of Various AR(p) Processes
+
+**Look at lesson shinny code**
+
+
+
+### Sationary and Non-Stationary AR Processes
+
+::: {.callout-note icon="false" title="Definition of the Characteristic Equation"}
+Treating the symbol $\mathbf{B}$ formally as a number (either real or complex), the polynomial
+
+$$
+  \theta_p(\mathbf{B}) x_t = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) x_t
+$$
+
+is called the **characteristic polynomial** of an AR process.
+
+If we set the characteristic polynomial to zero, we get the **characteristic equation**:
+
+$$
+  \theta_p(\mathbf{B}) = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) = 0
+$$
+:::
+
+
+::: {.callout-note icon="false" title="Identifying Stationary Processes"}
+An AR process will be **stationary** if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.
+:::
+
+
+
+### Absolute Value in the Complex Plane
+
+
+::: {.callout-note icon="false" title="Definition of the Absolute Value in the Complex Plane"}
+Let $z = a+bi$ be any complex number. It can be represented by the point $(a,b)$ in the complex plane. We define the absolute value of $z$ as the distance from the origin to the point:
+
+$$
+  |z| = \sqrt{a^2 + b^2}
+$$
+:::
+
+
+**This sections check for this**
+- We will now practice assessing whether an AR process is stationary using the characteristic equation.
+
+
+co-pilot notes
+
+-  **Stationary and Non-Stationary AR Processes Lesson 4.3**
+    -   An AR process will be stationary if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.
+    -   The characteristic equation of an AR process is the polynomial $\theta_p(\mathbf{B}) = 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p$.
+    -   The roots of the characteristic polynomial are the solutions of the characteristic equation.
+    -   The absolute value of the roots of the characteristic polynomial must be greater than 1 for the AR process to be stationary.
+
+co-pilot notes end
+
+
+
+
+
+
+
+
+
+
+### Questions
+
+* What is an exponential smoothing model?
+
+
+
+
+### Search for words for lesson 4.3 
+
+exponential smoothing model - polyroot function - 
+
+
+
+<!-- --------------------------------- 5.1 ---------------------------------------------------5.1 -------- -->
 
 ## Lesson 5.1 unassigned sections
 
@@ -294,3 +449,14 @@ Let $\{x_t\}$ be a time series. Then, $\{x_t\}$ is a **random walk** if it can b
 $$ where $\{w_t\}$ is a random process.
 
 The value $x_t$ can be considered as the cumulative summation of the first $t$ values of the $w_t$ series. In many cases, $w_t$ is a discrete white noise series, and it is often modeled as a Gaussian white noise series. However, $w_t$ could be as simple as a coin toss
+
+
+Absolute Value in the COmplex Plane
+
+::: {.callout-note icon="false" title="Definition of the Absolute Value in the Complex Plane"}
+Let $z = a+bi$ be any complex number. It can be represented by the point $(a,b)$ in the complex plane. We define the absolute value of $z$ as the distance from the origin to the point:
+
+$$
+  |z| = \sqrt{a^2 + b^2}
+$$
+:::

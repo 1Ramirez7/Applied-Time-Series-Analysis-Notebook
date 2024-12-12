@@ -1,0 +1,146 @@
+---
+title: "White Noise and Random Walks: Part 1 -- Handout"
+subtitle: "Chapter 4: Lesson 1"
+format: html
+editor: source
+sidebar: false
+---
+
+```{r}
+#| include: false
+source("common_functions.R")
+```
+
+```{=html}
+<script type="text/javascript">
+ function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+ }
+ 
+ function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+ }    
+</script>
+```
+
+### Coin Toss Experiment
+
+::: {.callout-tip appearance="minimal"}
+
+
+1.  Start the time series at $x_0 = 0$.
+2.  Toss a coin. 
+    -   If the coin shows heads, then $x_t = x_{t-1}+1$
+    -   If the coin shows tails, then $x_t = x_{t-1}-1$
+3.  Plot the new point on the time plot.
+4.  Complete steps 2 and 3 a total of $n=60$ times.
+
+
+```{r}
+#| echo: false
+
+set.seed(7)
+
+df <- data.frame(x=0:60) |>
+  mutate(w = ifelse(row_number() == 1, 0, sample(c(-1,1), size = 60, replace = TRUE))) |>
+  mutate(y = cumsum(w))
+# df  
+# 
+df2 <- expand_grid(x = 0:60, y = -20:20)
+
+df_point <- data.frame(x = 0, y = 0)
+
+ggplot(data=df2, aes(x=x, y=y)) +
+  # geom_point(data = df2, aes(x=x, y=y), size = 0.01) +
+  # geom_line(data = df, aes(x=x, y=y)) +
+  # geom_point(data = df, aes(x=x, y=y), size = 0.5) +
+  geom_point(data = df_point, aes(x=x, y=y), size = 1.5) +
+  scale_x_continuous(limits = c(0,60),
+                     breaks = seq(0, 60, by = 5),
+                     minor_breaks = seq(0, 60, 1)) +
+  scale_y_continuous(limits = c(-20,20),
+                     breaks = seq(-20, 20, by = 5),
+                     minor_breaks = seq(-20, 20, 1)) +
+  labs(
+      x = "Toss Number",
+      y = "Value",
+      title = "Cumulative Results of Coin Tosses"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_line(colour = "black"),
+    # panel.grid.minor = element_line(colour = "black", linetype = "dotted", linewidth = 0.5)
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+
+:::
+
+
+
+<br>
+<br>
+
+
+#### Backward Shift Operator
+
+Let $\{x_t\}$ be a time series with the following values. 
+
+<center>
+```{r, results='asis'}
+#| echo: false
+
+set.seed(6)
+n <- 8
+d_operator <- data.frame(t = c(1:n), x = sample(1:15, n, replace = FALSE)) |>
+  mutate(diff = t - n)
+
+#cat( paste( paste0("$x_{t", ifelse(d_operator$t==n,"",d_operator$t-n), "} = ", d_operator$x, "$"), collapse = ",$~$ " ) ) 
+
+cat( paste( paste0("$x_{", d_operator$t, "} = ", d_operator$x, "$"), collapse = ",$~$ " ) ) 
+
+# Computes the value of the "power_on_d"^th difference from x_n
+d_value <- function(power_on_d = 0) {
+  out <- d_operator |> #### Note the use of this global variable
+    filter(diff == -power_on_d) |>
+    dplyr::select(x) |>
+    pull()
+  
+  return(out)
+}
+
+
+ts_val <- function(t_value) {
+  out <- d_operator |> #### Note the use of this global variable
+    filter(t == t_value) |>
+    dplyr::select(x) |>
+    pull()
+  
+  return(out)
+}
+```
+</center>
+Evaluate the following. 
+
+-   $\mathbf{B} x_8$
+-   $\mathbf{B}^5 x_8$
+-   $(\mathbf{B}^5 - \mathbf{B} ) x_8$
+-   $( \mathbf{B}^2 - 6 \mathbf{B} + 9 ) x_8$
+-   $( (\mathbf{B} - 6 )\mathbf{B} + 9 ) x_8$
+-   $( \mathbf{B} - 3 )^2 x_8 =  ( \mathbf{B} - 3 ) \left[ ( \mathbf{B} - 3 ) x_8 \right]$
+-   $( 1 - \frac{1}{2} \mathbf{B} - \frac{1}{4} \mathbf{B}^2 - \frac{1}{8} \mathbf{B}^3 ) x_8$
+

@@ -1,0 +1,127 @@
+---
+title: "Untitled"
+---
+
+
+```{r}
+#| include: false
+source("common_functions.R")
+```
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| results: asis
+
+library(ggrepel)
+
+# Number of years to show data
+number_of_years <- 3
+
+chocolate_month <- rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
+  mutate(
+    dates = yearmonth(ym(Month)),
+    month = month(dates),
+    year = year(dates)
+  )
+
+last_full_year <- chocolate_month |>
+  group_by(year) |>
+  tail(-3) |>
+  summarize(n = n()) |>
+  filter(n == 12) |>
+  ungroup() |>
+  summarize(year = max(year)) |>
+  select(year) |>
+  pull()
+
+first_year <- last_full_year - number_of_years + 1
+
+chocolate_ts <- chocolate_month |>
+  filter(year <= last_full_year & year >= first_year) |>
+  mutate(month_seq = 1:n())
+```
+
+Recall the time series representing the monthly relative number of Google searches for the term "chocolate." Here is a time plot of the data from `r min(chocolate_ts$year)` to `r max(chocolate_ts$year)`. 
+Month 1 is `r chocolate_ts |> filter(month_seq == 1) |> dplyr::select(dates) |> pull() |> format("%B %Y")`, 
+month 13 is `r chocolate_ts |> filter(month_seq == 13) |> dplyr::select(dates) |> pull() |> format("%B %Y")`,
+and
+month 25 is `r chocolate_ts |> filter(month_seq == 25) |> dplyr::select(dates) |> pull() |> format("%B %Y")`.
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-chocolatetimeplot
+#| fig-cap: "Time plot of a portion of the chocolate search data."
+
+
+```
+
+ 
+
+The folded chunk of code below fits the model to the data and computes the estimated parameter values. 
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+chocolate_month <- rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
+  mutate(
+    dates = yearmonth(ym(Month)),
+    month = month(dates),
+    year = year(dates),
+    stats_time = year + (month - 1) / 12,
+    month_seq = 1:n()
+  ) |>
+  mutate(month = factor(month)) |>
+  as_tsibble(index = dates)
+
+# Fit regression model
+chocolate_lm <- chocolate_month |>
+  model(TSLM(chocolate ~ 0 + stats_time + month))
+
+# Estimated parameter values
+param_est <- chocolate_lm |>
+  tidy() |>
+  pull(estimate)
+```
+
+
+
+
+```{r}
+chocolate_lm |>
+  residuals() |>
+  acf()
+
+chocolate_lm |>
+  residuals() |>
+  pacf()
+```
+
+```{r}
+model_resid <- chocolate_lm |>
+  residuals() |>
+  select(-.model) |>
+  model(
+    auto = ARIMA(.resid ~ 1 + pdq(0:3,0,0:3) + PDQ(0, 0, 0)),
+    a000 = ARIMA(.resid ~ 1 + pdq(0,0,0) + PDQ(0, 0, 0)),
+    a001 = ARIMA(.resid ~ 1 + pdq(0,0,1) + PDQ(0, 0, 0)),
+    a002 = ARIMA(.resid ~ 1 + pdq(0,0,2) + PDQ(0, 0, 0)),
+    a100 = ARIMA(.resid ~ 1 + pdq(1,0,0) + PDQ(0, 0, 0)),
+    a101 = ARIMA(.resid ~ 1 + pdq(1,0,1) + PDQ(0, 0, 0)),
+    a102 = ARIMA(.resid ~ 1 + pdq(1,0,2) + PDQ(0, 0, 0)),
+    a200 = ARIMA(.resid ~ 1 + pdq(2,0,0) + PDQ(0, 0, 0)),
+    a201 = ARIMA(.resid ~ 1 + pdq(2,0,1) + PDQ(0, 0, 0)),
+    a202 = ARIMA(.resid ~ 1 + pdq(2,0,2) + PDQ(0, 0, 0))) 
+
+# best order is 2, 0, 0
+# auto would pick it without running each    
+model_best <- select(model_resid, "a200")
+
+model_resid |>
+  glance() |>
+  filter(AIC == min(AIC) | AICc == min(AICc) | BIC == min(BIC) | .model == "auto")
+```
+
+
