@@ -1,0 +1,73 @@
+---
+title: "Linear Models, GLS, and Seasonal Indicator Variables"
+subtitle: "Ch 5.1 Code Notes"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    embed-resources: true
+    toc: true
+    code-fold: false
+---
+
+
+transfer from chapter_5_lesson_1_notes.qmd old repo
+
+notes taken during class
+
+```{r}
+
+chocolate_month2 <- rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
+  mutate(
+    dates = yearmonth(ym(Month)),
+    month = month(dates),
+    year = year(dates),
+    stats_time = year + (month - 1) / 12,
+    month_seq = 1:n()
+  ) |>
+  mutate(month = factor(month)) |>
+  as_tsibble(index = dates)
+
+# Fit regression model
+chocolate_lm <- chocolate_month2 |>
+  model(TSLM(chocolate ~ 0 + stats_time + month))
+
+# Estimated parameter values
+param_est <- chocolate_lm |>
+  tidy() |>
+  pull(estimate)
+
+param_est
+
+```
+
+
+when removing 0 + from the tslm function. it makes january as the mt
+
+
+```{r}
+
+chocolate_month2 <- #1 rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
+  mutate(
+    dates = yearmonth(ym(Month)),
+    month = month(dates),
+    year = year(dates),
+    stats_time = year + (month - 1) / 12,
+    month_seq = 1:n()
+  ) |> #2
+  mutate(month = factor(month)) |> # factor converts numerical month into categorical levels. eg january = 1. so this parts gets us b1 jan + b2 feb ... + b12 dec. 
+  as_tsibble(index = dates)
+
+# Fit regression model
+chocolate_lm <- chocolate_month |>
+  model(?TSLM(chocolate ~ stats_time + month))
+
+# Estimated parameter values
+param_est <- chocolate_lm |>
+  tidy() |>
+  pull(estimate)
+
+param_est
+
+```

@@ -1,0 +1,69 @@
+---
+title: "Fitted AR Models"
+subtitle: "Ch 4.4 Code Notes"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    embed-resources: true
+    toc: true
+    code-fold: false
+---
+
+
+transfer from chapter_4_lesson_4_notes.qmd old repo
+
+
+I belive this are notes taken from class.
+
+
+
+```{r}
+
+temps_ts <- rio::import("https://byuistats.github.io/timeseries/data/global_temparature.csv") |>
+  as_tsibble(index = year)
+
+temps_ts |> autoplot(.vars = change) +
+    labs(
+      x = "Year",
+      y = "Temperature Change (Celsius)",
+      title = paste0("Change in Mean Annual Global Temperature (", min(temps_ts$year), "-", max(temps_ts$year), ")")
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5)
+    )
+
+# chunk number 2
+pacf(temps_ts$change)
+
+global_ar <- temps_ts |>
+    model(AR(change ~ order(1:9)))
+tidy(global_ar)
+
+
+
+
+     
+
+
+```
+
+
+
+
+
+To go over
+
+
+go over the table fromt he **Fitting Models (Dynamic Number of Parameters)** exercise. 
+
+write the ar model for this time series.
+   * What does the table tell us. 
+     * estimeate
+     * estimate 
+     * statistic
+     * p.value
+      
+Know how to indentify if a model is stationary or not stationary. Moncayo's r 6 model is not stationary because the of the .98, but the book model, I think the ar 4 model shows it is stationary. ([1] 1.011 1.755 1.453 1.453). Moncayo's ar6 shows that it is not stationary. so the plot in the lesson, shows an increasing forecasted trend. Since the model says it is stationary, and the temps has been in an increasing trend since the 1980, the book model plot hasthe forecast coming back down to a mean of zero. This makes sense for a stiationary model because it has a mean of zero. 

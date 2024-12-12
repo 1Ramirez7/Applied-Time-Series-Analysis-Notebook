@@ -8,7 +8,7 @@ format:
     warning: false
     embed-resources: true
     toc: true
-    code-fold: true
+    code-fold: false
 ---
 
 

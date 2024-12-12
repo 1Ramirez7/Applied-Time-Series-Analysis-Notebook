@@ -8,9 +8,10 @@ format:
     warning: false
     embed-resources: true
     toc: true
-    code-fold: true
+    code-fold: false
 ---
 
+This chapter is not finished. 
 
 # Lesson 4 - 1 code
 
@@ -20,7 +21,7 @@ format:
 
 # Loading R packages
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse,
+pacman::p_load(tidyverse, nanoparquet,
                tsibble, fable,
                feasts, tsibbledata,
                fable.prophet,

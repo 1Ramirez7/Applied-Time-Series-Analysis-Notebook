@@ -16,7 +16,149 @@ My goal is to first have the website have a map of the concepts in time series. 
 
 
 
+Adding this from homework_4_0 chapter notes.qmd file in old repo. 
+This are notes intended to connect time series concepts
 
 
+
+```{r}
+# Load necessary library
+library(knitr)
+library(kableExtra)
+
+# Define the checklist table
+checklist_data <- data.frame(
+  Topic = c("Trend", "Seasonality", "Stationarity", "White Noise", "Serial Correlation", "Drift"),
+  Description = c(
+    "Presence of an upward or downward movement over time.",
+    "Repeating patterns at regular intervals.",
+    "Mean, variance, and autocorrelation are constant over time.",
+    "Residuals are independent, identically distributed with mean zero.",
+    "Past values are correlated with current values.",
+    "Consistent positive or negative change over time."
+  ),
+  White_Noise = c("", "", "✔", "✔", "", ""),
+  Random_Walk = c("", "", "", "", "✔", ""),
+  RW_with_Drift = c("", "", "", "", "✔", "✔"),
+  AR_p = c("✔", "", "✔", "", "✔", ""),
+  ARIMA = c("", "", "✔", "", "✔", ""),
+  Holt_Winters = c("✔", "✔", "✔", "", "✔", "")
+)
+
+# Render the table
+kable(checklist_data, format = "html", escape = F) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+
+
+
+
+
+
+```
+
+# Time Series Model Checklist
+
+| Topic | Description | White Noise | Random Walk | RW with Drift | AR(p) | ARIMA | Holt-Winters |
+|--------------|-----------------------------|--------|--------|---------|--------|--------|--------|
+| **Trend** | Presence of an upward or downward movement over time. |  |  |  | ✔ |  | ✔ |
+| **Seasonality** | Repeating patterns at regular intervals. |  |  |  |  |  | ✔ |
+| **Stationarity** | Mean, variance, and autocorrelation are constant over time. | ✔ |  |  | ✔ | ✔ | ✔ |
+| **White Noise** | Residuals are independent, identically distributed with mean zero. | ✔ |  |  |  |  |  |
+| **Serial Correlation** | Past values are correlated with current values. |  | ✔ | ✔ | ✔ | ✔ | ✔ |
+| **Drift** | Consistent positive or negative change over time. |  |  | ✔ |  |  |  |
+
+spacer
+
+```{r}
+temps_ts <- rio::import("https://byuistats.github.io/timeseries/data/global_temparature.csv") |>
+  as_tsibble(index = year)
+
+temps_ts |> autoplot(.vars = change) +
+    labs(
+      x = "Year",
+      y = "Temperature Change (Celsius)",
+      title = paste0("Change in Mean Annual Global Temperature (", min(temps_ts$year), "-", max(temps_ts$year), ")")
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5)
+    )
+
+
+# second r chunk
+pacf(temps_ts$change)
+
+
+# 3rd r chunk
+global_ar <- temps_ts |>
+    model(AR(change ~ order(1:9)))
+tidy(global_ar)
+
+
+# 4th r chunk
+alphas <- global_ar |> coefficients() |> tail(-1) |> dplyr::select(estimate) |> pull()
+cat(
+  "0 = 1", 
+        "- (", alphas[1], ") * x",
+        "- (", alphas[2], ") * x^2",
+        "- (", alphas[3], ") * x^3",
+        "\n     ",
+        "- (", alphas[4], ") * x^4",
+        "- (", alphas[5], ") * x^5",
+        "- (", alphas[6], ") * x^6"
+)
+
+alphas
+
+
+# 5th r chunk
+
+temps_forecast <- global_ar |> forecast(h = "50 years")
+temps_forecast |>
+  autoplot(temps_ts, level = 95) +
+  geom_line(aes(y = .fitted, color = "Fitted"),
+    data = augment(global_ar)) +
+  scale_color_discrete(name = "") +
+  labs(
+    x = "Year",
+    y = "Temperature Change (Celsius)",
+    title = paste0("Change in Mean Annual Global Temperature (", min(temps_ts$year), "-", max(temps_ts$year), ")"),
+    subtitle = paste0("50-Year Forecast Based on our AR(", tidy(global_ar) |> as_tibble() |> dplyr::select(term) |> tail(1) |> right(1), ") Model")
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+```{r}
+# Import and prepare the data
+temps_ts <- rio::import("https://byuistats.github.io/timeseries/data/global_temparature.csv") |>
+  as_tsibble(index = year)
+
+# Fit an AR model to the 'change' variable
+ar_fit <- ar(temps_ts$change, method = "mle", na.action = na.omit)
+
+# Extract and display the order and coefficients
+order <- ar_fit$order
+coefficients <- ar_fit$ar
+
+cat("Order of the fitted AR model: ", order, "\n")
+cat("Coefficients of the AR model: ", coefficients, "\n")
+
+# Visualization of the original data
+temps_ts |> autoplot(.vars = change) +
+    labs(
+      x = "Year",
+      y = "Temperature Change (Celsius)",
+      title = paste0("Change in Mean Annual Global Temperature (", min(temps_ts$year), "-", max(temps_ts$year), ")")
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5)
+    )
+
+```
 
 
