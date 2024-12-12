@@ -1,6 +1,684 @@
 ---
-title: "Project title here"
-subtitle: "can delete this if not needed"
-format: html
+title: "Time Series Project 2: Consumer Credit"
+subtitle: "Eduardo Ramirez"
+format: 
+  html:
+    code-fold: true
+    embed-resources: true
+    toc: true
 ---
 
+# Background
+
+**Part I. What Consumer Credit Data Are Available on the G.19 Statistical Release, "Consumer Credit," and How Are These Data Calculated?**
+
+The G.19 Statistical Release, "Consumer Credit," reports outstanding credit extended to individuals for household, family, and other personal expenditures, excluding loans secured by real estate. Total consumer credit comprises two major types: revolving and nonrevolving. Revolving credit plans may be unsecured or secured by collateral and allow a consumer to borrow up to a prearranged limit and repay the debt in one or more installments. Credit card loans comprise most of revolving consumer credit measured in the G.19, but other types, such as prearranged overdraft plans, are also included. Nonrevolving credit is closed-end credit extended to consumers that is repaid on a prearranged repayment schedule and may be secured or unsecured. To borrow additional funds, the consumer must enter into an additional contract with the lender. Consumer motor vehicle and education loans comprise the majority of nonrevolving credit, but other loan types, such as boat loans, recreational vehicle loans, and personal loans, are also included.
+
+The G.19 also reports selected terms of credit, including interest rates on new car loans, personal loans, and credit card plans at commercial banks. Historically, the G.19 also included series that measure the terms of credit for motor vehicle loans at finance companies. In the first quarter of 2011, publication of these series was temporarily suspended because of the deterioration of their statistical foundation. The statistical foundation is in the process of being improved, and publication will resume as soon as possible.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+#| label: load libraries
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, tsibble, fable, feasts, tsibbledata, fable.prophet, patchwork, lubridate, rio, ggplot2, kableExtra, dygraphs, plotly, xts)
+
+```
+
+```{r, fig.width= 12, fig.height=3}
+
+credit <- rio::import("../data/debt.xlsx") |>
+    mutate(ym = yearmonth(lubridate::ym(date)))
+df <- as_tsibble(credit, index = ym) |>
+   select(ym, OCC, OCC_MoM) |>
+   mutate(OCC = OCC / 1000) |>
+   slice_head(prop = 1) # tail: last 10%. head: first or oldest
+#   slice((n() * 0.5):(n() * 0.6)) # select from 50% to 60%
+# interval(df) # gives interval: M, D ot Y etc
+# has_gaps(df) # false if none and vice versa True
+
+
+p_cdebt <- df |> # fig 1
+  autoplot(OCC) +
+  labs(
+    x = "Month",
+    y = "OCC",
+    title = "Fig 1 - Time Series: OCC"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+p_cdebt_tail <- df |> # fig 1.1
+  slice_tail(prop = .1) |>
+  autoplot(OCC) +
+  labs(
+    x = "Month",
+    y = "OCC",
+    title = "fig 1.1 Time Series: OCC 2017-Present"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+p_cdebt_change <- df |>  # fig 1.2
+  autoplot(OCC_MoM) +
+  labs(
+    x = "Month",
+    y = "MoM OCC",
+    title = "Fig 1.2 - Time Series: OCC_MoM"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+p_cdebt | p_cdebt_tail
+
+
+```
+
+```{r, fig.width= 12, fig.height=3}
+
+# fig 1.2
+p_cdebt_change
+```
+
+Figure 1 shows the time series of the Outstanding consumer debt. Figure 1.1 shows the same time series but form 2017 to lattest data. Figure 1.3 is the month over month(MoM) percent change in Outstanding Consumer Credit.
+
+-   Noticible
+
+    -   The percent change has more volatility, specially in the early years of the time series, something that the time series plot does not catch due to the scale of the y axis.
+
+# Classical Decomposition
+
+**Full Classical Decomposition of Outstanding Consumer Debt(Mult) and change in Outstanding Consumer Debt(Add).**
+
+```{r}
+# decomp of OCC & cdebt_% - full
+
+decomp_cdebt <- df |> # Mult fig 1.4 
+  model(classical_mult = feasts::classical_decomposition(OCC, type = "multiplicative")) |>
+  components()
+decomp_cdebt_plot <- autoplot(decomp_cdebt) + # Plot consumer credit time series
+  labs(title = "Mult - OCC") +
+  theme_minimal()
+
+decomp_cdebt_change <- df |> # Add fig 1.5
+  model(classical_add = feasts::classical_decomposition(OCC_MoM, type = "additive")) |>
+  components()
+decomp_cdebt_change_plot <- autoplot(decomp_cdebt_change) + # Plot % change
+  labs(title = "Additive MoM") +
+  theme_minimal()
+
+decomp_cdebt_plot # Mult fig 1.4
+decomp_cdebt_change_plot # Add fig 1.5
+
+```
+
+We can see in the Mult OCC decomposition that the trend is increasing over time. The random component shows some doubts as it starts with many random spikes, slows down in the middle and starts to pick back up.
+
+**The following plot shows the 1 period seasonal component for both decompositions**
+
+```{r}
+
+# Filter data for the year 2020 (from Jan to Dec) and plot 'random' for decomp_cdebt dataframe
+plot_decomp_cdebt <- ggplot(decomp_cdebt %>% filter(ym >= yearmonth('2019 Dec') & ym <= yearmonth('2021 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "blue") +
+  geom_point(color = "blue") +
+  labs(title = "OCC (2020 Jan to 2020 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal() # fig 1.4.1
+
+
+# Filter data for the year 2020 (from Jan to Dec) and plot 'Seasonal' for decomp_cdebt_change dataframe
+plot_decomp_cdebt_change <- ggplot(decomp_cdebt_change %>% filter(ym >= yearmonth('2019 Dec') & ym <= yearmonth('2021 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "red") +
+  geom_point(color = "red") +
+  labs(title = "OCC_MoM (2020 Jan to 2020 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal() # fig 1.5.1
+
+
+plot_decomp_cdebt # fig 1.4.1
+plot_decomp_cdebt_change # fig 1.5.1
+```
+
+The above figures (1.4.1 & 1.5.1) plot one period of the seasonal component in the OCC and MoMC. I added a lag and lead period for visual purposes. We can see that OCC hits a peak in December and a low in March. Same for MoMC but the low is January. This high and low peaks can be compared to peak holiday spending in the US, and normally the economy slows down a lot the first few months of the year. The MoMC automatically hits its low in January because the number of people taking out loans substantially decreases form December to January. January is a low, but the MoMC shows that the season starts to increase and would see a low dip in July which is the same low for OCC. I wonder what can be causing the low dip in July.
+
+**first 10-20% of df: Classical Decomp of Outstanding Consumer Debt(Mult) and change in Outstanding Consumer Debt(Add).**
+
+-   to view classical at the beginning where more volatility was present.
+
+    -   The volatility can be seen in the cdebt_change
+
+```{r}
+#  head = 0.2 decomp cdebt & cdebt_change
+
+decomp_cdebt_head <- df |> # Mult decomp. fig 1.6
+  slice_head(prop = .2) |>
+  model(classical_mult = feasts::classical_decomposition(OCC, type = "multiplicative")) |>
+  components()
+decomp_cdebt_head_plot <- autoplot(decomp_cdebt_head) + # Plot consumer credit time series
+  labs(title = "Mult - OCC") +
+  theme_minimal()
+
+decomp_cdebt_change_head <- df |> # Add decom. fig 1.7
+  slice_head(prop = .2) |>
+  model(classical_add = feasts::classical_decomposition(OCC_MoM, type = "additive")) |>
+  components()
+decomp_cdebt_change_head_plot <- autoplot(decomp_cdebt_change_head) + # Plot % change
+  labs(title = "Additive MoM") +
+  theme_minimal()
+
+
+
+decomp_cdebt_head_plot # Mult fig 1.6
+decomp_cdebt_change_head_plot # Add fig 1.7
+```
+
+spacer
+
+```{r}
+
+# Filter data for the year 2020 (from Jan to Dec) and plot 'random' for decomp_cdebt_head dataframe
+p_fig_1_6_1 <- ggplot(decomp_cdebt_head %>% filter(ym >= yearmonth('1950 Dec') & ym <= yearmonth('1952 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "blue") +
+  geom_point(color = "blue") +
+  labs(title = "OCC (2020 Jan to 2020 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+# Filter data for the year 2020 (from Jan to Dec) and plot 'Seasonal' for decomp_cdebt_change_head dataframe
+p_fig_1_7_1 <- ggplot(decomp_cdebt_change_head %>% filter(ym >= yearmonth('1950 Dec') & ym <= yearmonth('1952 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "red") +
+  geom_point(color = "red") +
+  labs(title = "OCC_MoM (2020 Jan to 2020 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+p_fig_1_6_1
+p_fig_1_7_1
+```
+
+We can see figures 1.6.1 (seasonal OCC) and 1.7.1 (seasonal MoMC) from the time period of Feb 1943 to Apr 1959. This figures were made to better visualize the volatility of OCC and how it is not much different from the full time series.
+
+```{r}
+# doing classical for mid .201 - 0.6799 to exclude first & last 20 years
+decomp_cdebt_tail <- df |> # Mult decomp. fig 1.8
+  slice(round(n() * 0.201):round(n() * 0.6799)) |>
+  model(classical_mult = feasts::classical_decomposition(OCC, type = "multiplicative")) |>
+  components()
+p_fig_1_8 <- autoplot(decomp_cdebt_tail) + # Plot consumer credit time series
+  labs(title = "Mult - OCC 1959/6 - 1998/7") +
+  theme_minimal()
+
+decomp_cdebt_change_tail <- df |> # Add decom. fig 1.9
+  slice(round(n() * 0.201):round(n() * 0.6799)) |>
+  model(classical_add = feasts::classical_decomposition(OCC_MoM, type = "additive")) |>
+  components()
+p_fig_1_9 <- autoplot(decomp_cdebt_change_tail) + # Plot % change
+  labs(title = "Additive MoM 1959/6 - 1998/7") +
+  theme_minimal()
+
+p_fig_1_8
+p_fig_1_9
+```
+
+When removing the first 20% of observation from the time series we can see the Multiplicative Classical Decomposition for Outstanding Consumer Credit (OCC) we can continue to see an increasing trend, but the random variable no longer shows signs of heteroscedasticity.
+
+ai notes: In a classical decomposition multiplicative model, when the random component shows initial and ending spikes but low variance in the middle, it's called **heteroscedasticity**. This is problematic because it violates model assumptions of constant variance in residuals, leading to unreliable forecasts and potential misinterpretation of trends or seasonality.
+
+The Month-over-Month change (MoMC) in the OCC shows a change in trend in the late 1990s, and we stopped seeing the spikes every couple years, but instead saw a few lows instead.
+
+-   Maybe 2008, 2015, and 2020 economic events played a big part in this.
+
+-   the spike we see in the trend during covid was due to how cheap an easy it was to get loans.
+
+-   I wonder what cause the overall change in the trend form the late 1990s.
+
+spacer
+
+```{r}
+#
+
+p_fig_1_8_1 <- ggplot(decomp_cdebt_tail %>% filter(ym >= yearmonth('1989 Dec') & ym <= yearmonth('1991 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "blue") +
+  geom_point(color = "blue") +
+  labs(title = "OCC (1959 Jun - 1998 Jul)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+p_fig_1_9_1 <- ggplot(decomp_cdebt_change_tail %>% filter(ym >= yearmonth('1989 Dec') & ym <= yearmonth('1991 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "red") +
+  geom_point(color = "red") +
+  labs(title = "OCC_MoM (1959 Jun - 1998 Jul)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+p_fig_1_8_1
+p_fig_1_9_1
+```
+
+The seasonal component for both the OCC and MoMC show similar patters as the full and head=20% time series.
+
+The OCC seasonal now shows a small dip during the month of October, so now there is 3 dips, Feb, July, and October. Actually July barely goes down but almost no change for that month compared to June.
+
+**Doing Classical for 1998 or to current to see new trend**
+
+```{r}
+# doing classical for tail .32 to only include the first 20 years
+decomp_cdebt_tail_2 <- df |> # Mult decomp. fig 2.1
+  slice_tail(prop = .32) |>
+  model(classical_mult = feasts::classical_decomposition(OCC, type = "multiplicative")) |>
+  components()
+p_fig_2_1 <- autoplot(decomp_cdebt_tail_2) + # Plot consumer credit time series
+  labs(title = "Mult - OCC 1998/8 - 2024/8") +
+  theme_minimal()
+
+decomp_cdebt_change_tail_2 <- df |> # Add decom. fig 2.2
+  slice_tail(prop = .32) |>
+  model(classical_add = feasts::classical_decomposition(OCC_MoM, type = "additive")) |>
+  components()
+p_fig_2_2 <- autoplot(decomp_cdebt_change_tail_2) + # Plot % change
+  labs(title = "Additive MoM 1998/8 - 2024/8") +
+  theme_minimal()
+
+p_fig_2_1
+p_fig_2_2
+
+
+```
+
+spacer
+
+```{r}
+p_fig_2_1_1 <- ggplot(decomp_cdebt_tail_2 %>% filter(ym >= yearmonth('2022 Dec') & ym <= yearmonth('2024 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "blue") +
+  geom_point(color = "blue") +
+  labs(title = "OCC (2023 Jan to 2023 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+p_fig_2_2_1 <- ggplot(decomp_cdebt_change_tail_2 %>% filter(ym >= yearmonth('2022 Dec') & ym <= yearmonth('2024 Jan')), aes(x = ym, y = seasonal)) +
+  geom_line(group = 1, color = "red") +
+  geom_point(color = "red") +
+  labs(title = "OCC_MoM (2023 Jan to 2023 Dec)",
+       x = "Month",
+       y = "Seasonal") +
+  theme_minimal()
+
+
+
+p_fig_2_1_1
+p_fig_2_2_1
+```
+
+This new classical decomposition for OCC and MoMC from 1998-2024 reveal similar components as previous decomposition's. This decomposition show less noice in the data
+
+-   I was thinking could this be linked on how much our technology has become in approving loans, and how the fed handles interest rates. But this is not likely since the systems in place won't change drastically, and the US already has had one of the best loan systems in the world.
+
+Anyways Outstanding Consumer debt is and will continue to increase overtime.
+
+sapcer
+
+## Notes
+
+I was looking to see what can cause the spikes in the Random component, and maybe incentives to take out loans? I have data on student loans totals so I can see if there was an actual increase.
+
+**ai: April 2021**: Biden requested that **Education Secretary Miguel Cardona** review his executive authority to cancel student loan debt unilaterally. This move suggested he was considering executive action, although no specific details or amounts were confirmed at that time.
+
+
+<<<<<<< HEAD
+# Exponential Smoothing
+
+
+```{r, fig.width= 12, fig.height=6}
+# mirror to resource code 3.4.1 exponential smoothing
+
+fig_3_4_1_B1 <- autoplot(df) +
+    labs(x = "ym", y = "OCC")
+df1 <- df |>
+    slice_tail(prop = .8) |>
+    model(Additive = ETS(OCC ~
+        trend("M", alpha = 0.7849282, beta = 0.1282016) +
+        error("M") +
+        season("M"),
+        opt_crit = "amse", nmse = 1))
+SSE_1 <- sum(components(df1)$remainder^2, na.rm = T)
+
+fig_3_4_1_B2 <- augment(df1) |>
+    ggplot(aes(x = ym, y = OCC)) +
+    geom_line() +
+    geom_line(aes(y = .fitted, color = "Fitted")) +
+    labs(color = "")
+df2 <- df |>
+    slice_tail(prop = .8) |>
+    model(Additive = ETS(OCC ~
+        trend("M", alpha = 0.7849282, beta = 0.1282016) +
+        error("A") +
+        season("A"),
+        opt_crit = "amse", nmse = 1))
+SSE_2 <-  sum(components(df2)$remainder^2, na.rm = T)
+
+fig_3_4_1_B1
+SSE_1
+fig_3_4_1_B2
+SSE_2
+
+```
+
+
+
+ai notes:
+
+1.  Evaluating Model Fit The sum of squared residuals (SSE) is a common
+    metric to evaluate how well the model fits the data. Lower SSE
+    values indicate that the model’s predictions are close to the actual
+    data points. In exponential smoothing models, you might compare SSEs
+    across different model configurations (e.g., different smoothing
+    parameters, different trend or seasonal components) to select the
+    model that minimizes error.
+
+2.  Optimization and Model Selection When fitting ETS models, you often
+    need to optimize parameters such as smoothing constants ( 𝛼 α, 𝛽 β,
+    and 𝛾 γ). The optimization criterion "amse" (average mean squared
+    error) minimizes the mean squared error, indirectly influencing SSE.
+    Comparing SSEs between models (df1 and df2 in your example) can help
+    you determine if adjusting a parameter (e.g., 𝛼 α from 0.1429622 to
+    0.2) results in a better model fit.
+
+3.  Diagnostics and Model Improvement SSE can be a diagnostic tool to
+    assess whether your chosen model structure (e.g., additive trend and
+    additive seasonality) is suitable for your data. High residual sums
+    (or unexplained variance) may suggest that the model lacks a
+    component (like an interaction between trend and seasonality) or is
+    mis-specified.
+
+4.  Statistical Properties of the Residuals For an ETS model to be
+    considered a good fit, residuals should ideally be white
+    noise—meaning they are uncorrelated, normally distributed, and have
+    zero mean. Analyzing the sum of squared residuals, along with
+    residual plots, autocorrelation, and partial autocorrelation
+    functions, provides insights into whether the residuals meet these
+    assumptions.
+
+In short, the SSE (sum of squared residuals) is a key metric in
+exponential smoothing to measure and compare model performance, guide
+parameter optimization, and assess the statistical quality of the
+model's fit to time series data.
+
+spacer
+
+```{r, fig.width= 12, fig.height=6}
+# mirror to resource code 3.4.2 
+
+df342 <- df 
+
+# autoplot(df342) +
+#     labs(
+#         x = "ym",
+#         y = "OCC")
+df342_2 <- df342 |>
+    slice_tail(prop = .8) |>
+    model(Multiplicative = ETS(OCC ~
+        trend("M") +
+        error("M") +
+        season("M"), 
+        opt_crit = "amse", nmse = 1))
+# `report(df342_2)
+# tidy(df342_2)
+# sum(components(df342_2)$remainder^2, na.rm = T)
+# accuracy(df342_2)$RMSE
+# sd(df342$OCC)
+# autoplot(components(df342_2))
+# augment(df342_2) |>
+#     ggplot(aes(x = ym, y = OCC)) +
+#     geom_line() +
+#     geom_line(aes(y = .fitted, color = "Fitted")) +
+#     labs(color = "")
+
+report(df342_2)
+```
+
+I tried doing NO seasonality (N) for the Season component but I was
+running into an error.
+
+## 3.4.3 code takes for ever to run!!!!!!!!!!!!!!!!!!
+
+
+
+```{r, fig.width= 12, fig.height=6}
+# mirror to resource code 3.4.3
+
+df343_0 <-  df |>
+  slice_head(prop = .94)
+
+df343 <-  df343_0 |>
+    model(Multiplicative = ETS(OCC ~
+        trend("A") +
+        error("A") +
+        season("A"),
+        opt_crit = "amse", nmse = 1))
+p_343 <- augment(df343) |>
+    ggplot(aes(x = ym, y = OCC)) +
+    geom_line() +
+    geom_line(aes(y = .fitted, color = "Fitted")) +
+    labs(color = "")
+p_343_forecast <- df343 |>
+  forecast(h = "2 years") |> 
+  autoplot(df |> filter(ym >= yearmonth("2017 Jan") & ym <= yearmonth("2024 Aug")), level = 95) + 
+  geom_line(aes(y = .fitted, color = "Fitted"),
+    data = augment(df343) |> filter(ym >= yearmonth("2017 Jan") & ym <= yearmonth("2020 Nov"))) +
+  scale_color_discrete(name = "")
+
+p_343
+p_343_forecast
+
+```
+
+spacer
+```{r}
+# this cell is mirror of 3.4.3 and it is using dygraph for a more interactive time series
+#works great, but it does not use as.tsibble and converts to xts in order to work with dygraphs. 
+# I think xts will cause errors with my data, need to what differes xts to as.tsibble.
+
+df343_0 <- df |>
+  slice_head(prop = .94)
+
+# Fit the model
+df343 <- df343_0 |>
+  model(Multiplicative = ETS(OCC ~
+    trend("A") +
+    error("A") +
+    season("A"),
+    opt_crit = "amse", nmse = 1))
+
+# Generate fitted values
+fitted_data <- augment(df343)
+
+# Convert the data to xts format for dygraph
+occ_xts <- xts(fitted_data$OCC, order.by = as.Date(fitted_data$ym))
+fitted_xts <- xts(fitted_data$.fitted, order.by = as.Date(fitted_data$ym))
+
+# Create a dygraph with actual and fitted values
+dygraph(cbind(Actual = occ_xts, Fitted = fitted_xts)) %>%
+  dySeries("Actual", label = "Actual") %>%
+  dySeries("Fitted", label = "Fitted") %>%
+  dyOptions(colors = c("blue", "red")) %>%
+  dyRangeSelector() %>%
+  dyLegend(show = "always")
+
+```
+spacer
+
+
+
+
+spacer
+```{r, eval=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+
+# this cell is mirror of 3.4.3 and it is using plotly  for a more interactive time series, but this code did not look great but leaving here for sample
+
+
+# Load required libraries
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, tsibble, fable, feasts, tsibbledata, fable.prophet, patchwork, lubridate, rio, ggplot2, kableExtra, plotly)
+
+# Import data and convert to tsibble
+credit <- rio::import("../data/debt.xlsx") |>
+  mutate(ym = yearmonth(lubridate::ym(date)))
+df <- as_tsibble(credit, index = ym) |>
+  select(ym, OCC, OCC_MoM)
+
+# Create the initial slice of the dataset
+df343_0 <- df |> slice_head(prop = .94)
+
+# Fit the ETS model
+df343 <- df343_0 |>
+  model(Multiplicative = ETS(OCC ~ trend("A") + error("A") + season("A"), opt_crit = "amse", nmse = 1))
+
+# Create the first interactive plot using Plotly
+p_343 <- augment(df343) |>
+  ggplot(aes(x = ym, y = OCC)) +
+  geom_line() +
+  geom_line(aes(y = .fitted, color = "Fitted")) +
+  labs(color = "")
+
+# Convert ggplot object to plotly for interactivity
+p_343_plotly <- ggplotly(p_343)
+p_343_plotly
+
+# Forecast and create the second interactive plot using Plotly
+p_343_forecast <- df343 |>
+  forecast(h = "2 years") |>
+  autoplot(df |> filter(ym >= yearmonth("2017 Jan") & ym <= yearmonth("2024 Aug")), level = 95) +
+  geom_line(aes(y = .fitted, color = "Fitted"),
+    data = augment(df343) |> filter(ym >= yearmonth("2017 Jan") & ym <= yearmonth("2020 Nov"))) +
+  scale_color_discrete(name = "")
+
+# Convert the forecast plot to plotly
+p_343_forecast_plotly <- ggplotly(p_343_forecast)
+p_343_forecast_plotly
+
+
+```
+spacer
+
+```{r, eval=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+
+# this cell is mirror of 3.4.3 and it is using plotly  for a more interactive time series
+# it is almost good but I need the y scale to autornage according to the area the plot is zooming in. 
+# Load required libraries
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, tsibble, fable, feasts, tsibbledata, fable.prophet, patchwork, lubridate, rio, ggplot2, kableExtra, plotly)
+
+# Import data and convert to tsibble
+credit <- rio::import("../data/debt.xlsx") |>
+  mutate(ym = yearmonth(lubridate::ym(date)))
+df <- as_tsibble(credit, index = ym) |>
+  select(ym, OCC, OCC_MoM)
+
+# Create the initial slice of the dataset
+df343_0 <- df |> slice_head(prop = .94)
+
+# Fit the ETS model
+df343 <- df343_0 |>
+  model(Multiplicative = ETS(OCC ~ trend("A") + error("A") + season("A"), opt_crit = "amse", nmse = 1))
+
+# Generate fitted values
+fitted_data <- augment(df343)
+
+# Prepare the data for Plotly
+df_plot <- fitted_data |>
+  mutate(Date = as.Date(ym))
+
+# Create an interactive Plotly plot for actual and fitted values with dynamic y-axis
+p_343_plotly <- plot_ly(df_plot, x = ~Date) %>%
+  add_lines(y = ~OCC, name = "Actual", line = list(color = 'blue')) %>%
+  add_lines(y = ~.fitted, name = "Fitted", line = list(color = 'red')) %>%
+  layout(
+    title = "Actual vs Fitted Values",
+    xaxis = list(
+      title = "Date",
+      rangeslider = list(visible = TRUE)
+    ),
+    yaxis = list(
+      title = "OCC",
+      autorange = TRUE
+    ),
+    legend = list(orientation = "h", x = 0.1, y = -0.2)
+  )
+
+# Display the interactive plot with dynamic y-axis scaling
+p_343_plotly
+
+
+
+
+```
+
+
+
+
+
+
+## using full df and doing 24-26 forecast
+
+```{r, fig.width= 12, fig.height=4}
+# mirror to resource code 3.4.3 w/ 2024-2026 forecast
+
+
+df343_1_0 <-  df |>
+  slice_head(prop = 1)
+
+df343_2 <-  df343_1_0 |>
+    model(Multiplicative = ETS(OCC ~
+        trend("A") +
+        error("A") +
+        season("A"),
+        opt_crit = "amse", nmse = 1))
+p_343_2 <- augment(df343_2) |>
+    ggplot(aes(x = ym, y = OCC)) +
+    geom_line() +
+    geom_line(aes(y = .fitted, color = "Fitted")) +
+    labs(color = "")
+p_343_2_forecast <- df343_2 |>
+  forecast(h = "2 years") |> 
+  autoplot(df |> filter(ym >= yearmonth("2021 Jan") & ym <= yearmonth("2024 Aug")), level = 95) + 
+  geom_line(aes(y = .fitted, color = "Fitted"),
+    data = augment(df343_2) |> filter(ym >= yearmonth("2021 Jan") & ym <= yearmonth("2024 Aug"))) +
+  scale_color_discrete(name = "")
+
+
+p_343_2
+p_343_2_forecast
+
+
+```
+
+spacer
+
+
+would the season but 'M' because it is not as volatile as the time series goes on. Like in the beginning OCC_MoM has a good amount of volatility, so the season is properly going down over time? 
+ * Okay I did cut the first 20 years of thge df so what will happen if I include the whole dataset. 
+
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> 41d67e11b64162a043bcde7f5be9624fcaf874ad
