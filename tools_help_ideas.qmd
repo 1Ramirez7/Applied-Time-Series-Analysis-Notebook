@@ -1,0 +1,25 @@
+---
+title: "Tools, Resources and Help Ideas"
+subtitle: "draft"
+format: html
+# use quarto markdown to 
+---
+
+
+This page is to include pontential ideas to do for resources, tools, and ideas for time series
+
+
+
+# .yml code to fix
+
+1. _quarto.yml code. the sidebar code is different from time series and mine
+    * time series sidebar does not appear on the side while my does. theme looks different
+    * I think it just has to do w/ the theme
+    
+2.   back-to-top-navigation: true 
+    * This is my original code and it works normally.
+    * Time series uses this one: page-navigation: true 
+      * When I use the time series I started getting this warning message
+        * [WARNING] Could not fetch resource ../projects/project2.html
+        * What is the difference between the two?
+        
