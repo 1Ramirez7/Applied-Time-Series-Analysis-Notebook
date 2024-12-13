@@ -105,9 +105,11 @@ website:
         - section: "Lesson 2"
           contents:
             - chapters/chapter_4_lesson_2.qmd
+            - hw/homework_4_2.qmd
         - section: "Lesson 3"
           contents:
             - chapters/chapter_4_lesson_3.qmd
+            - hw/homework_4_3.qmd
         - section: "Lesson 4"
           contents:
             - chapters/chapter_4_lesson_4.qmd

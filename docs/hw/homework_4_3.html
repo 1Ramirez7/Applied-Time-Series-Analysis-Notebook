@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Time Series Analysis Notebook – Applied Time Series Notebook</title>
+<title>Time Series Homework: Chapter 4 Lesson 3 – Applied Time Series Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,6 +18,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -1667,7 +1701,7 @@ async function fuseSearch(query, fuse, fuseOptions) {
   return results;
 }
 </script>
-<meta name="quarto:offset" content="./">
+<meta name="quarto:offset" content="../">
 <link href="data:image/png;base64,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" rel="icon" type="image/png">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
@@ -4854,14 +4888,14 @@ window.Quarto = {
 <style type="text/css"></style>
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Applied Time Series Notebook</span>
     </a>
   </div>
@@ -4872,7 +4906,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Master</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -4882,25 +4916,25 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./projects.html">
+    <a class="dropdown-item" href="../projects.html">
  <span class="dropdown-text">Applied Time Series Projects</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 1</li>
         <li>
-    <a class="dropdown-item" href="./projects/project1.html">
+    <a class="dropdown-item" href="../projects/project1.html">
  <span class="dropdown-text">Time Series: China Export Commodities</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 2</li>
         <li>
-    <a class="dropdown-item" href="./projects/project2.html">
+    <a class="dropdown-item" href="../projects/project2.html">
  <span class="dropdown-text">Time Series Project 2: Consumer Credit</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 3</li>
         <li>
-    <a class="dropdown-item" href="./projects/project3.html">
+    <a class="dropdown-item" href="../projects/project3.html">
  <span class="dropdown-text">Project title here</span></a>
   </li>  
     </ul>
@@ -4912,27 +4946,27 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-1">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_1.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_1.html">
+    <a class="dropdown-item" href="../hw/homework_1_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_2.html">
+    <a class="dropdown-item" href="../hw/homework_1_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_3.html">
+    <a class="dropdown-item" href="../hw/homework_1_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_4.html">
+    <a class="dropdown-item" href="../hw/homework_1_4.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_5.html">
+    <a class="dropdown-item" href="../hw/homework_1_5.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 5</span></a>
   </li>  
     </ul>
@@ -4944,19 +4978,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-2">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_2.html">
+    <a class="dropdown-item" href="../chapters/chapter_2.html">
  <span class="dropdown-text">Autocorrelation Concepts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_1.html">
+    <a class="dropdown-item" href="../hw/homework_2_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_2.html">
+    <a class="dropdown-item" href="../hw/homework_2_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_3.html">
+    <a class="dropdown-item" href="../hw/homework_2_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 3</span></a>
   </li>  
     </ul>
@@ -4968,39 +5002,39 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-3">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3.html">
+    <a class="dropdown-item" href="../chapters/chapter_3.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_2.html">
+    <a class="dropdown-item" href="../hw/homework_3_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_3.html">
+    <a class="dropdown-item" href="../hw/homework_3_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_4.html">
+    <a class="dropdown-item" href="../hw/homework_3_4.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_5.html">
+    <a class="dropdown-item" href="../hw/homework_3_5.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 5</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">r code Models draft</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3_overview_code_draft.html">
+    <a class="dropdown-item" href="../chapters/chapter_3_overview_code_draft.html">
  <span class="dropdown-text">Chapter 3 r code examples and practice</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_3_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_1.html">
+    <a class="dropdown-item" href="../hw/homework_3_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 1</span></a>
   </li>  
     </ul>
@@ -5012,53 +5046,53 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-4">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4.html">
+    <a class="dropdown-item" href="../chapters/chapter_4.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">r code Models draft</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_overview_code_draft.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_overview_code_draft.html">
  <span class="dropdown-text">Chapter 4 r code examples and practice</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_1_code_notes.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_1_code_notes.html">
  <span class="dropdown-text">Ch 4.1 Code Notes</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 2</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_2.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_2.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_4_2.html">
+    <a class="dropdown-item" href="../hw/homework_4_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 4 Lesson 2</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 3</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_3.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_3.html">
  <span class="dropdown-text">Autoregressive (AR) Models</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_4_3.html">
+    <a class="dropdown-item" href="../hw/homework_4_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 4 Lesson 3</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 4</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_4.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_4.html">
  <span class="dropdown-text">Fitted AR Models</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_4_code_notes.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_4_code_notes.html">
  <span class="dropdown-text">Ch 4.4 Code Notes</span></a>
   </li>  
     </ul>
@@ -5070,19 +5104,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-5">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5.html">
+    <a class="dropdown-item" href="../chapters/chapter_5.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_5_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1 Notes</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5_lesson_1_code_notes.html">
+    <a class="dropdown-item" href="../chapters/chapter_5_lesson_1_code_notes.html">
  <span class="dropdown-text">Linear Models, GLS, and Seasonal Indicator Variables</span></a>
   </li>  
     </ul>
@@ -5094,19 +5128,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tools">    
         <li class="dropdown-header">Tools, Help &amp; Ideas</li>
         <li>
-    <a class="dropdown-item" href="./tools_help_ideas.html">
+    <a class="dropdown-item" href="../tools_help_ideas.html">
  <span class="dropdown-text">Tools, Resources and Help Ideas</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Date &amp; Index formatting</li>
         <li>
-    <a class="dropdown-item" href="./tools/stepsforDate_index_formatting.html">
+    <a class="dropdown-item" href="../tools/stepsforDate_index_formatting.html">
  <span class="dropdown-text">Steps for formatting Date and Creating Index</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Math Formulas</li>
         <li>
-    <a class="dropdown-item" href="./tools/math_formulas.html">
+    <a class="dropdown-item" href="../tools/math_formulas.html">
  <span class="dropdown-text">Formulas</span></a>
   </li>  
     </ul>
@@ -5118,77 +5152,177 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter_4_lesson_3.html">Lesson 3</a></li><li class="breadcrumb-item"><a href="../hw/homework_4_3.html">Time Series Homework: Chapter 4 Lesson 3</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter overview and Task</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">r code Models draft</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_overview_code_draft.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 4 r code examples and practice</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lesson 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">White Noise and Random Walks - Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_1_code_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch 4.1 Code Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lesson 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">White Noise and Random Walks - Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw/homework_4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Series Homework: Chapter 4 Lesson 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lesson 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Autoregressive (AR) Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw/homework_4_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Time Series Homework: Chapter 4 Lesson 3</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lesson 4</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitted AR Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_4_lesson_4_code_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch 4.4 Code Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sationary-vs-non-stationary-ts" id="toc-sationary-vs-non-stationary-ts" class="nav-link active" data-scroll-target="#sationary-vs-non-stationary-ts">Sationary vs Non-Stationary TS</a>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
   <ul class="collapse">
-  <li><a href="#stationary-time-series" id="toc-stationary-time-series" class="nav-link" data-scroll-target="#stationary-time-series">Stationary Time Series</a></li>
-  <li><a href="#non-stationary-time-series" id="toc-non-stationary-time-series" class="nav-link" data-scroll-target="#non-stationary-time-series">Non-Stationary Time Series</a></li>
+  <li><a href="#question-1---ar1-with-non-zero-mean-10-points" id="toc-question-1---ar1-with-non-zero-mean-10-points" class="nav-link" data-scroll-target="#question-1---ar1-with-non-zero-mean-10-points">Question 1 - AR(1) with non-zero mean (10 points)</a></li>
+  <li><a href="#question-2---stationarity-25-points" id="toc-question-2---stationarity-25-points" class="nav-link" data-scroll-target="#question-2---stationarity-25-points">Question 2 - Stationarity (25 points)</a></li>
+  <li><a href="#question-3---partial-correlogram-40-points" id="toc-question-3---partial-correlogram-40-points" class="nav-link" data-scroll-target="#question-3---partial-correlogram-40-points">Question 3 - Partial Correlogram (40 points)</a></li>
+  <li><a href="#rubric" id="toc-rubric" class="nav-link" data-scroll-target="#rubric">Rubric</a></li>
   </ul></li>
-  <li><a href="#stochastic-vs-deterministic-trend" id="toc-stochastic-vs-deterministic-trend" class="nav-link" data-scroll-target="#stochastic-vs-deterministic-trend">Stochastic vs Deterministic Trend</a></li>
-  <li><a href="#white-noise" id="toc-white-noise" class="nav-link" data-scroll-target="#white-noise">White Noise</a></li>
-  <li><a href="#lessons" id="toc-lessons" class="nav-link" data-scroll-target="#lessons">Lessons</a>
-  <ul class="collapse">
-  <li><a href="#lesson-4.1-white-noise-and-random-walks" id="toc-lesson-4.1-white-noise-and-random-walks" class="nav-link" data-scroll-target="#lesson-4.1-white-noise-and-random-walks">Lesson 4.1 White Noise and Random Walks</a>
-  <ul class="collapse">
-  <li><a href="#stochastic-process-4.1" id="toc-stochastic-process-4.1" class="nav-link" data-scroll-target="#stochastic-process-4.1">Stochastic Process 4.1</a></li>
-  <li><a href="#discrete-white-noise-dwn-4.1" id="toc-discrete-white-noise-dwn-4.1" class="nav-link" data-scroll-target="#discrete-white-noise-dwn-4.1">Discrete White Noise DWN 4.1</a></li>
-  <li><a href="#random-walk" id="toc-random-walk" class="nav-link" data-scroll-target="#random-walk">Random Walk</a></li>
-  <li><a href="#gaussian-white-noise-gwn-4.1" id="toc-gaussian-white-noise-gwn-4.1" class="nav-link" data-scroll-target="#gaussian-white-noise-gwn-4.1">Gaussian White Noise GWN 4.1</a></li>
-  <li><a href="#white-noise-time-series" id="toc-white-noise-time-series" class="nav-link" data-scroll-target="#white-noise-time-series">White Noise Time Series</a></li>
-  <li><a href="#correlogram-4.1" id="toc-correlogram-4.1" class="nav-link" data-scroll-target="#correlogram-4.1">Correlogram 4.1</a></li>
-  <li><a href="#fitting-the-white-noise-model" id="toc-fitting-the-white-noise-model" class="nav-link" data-scroll-target="#fitting-the-white-noise-model">Fitting the White Noise Model</a></li>
-  <li><a href="#backward-shift-operator" id="toc-backward-shift-operator" class="nav-link" data-scroll-target="#backward-shift-operator">Backward Shift Operator</a></li>
-  <li><a href="#search-words-for-lesson-4.1" id="toc-search-words-for-lesson-4.1" class="nav-link" data-scroll-target="#search-words-for-lesson-4.1">search words for lesson 4.1</a></li>
-  </ul></li>
-  <li><a href="#lesson-4.2-white-noise-and-random-walks---part-2" id="toc-lesson-4.2-white-noise-and-random-walks---part-2" class="nav-link" data-scroll-target="#lesson-4.2-white-noise-and-random-walks---part-2">Lesson 4.2 White Noise and Random Walks - Part 2</a>
-  <ul class="collapse">
-  <li><a href="#differecing-a-time-series" id="toc-differecing-a-time-series" class="nav-link" data-scroll-target="#differecing-a-time-series">Differecing a Time Series</a></li>
-  <li><a href="#correlograms-histogram" id="toc-correlograms-histogram" class="nav-link" data-scroll-target="#correlograms-histogram">Correlograms &amp; Histogram</a></li>
-  <li><a href="#difference-operator" id="toc-difference-operator" class="nav-link" data-scroll-target="#difference-operator">Difference Operator</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#function-is-linear-vs-quadratic-vs-cubic" id="toc-function-is-linear-vs-quadratic-vs-cubic" class="nav-link" data-scroll-target="#function-is-linear-vs-quadratic-vs-cubic">Function is Linear vs Quadratic vs Cubic</a>
-  <ul class="collapse">
-  <li><a href="#search-for-words-for-lesson-4.2" id="toc-search-for-words-for-lesson-4.2" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.2">Search for words for lesson 4.2</a></li>
-  <li><a href="#lesson-4.3-autoregressive-ar-models" id="toc-lesson-4.3-autoregressive-ar-models" class="nav-link" data-scroll-target="#lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</a>
-  <ul class="collapse">
-  <li><a href="#properties-of-an-arp-stochastic-process" id="toc-properties-of-an-arp-stochastic-process" class="nav-link" data-scroll-target="#properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</a></li>
-  <li><a href="#exploring-ar1-models" id="toc-exploring-ar1-models" class="nav-link" data-scroll-target="#exploring-ar1-models">Exploring AR(1) Models</a></li>
-  <li><a href="#second-order-properties-of-an-ar1-model" id="toc-second-order-properties-of-an-ar1-model" class="nav-link" data-scroll-target="#second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</a></li>
-  <li><a href="#correlogram-of-an-ar1-model" id="toc-correlogram-of-an-ar1-model" class="nav-link" data-scroll-target="#correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</a></li>
-  <li><a href="#partial-autocorrelation" id="toc-partial-autocorrelation" class="nav-link" data-scroll-target="#partial-autocorrelation">Partial Autocorrelation</a></li>
-  <li><a href="#partial-autocorrelation-plots-of-various-arp-processes" id="toc-partial-autocorrelation-plots-of-various-arp-processes" class="nav-link" data-scroll-target="#partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</a></li>
-  <li><a href="#sationary-and-non-stationary-ar-processes" id="toc-sationary-and-non-stationary-ar-processes" class="nav-link" data-scroll-target="#sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</a></li>
-  <li><a href="#absolute-value-in-the-complex-plane" id="toc-absolute-value-in-the-complex-plane" class="nav-link" data-scroll-target="#absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
-  <li><a href="#search-for-words-for-lesson-4.3" id="toc-search-for-words-for-lesson-4.3" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.3">Search for words for lesson 4.3</a></li>
-  </ul></li>
-  <li><a href="#lesson-5.1-unassigned-sections" id="toc-lesson-5.1-unassigned-sections" class="nav-link" data-scroll-target="#lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</a>
-  <ul class="collapse">
-  <li><a href="#generalized-least-squares-gls" id="toc-generalized-least-squares-gls" class="nav-link" data-scroll-target="#generalized-least-squares-gls">Generalized Least Squares (GLS)</a></li>
-  <li><a href="#additive-seasonal-indicator-variables" id="toc-additive-seasonal-indicator-variables" class="nav-link" data-scroll-target="#additive-seasonal-indicator-variables">Additive Seasonal Indicator Variables</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">Definitions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter_4_lesson_3.html">Lesson 3</a></li><li class="breadcrumb-item"><a href="../hw/homework_4_3.html">Time Series Homework: Chapter 4 Lesson 3</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Applied Time Series Analysis Notebook</h1>
-<p class="subtitle lead">MATH 494R</p>
+<h1 class="title">Time Series Homework: Chapter 4 Lesson 3</h1>
+<p class="subtitle lead">Eduardo Ramirez</p>
 </div>
 
 
@@ -5205,532 +5339,226 @@ window.Quarto = {
 </header>
 
 
-<p>I’m first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.</p>
-<section id="sationary-vs-non-stationary-ts" class="level1">
-<h1>Sationary vs Non-Stationary TS</h1>
-<p><strong>non-stationary convert to stationary time series</strong> 1. In Chapter 4 Lesson 2, we established that taking the difference of a non-stationary time series with a stochastic trend can convert it to a stationary time series.</p>
-<section id="stationary-time-series" class="level2">
-<h2 class="anchored" data-anchor-id="stationary-time-series">Stationary Time Series</h2>
-<ul>
-<li><strong>Sationarity of Linear Models Lesson 5.1</strong>
-<ul>
-<li>Linear models for time series are non-stationary when they include functions of time.</li>
-</ul></li>
-<li>Differencing can often transform a non-stationary series with a de terministic trend to a stationary series (4.1).</li>
-<li>In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences (4.2).</li>
-</ul>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ind_prod <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;https://byuistats.github.io/timeseries/data/ind_prod_us.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="non-stationary-time-series" class="level2">
-<h2 class="anchored" data-anchor-id="non-stationary-time-series">Non-Stationary Time Series</h2>
-<ul>
-<li><strong>Non-Stationary Time Series Lesson 5.2</strong>
-<ul>
-<li>A time series with a stochastic trend is non-stationary.</li>
-<li>A time series with a deterministic trend is non-stationary.</li>
-<li>A time series with a seasonal component is non-stationary.</li>
-<li>A time series with a unit root is non-stationary.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="stochastic-vs-deterministic-trend" class="level1">
-<h1>Stochastic vs Deterministic Trend</h1>
-</section>
-<section id="white-noise" class="level1">
-<h1>White Noise</h1>
-<ul>
-<li>White noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.</li>
-</ul>
-<!-- ------------------------------- LESSONS ------------------------------- ------------------------------------------------>
-</section>
-<section id="lessons" class="level1">
-<h1>Lessons</h1>
-<section id="lesson-4.1-white-noise-and-random-walks" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.1-white-noise-and-random-walks">Lesson 4.1 White Noise and Random Walks</h2>
-<section id="stochastic-process-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="stochastic-process-4.1">Stochastic Process 4.1</h3>
-<p>Stochastic processes or random processes evolve over time. They are characterized by the fact that the future values of the process cannot be predicted based on past values. The random walk is a classic example of a stochastic process.</p>
-</section>
-<section id="discrete-white-noise-dwn-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="discrete-white-noise-dwn-4.1">Discrete White Noise DWN 4.1</h3>
-<ul>
-<li>4.2: Computing the difference between successive terms of a random walk leads to a discrete white noise series.</li>
-</ul>
-<p>A time series <span class="math inline">\(\{w_t: t = 1, 2, \ldots, n\}\)</span> is a <strong>discrete white noise (DWN)</strong> if the variables <span class="math inline">\(w_1, w_2, \ldots, w_n\)</span> are independent and identically distributed with mean 0.</p>
-<section id="second-order-properties-of-dwn" class="level4">
-<h4 class="anchored" data-anchor-id="second-order-properties-of-dwn">Second-Order Properties of DWN</h4>
-<ul>
-<li><p>When we refer to the second-order properties of a time series, we are talking about its variance and covariance. The variance of a DWN is constant, and the covariance between any two observations is zero</p></li>
-<li><p>The mean is a first-order property, the covariance is a second-order property.</p></li>
-</ul>
-</section>
-<section id="discrete-white-noise-process" class="level4">
-<h4 class="anchored" data-anchor-id="discrete-white-noise-process">Discrete White Noise Process</h4>
-<ul>
-<li><p>A DWN process will have the following properties:</p>
-<ul>
-<li>There is a discrete observations.</li>
-<li>The mean of the observations is zero.</li>
-<li>The variance of the observations is finite.</li>
-<li>Successive observations are uncorrelated.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="random-walk" class="level3">
-<h3 class="anchored" data-anchor-id="random-walk">Random Walk</h3>
-<ul>
-<li><strong>Random Walks Lesson 4.1</strong>
-<ul>
-<li>A random walk is a stochastic process in which the difference between each observation is a white noise process, a non-stationary time series. (see def)</li>
-<li>wt is a dwn and often model as gwn, however wt could be as simple as a coin toss (<strong>random walk</strong>).</li>
-</ul></li>
-</ul>
-<section id="properties-of-random-walk-or-walks" class="level4">
-<h4 class="anchored" data-anchor-id="properties-of-random-walk-or-walks">Properties of Random Walk or walks</h4>
-<p>or First-Order Properties of A Random Walk - The mean of a random walk series is 0.</p>
-<p>Look at shinny code for this</p>
-</section>
-<section id="second-order-properties-of-a-random-walk" class="level4">
-<h4 class="anchored" data-anchor-id="second-order-properties-of-a-random-walk">Second-Order Properties of a Random Walk</h4>
-<ul>
-<li><p><strong>Covariance:</strong> <span class="math inline">\(cov(x_t,x_{t+k})\)</span>:<br>
-The covariance between two values of the series depends on ( t ):<br>
-<span class="math display">\[
-\text{cov}(x_t, x_{t+k}) = t \sigma^2
-\]</span></p></li>
-<li><p><strong>Correlation Function</strong> <span class="math inline">\(\rho_k\)</span>:</p>
-<p>The correlation for lag  k  is:<br>
-<span class="math display">\[
-\rho_k = \frac{1}{\sqrt{1 + \frac{k}{t}}}
-\]</span></p></li>
-<li><p><strong>Non-Stationarity</strong>:<br>
-The variance of the series increases with ( t ), making the random walk non-stationary.</p></li>
-<li><p><strong>Correlogram Characteristics</strong>:<br>
-The correlogram of a random walk typically shows:</p>
-<ul>
-<li>Positive autocorrelations starting near 1.</li>
-<li>A slow decrease as ( k ) increases.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="gaussian-white-noise-gwn-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="gaussian-white-noise-gwn-4.1">Gaussian White Noise GWN 4.1</h3>
-<ul>
-<li>If the variables are normally distributed, i.e. <span class="math inline">\(w_i \sim N(0,\sigma^2)\)</span>, the DWN is called a <strong>Gaussian white noise</strong> process. The normal distribution is also known as the Gaussian distribution, after Carl Friedrich Gauss.</li>
-</ul>
-</section>
-<section id="white-noise-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="white-noise-time-series">White Noise Time Series</h3>
-<ul>
-<li><strong>White Noise Time Series Lesson 4.1</strong>
-<ul>
-<li>A white noise time series is a sequence of random variables that are uncorrelated and have a mean of zero.</li>
-<li>A white noise time series has a constant variance.</li>
-<li>A white noise time series has a constant mean.</li>
-<li>A white noise time series has a constant autocorrelation of zero for all lags except when the lag is zero.</li>
-</ul></li>
-</ul>
-</section>
-<section id="correlogram-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="correlogram-4.1">Correlogram 4.1</h3>
-<ul>
-<li><strong>Correlogram Lesson 4.1</strong>
-<ul>
-<li>A correlogram is a plot of the autocorrelation function (ACF) of a time series.</li>
-<li>Each correlogram lag tests for correlation significance, increasing the chance of Type I error, resulting in potentially misleading conclusions about significant relationships.</li>
-</ul></li>
-</ul>
-</section>
-<section id="fitting-the-white-noise-model" class="level3">
-<h3 class="anchored" data-anchor-id="fitting-the-white-noise-model">Fitting the White Noise Model</h3>
-</section>
-<section id="backward-shift-operator" class="level3">
-<h3 class="anchored" data-anchor-id="backward-shift-operator">Backward Shift Operator</h3>
-<p>We define the <strong>backward shift operator</strong> or the <strong>lag operator</strong>, <span class="math inline">\(\mathbf{B}\)</span>, as: <span class="math display">\[
-  \mathbf{B} x_t = x_{t-1}
-\]</span> where <span class="math inline">\(\{x_t\}\)</span> is any time series.</p>
-<p>We can apply this operator repeatedly. We will use exponential notation to indicate this.</p>
-<p><span class="math display">\[
-  \mathbf{B}^2 x_t = \mathbf{B} \mathbf{B} x_t = \mathbf{B} ( \mathbf{B} x_t ) = \mathbf{B} x_{t-1} = x_{t-2}
-\]</span></p>
-<section id="properties-of-the-backshift-operator" class="level4">
-<h4 class="anchored" data-anchor-id="properties-of-the-backshift-operator">Properties of the Backshift Operator</h4>
-<p>The backwards shift operator is a linear operator. So, if <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, and <span class="math inline">\(d\)</span> are constants, then <span class="math display">\[
-(a \mathbf{B} + b)x_t = a \mathbf{B} x_t + b x_t
-\]</span> The distributive property also holds. <span class="math display">\[\begin{align*}
-(a \mathbf{B} + b)(c \mathbf{B} + d) x_t
-  &amp;= c (a \mathbf{B} + b) \mathbf{B} x_t  + d(a \mathbf{B} + b) x_t \\
-  &amp;= a \mathbf{B} (c \mathbf{B} + d) x_t + b (c \mathbf{B} + d) x_t \\
-  &amp;= \left( ac \mathbf{B}^2 + (ad+bc) \mathbf{B} + bd \right) x_t \\
-  &amp;= ac \mathbf{B}^2 x_t + (ad+bc) \mathbf{B} x_t + (bd) x_t
-\end{align*}\]</span></p>
-<p>.</p>
-</section>
-</section>
-<section id="search-words-for-lesson-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="search-words-for-lesson-4.1">search words for lesson 4.1</h3>
-<p>Gaussian white noise - GWN - discrete white noise - dwn - variance - covariance - correlation - correlogram - Type I error - histogram - backward shift operator - backshift operator</p>
-<!-- --------------------------------- 4.2 ----------------------------- 4.2 -------- -->
-</section>
-</section>
-<section id="lesson-4.2-white-noise-and-random-walks---part-2" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.2-white-noise-and-random-walks---part-2">Lesson 4.2 White Noise and Random Walks - Part 2</h2>
-<section id="differecing-a-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="differecing-a-time-series">Differecing a Time Series</h3>
-<p>Why do we difference a time series? Differencing a time series can help us to remove the trend and make the series stationary.</p>
-<ul>
-<li>Computing the difference between successive terms of a random walk leads to a discrete white noise series.</li>
-</ul>
-<p><span class="math display">\[\begin{align*}
-x_t &amp;= x_{t-1} + w_t \\
-x_t - x_{t-1} &amp;= w_t
-\end{align*}\]</span></p>
-<p>In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences.</p>
-</section>
-<section id="correlograms-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="correlograms-histogram">Correlograms &amp; Histogram</h3>
-<p>When do we use a correlogram and what do we look for?</p>
-<p><strong>Correlogram</strong></p>
-<ul>
-<li>A correlogram is a plot of the autocorrelation function (ACF) of a time series. The ACF is a measure of the correlation between the time series and a lagged version of itself.</li>
-<li>Notice that the values in the correlogram of the stock prices start at 1 and slowly decay as k increases. There are no significant autocorrelations in the differenced values. This is exactly what we would expect from a random walk.</li>
-</ul>
-<p><strong>Histogram</strong></p>
-<ul>
-<li>Figure 5 is a histogram of the differences. This is a simple measure of volatility of the stock, or in other words, how much the price changes in a day.</li>
-</ul>
-</section>
-<section id="difference-operator" class="level3">
-<h3 class="anchored" data-anchor-id="difference-operator">Difference Operator</h3>
-<ul>
-<li>Differencing nonstationary time series often leads to a stationary series, so we will define a formal operator to express this process.</li>
-</ul>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Difference Operator">
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<section id="question-1---ar1-with-non-zero-mean-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="question-1---ar1-with-non-zero-mean-10-points">Question 1 - AR(1) with non-zero mean (10 points)</h3>
+<p>An AR(1) process with a non-zero mean <span class="math inline">\(\mu\)</span> can be expressed by either:</p>
+<p><span class="math display">\[x_t-\mu=\alpha_1(x_{t-1}-\mu)+w_t \hspace{5mm}\mbox{or}\hspace{5mm}x_t=\alpha_0+\alpha_1x_{t-1}+w_t\]</span></p>
+<section id="a-define-a-similar-relationship-for-an-ar2-process-with-mean-mu" class="level4">
+<h4 class="anchored" data-anchor-id="a-define-a-similar-relationship-for-an-ar2-process-with-mean-mu">a) Define a similar relationship for an AR(2) process with mean <span class="math inline">\(\mu\)</span></h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition of the Difference Operator
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <strong>difference operator</strong>, <span class="math inline">\(\nabla\)</span>, is defined as:</p>
-<p><span class="math display">\[\nabla x_t = x_t - x_{t-1} = (1-\mathbf{B}) x_t\]</span></p>
-<p>Higher-order differencing can be denoted</p>
-<p><span class="math display">\[\nabla^n x_t = (1-\mathbf{B})^n x_t\]</span></p>
+<!-- Delete this and put your answer here. The three colons mark the end of your answer. -->
 </div>
 </div>
-<p><strong>Things to do</strong> - Do excel workout and link to this. So in the website for this. This lesson will be nother tab. Maybe add the option to download the excel sheet.</p>
-<p><strong>Computing Differences</strong> Small group acitivity The difference operator can be helpful in identifying the functional underpinnings of a trend. If a function <strong>is linear</strong>, then the first differences of equally-spaced values will be constant. If a function <strong>is quadratic</strong>, then the second differences of equally-spaced values will be constant. If a function <strong>is cubic</strong>, then the third differences of equally-spaced values will be constant, and so on.</p>
-<p><strong>differencing Stock Prices</strong> do this group activity</p>
-<p><strong>Integrated Autoregressive Model</strong> do this group activity</p>
-<p><strong>Class Activyt: Random Walk Drift</strong> do this class activity</p>
 </section>
 </section>
-</section>
-<section id="function-is-linear-vs-quadratic-vs-cubic" class="level1">
-<h1>Function is Linear vs Quadratic vs Cubic</h1>
-<p>This goes at the top, not in lessons</p>
-<ul>
-<li><strong>Linear Function</strong>
-<ul>
-<li>If a function is linear, then the first differences of equally-spaced values will be constant. (4.2)</li>
-</ul></li>
-<li><strong>Quadratic Function</strong>
-<ul>
-<li>If a function is quadratic, then the second differences of equally-spaced values will be constant. (4.2)</li>
-</ul></li>
-<li><strong>Cubic Function</strong>
-<ul>
-<li>If a function is cubic, then the third differences of equally-spaced values will be constant, and so on. (4.2)</li>
-</ul></li>
-</ul>
-<section id="search-for-words-for-lesson-4.2" class="level3">
-<h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.2">Search for words for lesson 4.2</h3>
-<p>correlogram - successive stock prices -</p>
-<!-- --------------------------------- 4.3 ---------------------------------------------------4.3 -------- -->
-</section>
-<section id="lesson-4.3-autoregressive-ar-models" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</h2>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of an Autoregressive (AR) Model">
+<section id="question-2---stationarity-25-points" class="level3">
+<h3 class="anchored" data-anchor-id="question-2---stationarity-25-points">Question 2 - Stationarity (25 points)</h3>
+<section id="a-show-that-the-series-x_t-given-by-x_tfrac32x_t-1-frac12x_t-2w_t-is-non-stationary.-please-use-the-characteristic-equation-method." class="level4">
+<h4 class="anchored" data-anchor-id="a-show-that-the-series-x_t-given-by-x_tfrac32x_t-1-frac12x_t-2w_t-is-non-stationary.-please-use-the-characteristic-equation-method.">a) Show that the series {<span class="math inline">\(x_t\)</span>} given by <span class="math inline">\(x_t=\frac{3}{2}x_{t-1}-\frac{1}{2}x_{t-2}+w_t\)</span> is non-stationary. Please use the characteristic equation method.</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition of an Autoregressive (AR) Model
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The time series <span class="math inline">\(\{x_t\}\)</span> is an <strong>autoregressive process of order</strong> <span class="math inline">\(p\)</span>, denoted as <span class="math inline">\(AR(p)\)</span>, if <span class="math display">\[
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t ~~~~~~~~~~~~~~~~~~~~~~~ (4.15)
-\]</span></p>
-<p>where <span class="math inline">\(\{w_t\}\)</span> is white noise and the <span class="math inline">\(\alpha_i\)</span> are the model parameters with <span class="math inline">\(\alpha_p \ne 0\)</span>.</p>
+<!-- Delete this and put your answer here. The three colons mark the end of your answer. -->
 </div>
 </div>
-<section id="properties-of-an-arp-stochastic-process" class="level3">
-<h3 class="anchored" data-anchor-id="properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</h3>
-<p><strong>Autoregressive Properties of an AR model</strong></p>
-<ul>
-<li>The mean of an AR model is a constant.</li>
-<li>The variance of an AR model is finite.</li>
-<li>The covariance of an AR model is a function of the lag.</li>
-<li>The autocorrelation of an AR model is a function of the lag.</li>
-</ul>
 </section>
-<section id="exploring-ar1-models" class="level3">
-<h3 class="anchored" data-anchor-id="exploring-ar1-models">Exploring AR(1) Models</h3>
-<p><strong>Definitino</strong> Recall that an <span class="math inline">\(AR(p)\)</span> model is of the form <span class="math display">\[
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t
-\]</span> So, an <span class="math inline">\(AR(1)\)</span> model is expressed as <span class="math display">\[
-  x_t = \alpha x_{t-1} + w_t
-\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a white noise series with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-</section>
-<section id="second-order-properties-of-an-ar1-model" class="level3">
-<h3 class="anchored" data-anchor-id="second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Second-Order Properties of an $AR(1)$ Model">
+<section id="b-please-simulate-the-series-x_t-using-1000-realizations-and-calculate-the-first-difference-y_t-where-y_tnabla-x_t." class="level4">
+<h4 class="anchored" data-anchor-id="b-please-simulate-the-series-x_t-using-1000-realizations-and-calculate-the-first-difference-y_t-where-y_tnabla-x_t.">b) Please simulate the series {<span class="math inline">\(x_t\)</span>} using 1000 realizations and calculate the first difference {<span class="math inline">\(y_t\)</span>}, where <span class="math inline">\(y_t=\nabla x_t\)</span>.</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Second-Order Properties of an <span class="math inline">\(AR(1)\)</span> Model
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(\{x_t\}_{t=1}^n\)</span> is an <span class="math inline">\(AR(1)\)</span> prcess, then its the first- and second-order properties are summarized below.</p>
-<p><span class="math display">\[
-\begin{align*}
-  \mu_x &amp;= 0 \\  
-  \gamma_k = cov(x_t, x_{t+k}) &amp;= \frac{\alpha^k \sigma^2}{1-\alpha^2}
-\end{align*}
-\]</span></p>
+
 </div>
 </div>
 </section>
-<section id="correlogram-of-an-ar1-model" class="level3">
-<h3 class="anchored" data-anchor-id="correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</h3>
-<ul>
-<li>The autocorrelation function of an <span class="math inline">\(AR(1)\)</span> model is a function of the lag.</li>
-</ul>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Correlogram of an AR(1) Process">
+<section id="c-prove-that-y_t-is-stationary-use-the-characteristic-equation-method." class="level4">
+<h4 class="anchored" data-anchor-id="c-prove-that-y_t-is-stationary-use-the-characteristic-equation-method.">c) Prove that <span class="math inline">\(y_t\)</span> is stationary, use the characteristic equation method.</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Correlogram of an AR(1) Process
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The autocorrelation function for an AR(1) process is</p>
-<p><span class="math display">\[
-  \rho_k = \alpha^k ~~~~~~ (k \ge 0)
-\]</span> where <span class="math inline">\(|\alpha| &lt; 1\)</span>.</p>
+<!-- Delete this and put your answer here. The three colons mark the end of your answer. -->
 </div>
 </div>
-<p><strong>Things to do</strong></p>
-<ul>
-<li>DO group activity: Simulation of an AR(1) process</li>
-</ul>
 </section>
-<section id="partial-autocorrelation" class="level3">
-<h3 class="anchored" data-anchor-id="partial-autocorrelation">Partial Autocorrelation</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition: Partial Autocorrleation">
+</section>
+<section id="question-3---partial-correlogram-40-points" class="level3">
+<h3 class="anchored" data-anchor-id="question-3---partial-correlogram-40-points">Question 3 - Partial Correlogram (40 points)</h3>
+<section id="a-please-use-the-holt-winters-method-to-decompose-the-us-industrial-production-index.-please-justify-your-choice-of-parameters.-use-the-context-and-your-understanding-of-the-series-as-part-of-your-answers." class="level4">
+<h4 class="anchored" data-anchor-id="a-please-use-the-holt-winters-method-to-decompose-the-us-industrial-production-index.-please-justify-your-choice-of-parameters.-use-the-context-and-your-understanding-of-the-series-as-part-of-your-answers.">a) Please use the Holt-Winters method to decompose the US Industrial Production Index. Please justify your choice of parameters. Use the context and your understanding of the series as part of your answers.</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition: Partial Autocorrleation
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <strong>partial autocorrelation</strong> at lag <span class="math inline">\(k\)</span> is defined as the portion of the correlation that is not explained by shorter lags.</p>
+<!-- Delete this and put your answer here. The three colons mark the end of your answer. -->
 </div>
 </div>
-<p>For example, the partial correlation for lag 4 is the correlation not explained by lags 1, 2, or 3.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Check Your Understanding">
+</section>
+<section id="b-plot-the-remainder-random-component-of-the-decomposed-series." class="level4">
+<h4 class="anchored" data-anchor-id="b-plot-the-remainder-random-component-of-the-decomposed-series.">b) Plot the remainder (random) component of the decomposed series.</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Check Your Understanding
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>What is the value of the partial autocorrelation function for an <span class="math inline">\(AR(2)\)</span> process for all lags greater than 2? answer: 0</li>
-</ul>
+
 </div>
 </div>
 </section>
-<section id="partial-autocorrelation-plots-of-various-arp-processes" class="level3">
-<h3 class="anchored" data-anchor-id="partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</h3>
-<p><strong>Look at lesson shinny code</strong></p>
-</section>
-<section id="sationary-and-non-stationary-ar-processes" class="level3">
-<h3 class="anchored" data-anchor-id="sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Characteristic Equation">
+<section id="c-plot-a-partial-correlogram-of-the-random-component-of-the-the-us-industrial-production-index.-what-kind-of-autoregressive-process-would-you-pick-to-model-the-random-component" class="level4">
+<h4 class="anchored" data-anchor-id="c-plot-a-partial-correlogram-of-the-random-component-of-the-the-us-industrial-production-index.-what-kind-of-autoregressive-process-would-you-pick-to-model-the-random-component">c) Plot a partial correlogram of the random component of the the US Industrial Production Index. What kind of autoregressive process would you pick to model the random component?</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition of the Characteristic Equation
+Answer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Treating the symbol <span class="math inline">\(\mathbf{B}\)</span> formally as a number (either real or complex), the polynomial</p>
-<p><span class="math display">\[
-  \theta_p(\mathbf{B}) x_t = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) x_t
-\]</span></p>
-<p>is called the <strong>characteristic polynomial</strong> of an AR process.</p>
-<p>If we set the characteristic polynomial to zero, we get the <strong>characteristic equation</strong>:</p>
-<p><span class="math display">\[
-  \theta_p(\mathbf{B}) = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) = 0
-\]</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Identifying Stationary Processes">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Identifying Stationary Processes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An AR process will be <strong>stationary</strong> if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</p>
+<!-- Delete this and put your answer here. The three colons mark the end of your answer. -->
 </div>
 </div>
 </section>
-<section id="absolute-value-in-the-complex-plane" class="level3">
-<h3 class="anchored" data-anchor-id="absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Absolute Value in the Complex Plane
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
-<p><span class="math display">\[
-  |z| = \sqrt{a^2 + b^2}
-\]</span></p>
-</div>
-</div>
-<p><strong>This sections check for this</strong> - We will now practice assessing whether an AR process is stationary using the characteristic equation.</p>
-<p>co-pilot notes</p>
-<ul>
-<li><strong>Stationary and Non-Stationary AR Processes Lesson 4.3</strong>
-<ul>
-<li>An AR process will be stationary if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</li>
-<li>The characteristic equation of an AR process is the polynomial <span class="math inline">\(\theta_p(\mathbf{B}) = 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p\)</span>.</li>
-<li>The roots of the characteristic polynomial are the solutions of the characteristic equation.</li>
-<li>The absolute value of the roots of the characteristic polynomial must be greater than 1 for the AR process to be stationary.</li>
-</ul></li>
-</ul>
-<p>co-pilot notes end</p>
 </section>
-<section id="questions" class="level3">
-<h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<ul>
-<li>What is an exponential smoothing model?</li>
-</ul>
-</section>
-<section id="search-for-words-for-lesson-4.3" class="level3">
-<h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.3">Search for words for lesson 4.3</h3>
-<p>exponential smoothing model - polyroot function -</p>
-<!-- --------------------------------- 5.1 ---------------------------------------------------5.1 -------- -->
-</section>
-</section>
-<section id="lesson-5.1-unassigned-sections" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</h2>
-<section id="generalized-least-squares-gls" class="level3">
-<h3 class="anchored" data-anchor-id="generalized-least-squares-gls">Generalized Least Squares (GLS)</h3>
-<ul>
-<li><p>The autocorrelation in the data make ordinary least squares estimation inappropriate. What caped superhero comes to our rescue? None other than Captain GLS – the indominable Generalized Least Squares algorithm!</p></li>
-<li><p><strong>Generalized Least Squares (GLS) Lesson 5.1</strong></p>
-<ul>
-<li>Generalized Least Squares (GLS) is a method for estimating the unknown parameters in a linear regression model.</li>
-<li>GLS is used when the errors in a regression model are correlated.</li>
-<li>GLS is used when the errors in a regression model are heteroskedastic.</li>
-<li>GLS is used when the errors in a regression model are autocorrelated.</li>
-<li>GLS is used when the errors in a regression model are non-normal.</li>
-</ul></li>
-</ul>
-</section>
-<section id="additive-seasonal-indicator-variables" class="level3">
-<h3 class="anchored" data-anchor-id="additive-seasonal-indicator-variables">Additive Seasonal Indicator Variables</h3>
-<ul>
-<li>additive model with seasonal indicator variables can be perceived similarly to other additive models with a seasonal component:</li>
-</ul>
-<p><span class="math display">\[
-  x_t = m_t + s_t + z_t
-\]</span></p>
-<p>where <span class="math display">\[
-  s_t =
-    \begin{cases}
-      \beta_1, &amp; t ~\text{falls in season}~ 1 \\
-      \beta_2, &amp; t ~\text{falls in season}~ 2 \\
-      ⋮~~~~ &amp; ~~~~~~~~~~~~⋮ \\
-      \beta_s, &amp; t ~\text{falls in season}~ s
-    \end{cases}
-\]</span> and <span class="math inline">\(s\)</span> is the number of seasons in one cycle/period, and <span class="math inline">\(n\)</span> is the number of observations, so <span class="math inline">\(t = 1, 2, \ldots, n\)</span> and <span class="math inline">\(i = 1, 2, \ldots, s\)</span>, and <span class="math inline">\(z_t\)</span> is the residual error series, which can be autocorrelated.</p>
-<p>It is important to note that <span class="math inline">\(m_t\)</span> does not need to be a constant. It can be a linear trend:</p>
-<section id="seasonal-indicator-variable" class="level4">
-<h4 class="anchored" data-anchor-id="seasonal-indicator-variable">Seasonal indicator variable</h4>
-<ul>
-<li>lesson5.1
-<ul>
-<li>We will create a linear model that includes a constant term for each month. This constant monthly term is called a <strong>seasonal indicator variable.</strong></li>
-<li>This name is derived from the fact that each variable indicates (either as 1 or 0) whether a given month is represented.</li>
-<li>Indicator variables are also called dummy varaibles.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-</section>
-</section>
-<section id="definitions" class="level1">
-<h1>Definitions</h1>
-<p>Stochastic processes: are random processes that evolve over time. They are characterized by the fact that the future values of the process cannot be predicted based on past values. The random walk is a classic example of a stochastic process.</p>
-<p>Discrete white noise DWN: is a sequence of uncorrelated random variables with a mean of zero and a constant variance. The autocorrelation function of white noise is zero for all lags except when the lag is zero.</p>
-<p>Type I Errors: 4.1 Suppose we will conduct a hypothesis test with a level of significance equal to <span class="math inline">\(\alpha = 0.05\)</span>. If the null hypothesis is true, there is a probability of 0.05 that we will reject the null hypothesis. Due to sampling variation, we will reject a true null hypothesis 5% of the time. We refer to this as making a <strong>Type I Error</strong>.</p>
-<p>Random Walk: is a stochastic process in which the difference between each observation is a white noise process. A random walk is a non-stationary time series. A random walk has a stochastic trend, a unit root, a constant variance, a constant mean, and a constant autocorrelation of one for all lags except when the lag is zero.</p>
-<p>Let <span class="math inline">\(\{x_t\}\)</span> be a time series. Then, <span class="math inline">\(\{x_t\}\)</span> is a <strong>random walk</strong> if it can be expressed as <span class="math display">\[
-  x_{t} = x_{t-1} + w_{t}
-\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a random process.</p>
-<p>The value <span class="math inline">\(x_t\)</span> can be considered as the cumulative summation of the first <span class="math inline">\(t\)</span> values of the <span class="math inline">\(w_t\)</span> series. In many cases, <span class="math inline">\(w_t\)</span> is a discrete white noise series, and it is often modeled as a Gaussian white noise series. However, <span class="math inline">\(w_t\)</span> could be as simple as a coin toss</p>
-<p>Absolute Value in the COmplex Plane</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Absolute Value in the Complex Plane
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
-<p><span class="math display">\[
-  |z| = \sqrt{a^2 + b^2}
-\]</span></p>
-</div>
-</div>
+<section id="rubric" class="level3">
+<h3 class="anchored" data-anchor-id="rubric">Rubric</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criteria</strong></td>
+<td><strong>Mastery (10)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 1a: AR(2) with non-zero mean</strong></td>
+<td>Students show the mathematical relationship between the parameters of the two expressions for the AR(2) case. They demonstrate this by using algebraic steps to connect the parameters in a clear and logical manner, showing a solid understanding of the mathematical equivalence between the two representations.</td>
+<td>Students show the mathematical relationship between the parameters of the two expressions. They demonstrate this by using algebraic steps to connect the parameters in a clear and logical manner, showing a solid understanding of the mathematical equivalence between the two representations.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (10)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 2a: Non-stationarity</strong></td>
+<td>Responses show that the series is non-stationary using the characteristic equation method. They derive the characteristic equation, find the roots with polyroot(), and identify if any roots lie outside the unit circle using the absolute value if necessary. Submissions provide clear steps, including deriving the characteristic equation, using polyroot, and interpreting the results to conclude non-stationarity.</td>
+<td>Submissions make errors in computing the characteristic equation or incorrectly interpret the roots. Responses lack clarity in their mathematical steps or misunderstand the concept of stationarity.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (5)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 2b: Simulation</strong></td>
+<td>Respones simulate the series {$x_t$} and {$y_t$}. Students provide clear and well-commented code that is easy to follow and execute the first-difference calculation process accurately.</td>
+<td>Sturents’ code may lack clarity or sufficient comments, making it difficult to follow. They might make errors in the simulation process or fail to provide clear explanations for each step</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (10)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 2c: Stationarity</strong></td>
+<td>Responses show that the series is non-stationary using the characteristic equation method. They derive the characteristic equation, find the roots with polyroot(), and identify if any roots lie outside the unit circle using the absolute value if necessary. Submissions provide clear steps, including deriving the characteristic equation, using polyroot, and interpreting the results to conclude non-stationarity.</td>
+<td>Submissions may lack coherence or precision in articulating how the absence of correlations at higher lags indicates stationarity in {$y_t$}. Additionally, they may overlook the importance of discussing the statistical significance of autocorrelations or fail to provide sufficient evidence from the correlogram to support their explanation.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (5)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 3a: Decomposition</strong></td>
+<td>Responses apply the Holt-Winters method to decompose the US Industrial Production Index, providing a report of the parameters chosen and justifying their choice. They provide a clear explanation for selecting values for the smoothing parameters (alpha, beta, and gamma) based on their understanding of the series and its characteristics. Proficient submissions show a solid grasp of the method and how the chosen parameters correspond to the trend, seasonality, and noise in the data. They consider contextual factors such as historical behavior to inform their parameter selection.</td>
+<td>Students attempt to use the Holt-Winters method but lack clarity in justifying their parameter choices. They may struggle to explain why specific values were selected or fail to relate them to the Industrial Production Index. Below expectations submissions may lack coherence in explaining how the chosen parameters align with the data’s components and may overlook contextual factors. Overall, their analysis may lack clarity, suggesting a need for improvement in understanding time series decomposition techniques.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (5)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 3b: Plot</strong></td>
+<td>Responses plot the remainder (random) component of the decomposed series. They provide a well-labeled and clear plot that effectively visualizes the random component.</td>
+<td>Plot that lacks clarity, with insufficient labeling or unclear visualization of the random component.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Mastery (20)</strong></td>
+<td><strong>Incomplete (0)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Question 3c: Partial Correlogram</strong></td>
+<td>Responses plot a partial correlogram of the remainder component and provide a clear interpretation regarding the choice of autoregressive process. They articulate how the significant coefficients in the partial correlogram indicate the lag values of the autoregressive process. Submissions effectively identify the practically significant autocorrelations in the partial correlogram and relate them to the characteristics of potential autoregressive processes, providing a coherent explanation for their choice.</td>
+<td>Student struggles to accurately plot the partial correlogram of the remainder component or provide a clear interpretation regarding the choice of autoregressive process. They may produce a plot that lacks clarity or fail to effectively communicate the autocorrelation patterns. Submissions overlook important details or fail to provide a coherent explanation for their choice of autoregressive process based on the partial correlogram.</td>
+</tr>
+<tr class="odd">
+<td><strong>Total Points</strong></td>
+<td><strong>75</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
-
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
