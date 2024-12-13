@@ -4801,6 +4801,18 @@ vertical-align: -.125em;
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ch-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ch 1</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-1">    
+        <li class="dropdown-header">Overview</li>
+        <li>
+    <a class="dropdown-item" href="../chapters/chapter_1.html">
+ <span class="dropdown-text">Chapter overview and Task</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ch-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Ch 3</span>
     </a>
@@ -4815,6 +4827,12 @@ vertical-align: -.125em;
         <li>
     <a class="dropdown-item" href="../chapters/chapter_3_overview_code_draft.html">
  <span class="dropdown-text">Chapter 3 r code examples and practice</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Lesson 1</li>
+        <li>
+    <a class="dropdown-item" href="../chapters/chapter_3_lesson_1.html">
+ <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
     </ul>
   </li>
@@ -4841,10 +4859,16 @@ vertical-align: -.125em;
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Lesson 1 Notes</li>
+        <li>
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_1_code_notes.html">
+ <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 2</li>
         <li>
     <a class="dropdown-item" href="../chapters/chapter_4_lesson_2.html">
- <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
+ <span class="dropdown-text">White Noise and Random Walks - Part 2</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 3</li>
@@ -4856,6 +4880,12 @@ vertical-align: -.125em;
         <li class="dropdown-header">Lesson 4</li>
         <li>
     <a class="dropdown-item" href="../chapters/chapter_4_lesson_4.html">
+ <span class="dropdown-text">Fitted AR Models</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Lesson 4 Notes</li>
+        <li>
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_4_code_notes.html">
  <span class="dropdown-text">Fitted AR Models</span></a>
   </li>  
     </ul>
@@ -4875,6 +4905,12 @@ vertical-align: -.125em;
         <li>
     <a class="dropdown-item" href="../chapters/chapter_5_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Lesson 1 Notes</li>
+        <li>
+    <a class="dropdown-item" href="../chapters/chapter_5_lesson_1_code_notes.html">
+ <span class="dropdown-text">Linear Models, GLS, and Seasonal Indicator Variables</span></a>
   </li>  
     </ul>
   </li>
@@ -4960,6 +4996,23 @@ vertical-align: -.125em;
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Lesson 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_3_lesson_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">White Noise and Random Walks - Part 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -5006,8 +5059,6 @@ vertical-align: -.125em;
 </ul></li>
 </ul>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign your column names to variables</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df0 <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;https://byuistats.github.io/timeseries/data/constructionequip_manu_orders_shipments.csv&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5022,11 +5073,8 @@ vertical-align: -.125em;
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>x_label <span class="ot">&lt;-</span> <span class="st">&quot;Month&quot;</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>y_label <span class="ot">&lt;-</span> <span class="st">&quot;New Orders &amp; Value of Equip&quot;</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plot_title <span class="ot">&lt;-</span> <span class="st">&quot;Time Series of Construction Equip: New Orders &amp; Equipment&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df0 <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(.data[[dates]]),</span>
@@ -5034,11 +5082,8 @@ vertical-align: -.125em;
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">as.numeric</span>(.data[[y_col]])  <span class="co"># Convert and rename to y</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, x, y) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="co"># this makes a new df so either df before or this one is use. </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">obs =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> <span class="co"># makes new column with periods</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, obs, x, y)</span>
@@ -5050,12 +5095,9 @@ vertical-align: -.125em;
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>dfy <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="co"># lone df for y = ship</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">obs =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>test</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is code for hw 3-1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this code is same as the dfx2 &amp; dfy2 code</span></span>
@@ -5074,7 +5116,6 @@ vertical-align: -.125em;
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> plot_title</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
