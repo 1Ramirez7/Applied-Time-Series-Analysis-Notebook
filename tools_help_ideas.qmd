@@ -24,8 +24,13 @@ This page is to include pontential ideas to do for resources, tools, and ideas f
         * What is the difference between the two?
         
 
+# using Definitons or footnotes
 
+ The following is working code to use footnotes but works great for definitions. Obviously not the best way to reference def, but this seems like a simple and straight forward process. Seems super static so it wont take long to load as well.
 
+White noise[^1]
+
+[^1]: White noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.
 
 
 # Streamline code
