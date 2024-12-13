@@ -11,5 +11,23 @@ format:
     code-fold: true
 ---
 
+Learning Outcomes
+
+**Characterize the properties of a random walk**
+Define the second order properties of a random walk
+Define the backward shift operator
+Use the backward shift operator to state a random walk as a sequence of white noise realizations
+Define a random walk with drift
 
 
+**Simulate realizations from basic time series models in R**
+Simulate a random walk
+Plot a random walk
+
+**Fit time series models to data and interpret fitted parameters**
+Motive the need for differencing in time series analysis
+Define the difference operator
+Explain the relationship between the difference operator and the backward shift operator
+Test whether a series is a random walk using first differences
+Explain how to estimate a random walk with increasing slope using Holt-Winters
+Estimate the drift parameter of a random walk
