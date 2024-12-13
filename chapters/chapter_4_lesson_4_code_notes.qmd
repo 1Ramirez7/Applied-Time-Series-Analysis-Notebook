@@ -1,6 +1,6 @@
 ---
-title: "Fitted AR Models"
-subtitle: "Ch 4.4 Code Notes"
+title: "Ch 4.4 Code Notes"
+subtitle: "Fitted AR Models"
 format: 
   html:
     error: false

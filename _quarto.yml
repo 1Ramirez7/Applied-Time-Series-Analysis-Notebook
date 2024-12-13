@@ -32,6 +32,7 @@ website:
         file: index.qmd
       - sidebar:projects
       - sidebar:chapter_1
+      - sidebar:chapter_2
       - sidebar:chapter_3
       - sidebar:chapter_4
       - sidebar:chapter_5
@@ -48,7 +49,24 @@ website:
         - section: "Overview"
           contents:
             - chapters/chapter_1.qmd
-  
+            - hw/homework_1_1.qmd
+            - hw/homework_1_2.qmd
+            - hw/homework_1_3.qmd
+            - hw/homework_1_4.qmd
+            - hw/homework_1_5.qmd
+
+    - id: chapter_2
+      title: "Ch 2"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - section: "Overview"
+          contents:
+            - chapters/chapter_2.qmd
+            - hw/homework_2_1.qmd
+            - hw/homework_2_2.qmd
+            - hw/homework_2_3.qmd
+
     - id: chapter_3
       title: "Ch 3"
       style: "docked"
@@ -57,6 +75,10 @@ website:
         - section: "Overview"
           contents:
             - chapters/chapter_3.qmd
+            - hw/homework_3_2.qmd
+            - hw/homework_3_3.qmd
+            - hw/homework_3_4.qmd
+            - hw/homework_3_5.qmd
         - section: "r code Models draft"
           contents:
             - chapters/chapter_3_overview_code_draft.qmd
@@ -79,8 +101,6 @@ website:
         - section: "Lesson 1"
           contents:
             - chapters/chapter_4_lesson_1.qmd
-        - section: "Lesson 1 Notes"
-          contents:
             - chapters/chapter_4_lesson_1_code_notes.qmd
         - section: "Lesson 2"
           contents:
@@ -91,8 +111,6 @@ website:
         - section: "Lesson 4"
           contents:
             - chapters/chapter_4_lesson_4.qmd
-        - section: "Lesson 4 Notes"
-          contents:
             - chapters/chapter_4_lesson_4_code_notes.qmd
 
     - id: chapter_5

@@ -1,6 +1,6 @@
 ---
-title: "White Noise and Random Walks - Part 1"
-subtitle: "Ch 4.1 Code Notes"
+title: "Ch 4.1 Code Notes"
+subtitle: "White Noise and Random Walks - Part 1"
 format: 
   html:
     error: false

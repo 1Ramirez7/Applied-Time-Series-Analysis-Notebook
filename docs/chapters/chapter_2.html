@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Time Series Analysis Notebook – Applied Time Series Notebook</title>
+<title>Autocorrelation Concepts – Applied Time Series Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1667,7 +1667,7 @@ async function fuseSearch(query, fuse, fuseOptions) {
   return results;
 }
 </script>
-<meta name="quarto:offset" content="./">
+<meta name="quarto:offset" content="../">
 <link href="data:image/png;base64,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" rel="icon" type="image/png">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
@@ -4711,157 +4711,18 @@ vertical-align: -.125em;
   }
 }</script>
 
-  <script>/*
- * Polyfill service v3.111.0
- * Disable minification (remove `.min` from URL path) for more info
-*/
-
-(function(self, undefined) {!function(t){"use strict";function e(t){switch(typeof t){case"undefined":return"undefined";case"boolean":return"boolean";case"number":return"number";case"string":return"string";default:return null===t?"null":"object"}}function r(t){return Object.prototype.toString.call(t).replace(/^\[object *|\]$/g,"")}function n(t){return"function"==typeof t}function o(t){if(null===t||t===B)throw TypeError();return Object(t)}function i(t){return t>>0}function f(t){return t>>>0}function u(e){if(!("TYPED_ARRAY_POLYFILL_NO_ARRAY_ACCESSORS"in t)){if(e.length>N)throw RangeError("Array too large for polyfill");var r;for(r=0;r<e.length;r+=1)!function n(t){try{Object.defineProperty(e,t,{get:function(){return e._getter(t)},set:function(r){e._setter(t,r)},enumerable:!0,configurable:!1})}catch(r){}}(r)}}function a(t,e){var r=32-e;return t<<r>>r}function h(t,e){var r=32-e;return t<<r>>>r}function y(t){return[255&t]}function s(t){return a(t[0],8)}function l(t){return[255&t]}function p(t){return h(t[0],8)}function c(t){return t=x(Number(t)),[t<0?0:t>255?255:255&t]}function b(t){return[255&t,t>>8&255]}function g(t){return a(t[1]<<8|t[0],16)}function E(t){return[255&t,t>>8&255]}function v(t){return h(t[1]<<8|t[0],16)}function _(t){return[255&t,t>>8&255,t>>16&255,t>>24&255]}function O(t){return a(t[3]<<24|t[2]<<16|t[1]<<8|t[0],32)}function d(t){return[255&t,t>>8&255,t>>16&255,t>>24&255]}function j(t){return h(t[3]<<24|t[2]<<16|t[1]<<8|t[0],32)}function P(t,e,r){function n(t){var e=m(t),r=t-e;return r<.5?e:r>.5?e+1:e%2?e+1:e}var o,i,f,u=(1<<e-1)-1;if(t!==t)i=(1<<e)-1,f=F(2,r-1),o=0;else if(t===Infinity||t===-Infinity)i=(1<<e)-1,f=0,o=t<0?1:0;else if(0===t)i=0,f=0,o=1/t==-Infinity?1:0;else if(o=t<0,(t=M(t))>=F(2,1-u)){i=Y(m(I(t)/S),1023);var a=t/F(2,i);a<1&&(i-=1,a*=2),a>=2&&(i+=1,a/=2);var h=F(2,r);f=n(a*h)-h,i+=u,f/h>=1&&(i+=1,f=0),i>2*u&&(i=(1<<e)-1,f=0)}else i=0,f=n(t/F(2,1-u-r));var y,s=[];for(y=r;y;y-=1)s.push(f%2?1:0),f=m(f/2);for(y=e;y;y-=1)s.push(i%2?1:0),i=m(i/2);s.push(o?1:0),s.reverse();for(var l=s.join(""),p=[];l.length;)p.unshift(parseInt(l.substring(0,8),2)),l=l.substring(8);return p}function T(t,e,r){var n,o,i,f,u,a,h,y,s=[];for(n=0;n<t.length;++n)for(i=t[n],o=8;o;o-=1)s.push(i%2?1:0),i>>=1;return s.reverse(),f=s.join(""),u=(1<<e-1)-1,a=parseInt(f.substring(0,1),2)?-1:1,h=parseInt(f.substring(1,1+e),2),y=parseInt(f.substring(1+e),2),h===(1<<e)-1?0!==y?NaN:a*Infinity:h>0?a*F(2,h-u)*(1+y/F(2,r)):0!==y?a*F(2,-(u-1))*(y/F(2,r)):a<0?-0:0}function w(t){return T(t,11,52)}function A(t){return P(t,11,52)}function L(t){return T(t,8,23)}function R(t){return P(t,8,23)}var B=void 0,N=1e5,S=Math.LN2,M=Math.abs,m=Math.floor,I=Math.log,U=Math.max,Y=Math.min,F=Math.pow,x=Math.round;!function(){var t=Object.defineProperty,e=!function(){try{return Object.defineProperty({},"x",{})}catch(t){return!1}}();t&&!e||(Object.defineProperty=function(e,r,n){if(t)try{return t(e,r,n)}catch(o){}if(e!==Object(e))throw TypeError("Object.defineProperty called on non-object");return Object.prototype.__defineGetter__&&"get"in n&&Object.prototype.__defineGetter__.call(e,r,n.get),Object.prototype.__defineSetter__&&"set"in n&&Object.prototype.__defineSetter__.call(e,r,n.set),"value"in n&&(e[r]=n.value),e})}(),function(){function a(t){if((t=i(t))<0)throw RangeError("ArrayBuffer size is not a small enough positive integer.");Object.defineProperty(this,"byteLength",{value:t}),Object.defineProperty(this,"_bytes",{value:Array(t)});for(var e=0;e<t;e+=1)this._bytes[e]=0}function h(){if(!arguments.length||"object"!=typeof arguments[0])return function(t){if((t=i(t))<0)throw RangeError("length is not a small enough positive integer.");Object.defineProperty(this,"length",{value:t}),Object.defineProperty(this,"byteLength",{value:t*this.BYTES_PER_ELEMENT}),Object.defineProperty(this,"buffer",{value:new a(this.byteLength)}),Object.defineProperty(this,"byteOffset",{value:0})}.apply(this,arguments);if(arguments.length>=1&&"object"===e(arguments[0])&&arguments[0]instanceof h)return function(t){if(this.constructor!==t.constructor)throw TypeError();var e=t.length*this.BYTES_PER_ELEMENT;Object.defineProperty(this,"buffer",{value:new a(e)}),Object.defineProperty(this,"byteLength",{value:e}),Object.defineProperty(this,"byteOffset",{value:0}),Object.defineProperty(this,"length",{value:t.length});for(var r=0;r<this.length;r+=1)this._setter(r,t._getter(r))}.apply(this,arguments);if(arguments.length>=1&&"object"===e(arguments[0])&&!(arguments[0]instanceof h)&&!(arguments[0]instanceof a||"ArrayBuffer"===r(arguments[0])))return function(t){var e=t.length*this.BYTES_PER_ELEMENT;Object.defineProperty(this,"buffer",{value:new a(e)}),Object.defineProperty(this,"byteLength",{value:e}),Object.defineProperty(this,"byteOffset",{value:0}),Object.defineProperty(this,"length",{value:t.length});for(var r=0;r<this.length;r+=1){var n=t[r];this._setter(r,Number(n))}}.apply(this,arguments);if(arguments.length>=1&&"object"===e(arguments[0])&&(arguments[0]instanceof a||"ArrayBuffer"===r(arguments[0])))return function(t,e,r){if((e=f(e))>t.byteLength)throw RangeError("byteOffset out of range");if(e%this.BYTES_PER_ELEMENT)throw RangeError("buffer length minus the byteOffset is not a multiple of the element size.");if(r===B){var n=t.byteLength-e;if(n%this.BYTES_PER_ELEMENT)throw RangeError("length of buffer minus byteOffset not a multiple of the element size");r=n/this.BYTES_PER_ELEMENT}else r=f(r),n=r*this.BYTES_PER_ELEMENT;if(e+n>t.byteLength)throw RangeError("byteOffset and length reference an area beyond the end of the buffer");Object.defineProperty(this,"buffer",{value:t}),Object.defineProperty(this,"byteLength",{value:n}),Object.defineProperty(this,"byteOffset",{value:e}),Object.defineProperty(this,"length",{value:r})}.apply(this,arguments);throw TypeError()}function P(t,e,r){var n=function(){Object.defineProperty(this,"constructor",{value:n}),h.apply(this,arguments),u(this)};"__proto__"in n?n.__proto__=h:(n.from=h.from,n.of=h.of),n.BYTES_PER_ELEMENT=t;var o=function(){};return o.prototype=T,n.prototype=new o,Object.defineProperty(n.prototype,"BYTES_PER_ELEMENT",{value:t}),Object.defineProperty(n.prototype,"_pack",{value:e}),Object.defineProperty(n.prototype,"_unpack",{value:r}),n}t.ArrayBuffer=t.ArrayBuffer||a,Object.defineProperty(h,"from",{value:function(t){return new this(t)}}),Object.defineProperty(h,"of",{value:function(){return new this(arguments)}});var T={};h.prototype=T,Object.defineProperty(h.prototype,"_getter",{value:function(t){if(arguments.length<1)throw SyntaxError("Not enough arguments");if((t=f(t))>=this.length)return B;var e,r,n=[];for(e=0,r=this.byteOffset+t*this.BYTES_PER_ELEMENT;e<this.BYTES_PER_ELEMENT;e+=1,r+=1)n.push(this.buffer._bytes[r]);return this._unpack(n)}}),Object.defineProperty(h.prototype,"get",{value:h.prototype._getter}),Object.defineProperty(h.prototype,"_setter",{value:function(t,e){if(arguments.length<2)throw SyntaxError("Not enough arguments");if(!((t=f(t))>=this.length)){var r,n,o=this._pack(e);for(r=0,n=this.byteOffset+t*this.BYTES_PER_ELEMENT;r<this.BYTES_PER_ELEMENT;r+=1,n+=1)this.buffer._bytes[n]=o[r]}}}),Object.defineProperty(h.prototype,"constructor",{value:h}),Object.defineProperty(h.prototype,"copyWithin",{value:function(t,e){var r=arguments[2],n=o(this),u=n.length,a=f(u);a=U(a,0);var h,y=i(t);h=y<0?U(a+y,0):Y(y,a);var s,l=i(e);s=l<0?U(a+l,0):Y(l,a);var p;p=r===B?a:i(r);var c;c=p<0?U(a+p,0):Y(p,a);var b,g=Y(c-s,a-h);for(s<h&&h<s+g?(b=-1,s=s+g-1,h=h+g-1):b=1;g>0;)n._setter(h,n._getter(s)),s+=b,h+=b,g-=1;return n}}),Object.defineProperty(h.prototype,"every",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();for(var o=arguments[1],i=0;i<r;i++)if(!t.call(o,e._getter(i),i,e))return!1;return!0}}),Object.defineProperty(h.prototype,"fill",{value:function(t){var e=arguments[1],r=arguments[2],n=o(this),u=n.length,a=f(u);a=U(a,0);var h,y=i(e);h=y<0?U(a+y,0):Y(y,a);var s;s=r===B?a:i(r);var l;for(l=s<0?U(a+s,0):Y(s,a);h<l;)n._setter(h,t),h+=1;return n}}),Object.defineProperty(h.prototype,"filter",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();for(var o=[],i=arguments[1],u=0;u<r;u++){var a=e._getter(u);t.call(i,a,u,e)&&o.push(a)}return new this.constructor(o)}}),Object.defineProperty(h.prototype,"find",{value:function(t){var e=o(this),r=e.length,i=f(r);if(!n(t))throw TypeError();for(var u=arguments.length>1?arguments[1]:B,a=0;a<i;){var h=e._getter(a),y=t.call(u,h,a,e);if(Boolean(y))return h;++a}return B}}),Object.defineProperty(h.prototype,"findIndex",{value:function(t){var e=o(this),r=e.length,i=f(r);if(!n(t))throw TypeError();for(var u=arguments.length>1?arguments[1]:B,a=0;a<i;){var h=e._getter(a),y=t.call(u,h,a,e);if(Boolean(y))return a;++a}return-1}}),Object.defineProperty(h.prototype,"forEach",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();for(var o=arguments[1],i=0;i<r;i++)t.call(o,e._getter(i),i,e)}}),Object.defineProperty(h.prototype,"indexOf",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(0===r)return-1;var n=0;if(arguments.length>0&&(n=Number(arguments[1]),n!==n?n=0:0!==n&&n!==1/0&&n!==-1/0&&(n=(n>0||-1)*m(M(n)))),n>=r)return-1;for(var o=n>=0?n:U(r-M(n),0);o<r;o++)if(e._getter(o)===t)return o;return-1}}),Object.defineProperty(h.prototype,"join",{value:function(t){if(this===B||null===this)throw TypeError();for(var e=Object(this),r=f(e.length),n=Array(r),o=0;o<r;++o)n[o]=e._getter(o);return n.join(t===B?",":t)}}),Object.defineProperty(h.prototype,"lastIndexOf",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(0===r)return-1;var n=r;arguments.length>1&&(n=Number(arguments[1]),n!==n?n=0:0!==n&&n!==1/0&&n!==-1/0&&(n=(n>0||-1)*m(M(n))));for(var o=n>=0?Y(n,r-1):r-M(n);o>=0;o--)if(e._getter(o)===t)return o;return-1}}),Object.defineProperty(h.prototype,"map",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();var o=[];o.length=r;for(var i=arguments[1],u=0;u<r;u++)o[u]=t.call(i,e._getter(u),u,e);return new this.constructor(o)}}),Object.defineProperty(h.prototype,"reduce",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();if(0===r&&1===arguments.length)throw TypeError();var o,i=0;for(o=arguments.length>=2?arguments[1]:e._getter(i++);i<r;)o=t.call(B,o,e._getter(i),i,e),i++;return o}}),Object.defineProperty(h.prototype,"reduceRight",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();if(0===r&&1===arguments.length)throw TypeError();var o,i=r-1;for(o=arguments.length>=2?arguments[1]:e._getter(i--);i>=0;)o=t.call(B,o,e._getter(i),i,e),i--;return o}}),Object.defineProperty(h.prototype,"reverse",{value:function(){if(this===B||null===this)throw TypeError();for(var t=Object(this),e=f(t.length),r=m(e/2),n=0,o=e-1;n<r;++n,--o){var i=t._getter(n);t._setter(n,t._getter(o)),t._setter(o,i)}return t}}),Object.defineProperty(h.prototype,"set",{value:function(t,e){if(arguments.length<1)throw SyntaxError("Not enough arguments");var r,n,o,i,u,a,h,y,s,l;if("object"==typeof arguments[0]&&arguments[0].constructor===this.constructor){if(r=arguments[0],(o=f(arguments[1]))+r.length>this.length)throw RangeError("Offset plus length of array is out of range");if(y=this.byteOffset+o*this.BYTES_PER_ELEMENT,s=r.length*this.BYTES_PER_ELEMENT,r.buffer===this.buffer){for(l=[],u=0,a=r.byteOffset;u<s;u+=1,a+=1)l[u]=r.buffer._bytes[a];for(u=0,h=y;u<s;u+=1,h+=1)this.buffer._bytes[h]=l[u]}else for(u=0,a=r.byteOffset,h=y;u<s;u+=1,a+=1,h+=1)this.buffer._bytes[h]=r.buffer._bytes[a]}else{if("object"!=typeof arguments[0]||"undefined"==typeof arguments[0].length)throw TypeError("Unexpected argument type(s)");if(n=arguments[0],i=f(n.length),(o=f(arguments[1]))+i>this.length)throw RangeError("Offset plus length of array is out of range");for(u=0;u<i;u+=1)a=n[u],this._setter(o+u,Number(a))}}}),Object.defineProperty(h.prototype,"slice",{value:function(t,e){for(var r=o(this),n=r.length,u=f(n),a=i(t),h=a<0?U(u+a,0):Y(a,u),y=e===B?u:i(e),s=y<0?U(u+y,0):Y(y,u),l=s-h,p=r.constructor,c=new p(l),b=0;h<s;){var g=r._getter(h);c._setter(b,g),++h,++b}return c}}),Object.defineProperty(h.prototype,"some",{value:function(t){if(this===B||null===this)throw TypeError();var e=Object(this),r=f(e.length);if(!n(t))throw TypeError();for(var o=arguments[1],i=0;i<r;i++)if(t.call(o,e._getter(i),i,e))return!0;return!1}}),Object.defineProperty(h.prototype,"sort",{value:function(t){function e(e,r){return e!==e&&r!==r?0:e!==e?1:r!==r?-1:t!==B?t(e,r):e<r?-1:e>r?1:0}if(this===B||null===this)throw TypeError();for(var r=Object(this),n=f(r.length),o=Array(n),i=0;i<n;++i)o[i]=r._getter(i);for(o.sort(e),i=0;i<n;++i)r._setter(i,o[i]);return r}}),Object.defineProperty(h.prototype,"subarray",{value:function(t,e){function r(t,e,r){return t<e?e:t>r?r:t}t=i(t),e=i(e),arguments.length<1&&(t=0),arguments.length<2&&(e=this.length),t<0&&(t=this.length+t),e<0&&(e=this.length+e),t=r(t,0,this.length),e=r(e,0,this.length);var n=e-t;return n<0&&(n=0),new this.constructor(this.buffer,this.byteOffset+t*this.BYTES_PER_ELEMENT,n)}});var N=P(1,y,s),S=P(1,l,p),I=P(1,c,p),F=P(2,b,g),x=P(2,E,v),k=P(4,_,O),C=P(4,d,j),z=P(4,R,L),D=P(8,A,w);t.Int8Array=t.Int8Array||N,t.Uint8Array=t.Uint8Array||S,t.Uint8ClampedArray=t.Uint8ClampedArray||I,t.Int16Array=t.Int16Array||F,t.Uint16Array=t.Uint16Array||x,t.Int32Array=t.Int32Array||k,t.Uint32Array=t.Uint32Array||C,t.Float32Array=t.Float32Array||z,t.Float64Array=t.Float64Array||D}(),function(){function e(t,e){return n(t.get)?t.get(e):t[e]}function o(t,e,n){if(!(t instanceof ArrayBuffer||"ArrayBuffer"===r(t)))throw TypeError();if((e=f(e))>t.byteLength)throw RangeError("byteOffset out of range");if(n=n===B?t.byteLength-e:f(n),e+n>t.byteLength)throw RangeError("byteOffset and length reference an area beyond the end of the buffer");Object.defineProperty(this,"buffer",{value:t}),Object.defineProperty(this,"byteLength",{value:n}),Object.defineProperty(this,"byteOffset",{value:e})}function i(t){return function r(n,o){if((n=f(n))+t.BYTES_PER_ELEMENT>this.byteLength)throw RangeError("Array index out of range");n+=this.byteOffset;for(var i=new Uint8Array(this.buffer,n,t.BYTES_PER_ELEMENT),u=[],h=0;h<t.BYTES_PER_ELEMENT;h+=1)u.push(e(i,h));return Boolean(o)===Boolean(a)&&u.reverse(),e(new t(new Uint8Array(u).buffer),0)}}function u(t){return function r(n,o,i){if((n=f(n))+t.BYTES_PER_ELEMENT>this.byteLength)throw RangeError("Array index out of range");var u,h,y=new t([o]),s=new Uint8Array(y.buffer),l=[];for(u=0;u<t.BYTES_PER_ELEMENT;u+=1)l.push(e(s,u));Boolean(i)===Boolean(a)&&l.reverse(),h=new Uint8Array(this.buffer,n,t.BYTES_PER_ELEMENT),h.set(l)}}var a=function(){var t=new Uint16Array([4660]);return 18===e(new Uint8Array(t.buffer),0)}();Object.defineProperty(o.prototype,"getUint8",{value:i(Uint8Array)}),Object.defineProperty(o.prototype,"getInt8",{value:i(Int8Array)}),Object.defineProperty(o.prototype,"getUint16",{value:i(Uint16Array)}),Object.defineProperty(o.prototype,"getInt16",{value:i(Int16Array)}),Object.defineProperty(o.prototype,"getUint32",{value:i(Uint32Array)}),Object.defineProperty(o.prototype,"getInt32",{value:i(Int32Array)}),Object.defineProperty(o.prototype,"getFloat32",{value:i(Float32Array)}),Object.defineProperty(o.prototype,"getFloat64",{value:i(Float64Array)}),Object.defineProperty(o.prototype,"setUint8",{value:u(Uint8Array)}),Object.defineProperty(o.prototype,"setInt8",{value:u(Int8Array)}),Object.defineProperty(o.prototype,"setUint16",{value:u(Uint16Array)}),Object.defineProperty(o.prototype,"setInt16",{value:u(Int16Array)}),Object.defineProperty(o.prototype,"setUint32",{value:u(Uint32Array)}),Object.defineProperty(o.prototype,"setInt32",{value:u(Int32Array)}),Object.defineProperty(o.prototype,"setFloat32",{value:u(Float32Array)}),Object.defineProperty(o.prototype,"setFloat64",{value:u(Float64Array)}),t.DataView=t.DataView||o}()}(self);if (!("defineProperty"in Object&&function(){try{var e={}
-return Object.defineProperty(e,"test",{value:42}),!0}catch(t){return!1}}()
-)) {!function(e){var t=Object.prototype.hasOwnProperty.call(Object.prototype,"__defineGetter__"),r="A property cannot both have accessors and be writable or have a value";Object.defineProperty=function n(o,i,f){if(e&&(o===window||o===document||o===Element.prototype||o instanceof Element))return e(o,i,f);if(null===o||!(o instanceof Object||"object"==typeof o))throw new TypeError("Object.defineProperty called on non-object");if(!(f instanceof Object))throw new TypeError("Property description must be an object");var c=String(i),a="value"in f||"writable"in f,p="get"in f&&typeof f.get,s="set"in f&&typeof f.set;if(p){if(p===undefined)return o;if("function"!==p)throw new TypeError("Getter must be a function");if(!t)throw new TypeError("Getters & setters cannot be defined on this javascript engine");if(a)throw new TypeError(r);Object.__defineGetter__.call(o,c,f.get)}else o[c]=f.value;if(s){if(s===undefined)return o;if("function"!==s)throw new TypeError("Setter must be a function");if(!t)throw new TypeError("Getters & setters cannot be defined on this javascript engine");if(a)throw new TypeError(r);Object.__defineSetter__.call(o,c,f.set)}return"value"in f&&(o[c]=f.value),o}}(Object.defineProperty);}if (!("name"in Function.prototype
-)) {!function(){var n=/^\s*function\s+([^(\s]*)\s*/,t=Function,e=t.prototype,r=e.constructor,o=function(o){var c,u;return o===t||o===r?u="Function":o!==e&&(c=(""+o).match(n),u=c&&c[1]),u||""};Object.defineProperty(e,"name",{get:function c(){var n=this,t=o(n);return n!==e&&Object.defineProperty(n,"name",{value:t,configurable:!0}),t},configurable:!0})}();}if (!("EPSILON"in Number
-)) {Object.defineProperty(Number,"EPSILON",{enumerable:!1,configurable:!1,writable:!1,value:Math.pow(2,-52)});}if (!("MAX_SAFE_INTEGER"in Number
-)) {Object.defineProperty(Number,"MAX_SAFE_INTEGER",{enumerable:!1,configurable:!1,writable:!1,value:Math.pow(2,53)-1});}if (!("MIN_SAFE_INTEGER"in Number
-)) {Object.defineProperty(Number,"MIN_SAFE_INTEGER",{enumerable:!1,configurable:!1,writable:!1,value:-(Math.pow(2,53)-1)});}function ArrayCreate(r){if(1/r==-Infinity&&(r=0),r>Math.pow(2,32)-1)throw new RangeError("Invalid array length");var n=[];return n.length=r,n}function Call(t,l){var n=arguments.length>2?arguments[2]:[];if(!1===IsCallable(t))throw new TypeError(Object.prototype.toString.call(t)+"is not a function.");return t.apply(l,n)}function CreateDataProperty(e,r,t){var a={value:t,writable:!0,enumerable:!0,configurable:!0};try{return Object.defineProperty(e,r,a),!0}catch(n){return!1}}function CreateDataPropertyOrThrow(t,r,o){var e=CreateDataProperty(t,r,o);if(!e)throw new TypeError("Cannot assign value `"+Object.prototype.toString.call(o)+"` to property `"+Object.prototype.toString.call(r)+"` on object `"+Object.prototype.toString.call(t)+"`");return e}function CreateMethodProperty(e,r,t){var a={value:t,writable:!0,enumerable:!1,configurable:!0};Object.defineProperty(e,r,a)}if (!("acosh"in Math
-)) {CreateMethodProperty(Math,"acosh",function t(a){return isNaN(a)?NaN:a<1?NaN:1===a?0:a===Infinity?Infinity:Math.log(a+Math.sqrt(a*a-1))});}if (!("asinh"in Math
-)) {CreateMethodProperty(Math,"asinh",function n(i){return isNaN(i)?NaN:0===i&&1/i===Infinity?0:0===i&&1/i==-Infinity?-0:i===Infinity?Infinity:i===-Infinity?-Infinity:Math.log(i+Math.sqrt(i*i+1))});}if (!("atanh"in Math
-)) {CreateMethodProperty(Math,"atanh",function n(t){return isNaN(t)?NaN:t<-1?NaN:t>1?NaN:-1===t?-Infinity:1===t?Infinity:0===t&&1/t===Infinity?0:0===t&&1/t==-Infinity?-0:Math.log((1+t)/(1-t))/2});}if (!("cbrt"in Math
-)) {CreateMethodProperty(Math,"cbrt",function n(t){if(isNaN(t))return NaN;if(0===t&&1/t===Infinity)return 0;if(0===t&&1/t==-Infinity)return-0;if(t===Infinity)return Infinity;if(t===-Infinity)return-Infinity;var i=Math.pow(Math.abs(t),1/3);return t<0?-i:i});}if (!("cosh"in Math
-)) {CreateMethodProperty(Math,"cosh",function n(t){if(isNaN(t))return NaN;if(0===t&&1/t===Infinity)return 1;if(0===t&&1/t==-Infinity)return 1;if(t===Infinity)return Infinity;if(t===-Infinity)return Infinity;if((t=Math.abs(t))>709){var i=Math.exp(.5*t);return i/2*i}return((i=Math.exp(t))+1/i)/2});}if (!("expm1"in Math
-)) {CreateMethodProperty(Math,"expm1",function n(i){return isNaN(i)?NaN:0===i&&1/i===Infinity?0:0===i&&1/i==-Infinity?-0:i===Infinity?Infinity:i===-Infinity?-1:i>-1e-6&&i<1e-6?i+i*i/2:Math.exp(i)-1});}if (!("fround"in Math
-)) {CreateMethodProperty(Math,"fround",function(n){return isNaN(n)?NaN:1/n==+Infinity||1/n==-Infinity||n===+Infinity||n===-Infinity?n:new Float32Array([n])[0]});}if (!("hypot"in Math
-)) {CreateMethodProperty(Math,"hypot",function t(n,r){if(0===arguments.length)return 0;for(var i=0,e=0,a=0;a<arguments.length;++a){if(arguments[a]===Infinity)return Infinity;if(arguments[a]===-Infinity)return Infinity;var f=Math.abs(Number(arguments[a]));f>e&&(i*=Math.pow(e/f,2),e=f),0===f&&0===e||(i+=Math.pow(f/e,2))}return e*Math.sqrt(i)});}if (!("log10"in Math
-)) {CreateMethodProperty(Math,"log10",function t(e){return Math.log(e)/Math.LN10});}if (!("log1p"in Math
-)) {CreateMethodProperty(Math,"log1p",function r(t){if(-1<(t=Number(t))&&t<1){for(var o=t,e=2;e<=300;e++)o+=Math.pow(-1,e-1)*Math.pow(t,e)/e;return o}return Math.log(1+t)});}if (!("log2"in Math
-)) {CreateMethodProperty(Math,"log2",function t(e){return Math.log(e)/Math.LN2});}if (!("sign"in Math
-)) {CreateMethodProperty(Math,"sign",function i(n){return n=Number(n),isNaN(n)?NaN:1/n==-Infinity?-0:1/n===Infinity?0:n<0?-1:n>0?1:void 0});}if (!("sinh"in Math
-)) {CreateMethodProperty(Math,"sinh",function r(t){var a=t<0?-1:1,e=Math.abs(t);if(e<22){if(e<Math.pow(2,-28))return t;var h=Math.exp(e)-1;return e<1?a*(2*h-h*h/(h+1))/2:a*(h+h/(h+1))/2}if(e<709.7822265625)return a*Math.exp(e)/2;var n=Math.exp(.5*e);return(h=a*n/2)*n});}if (!("tanh"in Math
-)) {CreateMethodProperty(Math,"tanh",function t(n){var e;return n===Infinity?1:n===-Infinity?-1:((e=Math.exp(2*n))-1)/(e+1)});}if (!("trunc"in Math
-)) {CreateMethodProperty(Math,"trunc",function t(r){return r<0?Math.ceil(r):Math.floor(r)});}if (!("freeze"in Object
-)) {CreateMethodProperty(Object,"freeze",function e(r){return r});}if (!("getPrototypeOf"in Object
-)) {CreateMethodProperty(Object,"getPrototypeOf",function t(o){if(o!==Object(o))throw new TypeError("Object.getPrototypeOf called on non-object");var e=o.__proto__;return e||null===e?e:"function"==typeof o.constructor&&o instanceof o.constructor?o.constructor.prototype:o instanceof Object?Object.prototype:null});}if (!("keys"in Object&&function(){return 2===Object.keys(arguments).length}(1,2)&&function(){try{return Object.keys(""),!0}catch(t){return!1}}()
-)) {CreateMethodProperty(Object,"keys",function(){"use strict";function t(){var t;try{t=Object.create({})}catch(r){return!0}return o.call(t,"__proto__")}function r(t){var r=n.call(t),e="[object Arguments]"===r;return e||(e="[object Array]"!==r&&null!==t&&"object"==typeof t&&"number"==typeof t.length&&t.length>=0&&"[object Function]"===n.call(t.callee)),e}var e=Object.prototype.hasOwnProperty,n=Object.prototype.toString,o=Object.prototype.propertyIsEnumerable,c=!o.call({toString:null},"toString"),l=o.call(function(){},"prototype"),i=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],u=function(t){var r=t.constructor;return r&&r.prototype===t},a={$console:!0,$external:!0,$frame:!0,$frameElement:!0,$frames:!0,$innerHeight:!0,$innerWidth:!0,$outerHeight:!0,$outerWidth:!0,$pageXOffset:!0,$pageYOffset:!0,$parent:!0,$scrollLeft:!0,$scrollTop:!0,$scrollX:!0,$scrollY:!0,$self:!0,$webkitIndexedDB:!0,$webkitStorageInfo:!0,$window:!0},f=function(){if("undefined"==typeof window)return!1;for(var t in window)try{if(!a["$"+t]&&e.call(window,t)&&null!==window[t]&&"object"==typeof window[t])try{u(window[t])}catch(r){return!0}}catch(r){return!0}return!1}(),p=function(t){if("undefined"==typeof window||!f)return u(t);try{return u(t)}catch(r){return!1}};return function s(o){var u="[object Function]"===n.call(o),a=r(o),f="[object String]"===n.call(o),s=[];if(o===undefined||null===o)throw new TypeError("Cannot convert undefined or null to object");var y=l&&u;if(f&&o.length>0&&!e.call(o,0))for(var h=0;h<o.length;++h)s.push(String(h));if(a&&o.length>0)for(var g=0;g<o.length;++g)s.push(String(g));else for(var w in o)t()&&"__proto__"===w||y&&"prototype"===w||!e.call(o,w)||s.push(String(w));if(c)for(var d=p(o),$=0;$<i.length;++$)d&&"constructor"===i[$]||!e.call(o,i[$])||s.push(i[$]);return s}}());}function Get(n,t){return n[t]}function HasOwnProperty(r,t){return Object.prototype.hasOwnProperty.call(r,t)}function HasProperty(n,r){return r in n}function IsArray(r){return"[object Array]"===Object.prototype.toString.call(r)}if (!("isArray"in Array
-)) {CreateMethodProperty(Array,"isArray",function r(e){return IsArray(e)});}function IsCallable(n){return"function"==typeof n}if (!("bind"in Function.prototype
-)) {CreateMethodProperty(Function.prototype,"bind",function t(n){var r=Array,o=Object,e=r.prototype,l=function g(){},p=e.slice,a=e.concat,i=e.push,c=Math.max,u=this;if(!IsCallable(u))throw new TypeError("Function.prototype.bind called on incompatible "+u);for(var y,h=p.call(arguments,1),s=function(){if(this instanceof y){var t=u.apply(this,a.call(h,p.call(arguments)));return o(t)===t?t:this}return u.apply(n,a.call(h,p.call(arguments)))},f=c(0,u.length-h.length),b=[],d=0;d<f;d++)i.call(b,"$"+d);return y=Function("binder","return function ("+b.join(",")+"){ return binder.apply(this, arguments); }")(s),u.prototype&&(l.prototype=u.prototype,y.prototype=new l,l.prototype=null),y});}function RequireObjectCoercible(e){if(null===e||e===undefined)throw TypeError(Object.prototype.toString.call(e)+" is not coercible to Object.");return e}function SameValueNonNumber(e,n){return e===n}function ToBoolean(o){return Boolean(o)}function ToNumber(r){return Number(r)}function ToObject(e){if(null===e||e===undefined)throw TypeError();return Object(e)}function GetV(t,e){return ToObject(t)[e]}function GetMethod(e,n){var r=GetV(e,n);if(null===r||r===undefined)return undefined;if(!1===IsCallable(r))throw new TypeError("Method not callable: "+n);return r}function ToUint32(n){var i=Number(n);return isNaN(i)||1/i===Infinity||1/i==-Infinity||i===Infinity||i===-Infinity?0:(i<0?-1:1)*Math.floor(Math.abs(i))>>>0}if (!("clz32"in Math
-)) {CreateMethodProperty(Math,"clz32",function t(r){var e=ToUint32(r);return e?32-e.toString(2).length:32});}if (!("imul"in Math
-)) {CreateMethodProperty(Math,"imul",function t(r,e){var n=ToUint32(r),o=ToUint32(e),i=n>>>16&65535,a=65535&n,u=o>>>16&65535,h=65535&o;return a*h+(i*h+a*u<<16>>>0)|0});}function Type(e){switch(typeof e){case"undefined":return"undefined";case"boolean":return"boolean";case"number":return"number";case"string":return"string";case"symbol":return"symbol";default:return null===e?"null":"Symbol"in self&&(e instanceof self.Symbol||e.constructor===self.Symbol)?"symbol":"object"}}if (!("isFinite"in Number
-)) {!function(){var e=self;CreateMethodProperty(Number,"isFinite",function i(n){return"number"===Type(n)&&e.isFinite(n)})}();}if (!("isNaN"in Number
-)) {!function(){var e=self;CreateMethodProperty(Number,"isNaN",function r(n){return"number"===Type(n)&&!!e.isNaN(n)})}();}if (!("isExtensible"in Object
-)) {!function(e){CreateMethodProperty(Object,"isExtensible",function t(n){return"object"===Type(n)&&(!e||e(n))})}(Object.isExtensible);}if (!("seal"in Object&&function(){try{return Object.seal("1"),!0}catch(t){return!1}}()
-)) {!function(e){CreateMethodProperty(Object,"seal",function t(c){return"object"===Type(c)?c:e?e(c):c})}(Object.seal);}if (!("flags"in RegExp.prototype
-)) {Object.defineProperty(RegExp.prototype,"flags",{configurable:!0,enumerable:!1,get:function(){var e=this;if("object"!==Type(e))throw new TypeError("Method called on incompatible type: must be an object.");var o="";return ToBoolean(Get(e,"global"))&&(o+="g"),ToBoolean(Get(e,"ignoreCase"))&&(o+="i"),ToBoolean(Get(e,"multiline"))&&(o+="m"),ToBoolean(Get(e,"unicode"))&&(o+="u"),ToBoolean(Get(e,"sticky"))&&(o+="y"),o}});}function CreateIterResultObject(e,r){if("boolean"!==Type(r))throw new Error;var t={};return CreateDataProperty(t,"value",e),CreateDataProperty(t,"done",r),t}function GetPrototypeFromConstructor(t,o){var r=Get(t,"prototype");return"object"!==Type(r)&&(r=o),r}function IsConstructor(t){return"object"===Type(t)&&("function"==typeof t&&!!t.prototype)}function IsRegExp(e){if("object"!==Type(e))return!1;var n="Symbol"in self&&"match"in self.Symbol?Get(e,self.Symbol.match):undefined;if(n!==undefined)return ToBoolean(n);try{var t=e.lastIndex;return e.lastIndex=0,RegExp.prototype.exec.call(e),!0}catch(l){}finally{e.lastIndex=t}return!1}function IteratorClose(r,t){if("object"!==Type(r["[[Iterator]]"]))throw new Error(Object.prototype.toString.call(r["[[Iterator]]"])+"is not an Object.");var e=r["[[Iterator]]"],o=GetMethod(e,"return");if(o===undefined)return t;try{var n=Call(o,e)}catch(c){var a=c}if(t)return t;if(a)throw a;if("object"!==Type(n))throw new TypeError("Iterator's return method returned a non-object.");return t}function IteratorComplete(t){if("object"!==Type(t))throw new Error(Object.prototype.toString.call(t)+"is not an Object.");return ToBoolean(Get(t,"done"))}function IteratorNext(t){if(arguments.length<2)var e=Call(t["[[NextMethod]]"],t["[[Iterator]]"]);else e=Call(t["[[NextMethod]]"],t["[[Iterator]]"],[arguments[1]]);if("object"!==Type(e))throw new TypeError("bad iterator");return e}function IteratorStep(t){var r=IteratorNext(t);return!0!==IteratorComplete(r)&&r}function IteratorValue(t){if("object"!==Type(t))throw new Error(Object.prototype.toString.call(t)+"is not an Object.");return Get(t,"value")}function OrdinaryToPrimitive(r,t){if("string"===t)var e=["toString","valueOf"];else e=["valueOf","toString"];for(var i=0;i<e.length;++i){var n=e[i],a=Get(r,n);if(IsCallable(a)){var o=Call(a,r);if("object"!==Type(o))return o}}throw new TypeError("Cannot convert to primitive.")}function SameValue(e,a){return Type(e)===Type(a)&&("number"===Type(e)?!(!isNaN(e)||!isNaN(a))||(0!==e||0!==a||1/e==1/a)&&e===a:SameValueNonNumber(e,a))}if (!("is"in Object
-)) {CreateMethodProperty(Object,"is",function e(t,r){return SameValue(t,r)});}function SameValueZero(n,e){return Type(n)===Type(e)&&("number"===Type(n)?!(!isNaN(n)||!isNaN(e))||(1/n===Infinity&&1/e==-Infinity||(1/n==-Infinity&&1/e===Infinity||n===e)):SameValueNonNumber(n,e))}function ToInteger(n){if("symbol"===Type(n))throw new TypeError("Cannot convert a Symbol value to a number");var t=Number(n);return isNaN(t)?0:1/t===Infinity||1/t==-Infinity||t===Infinity||t===-Infinity?t:(t<0?-1:1)*Math.floor(Math.abs(t))}if (!("copyWithin"in Array.prototype&&function(){try{var t=function n(){}
-t.prototype[0]="foo"
-var o=new t
-o[1]=1,o[2]=2,o.length=3
-var r=Array.prototype.copyWithin.call(o,1,0)
-return!(!r[0]||Object.prototype.hasOwnProperty.call(r,"0")||!Object.prototype.hasOwnProperty.call(r,"1")||"foo"!==r[0]||"foo"!==r[1]||1!==r[2]||3!==r.length)}catch(e){return!1}}()
-)) {CreateMethodProperty(Array.prototype,"copyWithin",function t(r,e){"use strict";var a=arguments[2];if(null===this||this===undefined)throw new TypeError("Cannot call method on "+this);var n=Object(this),i=ToInteger(n.length);i<=0&&(i=0),i=i===Infinity?Math.pow(2,53)-1:Math.min(i,Math.pow(2,53)-1),i=Math.max(i,0);var h,o=ToInteger(r);h=o<0?Math.max(i+o,0):Math.min(o,i);var M,m=ToInteger(e);M=m<0?Math.max(i+m,0):Math.min(m,i);var v;v=a===undefined?i:ToInteger(a);var p;p=v<0?Math.max(i+v,0):Math.min(v,i);var s,d=Math.min(p-M,i-h);for(M<h&&h<M+d?(s=-1,M=M+d-1,h=h+d-1):s=1;d>0;){var f=String(M),g=String(h);if(HasProperty(n,f)){var l=n[f];n[g]=l}else delete n[g];M+=s,h+=s,d-=1}return n});}if (!("isInteger"in Number
-)) {CreateMethodProperty(Number,"isInteger",function e(n){return"number"===Type(n)&&(!isNaN(n)&&n!==Infinity&&n!==-Infinity&&ToInteger(n)===n)});}if (!("isSafeInteger"in Number
-)) {CreateMethodProperty(Number,"isSafeInteger",function e(r){if("number"!==Type(r))return!1;if(isNaN(r)||r===Infinity||r===-Infinity)return!1;var t=ToInteger(r);return t===r&&Math.abs(t)<=Math.pow(2,53)-1});}function ToLength(n){var t=ToInteger(n);return t<=0?0:Math.min(t,Math.pow(2,53)-1)}function ToPrimitive(e){var t=arguments.length>1?arguments[1]:undefined;if("object"===Type(e)){if(arguments.length<2)var i="default";else t===String?i="string":t===Number&&(i="number");var r="function"==typeof self.Symbol&&"symbol"==typeof self.Symbol.toPrimitive?GetMethod(e,self.Symbol.toPrimitive):undefined;if(r!==undefined){var n=Call(r,e,[i]);if("object"!==Type(n))return n;throw new TypeError("Cannot convert exotic object to primitive.")}return"default"===i&&(i="number"),OrdinaryToPrimitive(e,i)}return e}function ToString(t){switch(Type(t)){case"symbol":throw new TypeError("Cannot convert a Symbol value to a string");case"object":return ToString(ToPrimitive(t,String));default:return String(t)}}if (!("fill"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"fill",function t(e){for(var r=arguments[1],n=arguments[2],o=ToObject(this),a=ToLength(Get(o,"length")),h=ToInteger(r),i=h<0?Math.max(a+h,0):Math.min(h,a),g=n===undefined?a:ToInteger(n),M=g<0?Math.max(a+g,0):Math.min(g,a);i<M;){o[ToString(i)]=e,i+=1}return o});}if (!("find"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"find",function e(r){var t=ToObject(this),n=ToLength(Get(t,"length"));if(!1===IsCallable(r))throw new TypeError(r+" is not a function");for(var o=arguments.length>1?arguments[1]:undefined,a=0;a<n;){var i=ToString(a),f=Get(t,i);if(ToBoolean(Call(r,o,[f,a,t])))return f;a+=1}return undefined});}if (!("findIndex"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"findIndex",function e(r){var t=ToObject(this),n=ToLength(Get(t,"length"));if(!1===IsCallable(r))throw new TypeError(r+" is not a function");for(var o=arguments.length>1?arguments[1]:undefined,a=0;a<n;){var i=ToString(a),l=Get(t,i);if(ToBoolean(Call(r,o,[l,a,t])))return a;a+=1}return-1});}if (!("forEach"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"forEach",function r(t){var e=ToObject(this),n=e instanceof String?e.split(""):e,o=ToLength(Get(e,"length"));if(!1===IsCallable(t))throw new TypeError(t+" is not a function");for(var a=arguments.length>1?arguments[1]:undefined,i=0;i<o;){var f=ToString(i);if(HasProperty(n,f)){var l=Get(n,f);Call(t,a,[l,i,e])}i+=1}return undefined});}if (!("includes"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"includes",function e(r){"use strict";var t=ToObject(this),o=ToLength(Get(t,"length"));if(0===o)return!1;var n=ToInteger(arguments[1]);if(n>=0)var a=n;else(a=o+n)<0&&(a=0);for(;a<o;){var i=Get(t,ToString(a));if(SameValueZero(r,i))return!0;a+=1}return!1});}if (!("indexOf"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"indexOf",function r(t){var e=ToObject(this),n=ToLength(Get(e,"length"));if(0===n)return-1;var i=ToInteger(arguments[1]);if(i>=n)return-1;if(i>=0)var o=1/i==-Infinity?0:i;else(o=n+i)<0&&(o=0);for(;o<n;){if(HasProperty(e,ToString(o))){if(t===Get(e,ToString(o)))return o}o+=1}return-1});}if (!("getOwnPropertyNames"in Object&&function(){try{return Object.getOwnPropertyNames(1),!0}catch(t){return!1}}()
-)) {!function(){var t={}.toString,e="".split,r=[].concat,o=Object.prototype.hasOwnProperty,c=Object.getOwnPropertyNames||Object.keys,n="object"==typeof self?c(self):[];CreateMethodProperty(Object,"getOwnPropertyNames",function l(a){var p=ToObject(a);if("[object Window]"===t.call(p))try{return c(p)}catch(j){return r.call([],n)}p="[object String]"==t.call(p)?e.call(p,""):Object(p);for(var i=c(p),s=["length","prototype"],O=0;O<s.length;O++){var b=s[O];o.call(p,b)&&!i.includes(b)&&i.push(b)}if(i.includes("__proto__")){var f=i.indexOf("__proto__");i.splice(f,1)}return i})}();}if (!("endsWith"in String.prototype
-)) {CreateMethodProperty(String.prototype,"endsWith",function e(t){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(t))throw new TypeError("First argument to String.prototype.endsWith must not be a regular expression");var o=ToString(t),s=i.length,g=r===undefined?s:ToInteger(r),h=Math.min(Math.max(g,0),s),u=o.length,a=h-u;return!(a<0)&&i.substr(a,u)===o});}if (!("includes"in String.prototype
-)) {CreateMethodProperty(String.prototype,"includes",function e(t){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(t))throw new TypeError("First argument to String.prototype.includes must not be a regular expression");var o=ToString(t),g=ToInteger(r),a=i.length,p=Math.min(Math.max(g,0),a);return-1!==String.prototype.indexOf.call(i,o,p)});}if (!("repeat"in String.prototype
-)) {CreateMethodProperty(String.prototype,"repeat",function r(e){"use strict";var t=RequireObjectCoercible(this),n=ToString(t),o=ToInteger(e);if(o<0)throw new RangeError("Invalid count value");if(o===Infinity)throw new RangeError("Invalid count value");return 0===o?"":new Array(o+1).join(n)});}if (!("startsWith"in String.prototype
-)) {CreateMethodProperty(String.prototype,"startsWith",function t(e){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(e))throw new TypeError("First argument to String.prototype.startsWith must not be a regular expression");var o=ToString(e),s=ToInteger(r),a=i.length,g=Math.min(Math.max(s,0),a);return!(o.length+g>a)&&0===i.substr(g).indexOf(e)});}function ToPropertyKey(r){var i=ToPrimitive(r,String);return"symbol"===Type(i)?i:ToString(i)}if (!("getOwnPropertyDescriptor"in Object&&"function"==typeof Object.getOwnPropertyDescriptor&&function(){try{return"3"===Object.getOwnPropertyDescriptor("13.7",1).value}catch(t){return!1}}()
-)) {!function(){var e=Object.getOwnPropertyDescriptor,t=function(){try{return 1===Object.defineProperty(document.createElement("div"),"one",{get:function(){return 1}}).one}catch(e){return!1}},r={}.toString,n="".split;CreateMethodProperty(Object,"getOwnPropertyDescriptor",function c(o,i){var a=ToObject(o);a=("string"===Type(a)||a instanceof String)&&"[object String]"==r.call(o)?n.call(o,""):Object(o);var u=ToPropertyKey(i);if(t)try{return e(a,u)}catch(l){}if(HasOwnProperty(a,u))return{enumerable:!0,configurable:!0,writable:!0,value:a[u]}})}();}if (!("assign"in Object
-)) {CreateMethodProperty(Object,"assign",function e(t,r){var n=ToObject(t);if(1===arguments.length)return n;var o,c,a,l,i=Array.prototype.slice.call(arguments,1);for(o=0;o<i.length;o++){var p=i[o];for(p===undefined||null===p?a=[]:(l="[object String]"===Object.prototype.toString.call(p)?String(p).split(""):ToObject(p),a=Object.keys(l)),c=0;c<a.length;c++){var b,y=a[c];try{var g=Object.getOwnPropertyDescriptor(l,y);b=g!==undefined&&!0===g.enumerable}catch(u){b=Object.prototype.propertyIsEnumerable.call(l,y)}if(b){var j=Get(l,y);n[y]=j}}}return n});}if (!("defineProperties"in Object
-)) {CreateMethodProperty(Object,"defineProperties",function e(r,t){if("object"!==Type(r))throw new TypeError("Object.defineProperties called on non-object");for(var o=ToObject(t),n=Object.keys(o),c=[],i=0;i<n.length;i++){var b=n[i],f=Object.getOwnPropertyDescriptor(o,b);if(f!==undefined&&f.enumerable){var p=Get(o,b),a=p;c.push([b,a])}}for(var j=0;j<c.length;j++){var d=c[j][0];a=c[j][1],Object.defineProperty(r,d,a)}return r});}if (!("create"in Object
-)) {!function(){function e(){}if({__proto__:null}instanceof Object)t=function(){var e=document.createElement("iframe");e.style.display="none";var o=document.body||document.documentElement;o.appendChild(e),e.src="javascript:";var n=e.contentWindow.Object.prototype;o.removeChild(e),e=null,delete n.constructor,delete n.hasOwnProperty,delete n.propertyIsEnumerable,delete n.isPrototypeOf,delete n.toLocaleString,delete n.toString,delete n.valueOf;var r=function l(){};return r.prototype=n,t=function(){return new r},new r};else var t=function(){return{__proto__:null}};CreateMethodProperty(Object,"create",function o(n,r){if("object"!==Type(n)&&"null"!==Type(n))throw new TypeError("Object prototype may only be an Object or null");if("null"===Type(n))var l=t();else e.prototype=n,l=new e,l.__proto__=n,l.constructor.prototype=n,l.__proto__=n;return 1 in arguments?Object.defineProperties(l,r):l})}();}function OrdinaryCreateFromConstructor(r,e){var t=arguments[2]||{},o=GetPrototypeFromConstructor(r,e),a=Object.create(o);for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&Object.defineProperty(a,n,{configurable:!0,enumerable:!1,writable:!0,value:t[n]});return a}function Construct(r){var t=arguments.length>2?arguments[2]:r,o=arguments.length>1?arguments[1]:[];if(!IsConstructor(r))throw new TypeError("F must be a constructor.");if(!IsConstructor(t))throw new TypeError("newTarget must be a constructor.");if(t===r)return new(Function.prototype.bind.apply(r,[null].concat(o)));var n=OrdinaryCreateFromConstructor(t,Object.prototype);return Call(r,n,o)}if (!("of"in Array
-)) {CreateMethodProperty(Array,"of",function r(){var r=arguments.length,t=arguments,e=this;if(IsConstructor(e))var a=Construct(e,[r]);else a=ArrayCreate(r);for(var o=0;o<r;){var n=t[o],h=ToString(o);CreateDataPropertyOrThrow(a,h,n),o+=1}return a.length=r,a});}function ArraySpeciesCreate(e,r){if(0===r&&1/r==-Infinity&&(r=0),!1===IsArray(e))return ArrayCreate(r);var n=Get(e,"constructor");if("object"===Type(n)&&null===(n="Symbol"in self&&"species"in self.Symbol?Get(n,self.Symbol.species):undefined)&&(n=undefined),n===undefined)return ArrayCreate(r);if(!IsConstructor(n))throw new TypeError("C must be a constructor");return Construct(n,[r])}if (!("filter"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"filter",function r(e){var t=ToObject(this),o=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var a=arguments.length>1?arguments[1]:undefined,n=ArraySpeciesCreate(t,0),i=0,l=0;i<o;){var f=ToString(i);if(HasProperty(t,f)){var h=Get(t,f);ToBoolean(Call(e,a,[h,i,t]))&&(CreateDataPropertyOrThrow(n,ToString(l),h),l+=1)}i+=1}return n});}if (!("map"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"map",function r(e){var t=ToObject(this),a=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var o=arguments.length>1?arguments[1]:undefined,n=ArraySpeciesCreate(t,a),i=0;i<a;){var p=ToString(i);if(HasProperty(t,p)){var h=Get(t,p),l=Call(e,o,[h,i,t]);CreateDataPropertyOrThrow(n,p,l)}i+=1}return n});}if (!("sort"in Array.prototype&&function(){var r={length:3,0:2,1:1,2:3}
-return Array.prototype.sort.call(r,function(r,t){return r-t})===r}()
-)) {"use strict";var origSort=Array.prototype.sort;CreateMethodProperty(Array.prototype,"sort",function r(t){if(t!==undefined&&!1===IsCallable(t))throw new TypeError("The comparison function must be either a function or undefined");if(t===undefined)origSort.call(this);else{var e=Array.prototype.map.call(this,function(r,t){return{item:r,index:t}});origSort.call(e,function(r,e){var i=t.call(undefined,r.item,e.item);return 0===i?r.index-e.index:i});for(var i in e)Object.prototype.hasOwnProperty.call(e,i)&&e[i].item!==this[i]&&(this[i]=e[i].item)}return this});}if (!("setPrototypeOf"in Object
-)) {!function(){if(!Object.setPrototypeOf){var t,e,o=Object.getOwnPropertyNames,r=Object.getOwnPropertyDescriptor,n=Object.create,c=Object.defineProperty,_=Object.getPrototypeOf,f=Object.prototype,p=function(t,e){return o(e).forEach(function(o){c(t,o,r(e,o))}),t},O=function i(t,e){return p(n(e),t)};try{t=r(f,"__proto__").set,t.call({},null),e=function a(e,o){return t.call(e,o),e}}catch(u){t={__proto__:null},t instanceof Object?e=O:(t.__proto__=f,e=t instanceof Object?function o(t,e){return t.__proto__=e,t}:function r(t,e){return _(t)?(t.__proto__=e,t):O(t,e)})}CreateMethodProperty(Object,"setPrototypeOf",e)}}();}if (!("Symbol"in self&&0===self.Symbol.length
-)) {!function(e,r,n){"use strict";function t(e){if("symbol"===Type(e))return e;throw TypeError(e+" is not a symbol")}var u,o=function(){try{var r={};return e.defineProperty(r,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!r.t}catch(n){return!1}}(),i=0,a=""+Math.random(),c="__symbol:",l=c.length,f="__symbol@@"+a,s={},v="defineProperty",y="defineProperties",b="getOwnPropertyNames",p="getOwnPropertyDescriptor",h="propertyIsEnumerable",m=e.prototype,d=m.hasOwnProperty,g=m[h],w=m.toString,S=Array.prototype.concat,P=e.getOwnPropertyNames?e.getOwnPropertyNames(self):[],O=e[b],j=function $(e){if("[object Window]"===w.call(e))try{return O(e)}catch(r){return S.call([],P)}return O(e)},E=e[p],N=e.create,T=e.keys,_=e.freeze||e,k=e[v],F=e[y],I=E(e,b),x=function(e,r,n){if(!d.call(e,f))try{k(e,f,{enumerable:!1,configurable:!1,writable:!1,value:{}})}catch(t){e[f]={}}e[f]["@@"+r]=n},z=function(e,r){var n=N(e);return j(r).forEach(function(e){q.call(r,e)&&L(n,e,r[e])}),n},A=function(e){var r=N(e);return r.enumerable=!1,r},D=function ee(){},M=function(e){return e!=f&&!d.call(H,e)},W=function(e){return e!=f&&d.call(H,e)},q=function re(e){var r=""+e;return W(r)?d.call(this,r)&&this[f]&&this[f]["@@"+r]:g.call(this,e)},B=function(r){var n={enumerable:!1,configurable:!0,get:D,set:function(e){u(this,r,{enumerable:!1,configurable:!0,writable:!0,value:e}),x(this,r,!0)}};try{k(m,r,n)}catch(o){m[r]=n.value}H[r]=k(e(r),"constructor",J);var t=E(G.prototype,"description");return t&&k(H[r],"description",t),_(H[r])},C=function(e){var r=t(e);if(Y){var n=V(r);if(""!==n)return n.slice(1,-1)}if(s[r]!==undefined)return s[r];var u=r.toString(),o=u.lastIndexOf("0.");return u=u.slice(10,o),""===u?undefined:u},G=function ne(){var r=arguments[0];if(this instanceof ne)throw new TypeError("Symbol is not a constructor");var n=c.concat(r||"",a,++i);r===undefined||null!==r&&!isNaN(r)&&""!==String(r)||(s[n]=String(r));var t=B(n);return o||e.defineProperty(t,"description",{configurable:!0,enumerable:!1,value:C(t)}),t},H=N(null),J={value:G},K=function(e){return H[e]},L=function te(e,r,n){var t=""+r;return W(t)?(u(e,t,n.enumerable?A(n):n),x(e,t,!!n.enumerable)):k(e,r,n),e},Q=function(e){return function(r){return d.call(e,f)&&d.call(e[f],"@@"+r)}},R=function ue(e){return j(e).filter(e===m?Q(e):W).map(K)};I.value=L,k(e,v,I),I.value=R,k(e,"getOwnPropertySymbols",I),I.value=function oe(e){return j(e).filter(M)},k(e,b,I),I.value=function ie(e,r){var n=R(r);return n.length?T(r).concat(n).forEach(function(n){q.call(r,n)&&L(e,n,r[n])}):F(e,r),e},k(e,y,I),I.value=q,k(m,h,I),I.value=G,k(n,"Symbol",I),I.value=function(e){var r=c.concat(c,e,a);return r in m?H[r]:B(r)},k(G,"for",I),I.value=function(e){if(M(e))throw new TypeError(e+" is not a symbol");return d.call(H,e)?e.slice(2*l,-a.length):void 0},k(G,"keyFor",I),I.value=function ae(e,r){var n=E(e,r);return n&&W(r)&&(n.enumerable=q.call(e,r)),n},k(e,p,I),I.value=function ce(e,r){return 1===arguments.length||void 0===r?N(e):z(e,r)},k(e,"create",I);var U=null===function(){return this}.call(null);if(I.value=U?function(){var e=w.call(this);return"[object String]"===e&&W(this)?"[object Symbol]":e}:function(){if(this===window)return"[object Null]";var e=w.call(this);return"[object String]"===e&&W(this)?"[object Symbol]":e},k(m,"toString",I),u=function(e,r,n){var t=E(m,r);delete m[r],k(e,r,n),e!==m&&k(m,r,t)},function(){try{var r={};return e.defineProperty(r,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!r.t}catch(n){return!1}}()){var V;try{V=Function("s","var v = s.valueOf(); return { [v]() {} }[v].name;")}catch(Z){}var X=function(){},Y=V&&"inferred"===X.name?V:null;e.defineProperty(n.Symbol.prototype,"description",{configurable:!0,enumerable:!1,get:function(){return C(this)}})}}(Object,0,self);}if (!("Symbol"in self&&"hasInstance"in self.Symbol
-)) {Object.defineProperty(Symbol,"hasInstance",{value:Symbol("hasInstance")});}if (!("Symbol"in self&&"isConcatSpreadable"in self.Symbol
-)) {Object.defineProperty(Symbol,"isConcatSpreadable",{value:Symbol("isConcatSpreadable")});}if (!("Symbol"in self&&"iterator"in self.Symbol
-)) {Object.defineProperty(self.Symbol,"iterator",{value:self.Symbol("iterator")});}function GetIterator(t){var e=arguments.length>1?arguments[1]:GetMethod(t,Symbol.iterator),r=Call(e,t);if("object"!==Type(r))throw new TypeError("bad iterator");var o=GetV(r,"next"),a=Object.create(null);return a["[[Iterator]]"]=r,a["[[NextMethod]]"]=o,a["[[Done]]"]=!1,a}if (!("Symbol"in self&&"match"in self.Symbol
-)) {Object.defineProperty(Symbol,"match",{value:Symbol("match")});}if (!("Symbol"in self&&"replace"in self.Symbol
-)) {Object.defineProperty(Symbol,"replace",{value:Symbol("replace")});}if (!("Symbol"in self&&"search"in self.Symbol
-)) {Object.defineProperty(Symbol,"search",{value:Symbol("search")});}if (!("Symbol"in self&&"species"in self.Symbol
-)) {Object.defineProperty(Symbol,"species",{value:Symbol("species")});}if (!("Map"in self&&function(t){try{var n=new t.Map([[1,1],[2,2]])
-return 0===t.Map.length&&2===n.size&&"Symbol"in t&&"iterator"in t.Symbol&&"function"==typeof n[t.Symbol.iterator]}catch(e){return!1}}(self)
-)) {!function(e){function t(e,t){if("object"!==Type(e))throw new TypeError("createMapIterator called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("createMapIterator called on incompatible receiver "+Object.prototype.toString.call(e));var r=Object.create(u);return Object.defineProperty(r,"[[Map]]",{configurable:!0,enumerable:!1,writable:!0,value:e}),Object.defineProperty(r,"[[MapNextIndex]]",{configurable:!0,enumerable:!1,writable:!0,value:0}),Object.defineProperty(r,"[[MapIterationKind]]",{configurable:!0,enumerable:!1,writable:!0,value:t}),r}var r=function(){try{var e={};return Object.defineProperty(e,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!e.t}catch(t){return!1}}(),o=0,a=Symbol("meta_"+(1e8*Math.random()+"").replace(".","")),n=function(e){if("object"==typeof e?null!==e:"function"==typeof e){if(!Object.isExtensible(e))return!1;if(!Object.prototype.hasOwnProperty.call(e,a)){var t=typeof e+"-"+ ++o;Object.defineProperty(e,a,{configurable:!1,enumerable:!1,writable:!1,value:t})}return e[a]}return""+e},i=function(e,t){var r=n(t);if(!1===r)return p(e,t);var o=e._table[r];return o!==undefined&&o},p=function(e,t){for(var r=0;r<e._keys.length;r++){var o=e._keys[r];if(o!==c&&SameValueZero(o,t))return r}return!1},l=function(e,t,r){var o=n(t);return!1!==o&&(!1===r?delete e._table[o]:e._table[o]=r,!0)},c=Symbol("undef"),y=function f(){if(!(this instanceof f))throw new TypeError('Constructor Map requires "new"');var e=OrdinaryCreateFromConstructor(this,f.prototype,{_table:{},_keys:[],_values:[],_size:0,_es6Map:!0});r||Object.defineProperty(e,"size",{configurable:!0,enumerable:!1,writable:!0,value:0});var t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var o=e.set;if(!IsCallable(o))throw new TypeError("Map.prototype.set is not a function");try{for(var a=GetIterator(t);;){var n=IteratorStep(a);if(!1===n)return e;var i=IteratorValue(n);if("object"!==Type(i))try{throw new TypeError("Iterator value "+i+" is not an entry object")}catch(u){return IteratorClose(a,u)}try{var p=i[0],l=i[1];o.call(e,p,l)}catch(s){return IteratorClose(a,s)}}}catch(s){if(Array.isArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var c,y=t.length;for(c=0;c<y;c++)o.call(e,t[c][0],t[c][1])}}return e};Object.defineProperty(y,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),r?Object.defineProperty(y,Symbol.species,{configurable:!0,enumerable:!1,get:function(){return this},set:undefined}):CreateMethodProperty(y,Symbol.species,y),CreateMethodProperty(y.prototype,"clear",function b(){var e=this;if("object"!==Type(e))throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._keys,o=0;o<t.length;o++)e._keys[o]=c,e._values[o]=c;return this._size=0,r||(this.size=this._size),this._table={},undefined}),CreateMethodProperty(y.prototype,"constructor",y),CreateMethodProperty(y.prototype,"delete",function(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(t));var o=i(t,e);if(!1!==o){var a=t._keys[o];if(a!==c&&SameValueZero(a,e))return this._keys[o]=c,this._values[o]=c,this._size=--this._size,r||(this.size=this._size),l(this,e,!1),!0}return!1}),CreateMethodProperty(y.prototype,"entries",function h(){return t(this,"key+value")}),CreateMethodProperty(y.prototype,"forEach",function(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!IsCallable(e))throw new TypeError(Object.prototype.toString.call(e)+" is not a function.");if(arguments[1])var r=arguments[1];for(var o=t._keys,a=0;a<o.length;a++)t._keys[a]!==c&&t._values[a]!==c&&e.call(r,t._values[a],t._keys[a],t);return undefined}),CreateMethodProperty(y.prototype,"get",function d(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.get called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.get called on incompatible receiver "+Object.prototype.toString.call(t));var r=i(t,e);if(!1!==r){var o=t._keys[r];if(o!==c&&SameValueZero(o,e))return t._values[r]}return undefined}),CreateMethodProperty(y.prototype,"has",function v(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Map.prototype.has called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.has called on incompatible receiver "+Object.prototype.toString.call(t));var r=i(t,e);if(!1!==r){var o=t._keys[r];if(o!==c&&SameValueZero(o,e))return!0}return!1}),CreateMethodProperty(y.prototype,"keys",function M(){return t(this,"key")}),CreateMethodProperty(y.prototype,"set",function w(e,t){var o=this;if("object"!==Type(o))throw new TypeError("Method Map.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));if(!0!==o._es6Map)throw new TypeError("Method Map.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));var a=i(o,e);if(!1!==a)o._values[a]=t;else{-0===e&&(e=0);var n={"[[Key]]":e,"[[Value]]":t};o._keys.push(n["[[Key]]"]),o._values.push(n["[[Value]]"]),l(o,e,o._keys.length-1),++o._size,r||(o.size=o._size)}return o}),r&&Object.defineProperty(y.prototype,"size",{configurable:!0,enumerable:!1,get:function(){var e=this;if("object"!==Type(e))throw new TypeError("Method Map.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("Method Map.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));return this._size},set:undefined}),CreateMethodProperty(y.prototype,"values",function j(){return t(this,"value")}),CreateMethodProperty(y.prototype,Symbol.iterator,y.prototype.entries),"name"in y||Object.defineProperty(y,"name",{configurable:!0,enumerable:!1,writable:!1,value:"Map"});var u={};Object.defineProperty(u,"isMapIterator",{configurable:!1,enumerable:!1,writable:!1,value:!0}),CreateMethodProperty(u,"next",function _(){var e=this;if("object"!==Type(e))throw new TypeError("Method %MapIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));if(!e.isMapIterator)throw new TypeError("Method %MapIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));var t=e["[[Map]]"],r=e["[[MapNextIndex]]"],o=e["[[MapIterationKind]]"];if(t===undefined)return CreateIterResultObject(undefined,!0);if(!t._es6Map)throw new Error(Object.prototype.toString.call(t)+" has a [[MapData]] internal slot.");for(var a=t._keys,n=a.length;r<n;){var i=Object.create(null);if(i["[[Key]]"]=t._keys[r],i["[[Value]]"]=t._values[r],r+=1,e["[[MapNextIndex]]"]=r,i["[[Key]]"]!==c){if("key"===o)var p=i["[[Key]]"];else if("value"===o)p=i["[[Value]]"];else{if("key+value"!==o)throw new Error;p=[i["[[Key]]"],i["[[Value]]"]]}return CreateIterResultObject(p,!1)}}return e["[[Map]]"]=undefined,CreateIterResultObject(undefined,!0)}),CreateMethodProperty(u,Symbol.iterator,function g(){return this});try{CreateMethodProperty(e,"Map",y)}catch(s){e.Map=y}}(self);}if (!("Set"in self&&function(){try{var e=new self.Set([1,2])
-return 0===self.Set.length&&2===e.size&&"Symbol"in self&&"iterator"in self.Symbol&&"function"==typeof e[self.Symbol.iterator]}catch(t){return!1}}()
-)) {!function(e){function t(e,t){if("object"!=typeof e)throw new TypeError("createSetIterator called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("createSetIterator called on incompatible receiver "+Object.prototype.toString.call(e));var r=Object.create(i);return Object.defineProperty(r,"[[IteratedSet]]",{configurable:!0,enumerable:!1,writable:!0,value:e}),Object.defineProperty(r,"[[SetNextIndex]]",{configurable:!0,enumerable:!1,writable:!0,value:0}),Object.defineProperty(r,"[[SetIterationKind]]",{configurable:!0,enumerable:!1,writable:!0,value:t}),r}var r=function(){try{var e={};return Object.defineProperty(e,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!e.t}catch(t){return!1}}(),o=Symbol("undef"),n=function c(){if(!(this instanceof c))throw new TypeError('Constructor Set requires "new"');var e=OrdinaryCreateFromConstructor(this,c.prototype,{_values:[],_size:0,_es6Set:!0});r||Object.defineProperty(e,"size",{configurable:!0,enumerable:!1,writable:!0,value:0});var t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var o=e.add;if(!IsCallable(o))throw new TypeError("Set.prototype.add is not a function");try{for(var n=GetIterator(t);;){var a=IteratorStep(n);if(!1===a)return e;var i=IteratorValue(a);try{o.call(e,i)}catch(y){return IteratorClose(n,y)}}}catch(y){if(!Array.isArray(t)&&"[object Arguments]"!==Object.prototype.toString.call(t)&&!t.callee)throw y;var l,p=t.length;for(l=0;l<p;l++)o.call(e,t[l])}return e};Object.defineProperty(n,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),r?Object.defineProperty(n,Symbol.species,{configurable:!0,enumerable:!1,get:function(){return this},set:undefined}):CreateMethodProperty(n,Symbol.species,n),CreateMethodProperty(n.prototype,"add",function p(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.add called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.add called on incompatible receiver "+Object.prototype.toString.call(t));for(var n=t._values,a=0;a<n.length;a++){var i=n[a];if(i!==o&&SameValueZero(i,e))return t}return 0===e&&1/e==-Infinity&&(e=0),t._values.push(e),this._size=++this._size,r||(this.size=this._size),t}),CreateMethodProperty(n.prototype,"clear",function y(){var e=this;if("object"!=typeof e)throw new TypeError("Method Set.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("Method Set.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._values,n=0;n<t.length;n++)t[n]=o;return this._size=0,r||(this.size=this._size),undefined}),CreateMethodProperty(n.prototype,"constructor",n),CreateMethodProperty(n.prototype,"delete",function(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(t));for(var n=t._values,a=0;a<n.length;a++){var i=n[a];if(i!==o&&SameValueZero(i,e))return n[a]=o,this._size=--this._size,r||(this.size=this._size),!0}return!1}),CreateMethodProperty(n.prototype,"entries",function u(){return t(this,"key+value")}),CreateMethodProperty(n.prototype,"forEach",function f(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!IsCallable(e))throw new TypeError(Object.prototype.toString.call(e)+" is not a function.");if(arguments[1])var r=arguments[1];for(var n=t._values,a=0;a<n.length;a++){var i=n[a];i!==o&&e.call(r,i,i,t)}return undefined}),CreateMethodProperty(n.prototype,"has",function d(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));for(var r=t._values,n=0;n<r.length;n++){var a=r[n];if(a!==o&&SameValueZero(a,e))return!0}return!1});var a=function h(){return t(this,"value")};CreateMethodProperty(n.prototype,"values",a),CreateMethodProperty(n.prototype,"keys",a),r&&Object.defineProperty(n.prototype,"size",{configurable:!0,enumerable:!1,get:function(){var e=this;if("object"!=typeof e)throw new TypeError("Method Set.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("Method Set.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._values,r=0,n=0;n<t.length;n++){t[n]!==o&&(r+=1)}return r},set:undefined}),CreateMethodProperty(n.prototype,Symbol.iterator,a),"name"in n||Object.defineProperty(n,"name",{configurable:!0,enumerable:!1,writable:!1,value:"Set"});var i={};Object.defineProperty(i,"isSetIterator",{configurable:!1,enumerable:!1,writable:!1,value:!0}),CreateMethodProperty(i,"next",function b(){var e=this;if("object"!=typeof e)throw new TypeError("Method %SetIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));if(!e.isSetIterator)throw new TypeError("Method %SetIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));var t=e["[[IteratedSet]]"],r=e["[[SetNextIndex]]"],n=e["[[SetIterationKind]]"];if(t===undefined)return CreateIterResultObject(undefined,!0);if(!t._es6Set)throw new Error(Object.prototype.toString.call(t)+" does not have [[SetData]] internal slot.");for(var a=t._values,i=a.length;r<i;){var l=a[r];if(r+=1,e["[[SetNextIndex]]"]=r,l!==o)return"key+value"===n?CreateIterResultObject([l,l],!1):CreateIterResultObject(l,!1)}return e["[[IteratedSet]]"]=undefined,CreateIterResultObject(undefined,!0)}),CreateMethodProperty(i,Symbol.iterator,function s(){return this});try{CreateMethodProperty(e,"Set",n)}catch(l){e.Set=n}}(self);}if (!("from"in Array&&function(){try{return Array.from({length:-Infinity}),"a"===Array.from(new self.Set(["a"]))[0]&&"a"===Array.from(new self.Map([["a","one"]]))[0][0]}catch(r){return!1}}()
-)) {!function(){function r(r){return"string"==typeof r||"object"==typeof r&&"[object String]"===t.call(r)}var t=Object.prototype.toString,e=String.prototype.match;CreateMethodProperty(Array,"from",function o(t){var o=this,a=arguments.length>1?arguments[1]:undefined;if(a===undefined)var n=!1;else{if(!1===IsCallable(a))throw new TypeError(Object.prototype.toString.call(a)+" is not a function.");var i=arguments.length>2?arguments[2]:undefined;if(i!==undefined)var l=i;else l=undefined;n=!0}var u=GetMethod(t,Symbol.iterator);if(u!==undefined){if(IsConstructor(o))var f=Construct(o);else f=ArrayCreate(0);for(var c=GetIterator(t,u),s=0;;){if(s>=Math.pow(2,53)-1){var h=new TypeError("Iteration count can not be greater than or equal 9007199254740991.");return IteratorClose(c,h)}var y=ToString(s),C=IteratorStep(c);if(!1===C)return f.length=s,f;var g=IteratorValue(C);if(n)try{var p=Call(a,l,[g,s])}catch(b){return IteratorClose(c,b)}else p=g;try{CreateDataPropertyOrThrow(f,y,p)}catch(b){return IteratorClose(c,b)}s+=1}}if(r(t))var v=e.call(t,/[\uD800-\uDBFF][\uDC00-\uDFFF]?|[^\uD800-\uDFFF]|./g)||[];else v=ToObject(t);var d=ToLength(Get(v,"length"));for(f=IsConstructor(o)?Construct(o,[d]):ArrayCreate(d),s=0;s<d;){y=ToString(s);var I=Get(v,y);p=!0===n?Call(a,l,[I,s]):I,CreateDataPropertyOrThrow(f,y,p),s+=1}return f.length=d,f})}();}if (!("Symbol"in self&&"split"in self.Symbol
-)) {Object.defineProperty(Symbol,"split",{value:Symbol("split")});}if (!("Symbol"in self&&"toPrimitive"in self.Symbol
-)) {Object.defineProperty(Symbol,"toPrimitive",{value:Symbol("toPrimitive")});}if (!("Symbol"in self&&"toStringTag"in self.Symbol
-)) {Object.defineProperty(Symbol,"toStringTag",{value:Symbol("toStringTag")});}if (!("Promise"in self
-)) {!function(){"use strict";function n(){return tn[q][B]||D}function t(n){return n&&"object"==typeof n}function e(n){return"function"==typeof n}function r(n,t){return n instanceof t}function o(n){return r(n,A)}function i(n,t,e){if(!t(n))throw a(e)}function u(){try{return b.apply(R,arguments)}catch(n){return Y.e=n,Y}}function c(n,t){return b=n,R=t,u}function f(n,t){function e(){for(var e=0;e<o;)t(r[e],r[e+1]),r[e++]=T,r[e++]=T;o=0,r.length>n&&(r.length=n)}var r=L(n),o=0;return function(n,t){r[o++]=n,r[o++]=t,2===o&&tn.nextTick(e)}}function s(n,t){var o,i,u,f,s=0;if(!n)throw a(N);var l=n[tn[q][z]];if(e(l))i=l.call(n);else{if(!e(n.next)){if(r(n,L)){for(o=n.length;s<o;)t(n[s],s++);return s}throw a(N)}i=n}for(;!(u=i.next()).done;)if((f=c(t)(u.value,s++))===Y)throw e(i[G])&&i[G](),f.e;return s}function a(n){return new TypeError(n)}function l(n){return(n?"":Q)+(new A).stack}function h(n,t){var e="on"+n.toLowerCase(),r=F[e];E&&E.listeners(n).length?n===X?E.emit(n,t._v,t):E.emit(n,t):r?r({reason:t._v,promise:t}):tn[n](t._v,t)}function v(n){return n&&n._s}function _(n){if(v(n))return new n(Z);var t,r,o;return t=new n(function(n,e){if(t)throw a();r=n,o=e}),i(r,e),i(o,e),t}function d(n,t){var e=!1;return function(r){e||(e=!0,I&&(n[M]=l(!0)),t===U?g(n,r):y(n,t,r))}}function p(n,t,r,o){return e(r)&&(t._onFulfilled=r),e(o)&&(n[J]&&h(W,n),t._onRejected=o),I&&(t._p=n),n[n._c++]=t,n._s!==$&&rn(n,t),t}function m(n){if(n._umark)return!0;n._umark=!0;for(var t,e=0,r=n._c;e<r;)if(t=n[e++],t._onRejected||m(t))return!0}function w(n,t){function e(n){return r.push(n.replace(/^\s+|\s+$/g,""))}var r=[];return I&&(t[M]&&e(t[M]),function o(n){n&&K in n&&(o(n._next),e(n[K]+""),o(n._p))}(t)),(n&&n.stack?n.stack:n)+("\n"+r.join("\n")).replace(nn,"")}function j(n,t){return n(t)}function y(n,t,e){var r=0,i=n._c;if(n._s===$)for(n._s=t,n._v=e,t===O&&(I&&o(e)&&(e.longStack=w(e,n)),on(n));r<i;)rn(n,n[r++]);return n}function g(n,r){if(r===n&&r)return y(n,O,a(V)),n;if(r!==S&&(e(r)||t(r))){var o=c(k)(r);if(o===Y)return y(n,O,o.e),n;e(o)?(I&&v(r)&&(n._next=r),v(r)?x(n,r,o):tn.nextTick(function(){x(n,r,o)})):y(n,U,r)}else y(n,U,r);return n}function k(n){return n.then}function x(n,t,e){var r=c(e,t)(function(e){t&&(t=S,g(n,e))},function(e){t&&(t=S,y(n,O,e))});r===Y&&t&&(y(n,O,r.e),t=S)}var T,b,R,S=null,C="object"==typeof self,F=self,P=F.Promise,E=F.process,H=F.console,I=!0,L=Array,A=Error,O=1,U=2,$=3,q="Symbol",z="iterator",B="species",D=q+"("+B+")",G="return",J="_uh",K="_pt",M="_st",N="Invalid argument",Q="\nFrom previous ",V="Chaining cycle detected for promise",W="rejectionHandled",X="unhandledRejection",Y={e:S},Z=function(){},nn=/^.+\/node_modules\/yaku\/.+\n?/gm,tn=function(n){var r,o=this;if(!t(o)||o._s!==T)throw a("Invalid this");if(o._s=$,I&&(o[K]=l()),n!==Z){if(!e(n))throw a(N);r=c(n)(d(o,U),d(o,O)),r===Y&&y(o,O,r.e)}};tn["default"]=tn,function en(n,t){for(var e in t)n[e]=t[e]}(tn.prototype,{then:function(n,t){if(this._s===undefined)throw a();return p(this,_(tn.speciesConstructor(this,tn)),n,t)},"catch":function(n){return this.then(T,n)},"finally":function(n){return this.then(function(t){return tn.resolve(n()).then(function(){return t})},function(t){return tn.resolve(n()).then(function(){throw t})})},_c:0,_p:S}),tn.resolve=function(n){return v(n)?n:g(_(this),n)},tn.reject=function(n){return y(_(this),O,n)},tn.race=function(n){var t=this,e=_(t),r=function(n){y(e,U,n)},o=function(n){y(e,O,n)},i=c(s)(n,function(n){t.resolve(n).then(r,o)});return i===Y?t.reject(i.e):e},tn.all=function(n){function t(n){y(o,O,n)}var e,r=this,o=_(r),i=[];return(e=c(s)(n,function(n,u){r.resolve(n).then(function(n){i[u]=n,--e||y(o,U,i)},t)}))===Y?r.reject(e.e):(e||y(o,U,[]),o)},tn.Symbol=F[q]||{},c(function(){Object.defineProperty(tn,n(),{get:function(){return this}})})(),tn.speciesConstructor=function(t,e){var r=t.constructor;return r?r[n()]||e:e},tn.unhandledRejection=function(n,t){H&&H.error("Uncaught (in promise)",I?t.longStack:w(n,t))},tn.rejectionHandled=Z,tn.enableLongStackTrace=function(){I=!0},tn.nextTick=C?function(n){P?new P(function(n){n()}).then(n):setTimeout(n)}:E.nextTick,tn._s=1;var rn=f(999,function(n,t){var e,r;return(r=n._s!==O?t._onFulfilled:t._onRejected)===T?void y(t,n._s,n._v):(e=c(j)(r,n._v))===Y?void y(t,O,e.e):void g(t,e)}),on=f(9,function(n){m(n)||(n[J]=1,h(X,n))});F.Promise=tn}();}if (!("Symbol"in self&&"unscopables"in self.Symbol
-)) {Object.defineProperty(Symbol,"unscopables",{value:Symbol("unscopables")});}if (!((function(){try{if("WeakMap"in self&&0===self.WeakMap.length){var e={},t=new self.WeakMap([[e,"test"]])
-return"test"===t.get(e)&&!1===t["delete"](0)}return!1}catch(a){return!1}})()
-)) {!function(e){var t=Symbol("undef"),r=function a(){if(!(this instanceof a))throw new TypeError('Constructor WeakMap requires "new"');var e=OrdinaryCreateFromConstructor(this,a.prototype,{_keys:[],_values:[],_es6WeakMap:!0}),t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var r=Get(e,"set");if(!IsCallable(r))throw new TypeError("WeakMap.prototype.set is not a function");try{for(var o=GetIterator(t);;){var p=IteratorStep(o);if(!1===p)return e;var n=IteratorValue(p);if("object"!==Type(n))try{throw new TypeError("Iterator value "+n+" is not an entry object")}catch(s){return IteratorClose(o,s)}try{var i=Get(n,"0"),l=Get(n,"1");Call(r,e,[i,l])}catch(u){return IteratorClose(o,u)}}}catch(u){if(Array.isArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var y,c=t.length;for(y=0;y<c;y++)i=t[y][0],l=t[y][1],Call(r,e,[i,l])}}return e};Object.defineProperty(r,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),CreateMethodProperty(r.prototype,"constructor",r),CreateMethodProperty(r.prototype,"delete",function(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakMap.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return this._keys[a]=t,this._values[a]=t,this._size=--this._size,!0;return!1}),CreateMethodProperty(r.prototype,"get",function p(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakMap.prototype.get called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.get called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return undefined;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return r._values[a];return undefined}),CreateMethodProperty(r.prototype,"has",function n(e){var r=this;if("object"!=typeof r)throw new TypeError("Method WeakMap.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return!0;return!1}),CreateMethodProperty(r.prototype,"set",function i(e,r){var o=this;if("object"!==Type(o))throw new TypeError("Method WeakMap.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));if(!0!==o._es6WeakMap)throw new TypeError("Method WeakMap.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));var a=o._keys;if("object"!==Type(e))throw new TypeError("Invalid value used as weak map key");for(var p=0;p<a.length;p++)if(o._keys[p]!==t&&SameValue(o._keys[p],e))return o._values[p]=r,o;var n={"[[Key]]":e,"[[Value]]":r};return o._keys.push(n["[[Key]]"]),o._values.push(n["[[Value]]"]),o}),Object.defineProperty(r.prototype,Symbol.toStringTag,{configurable:!0,enumerable:!1,writable:!1,value:"WeakMap"}),"name"in r||Object.defineProperty(r,"name",{configurable:!0,enumerable:!1,writable:!1,value:"WeakMap"});try{CreateMethodProperty(e,"WeakMap",r)}catch(o){e.WeakMap=r}}(self);}if (!((function(e){try{if(Object.prototype.hasOwnProperty.call(e,"WeakSet")&&0===e.WeakSet.length){var t={},r=new e.WeakSet([t])
-return r.has(t)&&!1===r["delete"](0)}return!1}catch(a){return!1}})(self)
-)) {!function(e){var t=Symbol("undef"),r=function a(){if(!(this instanceof a))throw new TypeError('Constructor WeakSet requires "new"');var e=OrdinaryCreateFromConstructor(this,a.prototype,{_values:[],_size:0,_es6WeakSet:!0}),t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var r=Get(e,"add");if(!IsCallable(r))throw new TypeError("WeakSet.prototype.add is not a function");try{for(var o=GetIterator(t);;){var n=IteratorStep(o);if(!1===n)return e;var l=IteratorValue(n);try{Call(r,e,[l])}catch(c){return IteratorClose(o,c)}}}catch(c){if(IsArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var p,i=t.length;for(p=0;p<i;p++)Call(r,e,[t[p]])}}return e};Object.defineProperty(r,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),CreateMethodProperty(r.prototype,"add",function n(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))throw new TypeError("Invalid value used in weak set");for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return r}return r._values.push(e),r}),CreateMethodProperty(r.prototype,"constructor",r),CreateMethodProperty(r.prototype,"delete",function(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))return!1;for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return o[a]=t,!0}return!1}),CreateMethodProperty(r.prototype,"has",function l(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._values;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return!0}return!1}),"name"in r||Object.defineProperty(r,"name",{configurable:!0,enumerable:!1,writable:!1,value:"WeakSet"});try{CreateMethodProperty(e,"WeakSet",r)}catch(o){e.WeakSet=r}}(self);}function TrimString(e,u){var r=RequireObjectCoercible(e),t=ToString(r),n=/[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/.source;if("start"===u)var p=String.prototype.replace.call(t,new RegExp("^"+n,"g"),"");else p="end"===u?String.prototype.replace.call(t,new RegExp(n+"$","g"),""):String.prototype.replace.call(t,new RegExp("^"+n+"|"+n+"$","g"),"");return p}if (!("trim"in String.prototype&&function(){var r="​᠎"
-return!"\t\n\x0B\f\r                　\u2028\u2029\ufeff".trim()&&r.trim()===r}()
-)) {CreateMethodProperty(String.prototype,"trim",function t(){"use strict";var t=this;return TrimString(t,"start+end")});}if (!("parseFloat"in Number&&1/parseFloat("\t\n\x0B\f\r                　\u2028\u2029\ufeff-0")==-Infinity
-)) {!function(r,t){var a=function o(t){var a=String(t).trim(),e=r(a);return 0===e&&"-"==a.charAt(0)?-0:e};try{CreateMethodProperty(t,"parseFloat",a)}catch(e){t.parseFloat=a}CreateMethodProperty(Number,"parseFloat",t.parseFloat)}(parseFloat,this);}if (!("parseInt"in Number&&8===Number.parseInt("08")
-)) {!function(t,r){var e=function a(r,e){var n=String(r).trim();return t(n,e>>>0||(/^[-+]?0[xX]/.test(n)?16:10))};try{CreateMethodProperty(r,"parseInt",e)}catch(n){r.parseInt=e}CreateMethodProperty(Number,"parseInt",r.parseInt)}(parseInt,this);}function UTF16Decode(e,n){return 1024*(e-55296)+(n-56320)+65536}if (!("codePointAt"in String.prototype
-)) {CreateMethodProperty(String.prototype,"codePointAt",function e(t){var r=RequireObjectCoercible(this),o=ToString(r),n=ToInteger(t),i=o.length;if(n<0||n>=i)return undefined;var c=String.prototype.charCodeAt.call(o,n);if(c<55296||c>56319||n+1===i)return c;var a=String.prototype.charCodeAt.call(o,n+1);return a<56320||a>57343?c:UTF16Decode(c,a)});}function UTF16Encoding(n){return n<=65535?n:[Math.floor((n-65536)/1024)+55296,(n-65536)%1024+56320]}if (!("fromCodePoint"in String&&1===String.fromCodePoint.length
-)) {CreateMethodProperty(String,"fromCodePoint",function r(o){for(var t=[],e=arguments,n=arguments.length,a=[],i=0;i<n;){a=[];var l=e[i],p=ToNumber(l);if(!1===SameValue(p,ToInteger(p)))throw new RangeError("Invalid code point "+Object.prototype.toString.call(p));if(p<0||p>1114111)throw new RangeError("Invalid code point "+Object.prototype.toString.call(p));var c=UTF16Encoding(p);IsArray(c)?a=a.concat(c):a.push(c),i+=1,t.push(String.fromCharCode.apply(null,a))}return 0===n?"":t.join("")});}var Iterator=function(){var e=function(){return this.length=0,this},t=function(e){if("function"!=typeof e)throw new TypeError(e+" is not a function");return e},_=function(e,n){if(!(this instanceof _))return new _(e,n);Object.defineProperties(this,{__list__:{writable:!0,value:e},__context__:{writable:!0,value:n},__nextIndex__:{writable:!0,value:0}}),n&&(t(n.on),n.on("_add",this._onAdd.bind(this)),n.on("_delete",this._onDelete.bind(this)),n.on("_clear",this._onClear.bind(this)))};return Object.defineProperties(_.prototype,Object.assign({constructor:{value:_,configurable:!0,enumerable:!1,writable:!0},_next:{value:function(){var e;if(this.__list__)return this.__redo__&&(e=this.__redo__.shift())!==undefined?e:this.__nextIndex__<this.__list__.length?this.__nextIndex__++:void this._unBind()},configurable:!0,enumerable:!1,writable:!0},next:{value:function(){return this._createResult(this._next())},configurable:!0,enumerable:!1,writable:!0},_createResult:{value:function(e){return e===undefined?{done:!0,value:undefined}:{done:!1,value:this._resolve(e)}},configurable:!0,enumerable:!1,writable:!0},_resolve:{value:function(e){return this.__list__[e]},configurable:!0,enumerable:!1,writable:!0},_unBind:{value:function(){this.__list__=null,delete this.__redo__,this.__context__&&(this.__context__.off("_add",this._onAdd.bind(this)),this.__context__.off("_delete",this._onDelete.bind(this)),this.__context__.off("_clear",this._onClear.bind(this)),this.__context__=null)},configurable:!0,enumerable:!1,writable:!0},toString:{value:function(){return"[object Iterator]"},configurable:!0,enumerable:!1,writable:!0}},{_onAdd:{value:function(e){if(!(e>=this.__nextIndex__)){if(++this.__nextIndex__,!this.__redo__)return void Object.defineProperty(this,"__redo__",{value:[e],configurable:!0,enumerable:!1,writable:!1});this.__redo__.forEach(function(t,_){t>=e&&(this.__redo__[_]=++t)},this),this.__redo__.push(e)}},configurable:!0,enumerable:!1,writable:!0},_onDelete:{value:function(e){var t;e>=this.__nextIndex__||(--this.__nextIndex__,this.__redo__&&(t=this.__redo__.indexOf(e),-1!==t&&this.__redo__.splice(t,1),this.__redo__.forEach(function(t,_){t>e&&(this.__redo__[_]=--t)},this)))},configurable:!0,enumerable:!1,writable:!0},_onClear:{value:function(){this.__redo__&&e.call(this.__redo__),this.__nextIndex__=0},configurable:!0,enumerable:!1,writable:!0}})),Object.defineProperty(_.prototype,Symbol.iterator,{value:function(){return this},configurable:!0,enumerable:!1,writable:!0}),Object.defineProperty(_.prototype,Symbol.toStringTag,{value:"Iterator",configurable:!1,enumerable:!1,writable:!0}),_}();var ArrayIterator=function(){var e=function(t,r){if(!(this instanceof e))return new e(t,r);Iterator.call(this,t),r=r?String.prototype.includes.call(r,"key+value")?"key+value":String.prototype.includes.call(r,"key")?"key":"value":"value",Object.defineProperty(this,"__kind__",{value:r,configurable:!1,enumerable:!1,writable:!1})};return Object.setPrototypeOf&&Object.setPrototypeOf(e,Iterator.prototype),e.prototype=Object.create(Iterator.prototype,{constructor:{value:e,configurable:!0,enumerable:!1,writable:!0},_resolve:{value:function(e){return"value"===this.__kind__?this.__list__[e]:"key+value"===this.__kind__?[e,this.__list__[e]]:e},configurable:!0,enumerable:!1,writable:!0},toString:{value:function(){return"[object Array Iterator]"},configurable:!0,enumerable:!1,writable:!0}}),e}();if (!("Symbol"in self&&"iterator"in self.Symbol&&!!Array.prototype.entries
-)) {CreateMethodProperty(Array.prototype,"entries",function r(){var r=ToObject(this);return new ArrayIterator(r,"key+value")});}if (!("Symbol"in self&&"iterator"in self.Symbol&&!!Array.prototype.keys
-)) {CreateMethodProperty(Array.prototype,"keys",function r(){var r=ToObject(this);return new ArrayIterator(r,"key")});}if (!("values"in Array.prototype
-)) {"Symbol"in self&&"iterator"in Symbol&&"function"==typeof Array.prototype[Symbol.iterator]?CreateMethodProperty(Array.prototype,"values",Array.prototype[Symbol.iterator]):CreateMethodProperty(Array.prototype,"values",function r(){var r=ToObject(this);return new ArrayIterator(r,"value")});}if (!("Symbol"in self&&"iterator"in self.Symbol&&!!Array.prototype[self.Symbol.iterator]
-)) {CreateMethodProperty(Array.prototype,Symbol.iterator,Array.prototype.values);}var StringIterator=function(){var t=function(e){if(!(this instanceof t))return new t(e);e=String(e),Iterator.call(this,e),Object.defineProperty(this,"__length__",{value:e.length,configurable:!1,enumerable:!1,writable:!1})};return Object.setPrototypeOf&&Object.setPrototypeOf(t,Iterator),t.prototype=Object.create(Iterator.prototype,{constructor:{value:t,configurable:!0,enumerable:!1,writable:!0},_next:{value:function(){if(this.__list__)return this.__nextIndex__<this.__length__?this.__nextIndex__++:void this._unBind()},configurable:!0,enumerable:!1,writable:!0},_resolve:{value:function(t){var e,r=this.__list__[t];return this.__nextIndex__===this.__length__?r:(e=r.charCodeAt(0),e>=55296&&e<=56319?r+this.__list__[this.__nextIndex__++]:r)},configurable:!0,enumerable:!1,writable:!0},toString:{value:function(){return"[object String Iterator]"},configurable:!0,enumerable:!1,writable:!0}}),t}();if (!("Symbol"in self&&"iterator"in self.Symbol&&!!String.prototype[self.Symbol.iterator]
-)) {CreateMethodProperty(String.prototype,Symbol.iterator,function(){var r=RequireObjectCoercible(this),t=ToString(r);return new StringIterator(t)});}})('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});</script>
-  
-  <script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
-
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <style type="text/css"></style>
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Applied Time Series Notebook</span>
     </a>
   </div>
@@ -4872,7 +4733,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Master</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -4882,25 +4743,25 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./projects.html">
+    <a class="dropdown-item" href="../projects.html">
  <span class="dropdown-text">Applied Time Series Projects</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 1</li>
         <li>
-    <a class="dropdown-item" href="./projects/project1.html">
+    <a class="dropdown-item" href="../projects/project1.html">
  <span class="dropdown-text">Time Series: China Export Commodities</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 2</li>
         <li>
-    <a class="dropdown-item" href="./projects/project2.html">
+    <a class="dropdown-item" href="../projects/project2.html">
  <span class="dropdown-text">Time Series Project 2: Consumer Credit</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project 3</li>
         <li>
-    <a class="dropdown-item" href="./projects/project3.html">
+    <a class="dropdown-item" href="../projects/project3.html">
  <span class="dropdown-text">Project title here</span></a>
   </li>  
     </ul>
@@ -4912,27 +4773,27 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-1">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_1.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_1.html">
+    <a class="dropdown-item" href="../hw/homework_1_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_2.html">
+    <a class="dropdown-item" href="../hw/homework_1_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_3.html">
+    <a class="dropdown-item" href="../hw/homework_1_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_4.html">
+    <a class="dropdown-item" href="../hw/homework_1_4.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_1_5.html">
+    <a class="dropdown-item" href="../hw/homework_1_5.html">
  <span class="dropdown-text">Time Series Homework: Chapter 1 Lesson 5</span></a>
   </li>  
     </ul>
@@ -4944,19 +4805,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-2">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_2.html">
+    <a class="dropdown-item" href="../chapters/chapter_2.html">
  <span class="dropdown-text">Autocorrelation Concepts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_1.html">
+    <a class="dropdown-item" href="../hw/homework_2_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_2.html">
+    <a class="dropdown-item" href="../hw/homework_2_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_2_3.html">
+    <a class="dropdown-item" href="../hw/homework_2_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 2 Lesson 3</span></a>
   </li>  
     </ul>
@@ -4968,39 +4829,39 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-3">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3.html">
+    <a class="dropdown-item" href="../chapters/chapter_3.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_2.html">
+    <a class="dropdown-item" href="../hw/homework_3_2.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_3.html">
+    <a class="dropdown-item" href="../hw/homework_3_3.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_4.html">
+    <a class="dropdown-item" href="../hw/homework_3_4.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_5.html">
+    <a class="dropdown-item" href="../hw/homework_3_5.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 5</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">r code Models draft</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3_overview_code_draft.html">
+    <a class="dropdown-item" href="../chapters/chapter_3_overview_code_draft.html">
  <span class="dropdown-text">Chapter 3 r code examples and practice</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_3_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_3_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./hw/homework_3_1.html">
+    <a class="dropdown-item" href="../hw/homework_3_1.html">
  <span class="dropdown-text">Time Series Homework: Chapter 3 Lesson 1</span></a>
   </li>  
     </ul>
@@ -5012,46 +4873,46 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-4">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4.html">
+    <a class="dropdown-item" href="../chapters/chapter_4.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">r code Models draft</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_overview_code_draft.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_overview_code_draft.html">
  <span class="dropdown-text">Chapter 4 r code examples and practice</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_1_code_notes.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_1_code_notes.html">
  <span class="dropdown-text">Ch 4.1 Code Notes</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 2</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_2.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_2.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 2</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 3</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_3.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_3.html">
  <span class="dropdown-text">Autoregressive (AR) Models</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 4</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_4.html">
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_4.html">
  <span class="dropdown-text">Fitted AR Models</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_4_lesson_4_code_notes.html">
- <span class="dropdown-text">Ch 4.4 Code Notes</span></a>
+    <a class="dropdown-item" href="../chapters/chapter_4_lesson_4_code_notes.html">
+ <span class="dropdown-text">Fitted AR Models</span></a>
   </li>  
     </ul>
   </li>
@@ -5062,19 +4923,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ch-5">    
         <li class="dropdown-header">Overview</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5.html">
+    <a class="dropdown-item" href="../chapters/chapter_5.html">
  <span class="dropdown-text">Chapter overview and Task</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5_lesson_1.html">
+    <a class="dropdown-item" href="../chapters/chapter_5_lesson_1.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 1</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 1 Notes</li>
         <li>
-    <a class="dropdown-item" href="./chapters/chapter_5_lesson_1_code_notes.html">
+    <a class="dropdown-item" href="../chapters/chapter_5_lesson_1_code_notes.html">
  <span class="dropdown-text">Linear Models, GLS, and Seasonal Indicator Variables</span></a>
   </li>  
     </ul>
@@ -5086,19 +4947,19 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tools">    
         <li class="dropdown-header">Tools, Help &amp; Ideas</li>
         <li>
-    <a class="dropdown-item" href="./tools_help_ideas.html">
+    <a class="dropdown-item" href="../tools_help_ideas.html">
  <span class="dropdown-text">Tools, Resources and Help Ideas</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Date &amp; Index formatting</li>
         <li>
-    <a class="dropdown-item" href="./tools/stepsforDate_index_formatting.html">
+    <a class="dropdown-item" href="../tools/stepsforDate_index_formatting.html">
  <span class="dropdown-text">Steps for formatting Date and Creating Index</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Math Formulas</li>
         <li>
-    <a class="dropdown-item" href="./tools/math_formulas.html">
+    <a class="dropdown-item" href="../tools/math_formulas.html">
  <span class="dropdown-text">Formulas</span></a>
   </li>  
     </ul>
@@ -5110,77 +4971,73 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter_2.html">Overview</a></li><li class="breadcrumb-item"><a href="../chapters/chapter_2.html">Autocorrelation Concepts</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#sationary-vs-non-stationary-ts" id="toc-sationary-vs-non-stationary-ts" class="nav-link active" data-scroll-target="#sationary-vs-non-stationary-ts">Sationary vs Non-Stationary TS</a>
-  <ul class="collapse">
-  <li><a href="#stationary-time-series" id="toc-stationary-time-series" class="nav-link" data-scroll-target="#stationary-time-series">Stationary Time Series</a></li>
-  <li><a href="#non-stationary-time-series" id="toc-non-stationary-time-series" class="nav-link" data-scroll-target="#non-stationary-time-series">Non-Stationary Time Series</a></li>
-  </ul></li>
-  <li><a href="#stochastic-vs-deterministic-trend" id="toc-stochastic-vs-deterministic-trend" class="nav-link" data-scroll-target="#stochastic-vs-deterministic-trend">Stochastic vs Deterministic Trend</a></li>
-  <li><a href="#white-noise" id="toc-white-noise" class="nav-link" data-scroll-target="#white-noise">White Noise</a></li>
-  <li><a href="#lessons" id="toc-lessons" class="nav-link" data-scroll-target="#lessons">Lessons</a>
-  <ul class="collapse">
-  <li><a href="#lesson-4.1-white-noise-and-random-walks" id="toc-lesson-4.1-white-noise-and-random-walks" class="nav-link" data-scroll-target="#lesson-4.1-white-noise-and-random-walks">Lesson 4.1 White Noise and Random Walks</a>
-  <ul class="collapse">
-  <li><a href="#stochastic-process-4.1" id="toc-stochastic-process-4.1" class="nav-link" data-scroll-target="#stochastic-process-4.1">Stochastic Process 4.1</a></li>
-  <li><a href="#discrete-white-noise-dwn-4.1" id="toc-discrete-white-noise-dwn-4.1" class="nav-link" data-scroll-target="#discrete-white-noise-dwn-4.1">Discrete White Noise DWN 4.1</a></li>
-  <li><a href="#random-walk" id="toc-random-walk" class="nav-link" data-scroll-target="#random-walk">Random Walk</a></li>
-  <li><a href="#gaussian-white-noise-gwn-4.1" id="toc-gaussian-white-noise-gwn-4.1" class="nav-link" data-scroll-target="#gaussian-white-noise-gwn-4.1">Gaussian White Noise GWN 4.1</a></li>
-  <li><a href="#white-noise-time-series" id="toc-white-noise-time-series" class="nav-link" data-scroll-target="#white-noise-time-series">White Noise Time Series</a></li>
-  <li><a href="#correlogram-4.1" id="toc-correlogram-4.1" class="nav-link" data-scroll-target="#correlogram-4.1">Correlogram 4.1</a></li>
-  <li><a href="#fitting-the-white-noise-model" id="toc-fitting-the-white-noise-model" class="nav-link" data-scroll-target="#fitting-the-white-noise-model">Fitting the White Noise Model</a></li>
-  <li><a href="#backward-shift-operator" id="toc-backward-shift-operator" class="nav-link" data-scroll-target="#backward-shift-operator">Backward Shift Operator</a></li>
-  <li><a href="#search-words-for-lesson-4.1" id="toc-search-words-for-lesson-4.1" class="nav-link" data-scroll-target="#search-words-for-lesson-4.1">search words for lesson 4.1</a></li>
-  </ul></li>
-  <li><a href="#lesson-4.2-white-noise-and-random-walks---part-2" id="toc-lesson-4.2-white-noise-and-random-walks---part-2" class="nav-link" data-scroll-target="#lesson-4.2-white-noise-and-random-walks---part-2">Lesson 4.2 White Noise and Random Walks - Part 2</a>
-  <ul class="collapse">
-  <li><a href="#differecing-a-time-series" id="toc-differecing-a-time-series" class="nav-link" data-scroll-target="#differecing-a-time-series">Differecing a Time Series</a></li>
-  <li><a href="#correlograms-histogram" id="toc-correlograms-histogram" class="nav-link" data-scroll-target="#correlograms-histogram">Correlograms &amp; Histogram</a></li>
-  <li><a href="#difference-operator" id="toc-difference-operator" class="nav-link" data-scroll-target="#difference-operator">Difference Operator</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#function-is-linear-vs-quadratic-vs-cubic" id="toc-function-is-linear-vs-quadratic-vs-cubic" class="nav-link" data-scroll-target="#function-is-linear-vs-quadratic-vs-cubic">Function is Linear vs Quadratic vs Cubic</a>
-  <ul class="collapse">
-  <li><a href="#search-for-words-for-lesson-4.2" id="toc-search-for-words-for-lesson-4.2" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.2">Search for words for lesson 4.2</a></li>
-  <li><a href="#lesson-4.3-autoregressive-ar-models" id="toc-lesson-4.3-autoregressive-ar-models" class="nav-link" data-scroll-target="#lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</a>
-  <ul class="collapse">
-  <li><a href="#properties-of-an-arp-stochastic-process" id="toc-properties-of-an-arp-stochastic-process" class="nav-link" data-scroll-target="#properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</a></li>
-  <li><a href="#exploring-ar1-models" id="toc-exploring-ar1-models" class="nav-link" data-scroll-target="#exploring-ar1-models">Exploring AR(1) Models</a></li>
-  <li><a href="#second-order-properties-of-an-ar1-model" id="toc-second-order-properties-of-an-ar1-model" class="nav-link" data-scroll-target="#second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</a></li>
-  <li><a href="#correlogram-of-an-ar1-model" id="toc-correlogram-of-an-ar1-model" class="nav-link" data-scroll-target="#correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</a></li>
-  <li><a href="#partial-autocorrelation" id="toc-partial-autocorrelation" class="nav-link" data-scroll-target="#partial-autocorrelation">Partial Autocorrelation</a></li>
-  <li><a href="#partial-autocorrelation-plots-of-various-arp-processes" id="toc-partial-autocorrelation-plots-of-various-arp-processes" class="nav-link" data-scroll-target="#partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</a></li>
-  <li><a href="#sationary-and-non-stationary-ar-processes" id="toc-sationary-and-non-stationary-ar-processes" class="nav-link" data-scroll-target="#sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</a></li>
-  <li><a href="#absolute-value-in-the-complex-plane" id="toc-absolute-value-in-the-complex-plane" class="nav-link" data-scroll-target="#absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
-  <li><a href="#search-for-words-for-lesson-4.3" id="toc-search-for-words-for-lesson-4.3" class="nav-link" data-scroll-target="#search-for-words-for-lesson-4.3">Search for words for lesson 4.3</a></li>
-  </ul></li>
-  <li><a href="#lesson-5.1-unassigned-sections" id="toc-lesson-5.1-unassigned-sections" class="nav-link" data-scroll-target="#lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</a>
-  <ul class="collapse">
-  <li><a href="#generalized-least-squares-gls" id="toc-generalized-least-squares-gls" class="nav-link" data-scroll-target="#generalized-least-squares-gls">Generalized Least Squares (GLS)</a></li>
-  <li><a href="#additive-seasonal-indicator-variables" id="toc-additive-seasonal-indicator-variables" class="nav-link" data-scroll-target="#additive-seasonal-indicator-variables">Additive Seasonal Indicator Variables</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">Definitions</a></li>
-  </ul>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Autocorrelation Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw/homework_2_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Series Homework: Chapter 2 Lesson 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw/homework_2_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Series Homework: Chapter 2 Lesson 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw/homework_2_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Series Homework: Chapter 2 Lesson 3</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter_2.html">Overview</a></li><li class="breadcrumb-item"><a href="../chapters/chapter_2.html">Autocorrelation Concepts</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Applied Time Series Analysis Notebook</h1>
-<p class="subtitle lead">MATH 494R</p>
+<h1 class="title">Autocorrelation Concepts</h1>
+<p class="subtitle lead">Chapter 2</p>
 </div>
 
 
@@ -5197,533 +5054,9 @@ window.Quarto = {
 </header>
 
 
-<p>I’m first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.</p>
-<section id="sationary-vs-non-stationary-ts" class="level1">
-<h1>Sationary vs Non-Stationary TS</h1>
-<p><strong>non-stationary convert to stationary time series</strong> 1. In Chapter 4 Lesson 2, we established that taking the difference of a non-stationary time series with a stochastic trend can convert it to a stationary time series.</p>
-<section id="stationary-time-series" class="level2">
-<h2 class="anchored" data-anchor-id="stationary-time-series">Stationary Time Series</h2>
-<ul>
-<li><strong>Sationarity of Linear Models Lesson 5.1</strong>
-<ul>
-<li>Linear models for time series are non-stationary when they include functions of time.</li>
-</ul></li>
-<li>Differencing can often transform a non-stationary series with a de terministic trend to a stationary series (4.1).</li>
-<li>In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences (4.2).</li>
-</ul>
-</section>
-<section id="non-stationary-time-series" class="level2">
-<h2 class="anchored" data-anchor-id="non-stationary-time-series">Non-Stationary Time Series</h2>
-<ul>
-<li><strong>Non-Stationary Time Series Lesson 5.2</strong>
-<ul>
-<li>A time series with a stochastic trend is non-stationary.</li>
-<li>A time series with a deterministic trend is non-stationary.</li>
-<li>A time series with a seasonal component is non-stationary.</li>
-<li>A time series with a unit root is non-stationary.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="stochastic-vs-deterministic-trend" class="level1">
-<h1>Stochastic vs Deterministic Trend</h1>
-</section>
-<section id="white-noise" class="level1">
-<h1>White Noise</h1>
-<ul>
-<li>White noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.</li>
-</ul>
-<!-- ------------------------------- LESSONS ------------------------------- ------------------------------------------------>
-</section>
-<section id="lessons" class="level1">
-<h1>Lessons</h1>
-<section id="lesson-4.1-white-noise-and-random-walks" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.1-white-noise-and-random-walks">Lesson 4.1 White Noise and Random Walks</h2>
-<section id="stochastic-process-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="stochastic-process-4.1">Stochastic Process 4.1</h3>
-<p>Stochastic processes or random processes evolve over time. They are characterized by the fact that the future values of the process cannot be predicted based on past values. The random walk is a classic example of a stochastic process.</p>
-</section>
-<section id="discrete-white-noise-dwn-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="discrete-white-noise-dwn-4.1">Discrete White Noise DWN 4.1</h3>
-<ul>
-<li>4.2: Computing the difference between successive terms of a random walk leads to a discrete white noise series.</li>
-</ul>
-<p>A time series <span class="math inline">\(\{w_t: t = 1, 2, \ldots, n\}\)</span> is a <strong>discrete white noise (DWN)</strong> if the variables <span class="math inline">\(w_1, w_2, \ldots, w_n\)</span> are independent and identically distributed with mean 0.</p>
-<section id="second-order-properties-of-dwn" class="level4">
-<h4 class="anchored" data-anchor-id="second-order-properties-of-dwn">Second-Order Properties of DWN</h4>
-<ul>
-<li><p>When we refer to the second-order properties of a time series, we are talking about its variance and covariance. The variance of a DWN is constant, and the covariance between any two observations is zero</p></li>
-<li><p>The mean is a first-order property, the covariance is a second-order property.</p></li>
-</ul>
-</section>
-<section id="discrete-white-noise-process" class="level4">
-<h4 class="anchored" data-anchor-id="discrete-white-noise-process">Discrete White Noise Process</h4>
-<ul>
-<li><p>A DWN process will have the following properties:</p>
-<ul>
-<li>There is a discrete observations.</li>
-<li>The mean of the observations is zero.</li>
-<li>The variance of the observations is finite.</li>
-<li>Successive observations are uncorrelated.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="random-walk" class="level3">
-<h3 class="anchored" data-anchor-id="random-walk">Random Walk</h3>
-<ul>
-<li><strong>Random Walks Lesson 4.1</strong>
-<ul>
-<li>A random walk is a stochastic process in which the difference between each observation is a white noise process, a non-stationary time series. (see def)</li>
-<li>wt is a dwn and often model as gwn, however wt could be as simple as a coin toss (<strong>random walk</strong>).</li>
-</ul></li>
-</ul>
-<section id="properties-of-random-walk-or-walks" class="level4">
-<h4 class="anchored" data-anchor-id="properties-of-random-walk-or-walks">Properties of Random Walk or walks</h4>
-<p>or First-Order Properties of A Random Walk - The mean of a random walk series is 0.</p>
-<p>Look at shinny code for this</p>
-</section>
-<section id="second-order-properties-of-a-random-walk" class="level4">
-<h4 class="anchored" data-anchor-id="second-order-properties-of-a-random-walk">Second-Order Properties of a Random Walk</h4>
-<ul>
-<li><p><strong>Covariance:</strong> <span class="math inline">\(cov(x_t,x_{t+k})\)</span>:<br>
-The covariance between two values of the series depends on ( t ):<br>
-<span class="math display">\[
-\text{cov}(x_t, x_{t+k}) = t \sigma^2
-\]</span></p></li>
-<li><p><strong>Correlation Function</strong> <span class="math inline">\(\rho_k\)</span>:</p>
-<p>The correlation for lag  k  is:<br>
-<span class="math display">\[
-\rho_k = \frac{1}{\sqrt{1 + \frac{k}{t}}}
-\]</span></p></li>
-<li><p><strong>Non-Stationarity</strong>:<br>
-The variance of the series increases with ( t ), making the random walk non-stationary.</p></li>
-<li><p><strong>Correlogram Characteristics</strong>:<br>
-The correlogram of a random walk typically shows:</p>
-<ul>
-<li>Positive autocorrelations starting near 1.</li>
-<li>A slow decrease as ( k ) increases.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="gaussian-white-noise-gwn-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="gaussian-white-noise-gwn-4.1">Gaussian White Noise GWN 4.1</h3>
-<ul>
-<li>If the variables are normally distributed, i.e. <span class="math inline">\(w_i \sim N(0,\sigma^2)\)</span>, the DWN is called a <strong>Gaussian white noise</strong> process. The normal distribution is also known as the Gaussian distribution, after Carl Friedrich Gauss.</li>
-</ul>
-</section>
-<section id="white-noise-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="white-noise-time-series">White Noise Time Series</h3>
-<ul>
-<li><strong>White Noise Time Series Lesson 4.1</strong>
-<ul>
-<li>A white noise time series is a sequence of random variables that are uncorrelated and have a mean of zero.</li>
-<li>A white noise time series has a constant variance.</li>
-<li>A white noise time series has a constant mean.</li>
-<li>A white noise time series has a constant autocorrelation of zero for all lags except when the lag is zero.</li>
-</ul></li>
-</ul>
-</section>
-<section id="correlogram-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="correlogram-4.1">Correlogram 4.1</h3>
-<ul>
-<li><strong>Correlogram Lesson 4.1</strong>
-<ul>
-<li>A correlogram is a plot of the autocorrelation function (ACF) of a time series.</li>
-<li>Each correlogram lag tests for correlation significance, increasing the chance of Type I error, resulting in potentially misleading conclusions about significant relationships.</li>
-</ul></li>
-</ul>
-</section>
-<section id="fitting-the-white-noise-model" class="level3">
-<h3 class="anchored" data-anchor-id="fitting-the-white-noise-model">Fitting the White Noise Model</h3>
-</section>
-<section id="backward-shift-operator" class="level3">
-<h3 class="anchored" data-anchor-id="backward-shift-operator">Backward Shift Operator</h3>
-<p>We define the <strong>backward shift operator</strong> or the <strong>lag operator</strong>, <span class="math inline">\(\mathbf{B}\)</span>, as: <span class="math display">\[
-  \mathbf{B} x_t = x_{t-1}
-\]</span> where <span class="math inline">\(\{x_t\}\)</span> is any time series.</p>
-<p>We can apply this operator repeatedly. We will use exponential notation to indicate this.</p>
-<p><span class="math display">\[
-  \mathbf{B}^2 x_t = \mathbf{B} \mathbf{B} x_t = \mathbf{B} ( \mathbf{B} x_t ) = \mathbf{B} x_{t-1} = x_{t-2}
-\]</span></p>
-<section id="properties-of-the-backshift-operator" class="level4">
-<h4 class="anchored" data-anchor-id="properties-of-the-backshift-operator">Properties of the Backshift Operator</h4>
-<p>The backwards shift operator is a linear operator. So, if <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, and <span class="math inline">\(d\)</span> are constants, then <span class="math display">\[
-(a \mathbf{B} + b)x_t = a \mathbf{B} x_t + b x_t
-\]</span> The distributive property also holds. <span class="math display">\[\begin{align*}
-(a \mathbf{B} + b)(c \mathbf{B} + d) x_t
-  &amp;= c (a \mathbf{B} + b) \mathbf{B} x_t  + d(a \mathbf{B} + b) x_t \\
-  &amp;= a \mathbf{B} (c \mathbf{B} + d) x_t + b (c \mathbf{B} + d) x_t \\
-  &amp;= \left( ac \mathbf{B}^2 + (ad+bc) \mathbf{B} + bd \right) x_t \\
-  &amp;= ac \mathbf{B}^2 x_t + (ad+bc) \mathbf{B} x_t + (bd) x_t
-\end{align*}\]</span></p>
-<p>.</p>
-</section>
-</section>
-<section id="search-words-for-lesson-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="search-words-for-lesson-4.1">search words for lesson 4.1</h3>
-<p>Gaussian white noise - GWN - discrete white noise - dwn - variance - covariance - correlation - correlogram - Type I error - histogram - backward shift operator - backshift operator</p>
-<!-- --------------------------------- 4.2 ----------------------------- 4.2 -------- -->
-</section>
-</section>
-<section id="lesson-4.2-white-noise-and-random-walks---part-2" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.2-white-noise-and-random-walks---part-2">Lesson 4.2 White Noise and Random Walks - Part 2</h2>
-<section id="differecing-a-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="differecing-a-time-series">Differecing a Time Series</h3>
-<p>Why do we difference a time series? Differencing a time series can help us to remove the trend and make the series stationary.</p>
-<ul>
-<li>Computing the difference between successive terms of a random walk leads to a discrete white noise series.</li>
-</ul>
-<p><span class="math display">\[\begin{align*}
-x_t &amp;= x_{t-1} + w_t \\
-x_t - x_{t-1} &amp;= w_t
-\end{align*}\]</span></p>
-<p>In many cases, differencing sequential terms of a non-stationary process can lead to a stationary process of differences.</p>
-</section>
-<section id="correlograms-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="correlograms-histogram">Correlograms &amp; Histogram</h3>
-<p>When do we use a correlogram and what do we look for?</p>
-<p><strong>Correlogram</strong></p>
-<ul>
-<li>A correlogram is a plot of the autocorrelation function (ACF) of a time series. The ACF is a measure of the correlation between the time series and a lagged version of itself.</li>
-<li>Notice that the values in the correlogram of the stock prices start at 1 and slowly decay as k increases. There are no significant autocorrelations in the differenced values. This is exactly what we would expect from a random walk.</li>
-</ul>
-<p><strong>Histogram</strong></p>
-<ul>
-<li>Figure 5 is a histogram of the differences. This is a simple measure of volatility of the stock, or in other words, how much the price changes in a day.</li>
-</ul>
-</section>
-<section id="difference-operator" class="level3">
-<h3 class="anchored" data-anchor-id="difference-operator">Difference Operator</h3>
-<ul>
-<li>Differencing nonstationary time series often leads to a stationary series, so we will define a formal operator to express this process.</li>
-</ul>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Difference Operator">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Difference Operator
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <strong>difference operator</strong>, <span class="math inline">\(\nabla\)</span>, is defined as:</p>
-<p><span class="math display">\[\nabla x_t = x_t - x_{t-1} = (1-\mathbf{B}) x_t\]</span></p>
-<p>Higher-order differencing can be denoted</p>
-<p><span class="math display">\[\nabla^n x_t = (1-\mathbf{B})^n x_t\]</span></p>
-</div>
-</div>
-<p><strong>Things to do</strong> - Do excel workout and link to this. So in the website for this. This lesson will be nother tab. Maybe add the option to download the excel sheet.</p>
-<p><strong>Computing Differences</strong> Small group acitivity The difference operator can be helpful in identifying the functional underpinnings of a trend. If a function <strong>is linear</strong>, then the first differences of equally-spaced values will be constant. If a function <strong>is quadratic</strong>, then the second differences of equally-spaced values will be constant. If a function <strong>is cubic</strong>, then the third differences of equally-spaced values will be constant, and so on.</p>
-<p><strong>differencing Stock Prices</strong> do this group activity</p>
-<p><strong>Integrated Autoregressive Model</strong> do this group activity</p>
-<p><strong>Class Activyt: Random Walk Drift</strong> do this class activity</p>
-</section>
-</section>
-</section>
-<section id="function-is-linear-vs-quadratic-vs-cubic" class="level1">
-<h1>Function is Linear vs Quadratic vs Cubic</h1>
-<p>This goes at the top, not in lessons</p>
-<ul>
-<li><strong>Linear Function</strong>
-<ul>
-<li>If a function is linear, then the first differences of equally-spaced values will be constant. (4.2)</li>
-</ul></li>
-<li><strong>Quadratic Function</strong>
-<ul>
-<li>If a function is quadratic, then the second differences of equally-spaced values will be constant. (4.2)</li>
-</ul></li>
-<li><strong>Cubic Function</strong>
-<ul>
-<li>If a function is cubic, then the third differences of equally-spaced values will be constant, and so on. (4.2)</li>
-</ul></li>
-</ul>
-<section id="search-for-words-for-lesson-4.2" class="level3">
-<h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.2">Search for words for lesson 4.2</h3>
-<p>correlogram - successive stock prices -</p>
-<!-- --------------------------------- 4.3 ---------------------------------------------------4.3 -------- -->
-</section>
-<section id="lesson-4.3-autoregressive-ar-models" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-4.3-autoregressive-ar-models">Lesson 4.3 Autoregressive (AR) Models</h2>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of an Autoregressive (AR) Model">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of an Autoregressive (AR) Model
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The time series <span class="math inline">\(\{x_t\}\)</span> is an <strong>autoregressive process of order</strong> <span class="math inline">\(p\)</span>, denoted as <span class="math inline">\(AR(p)\)</span>, if <span class="math display">\[
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t ~~~~~~~~~~~~~~~~~~~~~~~ (4.15)
-\]</span></p>
-<p>where <span class="math inline">\(\{w_t\}\)</span> is white noise and the <span class="math inline">\(\alpha_i\)</span> are the model parameters with <span class="math inline">\(\alpha_p \ne 0\)</span>.</p>
-</div>
-</div>
-<section id="properties-of-an-arp-stochastic-process" class="level3">
-<h3 class="anchored" data-anchor-id="properties-of-an-arp-stochastic-process">Properties of an AR(p) Stochastic Process</h3>
-<p><strong>Autoregressive Properties of an AR model</strong></p>
-<ul>
-<li>The mean of an AR model is a constant.</li>
-<li>The variance of an AR model is finite.</li>
-<li>The covariance of an AR model is a function of the lag.</li>
-<li>The autocorrelation of an AR model is a function of the lag.</li>
-</ul>
-</section>
-<section id="exploring-ar1-models" class="level3">
-<h3 class="anchored" data-anchor-id="exploring-ar1-models">Exploring AR(1) Models</h3>
-<p><strong>Definitino</strong> Recall that an <span class="math inline">\(AR(p)\)</span> model is of the form <span class="math display">\[
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t
-\]</span> So, an <span class="math inline">\(AR(1)\)</span> model is expressed as <span class="math display">\[
-  x_t = \alpha x_{t-1} + w_t
-\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a white noise series with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-</section>
-<section id="second-order-properties-of-an-ar1-model" class="level3">
-<h3 class="anchored" data-anchor-id="second-order-properties-of-an-ar1-model">Second-Order Properties of an AR(1) Model</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Second-Order Properties of an $AR(1)$ Model">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Second-Order Properties of an <span class="math inline">\(AR(1)\)</span> Model
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(\{x_t\}_{t=1}^n\)</span> is an <span class="math inline">\(AR(1)\)</span> prcess, then its the first- and second-order properties are summarized below.</p>
-<p><span class="math display">\[
-\begin{align*}
-  \mu_x &amp;= 0 \\  
-  \gamma_k = cov(x_t, x_{t+k}) &amp;= \frac{\alpha^k \sigma^2}{1-\alpha^2}
-\end{align*}
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="correlogram-of-an-ar1-model" class="level3">
-<h3 class="anchored" data-anchor-id="correlogram-of-an-ar1-model">Correlogram of an AR(1) Model</h3>
-<ul>
-<li>The autocorrelation function of an <span class="math inline">\(AR(1)\)</span> model is a function of the lag.</li>
-</ul>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Correlogram of an AR(1) Process">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Correlogram of an AR(1) Process
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The autocorrelation function for an AR(1) process is</p>
-<p><span class="math display">\[
-  \rho_k = \alpha^k ~~~~~~ (k \ge 0)
-\]</span> where <span class="math inline">\(|\alpha| &lt; 1\)</span>.</p>
-</div>
-</div>
-<p><strong>Things to do</strong></p>
-<ul>
-<li>DO group activity: Simulation of an AR(1) process</li>
-</ul>
-</section>
-<section id="partial-autocorrelation" class="level3">
-<h3 class="anchored" data-anchor-id="partial-autocorrelation">Partial Autocorrelation</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition: Partial Autocorrleation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition: Partial Autocorrleation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <strong>partial autocorrelation</strong> at lag <span class="math inline">\(k\)</span> is defined as the portion of the correlation that is not explained by shorter lags.</p>
-</div>
-</div>
-<p>For example, the partial correlation for lag 4 is the correlation not explained by lags 1, 2, or 3.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Check Your Understanding">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Check Your Understanding
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>What is the value of the partial autocorrelation function for an <span class="math inline">\(AR(2)\)</span> process for all lags greater than 2? answer: 0</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="partial-autocorrelation-plots-of-various-arp-processes" class="level3">
-<h3 class="anchored" data-anchor-id="partial-autocorrelation-plots-of-various-arp-processes">Partial Autocorrelation Plots of Various AR(p) Processes</h3>
-<p><strong>Look at lesson shinny code</strong></p>
-</section>
-<section id="sationary-and-non-stationary-ar-processes" class="level3">
-<h3 class="anchored" data-anchor-id="sationary-and-non-stationary-ar-processes">Sationary and Non-Stationary AR Processes</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Characteristic Equation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Characteristic Equation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Treating the symbol <span class="math inline">\(\mathbf{B}\)</span> formally as a number (either real or complex), the polynomial</p>
-<p><span class="math display">\[
-  \theta_p(\mathbf{B}) x_t = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) x_t
-\]</span></p>
-<p>is called the <strong>characteristic polynomial</strong> of an AR process.</p>
-<p>If we set the characteristic polynomial to zero, we get the <strong>characteristic equation</strong>:</p>
-<p><span class="math display">\[
-  \theta_p(\mathbf{B}) = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) = 0
-\]</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Identifying Stationary Processes">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Identifying Stationary Processes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An AR process will be <strong>stationary</strong> if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</p>
-</div>
-</div>
-</section>
-<section id="absolute-value-in-the-complex-plane" class="level3">
-<h3 class="anchored" data-anchor-id="absolute-value-in-the-complex-plane">Absolute Value in the Complex Plane</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Absolute Value in the Complex Plane
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
-<p><span class="math display">\[
-  |z| = \sqrt{a^2 + b^2}
-\]</span></p>
-</div>
-</div>
-<p><strong>This sections check for this</strong> - We will now practice assessing whether an AR process is stationary using the characteristic equation.</p>
-<p>co-pilot notes</p>
-<ul>
-<li><strong>Stationary and Non-Stationary AR Processes Lesson 4.3</strong>
-<ul>
-<li>An AR process will be stationary if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</li>
-<li>The characteristic equation of an AR process is the polynomial <span class="math inline">\(\theta_p(\mathbf{B}) = 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p\)</span>.</li>
-<li>The roots of the characteristic polynomial are the solutions of the characteristic equation.</li>
-<li>The absolute value of the roots of the characteristic polynomial must be greater than 1 for the AR process to be stationary.</li>
-</ul></li>
-</ul>
-<p>co-pilot notes end</p>
-</section>
-<section id="questions" class="level3">
-<h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<ul>
-<li>What is an exponential smoothing model?</li>
-</ul>
-</section>
-<section id="search-for-words-for-lesson-4.3" class="level3">
-<h3 class="anchored" data-anchor-id="search-for-words-for-lesson-4.3">Search for words for lesson 4.3</h3>
-<p>exponential smoothing model - polyroot function -</p>
-<!-- --------------------------------- 5.1 ---------------------------------------------------5.1 -------- -->
-</section>
-</section>
-<section id="lesson-5.1-unassigned-sections" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-5.1-unassigned-sections">Lesson 5.1 unassigned sections</h2>
-<section id="generalized-least-squares-gls" class="level3">
-<h3 class="anchored" data-anchor-id="generalized-least-squares-gls">Generalized Least Squares (GLS)</h3>
-<ul>
-<li><p>The autocorrelation in the data make ordinary least squares estimation inappropriate. What caped superhero comes to our rescue? None other than Captain GLS – the indominable Generalized Least Squares algorithm!</p></li>
-<li><p><strong>Generalized Least Squares (GLS) Lesson 5.1</strong></p>
-<ul>
-<li>Generalized Least Squares (GLS) is a method for estimating the unknown parameters in a linear regression model.</li>
-<li>GLS is used when the errors in a regression model are correlated.</li>
-<li>GLS is used when the errors in a regression model are heteroskedastic.</li>
-<li>GLS is used when the errors in a regression model are autocorrelated.</li>
-<li>GLS is used when the errors in a regression model are non-normal.</li>
-</ul></li>
-</ul>
-</section>
-<section id="additive-seasonal-indicator-variables" class="level3">
-<h3 class="anchored" data-anchor-id="additive-seasonal-indicator-variables">Additive Seasonal Indicator Variables</h3>
-<ul>
-<li>additive model with seasonal indicator variables can be perceived similarly to other additive models with a seasonal component:</li>
-</ul>
-<p><span class="math display">\[
-  x_t = m_t + s_t + z_t
-\]</span></p>
-<p>where <span class="math display">\[
-  s_t =
-    \begin{cases}
-      \beta_1, &amp; t ~\text{falls in season}~ 1 \\
-      \beta_2, &amp; t ~\text{falls in season}~ 2 \\
-      ⋮~~~~ &amp; ~~~~~~~~~~~~⋮ \\
-      \beta_s, &amp; t ~\text{falls in season}~ s
-    \end{cases}
-\]</span> and <span class="math inline">\(s\)</span> is the number of seasons in one cycle/period, and <span class="math inline">\(n\)</span> is the number of observations, so <span class="math inline">\(t = 1, 2, \ldots, n\)</span> and <span class="math inline">\(i = 1, 2, \ldots, s\)</span>, and <span class="math inline">\(z_t\)</span> is the residual error series, which can be autocorrelated.</p>
-<p>It is important to note that <span class="math inline">\(m_t\)</span> does not need to be a constant. It can be a linear trend:</p>
-<section id="seasonal-indicator-variable" class="level4">
-<h4 class="anchored" data-anchor-id="seasonal-indicator-variable">Seasonal indicator variable</h4>
-<ul>
-<li>lesson5.1
-<ul>
-<li>We will create a linear model that includes a constant term for each month. This constant monthly term is called a <strong>seasonal indicator variable.</strong></li>
-<li>This name is derived from the fact that each variable indicates (either as 1 or 0) whether a given month is represented.</li>
-<li>Indicator variables are also called dummy varaibles.</li>
-</ul></li>
-</ul>
-</section>
-</section>
-</section>
-</section>
-<section id="definitions" class="level1">
-<h1>Definitions</h1>
-<p>Stochastic processes: are random processes that evolve over time. They are characterized by the fact that the future values of the process cannot be predicted based on past values. The random walk is a classic example of a stochastic process.</p>
-<p>Discrete white noise DWN: is a sequence of uncorrelated random variables with a mean of zero and a constant variance. The autocorrelation function of white noise is zero for all lags except when the lag is zero.</p>
-<p>Type I Errors: 4.1 Suppose we will conduct a hypothesis test with a level of significance equal to <span class="math inline">\(\alpha = 0.05\)</span>. If the null hypothesis is true, there is a probability of 0.05 that we will reject the null hypothesis. Due to sampling variation, we will reject a true null hypothesis 5% of the time. We refer to this as making a <strong>Type I Error</strong>.</p>
-<p>Random Walk: is a stochastic process in which the difference between each observation is a white noise process. A random walk is a non-stationary time series. A random walk has a stochastic trend, a unit root, a constant variance, a constant mean, and a constant autocorrelation of one for all lags except when the lag is zero.</p>
-<p>Let <span class="math inline">\(\{x_t\}\)</span> be a time series. Then, <span class="math inline">\(\{x_t\}\)</span> is a <strong>random walk</strong> if it can be expressed as <span class="math display">\[
-  x_{t} = x_{t-1} + w_{t}
-\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a random process.</p>
-<p>The value <span class="math inline">\(x_t\)</span> can be considered as the cumulative summation of the first <span class="math inline">\(t\)</span> values of the <span class="math inline">\(w_t\)</span> series. In many cases, <span class="math inline">\(w_t\)</span> is a discrete white noise series, and it is often modeled as a Gaussian white noise series. However, <span class="math inline">\(w_t\)</span> could be as simple as a coin toss</p>
-<p>Absolute Value in the COmplex Plane</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of the Absolute Value in the Complex Plane">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of the Absolute Value in the Complex Plane
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(z = a+bi\)</span> be any complex number. It can be represented by the point <span class="math inline">\((a,b)\)</span> in the complex plane. We define the absolute value of <span class="math inline">\(z\)</span> as the distance from the origin to the point:</p>
-<p><span class="math display">\[
-  |z| = \sqrt{a^2 + b^2}
-\]</span></p>
-</div>
-</div>
+<p>This is the overview of the chapter 4. I will add info from the index file here. I will filter from there to what will go here. My goal is to first have the website have a map of the concepts in time series. I want to first avoid doing it by chapters since it seperates topics and limit my learning to that lesson. Bigger picture first.</p>
 
 
-
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
