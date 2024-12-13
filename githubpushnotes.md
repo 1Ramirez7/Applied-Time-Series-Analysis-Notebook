@@ -4,3 +4,8 @@ Github Push notes
 
 - The site_libs folder was created with this push
     - So if the timeseries folder is remove, more than likely this folder is not needed.
+
+
+#17 transferring files from raw repo
+- hw 1.5 had a classical decomposition table not work due to the common library issue.
+- I just comment that part of the code to fix later
