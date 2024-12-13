@@ -17,6 +17,22 @@ transfer from chapter_4_lesson_4_notes.qmd old repo
 
 I belive this are notes taken from class.
 
+```{r}
+# Loading R packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               tsibble, fable,
+               feasts, tsibbledata,
+               fable.prophet,
+               patchwork,
+               lubridate,
+               rio,
+               ggplot2,
+               kableExtra
+               )
+
+```
+
 
 
 ```{r}

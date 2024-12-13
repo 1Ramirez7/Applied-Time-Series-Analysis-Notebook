@@ -11,6 +11,23 @@ format:
     code-fold: true
 ---
 
+
+```{r}
+# Loading R packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               tsibble, fable,
+               feasts, tsibbledata,
+               fable.prophet,
+               patchwork,
+               lubridate,
+               rio,
+               ggplot2, knitr,
+               kableExtra
+               )
+
+```
+
 This is the overview of the chapter 4. I will add info from the index file here. I will filter from there to what will go here.
 My goal is to first have the website have a map of the concepts in time series. I want to first avoid doing it by chapters since it seperates topics and limit my learning to that lesson. Bigger picture first.
 
@@ -23,8 +40,6 @@ This are notes intended to connect time series concepts
 
 ```{r}
 # Load necessary library
-library(knitr)
-library(kableExtra)
 
 # Define the checklist table
 checklist_data <- data.frame(
@@ -123,7 +138,7 @@ temps_forecast |>
     x = "Year",
     y = "Temperature Change (Celsius)",
     title = paste0("Change in Mean Annual Global Temperature (", min(temps_ts$year), "-", max(temps_ts$year), ")"),
-    subtitle = paste0("50-Year Forecast Based on our AR(", tidy(global_ar) |> as_tibble() |> dplyr::select(term) |> tail(1) |> right(1), ") Model")
+    subtitle = paste0("50-Year Forecast Based on our AR(", tidy(global_ar) |> as_tibble() |> dplyr::select(term) |> tail(1) |> stringr::str_sub(1), ") Model")
   ) +
   theme_minimal() +
   theme(

@@ -17,6 +17,25 @@ transfer from chapter_5_lesson_1_notes.qmd old repo
 notes taken during class
 
 ```{r}
+# Loading R packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               tsibble, fable,
+               feasts, tsibbledata,
+               fable.prophet,
+               patchwork,
+               lubridate,
+               rio,
+               ggplot2,
+               kableExtra
+               )
+
+
+
+```
+
+
+```{r}
 
 chocolate_month2 <- rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
   mutate(
@@ -48,7 +67,7 @@ when removing 0 + from the tslm function. it makes january as the mt
 
 ```{r}
 
-chocolate_month2 <- #1 rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
+chocolate_month2 |> # <- #1 rio::import("https://byuistats.github.io/timeseries/data/chocolate.csv") |>
   mutate(
     dates = yearmonth(ym(Month)),
     month = month(dates),
@@ -60,8 +79,8 @@ chocolate_month2 <- #1 rio::import("https://byuistats.github.io/timeseries/data/
   as_tsibble(index = dates)
 
 # Fit regression model
-chocolate_lm <- chocolate_month |>
-  model(?TSLM(chocolate ~ stats_time + month))
+chocolate_lm <- chocolate_month2 |>
+  model(TSLM(chocolate ~ stats_time + month))
 
 # Estimated parameter values
 param_est <- chocolate_lm |>
