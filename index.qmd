@@ -28,6 +28,7 @@ $$ where $\{w_t\}$ is a white noise series with mean zero and variance $\sigma^2
 # Sationary vs Non-Stationary TS
 
 look at  4.3.6 The difference operator from the book to further add to this concept.
+ 4.5.2 Stationary and non-stationary AR processes (book)
 
 **non-stationary convert to stationary time series** 1. In Chapter 4 Lesson 2, we established that taking the difference of a non-stationary time series with a stochastic trend can convert it to a stationary time series.
 
