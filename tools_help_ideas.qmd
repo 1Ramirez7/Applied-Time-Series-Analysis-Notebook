@@ -36,3 +36,7 @@ chapter_3_overview_code_draft.qmd is is streamline
 
 - May need to data frame set according to data
 
+
+# have a qmd file with tips and tricks
+- Have a qmd file that has sample code to doing advance code or elaborate ways of displaying data.
+- Can add other code like css amd .yml code
