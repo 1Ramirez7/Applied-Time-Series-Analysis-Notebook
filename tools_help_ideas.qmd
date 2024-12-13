@@ -42,5 +42,6 @@ chapter_3_overview_code_draft.qmd is streamline
 - One for quick r funcion or code related to time series
 - Have a qmd file that has sample code to doing advance code or elaborate ways of displaying data.
 - Can add other code like css amd .yml code
+      - Maybe the tips and tricks can have its own repo. 
 
 
