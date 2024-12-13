@@ -12,6 +12,7 @@ format:
     math: katex # katex, mathjax, none
 ---
 
+
 I'm first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.
 
 # Sationary vs Non-Stationary TS

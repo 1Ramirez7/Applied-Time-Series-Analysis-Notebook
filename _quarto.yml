@@ -31,6 +31,7 @@ website:
       - text: "Master"
         file: index.qmd
       - sidebar:projects
+      - sidebar:chapter_1
       - sidebar:chapter_3
       - sidebar:chapter_4
       - sidebar:chapter_5
