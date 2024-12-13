@@ -181,7 +181,7 @@ has_gaps(df) # false if none and vice versa True
 
 # Reading different file formats
 
-```{r, eval=FALSE}
+```{r}
 
 
 # wine_dat <- read_table("data/wine.dat") # resource 3.4.2

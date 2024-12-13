@@ -63,6 +63,7 @@ website:
         - section: "Lesson 1"
           contents:
             - chapters/chapter_3_lesson_1.qmd
+            - hw/homework_3_1.qmd
   
     - id: chapter_4
       title: "Ch 4"
