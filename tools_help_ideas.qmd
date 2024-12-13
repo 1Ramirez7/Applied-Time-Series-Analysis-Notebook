@@ -30,9 +30,18 @@ This page is to include pontential ideas to do for resources, tools, and ideas f
 
 # Streamline code
 
-chapter_3_overview_code_draft.qmd is is streamline
+chapter_3_overview_code_draft.qmd is streamline
 
 - Edits to variables happen in first code chunk and qmd runs all code for that chapter.
 
 - May need to data frame set according to data
+
+
+# have a qmd file with tips and tricks
+
+- One for quick r funcion or code related to time series
+- Have a qmd file that has sample code to doing advance code or elaborate ways of displaying data.
+- Can add other code like css amd .yml code
+      - Maybe the tips and tricks can have its own repo. 
+
 
