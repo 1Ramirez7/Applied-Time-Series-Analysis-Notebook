@@ -1,0 +1,310 @@
+---
+title: "Time Series Homework: Chapter 3 Lesson 1"
+subtitle: "Eduardo Ramirez"
+format: 
+  html:
+    code-fold: true
+    embed-resources: true
+    toc: true
+---
+
+
+::: {.cell}
+
+:::
+
+
+
+
+Loading and preparing data
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df <- rio::import("https://byuistats.github.io/timeseries/data/constructionequip_manu_orders_shipments.csv")
+
+# str(df$date)
+
+# ------------- section 1 -----------------------------------
+df <- df |>
+  mutate(date = lubridate::mdy(date),
+         constructionequip_ord = as.numeric(constructionequip_ord), # make sure numeric for x variables
+         constructionequip_ship = as.numeric(constructionequip_ship)
+         ) |>
+  rename(x = constructionequip_ord, y = constructionequip_ship) |> # renames columns and converts to numeric
+  select(date, x, y) # re orders and or removes not selected columns
+
+# -----------end of section 1 -----------------------
+
+# -------------------- section 2 --------------------------
+
+# df1 <- df |> # this makes a new df so either df before or this one is use. 
+#   mutate(obs = row_number()) |> # makes new column with periods
+#   select(date, obs, x, y)
+# 
+# dfx <- df |> # lone df for variable x = ord
+#   mutate(obs = row_number()) |> 
+#   select(obs, x)
+# 
+# dfy <- df |> # lone df for y = ship
+#   mutate(obs = row_number()) |> 
+#   select(obs, y)
+
+# ----------------- end of section 2 --------------------------
+```
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+df1 <- df |> # this makes a new df so either df before or this one is use. 
+  mutate(obs = row_number()) |> # makes new column with periods
+  select(date, obs, x, y)
+
+dfx <- df1 |> # lone df for variable x = ord
+  mutate(obs = row_number()) |> 
+  select(date, x)
+
+dfy <- df1 |> # lone df for y = ship
+  mutate(obs = row_number()) |> 
+  select(date, y)
+```
+:::
+
+
+
+
+# Questions
+
+## Question 1 - Context and Measurement (10 points)
+
+The first part of any time series analysis is context. You cannot properly analyze data without knowing what the data is measuring. Without context, the most simple features of data can be obscure and inscrutable. This homework assignment will center around the series below.
+
+Please research the time series. In the spaces below, give the data collection process, unit of analysis, and meaning of each observation for the series.
+
+### a) Construction Equipment Manufacturing Orders and Shipments
+
+<https://fred.stlouisfed.org/graph/?g=1f4dN>
+
+::: {.callout-note title="Answer" icon="false"}
+Both x (ord) and y (ship) variables are increasing over time. So a multiplicative classical decomposition model is best. The data is collected monthly and the unit of analysis is in thousands of dollars. The data is collected by the U.S. Census Bureau and is used to measure the value of new orders and shipments for construction equipment manufacturing. The observations represent the total value of new orders and shipments in thousands of dollars for each month.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# this is code for hw 3-1
+
+# this code is same as the dfx2 & dfy2 code
+df1 <- df1 |>
+  mutate(index = tsibble::yearmonth(date)) |> # 3.1
+  as_tsibble(index = index) |>
+  select(index, date, x, y)
+
+
+
+autoplot(df1, .vars = x) +
+  geom_line(data = df1, aes(x = index, y = y), color = "#E69F00") +
+  labs(
+    x = "Month",
+    y = "New orders & Value of Equip",
+    title = "Time Series of Construction Equip: New Orders & Equipment"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+::: {.cell-output-display}
+![](homework_3_1_files/figure-html/time series plot of both variables-1.png){width=672}
+:::
+:::
+
+
+
+:::
+
+#### Figure: CCF plot of random component of New Orders and Equipment.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df11 <- model(df1, feasts::classical_decomposition(x)) |>
+  components() |>
+  select(index, random) |>
+  rename(x_random = random)
+
+df111 <- model(df1, feasts::classical_decomposition(y)) |>
+    components() |>
+  select(index, random) |>
+  rename(y_random = random)
+
+random_joint <- df11 |>
+  right_join(df111, by = join_by(index))
+
+autoplot(random_joint, .vars = x_random) +
+  geom_line(data = random_joint, aes(x = index, y = y_random), color = "#E69F00") +
+  labs(
+    x = "Month",
+    y = "Random Component (Thousands)",
+    title = "Random Component",
+    subtitle = "Construction Equip: New Orders & Value of Shipmentfor Construction Equipment"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+::: {.cell-output-display}
+![](homework_3_1_files/figure-html/figure 4 of lesson 3-1-1.png){width=672}
+:::
+:::
+
+
+
+
+## Question 2 - Construction Equipment Manufacturing: Graphical Analysis (15 points)
+
+### a) Please plot a correlogram of the random components of the New Orders and Value of Shipments for the Construction Equipment Manufacturing data. Include both plots in the same illustration as exemplified in the Figure 5 of Chapter 3 Lesson 1.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+x_random <- ACF(random_joint, y = x_random) |> autoplot() +
+    labs(title = "ACF of Random Component of New Orders Over Time")
+y_random <- ACF(random_joint, y = y_random) |> autoplot() +
+    labs(title = "ACF of Random Component of Equipment Over Time")
+x_random / y_random
+```
+
+::: {.cell-output-display}
+![](homework_3_1_files/figure-html/ACF for the random components new orders&equipment-1.png){width=672}
+:::
+:::
+
+
+
+
+### b) Interpret and analyze the correlogram of the New Orders and Value of Shipments series.
+
+::: {.callout-note title="Answer" icon="false"}
+Observing the correlogram patterns over time reveals a prominent cyclical or seasonal patterns. Both New Orders and Shipments random components show a decaying pattern, this could suggest autoregressive characteristics or lingering seasonal influences not fully removed by decomposition, but new orders looks to have more peaks and downs. New orders shows more persistent peaks or valleys than the other, indicating differing sensitivities of New Orders and Shipments to economic or seasonal factors over time. Overall, this analysis helps in identifying whether fluctuations in each series’ random component are synchronized or vary independently across the observed dates.
+:::
+
+## Question 3 - Construction Equipment Manufacturing: Cross-correlation (30 points)
+
+### a) Please plot a cross-correlogram of the New Orders and Value of Shipments series.
+
+::: {.callout-note title="Answer" icon="false"}
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+random_joint %>%
+  CCF(y = y_random, x = x_random) %>%
+  autoplot() +
+  labs(
+    title = "CCF for Random Component of Construction Equipment\nManufacturing Orders (x) and Shipments (y)",
+    subtitle = ""
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+::: {.cell-output-display}
+![](homework_3_1_files/figure-html/cross-correlogram of x and y-1.png){width=672}
+:::
+:::
+
+
+
+:::
+
+### b) Please interpret the cross-correlogram of the New Orders and Value of Shipments series. Include descriptions of the statistical and practical significance of the results.
+
+
+
+
+::: {.cell}
+
+:::
+
+
+
+
+::: {.callout-note title="Answer" icon="false"}
+The correlogram analysis of the New Orders and Value of Shipments series reveals certain underlying temporal relationships. Positive correlations at lags 0M and 1M (0.229 and 0.059) suggest that recent monthly values of New Orders are closely aligned with those of Shipments, indicating a strong association. As the lag increases, the correlation values fluctuate, with both positive and negative shifts, suggesting possible seasonality or periodic variations. Notably, there is a stronger positive correlation up to around lag 2M, after which correlations decline, pointing to diminishing linear dependence over time. This pattern may imply that, while New Orders and Shipments align in short periods, their association weakens over extended lags, possibly due to external economic factors affecting manufacturing demand and supply differently over time.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lag12
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tibble: 1 × 14
+  lag   `-12M` `-11M` `-10M` `-9M` `-8M` `-7M` `-6M` `-5M`  `-4M`  `-3M` `-2M`
+  <chr> <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>  <chr>  <chr> <chr>
+1 ccf   -0.099 -0.077 0.045  0.081 -0.03 0.012 0.039 -0.016 -0.078 0.104 0.18 
+# ℹ 2 more variables: `-1M` <chr>, `0M` <chr>
+```
+
+
+:::
+
+```{.r .cell-code}
+lead12
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tibble: 1 × 14
+  lag   `0M`  `1M`  `2M`   `3M`  `4M`  `5M`  `6M`  `7M`  `8M`  `9M`  `10M` `11M`
+  <chr> <chr> <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr>
+1 ccf   0.229 0.059 -0.026 -0.1… -0.1… -0.1… -0.0… -0.0… -0.0… 0.004 -0.07 -0.0…
+# ℹ 1 more variable: `12M` <chr>
+```
+
+
+:::
+:::
+
+
+
+:::
+
+### Rubric
+
+|  |  |  |
+|------------------------|------------------------|------------------------|
+| **Criteria** | **Mastery (10)** | **Incomplete (0)** |
+| **Question 1: Context and Measurement** | The student thoroughly researches the data collection process, unit of analysis, and meaning of each observation for both the requested time series. Clear and comprehensive explanations are provided. | The student does not adequately research or provide information on the data collection process, unit of analysis, and meaning of each observation for the specified series. |
+|  | **Mastery (5)** | **Incomplete (0)** |
+| **Question 2a: Correlograms** | The student plots a correlogram of the random components of the New Orders and Value of Shipments for the Construction Equipment Manufacturing data using R. The correlogram includes both plots in the same illustration, similar to Figure 5 of Chapter 3 Lesson 1, allowing for easy comparison between the two series. The student correctly uses labels. The R code is well-commented, providing clear explanations of each step in the plotting process, and adheres to best practices for visualization in time series analysis. | The correlogram may be missing one or both plots, or the plots may not be correctly aligned for comparison. There may be errors in identifying or labeling the autocorrelation values, making it challenging to interpret the results accurately. The R code may lack sufficient commenting or follow best practices for visualization, hindering comprehension of the plotting process. |
+|  | **Mastery (10)** | **Incomplete (0)** |
+| **Question 2b: Interpretation and Analysis** | They accurately identify and discuss significant autocorrelation values at various lags, indicating the presence of temporal dependencies within each series. Additionally, the student compares and contrasts the correlograms of the two series, highlighting similarities and differences in their autocorrelation patterns. The analysis includes insights into the potential underlying factors driving the observed autocorrelation patterns, demonstrating a deep understanding of time series analysis concepts and their practical implications. | The student attempts to interpret and analyze the correlogram for the New Orders and Value of Shipments series but encounters issues with accuracy, clarity, or completeness. Their discussion may lack depth or coherence, with unclear or erroneous interpretations of significant autocorrelation values. Additionally, the comparison between the correlograms of the two series may be vague or missing key points, indicating a limited understanding of time series analysis concepts. Overall, the student's analysis may lack sufficient detail or insight, suggesting areas for improvement in their understanding of autocorrelation analysis and its practical implications in time series analysis. |
+|  | **Mastery (10)** | **Incomplete (0)** |
+| **Question 3a: Cross-correlogram** | The student accurately plots a cross-correlogram of the New Orders and Value of Shipments series using R. The plot includes clear labels and titles allowing for easy interpretation of the results. The R code is well-commented, providing clear explanations of each step in the cross-correlation analysis and plot generation process. | The student attempts to plot a cross-correlogram of the New Orders and Value of Shipments series in R but encounters issues with accuracy, clarity, or completeness. The plot may lack clear labels and titles, making it challenging to interpret the results accurately. Additionally, the R code may lack sufficient commenting or clarity, hindering comprehension of the analysis process. Overall, the student's performance falls short of expectations, indicating a need for improvement in plotting cross-correlograms, labeling plots effectively, and providing clear explanations in R code. |
+|  | **Mastery (20)** | **Incomplete (0)** |
+| **Question 3b: Interpretation and Analysis** | They accurately identify and discuss significant cross-correlation values at various lags, indicating the strength and direction of the relationship between the two series. Additionally, the student includes a thoughtful discussion of the statistical significance of the results, highlighting how cross-correlation coefficients measure the linear relationship between the series and whether the observed correlations are statistically significant. Furthermore, the student discusses the practical significance of the results, addressing the real-world relevance or impact of the observed relationships, and how they may inform decision-making or forecasting in the context of construction equipment manufacturing. | The student attempts to interpret the cross-correlogram for the New Orders and Value of Shipments series but encounters issues with accuracy, clarity, or completeness. Their discussion may lack depth or coherence, with unclear or erroneous interpretations of significant cross-correlation values. Additionally, the discussion of statistical and practical significance may be vague or missing key points, indicating a limited understanding of these concepts. Overall, the student's analysis may lack sufficient detail or insight, suggesting areas for improvement in their understanding of cross-correlation analysis and its practical implications in time series analysis. |
+| **Total Points** | **55** |  |

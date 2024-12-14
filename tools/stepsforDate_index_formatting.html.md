@@ -1,0 +1,237 @@
+---
+title: "Steps for formatting Date and Creating Index"
+subtitle: "Code samples"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    embed-resources: true
+    toc: true
+    code-fold: true
+---
+
+
+::: {.cell}
+
+```{.r .cell-code}
+#source("common_functions.R") # should i be using this one?? not a good idea since many of the formulas return different values
+
+# Loading R packages. originally was using common functions but trying not to use
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               tsibble, fable,
+               feasts, tsibbledata,
+               fable.prophet,
+               patchwork,
+               lubridate,
+               rio,
+               ggplot2,
+               kableExtra, tidyquant
+               )
+```
+:::
+
+
+
+
+
+
+The following is steps to check in what format the date column is in in a new dataset. Then to convert to DATE format to do time series research
+
+-   **Import Data**:
+
+-   **Check `date` Column Type**:
+
+-   **Convert `date` to Date Format**:
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# the rename is for a different df
+
+# Step 1: Import your data
+df <- read.csv("https://byuistats.github.io/timeseries/data/Vessels_Trade_US.csv") 
+# We'll assume the data has a column called 'date' (replace with the actual column name) and a 'value' column
+
+
+# Step 2: Check the structure of the 'date' column to verify its type
+str(df$date)  # This will show you if the date column is a character, Date, or something else
+
+
+# Convert 'date' column to Date type if it's in character format 
+# 2.1 reomve unwanted columns or
+df1 <- df |>
+  mutate(date = lubridate::mdy(date) # date is date columm name
+         # mdy(date) mdy is current order of date, lubridate will format to ymd. 
+       #dplyr::select(-comments) # remove unwanted columns
+         ) |>
+  rename(x = constructionequip_ord, y = constructionequip_ship) # rename columns
+
+# 2.1 Convert 'Date' column to yearquarter format
+df$Date <- lubridate::ymd(df$Date) # df2
+
+
+
+# Verify the 'date' column is now in the correct format (should be Date type)
+str(df$date)  # Should now return 'date'
+```
+:::
+
+
+
+
+**Doing mutate by getting weekly average**
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Set symbol and date range for Apple
+symbol <- "AAPL"
+date_start <- "2022-01-01"
+date_end <- "2024-01-01"
+
+# Download the stock data
+stock_df <- tq_get(symbol, from = date_start, to = date_end, get = "stock.prices")
+
+# Convert to a tsibble
+stock_ts <- stock_df %>%
+  mutate(dates = lubridate::ymd(date), value = adjusted) %>%
+  mutate(year_week = yearweek(dates)) |>
+  group_by(year_week) |>
+  summarise(value = mean(value)) |>
+  ungroup() |>
+  as_tsibble(index = year_week)
+
+# Time plot of the daily closing prices
+autoplot(stock_ts, value) +
+  labs(title = "Time Plot of Apple (AAPL) Daily Closing Prices",
+       x = "Date", y = "Closing Price (USD)")
+```
+
+::: {.cell-output-display}
+![](stepsforDate_index_formatting_files/figure-html/unnamed-chunk-3-1.png){width=672}
+:::
+:::
+
+
+
+
+the code below was taken from project one, made to plot the time series without doing the monthly mean. The first two lines of code are missing
+
+data is for daily data.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# this code is also not complete
+
+
+# the first 2 ts can almost be taken from the previous code.
+# this code was first use but replace by the above code
+
+  dplyr::select(dates, year, months, value)  |> # ts3
+  arrange(dates) |> # ts4
+  mutate(index = tsibble::yearmonth(dates)) |> # ts5
+  as_tsibble(index = index) |> # ts6
+  dplyr::select(index, dates, year, months, value) |> # ts7
+  rename(Vessels = value) # rename value to emphasize data context
+vessels_ts |> #ts8
+  autoplot(.vars = Vessels) +
+  labs(
+    x = "Month",
+    y = "Vessels Cleared Monthly",
+    title = "Vessels Cleared Monthly in Foreing Trade for United Sates"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+:::
+
+
+
+
+# working with two variables and period column
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# I think this file is all for samples, and I edit them so now the code is all mix up hence all the eval=false! sucks 
+
+df <- rio::import("https://byuistats.github.io/timeseries/data/constructionequip_manu_orders_shipments.csv")
+
+# str(df$date)
+
+
+df1 <- df |>
+  mutate(date = lubridate::mdy(date),
+         constructionequip_ord = as.numeric(constructionequip_ord), # make sure numeric for x variables
+         constructionequip_ship = as.numeric(constructionequip_ship)
+         ) |>
+  rename(x = constructionequip_ord, y = constructionequip_ship) |> # renames columns and converts to numeric
+  select(date, x, y) # re orders and or removes not selected columns
+  
+df2 <- df1 |> # this makes a new df so either df before or this one is use. 
+  mutate(obs = row_number()) |> # makes new column with periods
+  select(obs, x, y)
+
+# can the obs code to make multiple df with different columns. 
+```
+:::
+
+
+
+
+# data has gaps
+
+Tyson notes
+
+1.  filling with previous variable
+    1.  Then there is 100% correlation with the previous variable
+2.  Filling with average
+    1.  some data's average, like weather can vary so it can trow off random,
+    2.  using the same variable as last year is an option, it will just mess with the seasonality
+3.  taking the sum of the lag and lead periods, and divide by two to replace missing
+    1.  its a good one
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df0 <- rio::import("https://byuistats.github.io/timeseries/data/UNRATENSA.csv") |>
+    mutate(YM = yearmonth(lubridate::mdy(date)))
+df <- as_tsibble(df0, index = YM) |>
+  select(ym, cdebt)
+interval(df) # gives interval: M, D ot Y etc
+has_gaps(df) # false if none and vice versa True
+```
+:::
+
+
+
+
+# Reading different file formats
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# wine_dat <- read_table("data/wine.dat") # resource 3.4.2
+```
+:::

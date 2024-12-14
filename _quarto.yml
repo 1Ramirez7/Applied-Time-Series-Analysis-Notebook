@@ -4,10 +4,16 @@ project:
   render:
     - "*.qmd"
     - "!extra_files/"
-    - "!timeseries/"
     - "!githubpushnotes.md"
-    
+
 freeze: auto
+
+
+execute: # testing to see if it re renders less things
+  cache: true
+
+# resources: # testing to see if this will just copy this file and not delete.
+#  - styles.css # did not do anything, but resources is good to learn how to use
 
 website:
   title: "Applied Time Series Notebook"

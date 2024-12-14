@@ -1,0 +1,26 @@
+---
+title: "Chapter overview and Task"
+subtitle: "Chapter 4"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    embed-resources: true
+    toc: true
+    code-fold: true
+---
+
+
+
+
+
+This is the overview of the chapter 4. I will add info from the index file here. I will filter from there to what will go here.
+My goal is to first have the website have a map of the concepts in time series. I want to first avoid doing it by chapters since it seperates topics and limit my learning to that lesson. Bigger picture first.
+
+
+
+
+
+
+

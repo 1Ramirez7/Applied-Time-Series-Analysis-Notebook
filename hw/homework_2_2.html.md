@@ -1,0 +1,475 @@
+---
+title: "Time Series Homework: Chapter 2 Lesson 2"
+subtitle: "Eduardo Ramirez"
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
+---
+
+
+::: {.cell}
+
+:::
+
+
+
+
+## Data
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+manu4 <- rio::import("https://byuistats.github.io/timeseries/data/manu_mat_invent.csv")
+
+earlier <- rio::import("https://raw.githubusercontent.com/1Ramirez7/uni_data/refs/heads/main/data/mearlier.csv")
+
+latter <- rio::import("https://raw.githubusercontent.com/1Ramirez7/uni_data/refs/heads/main/data/mlatter.csv")
+```
+:::
+
+
+
+
+## Questions
+
+### Question 1 - Context and Measurement (10 points)
+
+The first part of any time series analysis is context. You cannot properly analyze data without knowing what the data is measuring. Without context, the most simple features of data can be obscure and inscrutable. This homework assignment will center around the series below.
+
+Please research the time series. In the spaces below, give the data collection process, unit of analysis, and meaning of each observation for the series.
+
+#### **Manufacturers' Materials and Supplies Inventories**
+
+<https://fred.stlouisfed.org/series/UMTMMI>
+
+::: {.callout-note title="Answer" icon="false"}
+-   **Data Collection Process**: The data is collected monthly by the U.S. Census Bureau and represents manufacturers' inventories for materials and supplies across the manufacturing sector in the U.S.
+
+-   **Unit of Analysis**: The values are measured in millions of dollars, indicating the monetary worth of materials and supplies inventories at the end of each month.
+
+-   **Meaning of Each Observation**: Each observation represents the total dollar value of materials and supplies inventories held by U.S. manufacturers at the end of the specified month, without adjustments for seasonal variations.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+manu4$date <- lubridate::mdy(manu4$date) # manu_1
+manu4$date <- yearmonth(manu4$date) # manu_2
+manu4$manu_inv <- as.numeric(manu4$manu_inv) # manu_3 
+
+missing_values <- anyNA(manu4$manu_inv) | anyNA(manu4$date) # this portion only checks for missing and the above line of code is what changes the df
+if (anyNA(manu4$manu_inv) | anyNA(manu4$date)) {
+  cat("Missing values in 'manu_inv' or 'date'.\n")
+} else {
+  cat("No missing values.\n")
+} # manu_3 only checks for NA
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+No missing values.
+```
+
+
+:::
+
+```{.r .cell-code}
+manu4_tsbl <- as_tsibble(manu4, key = NULL, index = date, regular = TRUE) # manu_4 
+interval(manu4_tsbl) # checks for interval
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+<interval[1]>
+[1] 1M
+```
+
+
+:::
+
+```{.r .cell-code}
+has_gaps(manu4_tsbl) # checks for gaps
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tibble: 1 × 1
+  .gaps
+  <lgl>
+1 FALSE
+```
+
+
+:::
+
+```{.r .cell-code}
+# manu4_tsbl <- manu4_tsbl %>% fill_gaps() # to fill gaps # manu_4
+
+manu4_tsbl |>
+    autoplot()
+```
+
+::: {.cell-output-display}
+![](homework_2_2_files/figure-html/unnamed-chunk-3-1.png){width=672}
+:::
+
+```{.r .cell-code}
+#manu4_tsbl |>
+#    slice(1:12) |> # this code just plots the first 12 rows.
+#    autoplot()
+```
+:::
+
+
+
+:::
+
+### Question 2 - Manufacturer's Inventory: Autocorrelation and autocovariance (10 points)
+
+#### a) Please calculate the list of autocorrelation and autocovariance values for the Manufacturer's Inventory series.
+
+::: {.callout-note title="Answer" icon="false"}
+# Autocorrelation Values for the Manufacture's Inventory
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# autocorrelation values for the manufacture's inventory
+manu4_tsbl |> ACF(manu_inv)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tsibble: 25 x 2 [1M]
+        lag   acf
+   <cf_lag> <dbl>
+ 1       1M 0.988
+ 2       2M 0.976
+ 3       3M 0.963
+ 4       4M 0.949
+ 5       5M 0.934
+ 6       6M 0.920
+ 7       7M 0.904
+ 8       8M 0.889
+ 9       9M 0.873
+10      10M 0.856
+# ℹ 15 more rows
+```
+
+
+:::
+
+```{.r .cell-code}
+ACF(manu4_tsbl) |> autoplot()
+```
+
+::: {.cell-output-display}
+![](homework_2_2_files/figure-html/unnamed-chunk-4-1.png){width=672}
+:::
+:::
+
+
+
+:::
+
+::: {.callout-note title="Answer" icon="false"}
+# Autocovariance Values for the Manufacture's Inventory Series
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+manu4_tsbl |> ACF(manu_inv, type = "covariance")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tsibble: 25 x 2 [1M]
+        lag         acf
+   <cf_lag>       <dbl>
+ 1       1M 2364790710.
+ 2       2M 2334722786.
+ 3       3M 2303877261.
+ 4       4M 2270652440.
+ 5       5M 2235855386.
+ 6       6M 2201015019.
+ 7       7M 2164212123.
+ 8       8M 2126778125.
+ 9       9M 2089074989.
+10      10M 2049563630.
+# ℹ 15 more rows
+```
+
+
+:::
+
+```{.r .cell-code}
+ACF(manu4_tsbl, type = "covariance") |> autoplot()
+```
+
+::: {.cell-output-display}
+![](homework_2_2_files/figure-html/unnamed-chunk-5-1.png){width=672}
+:::
+:::
+
+
+
+:::
+
+#### b) If autocovariance and autocorrelation are trying to evaluate a similar linear relationship across time in our series, why do we get different values for autocorrelation and autocovariance at the same lag.
+
+::: {.callout-note title="Answer" icon="false"}
+Autocovariance and autocorrelation both measure the linear relationship between a time series and its lagged values, but they differ in scale. Autocovariance reflects the raw magnitude of dependence, while autocorrelation is a standardized version that divides by the variance, yielding values between -1 and 1 for easy comparison. This is why autocovariance values are large (in original units) and autocorrelation values are always between -1 and 1, even at the same lag.
+:::
+
+### Question 3 - Manufacturer's Inventory: Stationary (20 points)
+
+Weak stationarity is a form of stationarity important for the analysis of time series data. A time series is said to be weakly stationary if its statistical properties such as mean, variance, and autocovariance are constant over time. Here are the key components of weak stationarity:
+
+*Constant Mean:* The mean of the time series remains constant over time. This doesn't necessarily mean that the time series is centered around zero; it just implies that the average value remains the same throughout the observed period.
+
+*Constant Variance:* The variance of the time series is uniform across all time points. Like the mean, this doesn't imply that the variance must be zero, just that it doesn't change systematically with time.
+
+*Constant Autocovariance:* The autocovariance between any two observations of the time series depends only on the time lag between them and not on the absolute positions of the observations in time. This implies that the dependence structure of the time series remains constant over time.
+
+#### a) Please split the time series into two halves according to the date recorded, the earlier half of the data and the latter part of the data. Calculate the mean, variance, and autocovariance for each half. *Note:* *(it doesn't really matter if it's precisely half. An approximate middle is sufficient.)*
+
+::: {.callout-note title="Answer" icon="false"}
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+earlier$date <- lubridate::mdy(earlier$date) # manu_1
+earlier$date <- yearmonth(earlier$date) # manu_2
+earlier$manu_inv <- as.numeric(earlier$manu_inv) # manu_3 
+earlier_tsbl <- as_tsibble(earlier, key = NULL, index = date, regular = TRUE) # manu_4 
+
+mean_earlier <- mean(earlier_tsbl$manu_inv, na.rm = TRUE)
+var_earlier <- var(earlier_tsbl$manu_inv, na.rm = TRUE)
+
+cat("Earlier Autocovariance table & Plot")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Earlier Autocovariance table & Plot
+```
+
+
+:::
+
+```{.r .cell-code}
+earlier_tsbl |> ACF(manu_inv, type = "covariance")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tsibble: 22 x 2 [1M]
+        lag        acf
+   <cf_lag>      <dbl>
+ 1       1M 271864918.
+ 2       2M 263934953.
+ 3       3M 255685221.
+ 4       4M 246527856.
+ 5       5M 237030968.
+ 6       6M 227618413.
+ 7       7M 217212817.
+ 8       8M 207420675.
+ 9       9M 198025275.
+10      10M 187730547.
+# ℹ 12 more rows
+```
+
+
+:::
+
+```{.r .cell-code}
+ACF(earlier_tsbl, type = "covariance") |> autoplot()
+```
+
+::: {.cell-output-display}
+![](homework_2_2_files/figure-html/unnamed-chunk-6-1.png){width=672}
+:::
+:::
+
+
+
+
+spacer
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+latter$date <- lubridate::mdy(latter$date) # manu_1
+latter$date <- yearmonth(latter$date) # manu_2
+latter$manu_inv <- as.numeric(latter$manu_inv) # manu_3 
+latter_tsbl <- as_tsibble(latter, key = NULL, index = date, regular = TRUE) # manu_4 
+
+mean_latter <- mean(latter_tsbl$manu_inv, na.rm = TRUE)
+var_latter <- var(latter_tsbl$manu_inv, na.rm = TRUE)
+
+cat("Latter Autocovariance table & Plot")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Latter Autocovariance table & Plot
+```
+
+
+:::
+
+```{.r .cell-code}
+latter_tsbl |> ACF(manu_inv, type = "covariance")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tsibble: 22 x 2 [1M]
+        lag         acf
+   <cf_lag>       <dbl>
+ 1       1M 1568354967.
+ 2       2M 1540251678.
+ 3       3M 1511153596.
+ 4       4M 1478539410.
+ 5       5M 1443884911.
+ 6       6M 1409207644.
+ 7       7M 1371666130.
+ 8       8M 1333456667.
+ 9       9M 1294884311.
+10      10M 1253651023.
+# ℹ 12 more rows
+```
+
+
+:::
+
+```{.r .cell-code}
+ACF(latter_tsbl, type = "covariance") |> autoplot()
+```
+
+::: {.cell-output-display}
+![](homework_2_2_files/figure-html/unnamed-chunk-7-1.png){width=672}
+:::
+
+```{.r .cell-code}
+cat("Earlier Mean:", mean_earlier, "\n")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Earlier Mean: 149865 
+```
+
+
+:::
+
+```{.r .cell-code}
+cat("Latter mean:", mean_latter, "\n")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Latter mean: 226136.7 
+```
+
+
+:::
+
+```{.r .cell-code}
+cat("Earlier Variance:", var_earlier, "\n")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Earlier Variance: 280707884 
+```
+
+
+:::
+
+```{.r .cell-code}
+cat("Latter Variance:", var_latter, "\n")
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Latter Variance: 1603110465 
+```
+
+
+:::
+:::
+
+
+
+:::
+
+#### b) Is there evidence to suggest that the Manufacturer's Inventory series is weakly stationary?
+
+::: {.callout-note title="Answer" icon="false"}
+weakly stationary? what is weakly??
+
+In order for a data to be stationary, any two periods in a data-set would have the same mean and variance. In the case for the Manu data set. the mean and variance for both the earlier & latter data sets are different so to that definition this data set is not stationary but maybe it is weakly stationary?\
+\
+here is chatgpt's summarizing my results and thoughts for this question.
+
+The Manufacturer's Inventory series does not appear to be weakly stationary since the mean, variance, and autocovariance differ substantially between the earlier and latter halves of the data. The significant increase in mean and variance over time indicates that the statistical properties of the series are not constant.
+:::
+
+#### c) The variance function for a times series, $\sigma^2(t)=E[(x_t-\mu)^2]$, is defined for the entire ensemble. Why is determining whether a time series has constant variance so difficult using sample data?
+
+::: {.callout-note title="Answer" icon="false"}
+Well, first seasonality and randomness can effect the variance at different points, and doing the variance for just a sample data can missed shocks in the dataset.\
+\
+here is chatgpt's summary of my results and thoughts.\
+Determining whether a time series has constant variance is difficult using sample data because the variance function, defined for the entire ensemble, must ideally consider all possible realizations of the process. In practice, we only have a finite sample, which makes it challenging to accurately assess whether variance is stable, especially in the presence of trends or other systematic changes over time.
+:::
+
+### Rubric
+
+|  |  |  |
+|------------------------|------------------------|------------------------|
+| **Criteria** | **Mastery (10)** | **Incomplete (0)** |
+| **Question 1: Context and Measurement** | The student thoroughly researches the data collection process, unit of analysis, and meaning of each observation for both the requested time series. Clear and comprehensive explanations are provided. | The student does not adequately research or provide information on the data collection process, unit of analysis, and meaning of each observation for the specified series. |
+|  | **Mastery (5)** | **Incomplete (0)** |
+| **Question 3a: Autocorrelation and Covariance** | The student correctly computes the autocorrelation and autocovariance values for the Manufacturer's Inventory series using R.The R code is well-commented and structured, facilitating understanding of each step in the calculation process. Results are presented clearly. | The student attempts to compute autocorrelation and autocovariance values for the Manufacturer's Inventory series, but significant errors are present in the computations. The R code lacks clear documentation, with unclear or missing comments that hinder comprehension of the calculation process. Presentation of results may be confusing or incomplete, making it challenging to interpret the autocorrelation and autocovariance values accurately. |
+|  | **Mastery (5)** | **Incomplete (0)** |
+| **Question 3b:Theoretical understanding** | The student provides a clear and accurate explanation of why different values are obtained for the same lag of the autocorrelation and autocovariance estimates. The explanation demonstrates a solid understanding of the underlying concepts. | The student attempts to explain why different values are obtained for the same lag of the autocorrelation and autocovariance estimates but does so with significant inaccuracies or lack of clarity. The explanation ~~may~~ lacks coherence or fails to address key differences between autocorrelation and autocovariance adequately. |
+|  | **Mastery (5)** | **Incomplete (0)** |
+| **Question 4a: Stationarity Calculations** | The student accurately splits the dataset into two parts and calculates the mean, variance, and autocovariance for each part using R. The R code is well-commented, providing clear explanations of the steps taken to perform the analysis. The calculated statistics are presented clearly, aiding interpretation of the results, and the student shows a solid understanding of the concepts involved in analyzing time series data. | The student attempts to split the dataset into two parts and calculate the mean, variance, and autocovariance for each part using R, but does so with significant errors or inaccuracies. The R code lacks clear and sufficient commenting, making it difficult to understand the steps taken in the analysis. The calculated statistics may be presented poorly or inaccurately, indicating a limited understanding of the concepts involved in analyzing time series data. |
+|  | **Mastery (5)** | **Incomplete (0)** |
+| **Question 4b: Evaluation** | The student assesses whether there is evidence to suggest that the Manufacturer's Inventory series is weakly stationary. The analysis is supported by clear and concise explanations, demonstrating a solid understanding of the concept of weak stationarity. | The student attempts to assess whether the Manufacturer's Inventory series is weakly stationary but does so with significant errors or lacks clarity in their analysis. There may be inaccuracies in the methodology or misinterpretation of results, indicating a limited understanding of weak stationarity |
+|  | **Mastery (10)** | **Incomplete (0)** |
+| **Question 4c: Evaluation** | The students understand the definition and application of a time series variance function to an ensemble. | The submission doesn't provide enough evidence of understanding of the definition and application of the variance function. |
+| **Total Points** | **40** |  |
