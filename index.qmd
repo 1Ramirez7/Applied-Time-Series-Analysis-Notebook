@@ -353,7 +353,7 @@ $$
 
 ::: {.callout-note icon="false" title="Identifying Stationary Processes"}
 An AR process will be **stationary** if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.
-- to Prove that \( y_t \) is stationary. (see hw 4.3 and lesson 4.3)
+- to Prove that \( y_t \) is stationary. (see hw 4.3 and lesson 4.3) (see hw4.3 Q2.C)
 :::
 
 
