@@ -5128,7 +5128,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sationary-vs-non-stationary-ts" id="toc-sationary-vs-non-stationary-ts" class="nav-link active" data-scroll-target="#sationary-vs-non-stationary-ts">Sationary vs Non-Stationary TS</a>
+  <li><a href="#ar-models" id="toc-ar-models" class="nav-link active" data-scroll-target="#ar-models">AR models</a>
+  <ul class="collapse">
+  <li><a href="#ar1-model-lesson-4.3" id="toc-ar1-model-lesson-4.3" class="nav-link" data-scroll-target="#ar1-model-lesson-4.3">AR(1) model lesson 4.3</a></li>
+  </ul></li>
+  <li><a href="#sationary-vs-non-stationary-ts" id="toc-sationary-vs-non-stationary-ts" class="nav-link" data-scroll-target="#sationary-vs-non-stationary-ts">Sationary vs Non-Stationary TS</a>
   <ul class="collapse">
   <li><a href="#stationary-time-series" id="toc-stationary-time-series" class="nav-link" data-scroll-target="#stationary-time-series">Stationary Time Series</a></li>
   <li><a href="#non-stationary-time-series" id="toc-non-stationary-time-series" class="nav-link" data-scroll-target="#non-stationary-time-series">Non-Stationary Time Series</a></li>
@@ -5206,8 +5210,18 @@ window.Quarto = {
 
 
 <p>I’m first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.</p>
+<section id="ar-models" class="level1">
+<h1>AR models</h1>
+<section id="ar1-model-lesson-4.3" class="level2">
+<h2 class="anchored" data-anchor-id="ar1-model-lesson-4.3">AR(1) model lesson 4.3</h2>
+<p><span class="math inline">\(AR(1)\)</span> model is expressed as <span class="math display">\[
+  x_t = \alpha x_{t-1} + w_t
+\]</span> where <span class="math inline">\(\{w_t\}\)</span> is a white noise series with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+</section>
+</section>
 <section id="sationary-vs-non-stationary-ts" class="level1">
 <h1>Sationary vs Non-Stationary TS</h1>
+<p>look at 4.3.6 The difference operator from the book to further add to this concept. 4.5.2 Stationary and non-stationary AR processes (book)</p>
 <p><strong>non-stationary convert to stationary time series</strong> 1. In Chapter 4 Lesson 2, we established that taking the difference of a non-stationary time series with a stochastic trend can convert it to a stationary time series.</p>
 <section id="stationary-time-series" class="level2">
 <h2 class="anchored" data-anchor-id="stationary-time-series">Stationary Time Series</h2>
@@ -5606,7 +5620,7 @@ Identifying Stationary Processes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An AR process will be <strong>stationary</strong> if the absolute value of the solutions of the characteristic equation are all strictly greater than 1.</p>
+<p>An AR process will be <strong>stationary</strong> if the absolute value of the solutions of the characteristic equation are all strictly greater than 1. - to Prove that ( y_t ) is stationary. (see hw 4.3 and lesson 4.3) (see hw4.3 Q2.C)</p>
 </div>
 </div>
 </section>

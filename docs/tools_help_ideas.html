@@ -257,11 +257,19 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./chapters/chapter_4_lesson_2.html">
  <span class="dropdown-text">White Noise and Random Walks - Part 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./hw/homework_4_2.html">
+ <span class="dropdown-text">Time Series Homework: Chapter 4 Lesson 2</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 3</li>
         <li>
     <a class="dropdown-item" href="./chapters/chapter_4_lesson_3.html">
  <span class="dropdown-text">Autoregressive (AR) Models</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hw/homework_4_3.html">
+ <span class="dropdown-text">Time Series Homework: Chapter 4 Lesson 3</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Lesson 4</li>
@@ -409,7 +417,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#yml-code-to-fix" id="toc-yml-code-to-fix" class="nav-link active" data-scroll-target="#yml-code-to-fix">.yml code to fix</a></li>
+  <li><a href="#using-definitons-or-footnotes" id="toc-using-definitons-or-footnotes" class="nav-link" data-scroll-target="#using-definitons-or-footnotes">using Definitons or footnotes</a></li>
   <li><a href="#streamline-code" id="toc-streamline-code" class="nav-link" data-scroll-target="#streamline-code">Streamline code</a></li>
+  <li><a href="#have-a-qmd-file-with-tips-and-tricks" id="toc-have-a-qmd-file-with-tips-and-tricks" class="nav-link" data-scroll-target="#have-a-qmd-file-with-tips-and-tricks">have a qmd file with tips and tricks</a></li>
   </ul>
 </nav>
     </div>
@@ -455,18 +465,37 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ol>
 </section>
+<section id="using-definitons-or-footnotes" class="level1">
+<h1>using Definitons or footnotes</h1>
+<p>The following is working code to use footnotes but works great for definitions. Obviously not the best way to reference def, but this seems like a simple and straight forward process. Seems super static so it wont take long to load as well.</p>
+<p>White noise<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
 <section id="streamline-code" class="level1">
 <h1>Streamline code</h1>
-<p>chapter_3_overview_code_draft.qmd is is streamline</p>
+<p>chapter_3_overview_code_draft.qmd is streamline</p>
 <ul>
 <li><p>Edits to variables happen in first code chunk and qmd runs all code for that chapter.</p></li>
 <li><p>May need to data frame set according to data</p></li>
+</ul>
+</section>
+<section id="have-a-qmd-file-with-tips-and-tricks" class="level1">
+<h1>have a qmd file with tips and tricks</h1>
+<ul>
+<li>One for quick r funcion or code related to time series</li>
+<li>Have a qmd file that has sample code to doing advance code or elaborate ways of displaying data.</li>
+<li>Can add other code like css amd .yml code - Maybe the tips and tricks can have its own repo.</li>
 </ul>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>White noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
