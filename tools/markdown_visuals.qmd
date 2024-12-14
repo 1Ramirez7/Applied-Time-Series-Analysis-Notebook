@@ -55,3 +55,54 @@ This is a caution callout with:
 - **minimal appearance**
 - **no title**
 :::
+
+
+can do collapse and within
+
+:::: {.callout-note icon="false" title="Second-Order Properties of a Random Walk"}
+If $\{x_t\}_{t=1}^n$ is a random walk, then the population has the following properties.
+
+$$ \mu_x = 0 $$ and $$
+  cov(x_t, x_{t+k}) = t \sigma^2
+$$
+
+::: {.callout-tip title="Click here for a proof of the equation for $cov(x_t,x_{t+k})$" collapse="true"}
+Why is $cov(x_t, x_{t+k}) = t \sigma^2$?
+
+First, note that that since the terms in the white noise series are independent,
+
+$$
+cov ( w_i, w_j ) = 
+  \begin{cases}
+    \sigma^2, & \text{if } ~ i=j \\
+    0, & \text{otherwise}
+  \end{cases}
+$$
+
+Also, when random variables are independent, the covariance of a sum is the sum of the covariance.
+
+Hence, \begin{align*}
+  cov(x_t, x_{t+k})
+    &= cov ( \sum_{i=1}^t w_i, \sum_{j=1}^{t+K} w_j ) \\
+    &= \sum_{i=j} cov ( w_i, w_j ) \\
+    &= \sum_{i=1}^t \sigma^2 \\
+    &= t \sigma^2
+\end{align*}
+:::
+
+If $k>0$ and $t>0$, the correlation function is
+
+$$
+  \rho_k 
+  = 
+    \frac{
+            cov(x_t, x_{t+k})
+          }{
+            \sqrt{var(x_t)} \sqrt{var(x_{t+k})}
+          }
+  =
+    \frac{t \sigma^2}{\sqrt{t \sigma^2} \sqrt{(t+k) \sigma^2}}
+  =
+    \frac{1}{\sqrt{1+\frac{k}{t}}}
+$$
+::::
