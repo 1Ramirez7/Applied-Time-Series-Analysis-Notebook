@@ -21,8 +21,23 @@ quarto::quarto_render("folder/your_file.qmd")
 
 
 
+
+
 # Quarto yml code (indiviual)
 
 This is yml code for qmd files. 
+
+
+
+# temrinal
+
+
+**if cache needs to be clear**
+
+quarto clean
+
+or delete cache folder
+
+
 
 

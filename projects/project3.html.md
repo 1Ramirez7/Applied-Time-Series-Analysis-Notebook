@@ -1,5 +1,0 @@
----
-title: "Project title here"
-subtitle: "can delete this if not needed"
-format: html
----

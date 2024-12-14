@@ -37,7 +37,7 @@
     "href": "tools/git_yml_term.html",
     "title": "Git and Terminal Commands",
     "section": "",
-    "text": "console\nrenders qmd file, but does not show up in viewer\nquarto::quarto_render(“folder/your_file.qmd”)\n\n\nQuarto yml code (indiviual)\nThis is yml code for qmd files.\n\n\n\n\n Back to top",
+    "text": "console\nrenders qmd file, but does not show up in viewer\nquarto::quarto_render(“folder/your_file.qmd”)\n\n\nQuarto yml code (indiviual)\nThis is yml code for qmd files.\n\n\ntemrinal\nif cache needs to be clear\nquarto clean\nor delete cache folder\n\n\n\n\n Back to top",
     "crumbs": [
       "Tools, Help & Ideas",
       "Git and Terminal Commands"
