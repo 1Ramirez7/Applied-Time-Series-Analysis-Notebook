@@ -33,6 +33,17 @@
     ]
   },
   {
+    "objectID": "tools/git_yml_term.html",
+    "href": "tools/git_yml_term.html",
+    "title": "Git and Terminal Commands",
+    "section": "",
+    "text": "console\nrenders qmd file, but does not show up in viewer\nquarto::quarto_render(“folder/your_file.qmd”)\n\n\nQuarto yml code (indiviual)\nThis is yml code for qmd files.\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Tools, Help & Ideas",
+      "Git and Terminal Commands"
+    ]
+  },
+  {
     "objectID": "projects/project2.html",
     "href": "projects/project2.html",
     "title": "Time Series Project 2: Consumer Credit",
@@ -988,6 +999,17 @@
     "crumbs": [
       "Project 3",
       "Project title here"
+    ]
+  },
+  {
+    "objectID": "tools/markdown_visuals.html",
+    "href": "tools/markdown_visuals.html",
+    "title": "Markdown Visuals",
+    "section": "",
+    "text": "Callout notes\n\n\n\n\n\n\nType I Errors\n\n\n\nThis is a note callout with:\n\nicon enabled\ndefault appearance\na custom title\n\n\n\n\n\n\n\n\n\nCheck Your Understanding\n\n\n\nThis is a tip callout with: - icon disabled - minimal appearance - a custom title\n\n\n\n\n\n\n\n\nCritical Info\n\n\n\nThis is an important callout with: - icon enabled - default appearance - a custom title\n\n\n\n\n\n\n\n\nWarning Alert\n\n\n\nThis is a warning callout with: - icon disabled - minimal appearance - a custom title\n\n\nCode\nprint(\"can also have code chunks inside\")\n\n\n[1] \"can also have code chunks inside\"\n\n\n\n\n\n\n\n\n\n\nThis is a caution callout with: - icon disabled - minimal appearance - no title\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Tools, Help & Ideas",
+      "Markdown Visuals"
     ]
   },
   {

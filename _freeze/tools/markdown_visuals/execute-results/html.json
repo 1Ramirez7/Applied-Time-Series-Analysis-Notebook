@@ -1,0 +1,17 @@
+{
+  "hash": "492c275cea47209a0027378ed2cc888a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Markdown Visuals\"\nsubtitle: \"commonly use visuals\"\nformat: \n  html:\n    embed-resources: true\n    toc: true\n    code-fold: true\n---\n\n\n\n\n\n# Callout notes \n\n\n::: {.callout-note icon=\"true\" title=\"Type I Errors\" appearance=\"default\"}\nThis is a note callout with:\n\n- **icon enabled**\n\n- **default appearance**\n\n- **a custom title**\n:::\n\n::: {.callout-tip icon=\"false\" title=\"Check Your Understanding\" appearance=\"minimal\"}\nThis is a tip callout with:\n- **icon disabled**\n- **minimal appearance**\n- **a custom title**\n:::\n\n::: {.callout-important icon=\"true\" title=\"Critical Info\" appearance=\"default\"}\nThis is an important callout with:\n- **icon enabled**\n- **default appearance**\n- **a custom title**\n:::\n\n::: {.callout-warning icon=\"false\" title=\"Warning Alert\" appearance=\"minimal\"}\nThis is a warning callout with:\n- **icon disabled**\n- **minimal appearance**\n- **a custom title**\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"can also have code chunks inside\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"can also have code chunks inside\"\n```\n\n\n:::\n:::\n\n\n\n\n:::\n\n::: {.callout-caution icon=\"false\" appearance=\"minimal\"}\nThis is a caution callout with:\n- **icon disabled**\n- **minimal appearance**\n- **no title**\n:::\n",
+    "supporting": [
+      "markdown_visuals_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

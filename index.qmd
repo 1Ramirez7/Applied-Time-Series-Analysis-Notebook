@@ -278,6 +278,7 @@ $$ where $\{w_t\}$ is a white noise series with mean zero and variance $\sigma^2
 
 
 
+
 ### Second-Order Properties of an AR(1) Model
 
 ::: {.callout-note icon="false" title="Second-Order Properties of an $AR(1)$ Model"}

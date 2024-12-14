@@ -156,6 +156,8 @@ website:
         - section: "Tools, Help & Ideas"
           contents:
             - tools_help_ideas.qmd
+            - tools/markdown_visuals.qmd  
+            - tools/git_yml_term.qmd
         - section: "Date & Index formatting"
           contents:
             - tools/stepsforDate_index_formatting.qmd
