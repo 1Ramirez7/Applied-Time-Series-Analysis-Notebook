@@ -476,3 +476,32 @@ $$
   |z| = \sqrt{a^2 + b^2}
 $$
 :::
+
+
+
+
+**BOOK 1.4.3** 
+
+interesting view for Time Series Analysis
+
+However, it is important to realise that *correlation* does not imply *causation*. In this case, it is not plausible that higher numbers of air passengers in the United States cause, or are caused by, higher electricity production in Australia. A reasonable explanation for the correlation is that the increasing prosperity and technological development in both countries over this period accounts for the increasing trends. The two time series also happen to have similar seasonal variations. For these reasons, it is usually appropriate to *remove trends and seasonal effects* before comparing multiple series. This is often achieved by working with the residuals of a regression model that has deterministic terms to represent the trend and seasonal effects (Chapter 5).
+
+
+***book 1.5.2*** 
+
+additive when some multiplicative is present
+
+additive vs multiplicative models
+
+Additive model if the random variation is modelled by a multiplicative factor and the variable is positive, an additive decomposition model for log($x_t$) can be used. 
+
+If the seasonal effect tends to increase as the trend increases, a multiplicative model may be more appropriate:
+ $x_t = m_t * s_t + z_t$
+If the random variation is modelled by a multiplicative factor and the variable is positive, an additive decomposition model for $log(x_t)$ can be used: $log(x_t) = m_t + s_t + z_t$
+
+
+**1.5.2 Models** book
+
+Models dominated by trend and seasonal effects.
+
+As the first two examples showed, many series are dominated by a trend and/or seasonal effects, so the models in this section are based on these components. A simple additive decomposition model is given by $x_t = m_t + s_t + z_t$ ($z_t = r_t$)

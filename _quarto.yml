@@ -43,6 +43,10 @@ website:
       - sidebar:chapter_4
       - sidebar:chapter_5
       - sidebar:help
+      - text: "Outcomes"
+        file: outcomes.qmd
+      - text: "def"
+        file: definitions.qmd
         
 
 

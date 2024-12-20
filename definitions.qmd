@@ -1,0 +1,148 @@
+---
+title: "Applied Time Series Analysis Outcomes"
+subtitle: "MATH 494R"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    embed-resources: true
+    toc: true
+    code-fold: true
+    math: katex # katex, mathjax, none
+---
+
+
+
+
+
+
+Time series analysis[^1]
+
+[^1]: A time series analysis quantifies the main features in data and the random
+ variation. These reasons, combined with improved computing power, have
+ made time series methods widely applicable in government, industry, and
+ commerce. (1.2)
+
+
+Time series[^2]
+
+[^2]:Time series are analysed to understand the past and to predict the future, enabling managers or policy makers to make properly informed decisions.
+
+Sampling Interval[^3]
+
+[^3]: When a variable is measured sequentially in time over or at a fixed interval, known as the sampling interval, the resulting data form a time series.
+
+Serial Dependence or Autocorrelation[^4]
+
+[^4]: A correlation of a variable with itself at different times
+ is known as autocorrelation or serial correlation. (1.2, 2.2.5)
+ 
+ 
+ time series trend[^5]
+ 
+ [^5]: In general, a systematic change in a time series that does not appear to be periodic is known as a trend. The simplest model for a trend is a linear increase or decrease, and this is often an adequate approximation. (1.2 1.4.1)
+ 
+ 
+ 
+Seasonal Variation[^6]
+
+[^6]: Repeated pattern within each year (or any other fixed time period). (1.2)
+
+Cycle[^7]
+
+[^7]: Repeated pattern that does not correspond to some fixed natural period.
+
+
+Stochastic Trend[^8]
+
+[^8]:  Random trend that does not follow a discernible or predictable pattern. (1.2)
+
+
+Deterministic Trend[^9]
+
+[^9]: Can be modeled with mathematical functions, facilitating the long-term prediction of the behavior
+
+
+
+
+smoothing or smoothed[^10]
+
+[^10]: The centred moving average is an example of a smoothing procedure that is applied retrospectively to a time series with the objective of identifying an underlying signal or trend. (1.3 1.5.4)
+
+
+
+centred (center or centered) moving average[^11]
+
+[^11]: A "centered moving average" is a statistical method used to smooth out short-term fluctuations in time series data by calculating the average of a set of observations, but placing the average value directly in the middle of the data points used, effectively "centering" it on the midpoint of the timeframe, which helps to reduce lag and provide a more accurate representation of the underlying trend compared to a standard moving average. (1.3 1.5.3 1.5.4)
+
+
+
+
+
+Additive decomposition model[^12]
+
+[^12]: $x_t = m_t + s_t + z_t$ or after taking log $\log(x_t) = m_t + s_t + z_t$. (1.3 1.5.2) 
+
+
+
+Multiplicative decomposition model[^13]
+
+[^13]: $x_t = m_t \cdot s_t + z_t$
+
+
+tsibble[^14]
+
+[^14]: A tsibble (short for "time series tibble") is sorted by its key first and index. The index  (e.g., Date, POSIXct, yearmonth, yearweek) must be sequential and capable of being ordered. Key: (e.g., a sensor ID or region) One or more variables that uniquely identify each time point. Values: One or more measured variables that correspond to observations at each time point.
+
+
+
+monthly additive effect[^15]
+
+[^15]: The centered moving average, 
+, is then used to compute the monthly additive effect
+
+
+definition[^]
+
+[^]:
+
+
+
+definition[^]
+
+[^]:
+
+
+definition[^]
+
+[^]:
+
+
+
+definition[^]
+
+[^]:
+
+
+definition[^]
+
+[^]:
+
+
+
+definition[^]
+
+[^]:
+
+
+definition[^]
+
+[^]:
+
+
+
+definition[^]
+
+[^]:
+

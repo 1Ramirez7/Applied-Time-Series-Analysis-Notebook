@@ -1,0 +1,15 @@
+pacman
+ggplot2
+tsibble
+fabletools
+fable
+feasts
+tidyverse
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+lubridate

@@ -111,3 +111,34 @@ $$
 
 
 
+
+
+
+::: {.callout-note icon="false" title="Lesson 1.3: Vocabulary and Nomenclature activity"}
+**Nomenclature Matching**
+
+|                                                                                                         |                                       |
+|---------------------------------------------------------------------------------------------------------|---------------------------------------|
+| 8\. Discrete observations of a time series, taken at times $1, 2, \ldots, n$.                           |  $\{x_t\}$                          |
+| 9\. Number of observations of a time series                                                             |  $n$                                |
+| 10\. Lead time                                                                                          |  $k$                                |
+| 11\. The trend as observed at time $t$                                                                  |  $m_t$                              |
+| 12\. The seasonal effect, as observed at time $t$                                                       |  $s_t$                              |
+| 13\. The error term (a sequence of correlated random variables with mean zero), as observed at time $t$ | $z_t$                              |
+| 14\. Centered moving average for obsrvations made monthly                                               |  $\hat m_t$                         |
+| 15\. Estimate of monthly additive effect                                                                |  $\hat s_t = x_t - \hat m_t$        |
+| 16\. Estimate of monthly multiplicative effect                                                          |  $\hat s_t = \dfrac{x_t}{\hat m_t}$ |
+
+**Additional Nomenclature Matching**
+
+|                                                                                |                                  |
+|--------------------------------------------------------------------------------|----------------------------------|
+| 17\. Forecast made at time $t$ for a future value $k$ time units in the future |  $\hat x_{t+k \mid t}$         |
+| 18\. Additive decomposition model                                              |  $x_t = m_t + s_t + z_t$       |
+| 19\. Additive decomposition model after taking the logarithm                   |  $\log(x_t) = m_t + s_t + z_t$ |
+| 20\. Multiplicative decomposition model                                        |  $x_t = m_t \cdot s_t + z_t$   |
+| 21\. Seasonally adjusted mean for the month corresponding to time $t$          |  $\bar s_t$                    |
+| 22\. Seasonal adjusted series (additive seasonal effect)                       |  $x_t - \bar s_t$              |
+| 23\. Seasonal adjusted series (multiplicative seasonal effect)                 |  $\frac{x_t}{\bar s_t}$        |
+:::
+

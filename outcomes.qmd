@@ -1,0 +1,386 @@
+---
+title: "Applied Time Series Analysis Outcomes"
+subtitle: "MATH 494R"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    toc: true
+    code-fold: true
+    math: katex # katex, mathjax, none
+#    eval: false
+---
+
+<details>
+
+<summary>**1.2: Use technical language to describe the main features of time series data**</summary>
+
+-   **Define time series analysis**
+    -   A time series analysis quantifies the main features in data and the random variation. These reasons, combined with improved computing power, have made time series methods widely applicable in government, industry, and commerce.
+-   **Define time series**
+    -   Time series are analysed to understand the past and to predict the future, enabling managers or policy makers to make properly informed decisions.
+-   **Define sampling interval**
+    -   When a variable is measured sequentially in time over or at a fixed interval, known as the sampling interval, the resulting data form a time series.
+-   **Define serial dependence or autocorrelation**
+    -   A correlation of a variable with itself at different times is known as autocorrelation or serial correlation.
+-   **Define a time series trend**
+    -   In general, a systematic change in a time series that does not appear to be periodic is known as a trend. The simplest model for a trend is a linear increase or decrease, and this is often an adequate approximation.
+-   **Define seasonal variation**
+    -   Repeated pattern within each year (or any other fixed time period).
+-   **Define cycle**
+    -   Repeated pattern that does not correspond to some fixed natural period.
+-   **Differentiate between deterministic and stochastic trends**
+    -   Stochastic Trend: Random trend that does not follow a discernible or predictable pattern. @fig-stochastic
+    -   Deterministic Trend: Can be modeled with mathematical functions, facilitating the long-term prediction of the behavior. @fig-deterministic
+
+</details>
+
+<details>
+
+<summary>1.2: **Plot time series data to visualize trends, seasonal patterns, and potential outliers**</summary>
+
+-   Plot a "ts" object
+-   Plot the estimated trend of a time series by computing the mean across one full period
+
+</details>
+
+<details>
+
+<summary>1.3: **Decompose time series into trends, seasonal variation, and residuals**</summary>
+
+-   **Define smoothing**
+    -   The centred moving average is an example of a smoothing procedure that is applied retrospectively to a time series with the objective of identifying an underlying signal or trend.
+-   **Compute the centered moving average for a time series**
+    -   $\hat m_t = \dfrac{\frac{1}{2}x_{t-6} + x_{t-5} + \cdots + x_{t-1} + x_t + x_{t+1} + \cdot + x_{t+5} + \frac{1}{2} x_{t+6}}{12}$.
+-   **Estimate the trend component using moving averages**
+    -   There are various ways to estimate the trend $m_t$ at time t, but a relatively simple procedure, is just use the cma formula for $x_t$. Orange line = CMA. @fig-cma
+
+</details>
+
+<details>
+
+<summary>1.3 **Plot time series data to visualize trends, seasonal patterns, and potential outliers**</summary>
+
+-   **Plot the estimated trend of a time series using a moving average.**
+-   **Make box plots to examine seasonality.**
+-   **Interpret the trend and seasonal pattern observed in a time series**
+    -   Trend is increasing over time, and there is a seasonal pattern that repeats every 12 months. The trend is estimated using a centred moving average, and the seasonal pattern is visualized using box plots. @fig-cma @fig-cmaboxplot
+
+</details>
+
+<details>
+
+<summary>1.4: **Use R to describe key features of time series data**</summary>
+
+-   Import CSV data and convert to tsibble format
+
+```{r, eval=FALSE}
+#| code-fold: FALSE
+# Weather data for Rexburg
+monthly_tsibble <- rio::import("https://byuistats.github.io/timeseries/data/rexburg_weather.csv") |> 
+  # Convert 'dates' to Date format
+  mutate(date2 = ymd(dates)) |>
+  # Extract year and month from 'date2'
+  mutate(year_month = yearmonth(date2)) |>
+  # Group data by 'year_month'
+  group_by(year_month) |>
+  # Calculate mean of 'rexburg_airport_high' for each group
+  summarize(average_daily_high_temp = mean(rexburg_airport_high)) |>
+  # Remove grouping
+  ungroup() |> 
+  # Convert data frame to time series tibble
+  as_tsibble(index = year_month)
+
+ # Display the resulting tibble
+ view(monthly_tsibble) 
+```
+
+</details>
+
+<details>
+
+<summary>1.4: **Decompose time series into trends, seasonal variation, and residuals**</summary>
+
+-   **Implement additive decomposition**
+    -   A simple additive decomposition model is given by $x_t = m_t + s_t + r_t$, where $m_t$ is the trend, $s_t$ is the seasonal component, and $r_t$ (or in the book: where $z_t$ is an error term) is the random component. (1.5.2)
+-   **Explain how to remove seasonal variation using an estimate for seasonal component of a time series**
+    -   To remove the seasonal variation from a time series, we can subtract the estimated seasonal component from the original time series. This results in a seasonally-adjusted time series that can be used for further analysis.
+    -   It is common to present economic indicators, such as unemployment percentages, as seasonally adjusted series.This highlights any trend that might otherwise be masked by seasonal variation attributable, for instance, to the end of the academic year, when school and university leavers are seeking work. (1.5.3)
+-   **Compute the estimators of seasonal variation for an additive model**
+    -   $\hat s_t$: The centered moving average, $\hat m_t$, is then used to compute the monthly additive effect, $\hat s_t$.
+
+    -   $\bar {\hat s_t}$: calculate the mean of the $\hat s_t$ values for each month. We will call this $\bar {\hat s_t}$,
+
+    -   $\bar{\bar {\hat s_t}}$: the unadjusted monthly additive components.
+
+        $$
+          \bar s_t = \bar {\hat s_t} - \bar{\bar {\hat s_t}}
+        $$
+
+        where $\bar {\hat s_t}$ is the mean of the $\hat s_t$ values corresponding to month $t$, and $\bar{\bar {\hat s_t}}$ is the mean of the $\bar {\hat s_t}$ values.
+
+    -   $\bar s_t$: This yields $\bar s_t$, the seasonally adjusted mean for each month.
+-   **Calculate the random component for an additive model**
+    -   We calculate the random component by subtracting the trend and seasonally adjusted mean from the time series:
+
+        $$
+          \text{random component} = x_t - \hat m_t - \bar s_t
+        $$
+-   **Compute a seasonally-adjusted time series based on an additive model**
+    -   The seasonally adjusted series is computed by subtracting $\bar s_t$ from each of the observed values:
+
+        $$
+          \text{seasonally adjusted series} = x_t - \bar s_t
+        $$. The figure below illustrates the original time series (in black), the centered moving average $\hat m_t$ (in blue), and the seasonally adjusted series (in red). @fig-seasonallyadjustedts
+
+</details>
+
+<details>
+
+<summary>1.5: **Decompose time series into trends, seasonal variation, and residuals**</summary>
+
+-   **Explain the differences between additive and multiplicative models**
+    -   in Models where they are dominated by a trend and or seasonal effect, then classical additive/multiplicative models are more common.
+    -   **Multiplicative** Model : R's multiplicative model: this implies that the error term, $z_t$ (or $r_t$), has a mean of 1, rather than 0.
+    -   **Additve** model $x_t = m_t + s_t + z_t$ vs **multiplicative** book $x_t = m_t * s_t + z_t$ or **multiplicative r** define as $x_t = m_t * s_t * z_t$
+    -   ***Seasonal Component***
+        -   **Additive**:$s_t = \sin \left( \frac{t\pi}{6} \right) + \frac{1}{2}\cos\left(\frac{t \pi}{18} \right)$
+
+        -   This is the r formula (1.5): seasonal\[t\] \<- b \* sin(t / 12 \* 2 \* pi \* 1) + c \* cos(t / 12 \* 2 \* pi \* 3)
+
+            The r seasonal formula in the code corresponds to: $$s_t = b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right)$$
+
+            *Components:*
+
+            1.  Sinusoidal Component:\
+                $$b \sin \left( \frac{t}{12} \cdot 2 \pi \right)$$
+                -   $b = 1$: The amplitude of the sine wave.
+                -   $\frac{t}{12} \cdot 2 \pi$: Converts $t$, the month number, into a cycle based on a 12-month period.
+            2.  Cosine Component: $$c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right)$$
+                -   $c = 0.5$: The amplitude of the cosine wave.
+                -   $\frac{t}{12} \cdot 2 \pi \cdot 3$: Introduces a higher frequency cycle over the same 12-month period.
+
+        -   **Additive**: $s_t = x_t - \bar s_t$ $$\text{seasonally adjusted series} = x_t - \bar s_t$$
+        - **Multiplicative**
+        The seasonal formula in the multiplicative model corresponds to: $$s_t = e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1}$$ 
+
+            
+            Components:
+            
+            1. **Exponential Seasonal Component**:  
+               $$ 
+               e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1} 
+               $$  
+               - $b = 1$: The amplitude of the sine wave.  
+               - $c = 0.5$: The amplitude of the cosine wave.  
+               - $\frac{t}{12} \cdot 2 \pi$: Converts $t$, the month number, into a 12-month sinusoidal cycle.
+               - $\frac{t}{12} \cdot 2 \pi \cdot 3$: Introduces a higher frequency cycle over the same 12-month period.  
+               - $+1$: Ensures the seasonal component is strictly positive.
+            
+            2. **Multiplicative Combination**:
+               - The seasonal component $s_t$ is multiplied with the trend $m_t$ and error term $z_t$ to construct the time series:
+                 $$
+                 x_t = m_t \cdot s_t \cdot z_t
+                 $$
+            
+    -   **Random Component**
+        -   additive: $r_t = x_t - \hat m_t - \bar s_t$ $$\text{random component} = x_t - \hat m_t - \bar s_t$$
+
+-   **Implement multiplicative decomposition**
+-   **Compute the estimators of seasonal variation for a multiplicative model**
+-   **Calculate the random component for a multiplicative model**
+-   **Compute a seasonally-adjusted time series based on a multiplicative model**
+
+</details>
+
+```{r, echo=FALSE}
+#| label: fig-stochastic
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2)
+n <- 100; n_reps <- 1; sigma <- 1
+set.seed(12)
+df <- data.frame()
+for (i in 1:n_reps) {
+  x <- rnorm(n, 0, sigma)
+  temp <- data.frame(i = 1:n, x = x, rep = i)
+  df <- rbind(df, temp)
+}
+ggplot(df, aes(x = i, y = x, color = factor(rep))) + geom_line() + scale_color_manual(values = rainbow(n_reps)) + labs(title = paste0(n_reps, " Realizations of Random Noise"), x = "Time", y = "x") + theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + guides(color = guide_legend(title = "Realization"))
+
+
+```
+
+```{r, echo=FALSE}
+#| label: fig-deterministic
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2)
+n <- 100; sigma <- 1
+set.seed(123)
+time <- 1:n
+realization_1 <- time + rnorm(n, 0, sigma)
+realization_2 <- rev(time) + rnorm(n, 0, sigma)
+df <- data.frame(i = rep(time, 2), x = c(realization_1, realization_2), realization = factor(rep(c("Incr", "Decr"), each = n)))
+ggplot(df, aes(x = i, y = x, color = realization)) + geom_line(size = 1) + scale_color_manual(values = c("Incr" = "blue", "Decr" = "red")) + labs(title = "Deterministic Time Series with Noise", x = "Time", y = "Value") + theme_minimal() + theme(plot.title = element_text(hjust = 0.5)) + guides(color = guide_legend(title = "Realization"))
+
+```
+
+```{r, echo=FALSE}
+#| label: fig-cma
+# from hw 1.3
+
+pacman::p_load("tsibble", "fable", "feasts", "tidyverse", "lubridate")
+
+# Generate a monthly date sequence
+date_seq <- seq.Date(from = as.Date("2010-01-01"), to = as.Date("2019-12-01"), by = "month")
+n <- length(date_seq) # Number of observations
+time_index <- 1:n
+
+
+trend <- 0.05 * time_index # Create a trend
+
+# Create a seasonal pattern (12-month)
+# For example, a sinusoidal seasonal pattern over 12 months
+season <- sin(2 * pi * time_index / 12) 
+
+set.seed(123) # Add some noise for realism
+noise <- rnorm(n, mean = 0, sd = 0.5)
+
+# Combine components
+values <- 10 + trend + season + noise
+
+# Create a tsibble
+sim_tsibble <- tibble(date = date_seq, value = values) %>% 
+  as_tsibble(index = date)
+
+# Calculate the Centred Moving Average (CMA)
+sim_tsibble <- sim_tsibble %>%
+  mutate(
+    m_hat = (
+      (1/2) * lag(value, 6) +
+      lag(value, 5) +
+      lag(value, 4) +
+      lag(value, 3) +
+      lag(value, 2) +
+      lag(value, 1) +
+      value +
+      lead(value, 1) +
+      lead(value, 2) +
+      lead(value, 3) +
+      lead(value, 4) +
+      lead(value, 5) +
+      (1/2) * lead(value, 6)
+    ) / 12
+  )
+
+# Plot the original data with CMA overlay
+autoplot(sim_tsibble, .vars = value) +
+  labs(
+    x = "Date",
+    y = "Value",
+    title = "Monthly ts w/ Seasonal, Trend & CMA" 
+  ) +
+  geom_line(aes(x = date, y = m_hat), color = "#D55E00") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+```{r, echo=FALSE}
+#| label: fig-cmaboxplot
+sim_tsibble <- sim_tsibble %>% # Convert the date to month names as factors
+  mutate(month = factor(format(date, "%m"), labels = month.name, ordered = TRUE))
+
+# Create a boxplot using ggplot2
+ggplot(sim_tsibble, aes(x = month, y = value)) +
+  geom_boxplot(fill = "skyblue", color = "darkblue") +
+  labs(
+    title = "Boxplots of Simulated Data by Month",
+    x = "Month",
+    y = "Value"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+```{r, echo=FALSE, warning=FALSE}
+#| label: fig-seasonallyadjustedts
+# code form lesson 1.4
+
+deaths_df <- rio::import("https://byuistats.github.io/timeseries/data/traffic_deaths.xlsx")
+
+# Method 1: Create date from scratch based on pattern of rows
+# This only works if the data are in ascending order with no missing values
+# Note: This file is not in the right order, so this code gives the wrong tsibble
+# unless you sort the Excel file before proceeding.
+start_date <- lubridate::ymd("2017-01-01")
+date_seq <- seq(start_date,
+                start_date + months(nrow(deaths_df)-1),
+                by = "1 months")
+deaths_tibble <- tibble(
+  dates = date_seq,
+  year = lubridate::year(date_seq),
+  month = lubridate::month(date_seq),
+  value = pull(deaths_df, Deaths)
+)
+
+# Method 2: Build using the date information in the Excel file
+deaths_tibble <- deaths_df |>
+  mutate(
+    date_str = paste("1", Month, Year),
+    dates = dmy(date_str),
+    year = lubridate::year(dates),
+    month = lubridate::month(dates),
+    value = Deaths
+  ) |>
+  dplyr::select(dates, year, month, value)  |> 
+  tibble()
+
+# Create the index variable and convert to a tsibble
+deaths_ts <- deaths_tibble |>
+  mutate(index = tsibble::yearmonth(dates)) |>
+  as_tsibble(index = index) |>
+  dplyr::select(index, dates, year, month, value) |>
+  rename(deaths = value) # rename value to emphasize data context
+
+# computing cma
+deaths_ts <- deaths_ts |> 
+  mutate(
+    m_hat = (
+          (1/2) * lag(deaths, 6)
+          + lag(deaths, 5)
+          + lag(deaths, 4)
+          + lag(deaths, 3)
+          + lag(deaths, 2)
+          + lag(deaths, 1)
+          + deaths
+          + lead(deaths, 1)
+          + lead(deaths, 2)
+          + lead(deaths, 3)
+          + lead(deaths, 4)
+          + lead(deaths, 5)
+          + (1/2) * lead(deaths, 6)
+        ) / 12
+  )
+
+# doing classical
+deaths_decompose <- deaths_ts |>
+  model(feasts::classical_decomposition(deaths,
+          type = "add"))  |>
+  components()
+
+deaths_decompose |>
+  ggplot() +
+  geom_line(data = deaths_decompose, aes(x = index, y = deaths), color = "black") +
+  geom_line(data = deaths_decompose, aes(x = index, y = season_adjust), color = "#D55E00") +
+  geom_line(data = deaths_decompose, aes(x = index, y = trend), color = "#0072B2") +
+  labs(
+    x = "Month",
+    y = "Traffic Fatalities",
+    title = "Traffic Fatalities in the United States (by Month)"
+  ) +
+  coord_cartesian(ylim = c(0,4500)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
