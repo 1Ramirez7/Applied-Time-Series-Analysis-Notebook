@@ -8,9 +8,10 @@ format:
     warning: false
     toc: true
     code-fold: true
-    math: katex # katex, mathjax, none
-#    eval: false
+    math: katex # katex, mathjax, none 
 ---
+
+<!-- add eval:FALSE when working on this so it renders faster --> 
 
 <details>
 
