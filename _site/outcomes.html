@@ -448,6 +448,7 @@ window.Quarto = {
 </header>
 
 
+<!-- add eval:FALSE when working on this so it renders faster -->
 <details>
 <summary>
 <strong>1.2: Use technical language to describe the main features of time series data</strong>
@@ -483,8 +484,8 @@ window.Quarto = {
 </ul></li>
 <li><strong>Differentiate between deterministic and stochastic trends</strong>
 <ul>
-<li>Stochastic Trend: Random trend that does not follow a discernible or predictable pattern. <strong>?@fig-stochastic</strong></li>
-<li>Deterministic Trend: Can be modeled with mathematical functions, facilitating the long-term prediction of the behavior. <strong>?@fig-deterministic</strong></li>
+<li>Stochastic Trend: Random trend that does not follow a discernible or predictable pattern. <a href="#fig-stochastic" class="quarto-xref">Figure&nbsp;1</a></li>
+<li>Deterministic Trend: Can be modeled with mathematical functions, facilitating the long-term prediction of the behavior. <a href="#fig-deterministic" class="quarto-xref">Figure&nbsp;2</a></li>
 </ul></li>
 </ul>
 </details>
@@ -512,7 +513,7 @@ window.Quarto = {
 </ul></li>
 <li><strong>Estimate the trend component using moving averages</strong>
 <ul>
-<li>There are various ways to estimate the trend <span class="math inline">\(m_t\)</span> at time t, but a relatively simple procedure, is just use the cma formula for <span class="math inline">\(x_t\)</span>. Orange line = CMA. <strong>?@fig-cma</strong></li>
+<li>There are various ways to estimate the trend <span class="math inline">\(m_t\)</span> at time t, but a relatively simple procedure, is just use the cma formula for <span class="math inline">\(x_t\)</span>. Orange line = CMA. <a href="#fig-cma" class="quarto-xref">Figure&nbsp;3</a></li>
 </ul></li>
 </ul>
 </details>
@@ -525,7 +526,7 @@ window.Quarto = {
 <li><strong>Make box plots to examine seasonality.</strong></li>
 <li><strong>Interpret the trend and seasonal pattern observed in a time series</strong>
 <ul>
-<li>Trend is increasing over time, and there is a seasonal pattern that repeats every 12 months. The trend is estimated using a centred moving average, and the seasonal pattern is visualized using box plots. <strong>?@fig-cma</strong> <strong>?@fig-cmaboxplot</strong></li>
+<li>Trend is increasing over time, and there is a seasonal pattern that repeats every 12 months. The trend is estimated using a centred moving average, and the seasonal pattern is visualized using box plots. <a href="#fig-cma" class="quarto-xref">Figure&nbsp;3</a> <a href="#fig-cmaboxplot" class="quarto-xref">Figure&nbsp;4</a></li>
 </ul></li>
 </ul>
 </details>
@@ -593,7 +594,7 @@ window.Quarto = {
 <li><p>The seasonally adjusted series is computed by subtracting <span class="math inline">\(\bar s_t\)</span> from each of the observed values:</p>
 <p><span class="math display">\[
   \text{seasonally adjusted series} = x_t - \bar s_t
-\]</span>. The figure below illustrates the original time series (in black), the centered moving average <span class="math inline">\(\hat m_t\)</span> (in blue), and the seasonally adjusted series (in red). <strong>?@fig-seasonallyadjustedts</strong></p></li>
+\]</span>. The figure below illustrates the original time series (in black), the centered moving average <span class="math inline">\(\hat m_t\)</span> (in blue), and the seasonally adjusted series (in red). <a href="#fig-seasonallyadjustedts" class="quarto-xref">Figure&nbsp;5</a></p></li>
 </ul></li>
 </ul>
 </details>
@@ -663,6 +664,76 @@ x_t = m_t \cdot s_t \cdot z_t
 <li><strong>Compute a seasonally-adjusted time series based on a multiplicative model</strong></li>
 </ul>
 </details>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stochastic" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stochastic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-stochastic-1.png" id="fig-stochastic" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-stochastic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-deterministic" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deterministic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-deterministic-1.png" id="fig-deterministic" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-deterministic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cma" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-cma-1.png" id="fig-cma" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmaboxplot" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmaboxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-cmaboxplot-1.png" id="fig-cmaboxplot" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmaboxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonallyadjustedts" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonallyadjustedts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-seasonallyadjustedts-1.png" id="fig-seasonallyadjustedts" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonallyadjustedts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 

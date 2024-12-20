@@ -1,6 +1,6 @@
 project: 
   type: website
-  output-dir: docs # renders htmls to docs folder
+#  output-dir: docs # renders htmls to docs folder
   render:
     - "*.qmd"
     - "!extra_files/"
