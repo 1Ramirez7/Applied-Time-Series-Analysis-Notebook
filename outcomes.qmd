@@ -244,6 +244,7 @@ $$ ignore this money signs (see source comment) <!-- this money signs are needed
 $$z_t = \dfrac{ x_t }{ \hat m_t \cdot \bar s_t }$$
 
 -   **Implement multiplicative decomposition**
+This can be found in code for chapter 1, and by reviewing the lesson 1.5 code. 
 -   **Compute the estimators of seasonal variation for a multiplicative model**
 -   **Calculate the random component for a multiplicative model**
 Random Error Term (Error Plot):
