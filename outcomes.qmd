@@ -11,7 +11,7 @@ format:
     math: katex # katex, mathjax, none 
 ---
 
-<!-- add eval:FALSE when working on this so it renders faster --> 
+<!-- add eval: false when working on this so it renders faster -->
 
 <details>
 
@@ -119,9 +119,10 @@ monthly_tsibble <- rio::import("https://byuistats.github.io/timeseries/data/rexb
           \bar s_t = \bar {\hat s_t} - \bar{\bar {\hat s_t}}
         $$
 
-        where $\bar {\hat s_t}$ is the mean of the $\hat s_t$ values corresponding to month $t$, and $\bar{\bar {\hat s_t}}$ is the mean of the $\bar {\hat s_t}$ values.
+   where $\bar {\hat s_t}$ is the mean of the $\hat s_t$ values corresponding to month $t$, and $\bar{\bar {\hat s_t}}$ is the mean of the $\bar {\hat s_t}$ values.
 
-    -   $\bar s_t$: This yields $\bar s_t$, the seasonally adjusted mean for each month.
+   -   $\bar s_t$: This yields $\bar s_t$, the seasonally adjusted mean for each month.
+  
 -   **Calculate the random component for an additive model**
     -   We calculate the random component by subtracting the trend and seasonally adjusted mean from the time series:
 
@@ -145,10 +146,11 @@ monthly_tsibble <- rio::import("https://byuistats.github.io/timeseries/data/rexb
     -   in Models where they are dominated by a trend and or seasonal effect, then classical additive/multiplicative models are more common.
     -   **Multiplicative** Model : R's multiplicative model: this implies that the error term, $z_t$ (or $r_t$), has a mean of 1, rather than 0.
     -   **Additve** model $x_t = m_t + s_t + z_t$ vs **multiplicative** book $x_t = m_t * s_t + z_t$ or **multiplicative r** define as $x_t = m_t * s_t * z_t$
-    -   ***Seasonal Component***
+    -   <span style="color:purple;">**Seasonal Component**</span>
         -   **Additive**:$s_t = \sin \left( \frac{t\pi}{6} \right) + \frac{1}{2}\cos\left(\frac{t \pi}{18} \right)$
 
-        -   This is the r formula (1.5): seasonal\[t\] \<- b \* sin(t / 12 \* 2 \* pi \* 1) + c \* cos(t / 12 \* 2 \* pi \* 3)
+
+
 
             The r seasonal formula in the code corresponds to: $$s_t = b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right)$$
 
@@ -162,38 +164,113 @@ monthly_tsibble <- rio::import("https://byuistats.github.io/timeseries/data/rexb
                 -   $c = 0.5$: The amplitude of the cosine wave.
                 -   $\frac{t}{12} \cdot 2 \pi \cdot 3$: Introduces a higher frequency cycle over the same 12-month period.
 
-        -   **Additive**: $s_t = x_t - \bar s_t$ $$\text{seasonally adjusted series} = x_t - \bar s_t$$
-        - **Multiplicative**
-        The seasonal formula in the multiplicative model corresponds to: $$s_t = e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1}$$ 
+        -   **Additive Seasonal Component**: $s_t$ $$\text{seasonally adjusted series}  s_t = x_t - \bar s_t$$
+            - Seasonally Adjusted Means $\bar s_t$ $$
+  \bar s_t = \bar {\hat s_t} - \bar{\bar {\hat s_t}}
+$$ where $\bar {\hat s_t}$ is the mean of the $\hat s_t$ values corresponding to month $t$, and $\bar{\bar {\hat s_t}}$ is the mean of the $\bar {\hat s_t}$ values.
 
+            - Montly Additive Effect $\hat s_t$ 
+            $$
+  \hat s_t = x_t - \hat m_t
+            $$ The centered moving average, $\hat m_t$, is then used to compute the monthly additive effect, $\hat s_t$
+
+        -   spacer
+        
+        -   **Multiplicative Seasonal Component** $s_t$
+
+            - Seasonally Adjusted Means $\bar s_t$ $$ \bar s_t = \frac{ \left( \bar {\hat s_t} \right) }{ \left( \bar {\bar {\hat s_t}} \right) } $$ Divide each of the $\bar {\hat s_t}$ values by $\bar {\bar {\hat s_t}}$ to get $\bar s_t$, the seasonally adjusted factor for quarter $t$. (Note that the mean of the $\bar s_t$ values will be 1.) 
+            $\bar {\hat s_t}$ = mean($\hat s_t$) (unique like mean of Jan or mean of 1st Q)
+$\bar {\bar {\hat s_t}}$ = mean($\bar {\hat s_t}$) - overallmean mean of $\bar {\hat s_t}$
+
+
+            - Monthly/quaterly Adjusted Means $\hat s_t$: 
+            $$
+              \hat s_t = \dfrac{ x_t }{ \hat m_t }
+            $$ 
+            The centered moving average, $\hat m_t$, is then used to compute the quarterly multiplictive effect, $\hat s_t$:
+            - Centered MA is calculated the same way as additive for this step. 
             
+              ```{r, eval=FALSE}
+              # 1.5 lesson code sample
+              # computes the 4-quarter centered moving average (m_hat)
+              apple_ts $% apple_ts |> 
+                mutate(
+                  m_hat = (
+                        (1/2) * lag(revenue, 2)
+                        + lag(revenue, 1)
+                        + revenue
+                        + lead(revenue, 1)
+                        + (1/2) * lead(revenue, 2)
+                      ) / 4
+                )
+              
+              
+              ```
+
+
+        -   spacer
+
+
+
+        -   spacer
+
+
+
+        -   **Multiplicative** The seasonal formula in the multiplicative model corresponds to: $$s_t = e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1}$$
+
             Components:
-            
-            1. **Exponential Seasonal Component**:  
-               $$ 
-               e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1} 
-               $$  
-               - $b = 1$: The amplitude of the sine wave.  
-               - $c = 0.5$: The amplitude of the cosine wave.  
-               - $\frac{t}{12} \cdot 2 \pi$: Converts $t$, the month number, into a 12-month sinusoidal cycle.
-               - $\frac{t}{12} \cdot 2 \pi \cdot 3$: Introduces a higher frequency cycle over the same 12-month period.  
-               - $+1$: Ensures the seasonal component is strictly positive.
-            
-            2. **Multiplicative Combination**:
-               - The seasonal component $s_t$ is multiplied with the trend $m_t$ and error term $z_t$ to construct the time series:
-                 $$
-                 x_t = m_t \cdot s_t \cdot z_t
-                 $$
-            
-    -   **Random Component**
-        -   additive: $r_t = x_t - \hat m_t - \bar s_t$ $$\text{random component} = x_t - \hat m_t - \bar s_t$$
+
+            1.  **Exponential Seasonal Component**:\
+                $$ 
+                e^{b \sin \left( \frac{t}{12} \cdot 2 \pi \right) + c \cos \left( \frac{t}{12} \cdot 2 \pi \cdot 3 \right) + 1} 
+                $$
+                -   $b = 1$: The amplitude of the sine wave.\
+                -   $c = 0.5$: The amplitude of the cosine wave.\
+                -   $\frac{t}{12} \cdot 2 \pi$: Converts $t$, the month number, into a 12-month sinusoidal cycle.
+                -   $\frac{t}{12} \cdot 2 \pi \cdot 3$: Introduces a higher frequency cycle over the same 12-month period.\
+                -   $+1$: Ensures the seasonal component is strictly positive.
+            2.  **Multiplicative Combination**:
+                -   The seasonal component $s_t$ is multiplied with the trend $m_t$ and error term $z_t$ to construct the time series: $$
+                    x_t = m_t \cdot s_t \cdot z_t
+                    $$
+    -   <span style="color:purple;">**Random Component**</span> $r_t$ or $z_t$
+        -   additive: $r_t = x_t - \hat m_t - \bar s_t$ spacer $$r_t = x_t - \hat m_t - \bar s_t$$
+        
+        -   multiplicative:
+
+$$ ignore this money signs (see source comment) <!-- this money signs are needed to cancel out two previously use so the red txt can go away. gotta fixed this later but cant spend to much time on it now -->
+
+
+$$z_t = \dfrac{ x_t }{ \hat m_t \cdot \bar s_t }$$
 
 -   **Implement multiplicative decomposition**
 -   **Compute the estimators of seasonal variation for a multiplicative model**
 -   **Calculate the random component for a multiplicative model**
+Random Error Term (Error Plot):
+$$ e_t = \frac{x_t}{m_t \cdot s_t} $$
 -   **Compute a seasonally-adjusted time series based on a multiplicative model**
 
+Random Error Term (Error Plot):
+$$ e_t = \frac{x_t}{m_t \cdot s_t} $$
+
+Trend:
+$$ m_t = e^{a \cdot t} $$
+
+Seasonal:
+$$ s_t = e^{b \cdot \sin\left(\frac{2 \pi t}{12}\right) + c \cdot \cos\left(\frac{6 \pi t}{12}\right) + 1} $$
+
+Seasonally-Adjusted Time Series
+$$ x_t = m_t \cdot s_t \cdot z_t $$
 </details>
+
+
+
+
+
+
+
+
+
 
 ```{r, echo=FALSE}
 #| label: fig-stochastic

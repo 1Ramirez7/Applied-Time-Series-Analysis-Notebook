@@ -62,7 +62,8 @@ can do collapse and within
 :::: {.callout-note icon="false" title="Second-Order Properties of a Random Walk"}
 If $\{x_t\}_{t=1}^n$ is a random walk, then the population has the following properties.
 
-$$ \mu_x = 0 $$ and $$
+$$ \mu_x = 0 $$ and 
+$$
   cov(x_t, x_{t+k}) = t \sigma^2
 $$
 
@@ -106,3 +107,9 @@ $$
     \frac{1}{\sqrt{1+\frac{k}{t}}}
 $$
 ::::
+
+# Color words
+
+This is a normal text and this is <span style="color:purple;">purple text</span> in the same line.
+
+purtle text will then be in purple
