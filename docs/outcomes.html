@@ -422,8 +422,14 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#index" id="toc-index" class="nav-link active" data-scroll-target="#index">index</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -710,6 +716,64 @@ x_t = m_t \cdot s_t \cdot z_t
 <p>Seasonal: <span class="math display">\[ s_t = e^{b \cdot \sin\left(\frac{2 \pi t}{12}\right) + c \cdot \cos\left(\frac{6 \pi t}{12}\right) + 1} \]</span></p>
 Seasonally-Adjusted Time Series <span class="math display">\[ x_t = m_t \cdot s_t \cdot z_t \]</span>
 </details>
+<details>
+<summary>
+2.1: Compute &amp; Interpret the key statistics used to describe the linear relationship between two variables
+</summary>
+<ul>
+<li>Compute &amp; Interpret the sample mean
+<ul>
+<li>It is just doing the mean of a variable. <span class="math display">\[ \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \]</span></li>
+<li>Need to refresh of difference for doing stats on a sample vs a population</li>
+</ul></li>
+</ul>
+<p>Sample Mean The <strong>sample mean</strong> <span class="math inline">\(\bar{x}\)</span> is the average value of the data points in the sample. It summarizes the central tendency and is computed as: <span class="math display">\[
+\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i
+\]</span></p>
+<hr>
+<ul>
+<li>Compute &amp; Interpret the sample variance</li>
+</ul>
+<p>Sample Variance The <strong>sample variance</strong> <span class="math inline">\(s^2\)</span> measures the spread of data around the sample mean. It quantifies variability and is calculated as: <span class="math display">\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2
+\]</span> It provides insight into how much individual observations deviate from the average, capturing the data’s dispersion.</p>
+<hr>
+<ul>
+<li>Compute &amp; Interpret the sample standard deviation</li>
+</ul>
+<p>Sample Standard Deviation The <strong>sample standard deviation</strong> <span class="math inline">\(s\)</span> is the square root of the sample variance: <span class="math display">\[
+s = \sqrt{s^2}
+\]</span> It represents the average deviation of data points from the mean in the same units as the original data, facilitating easier interpretation.</p>
+<hr>
+<ul>
+<li>Compute &amp; Interpret the sample covariance</li>
+</ul>
+<p>Sample Covariance The <strong>sample covariance</strong> <span class="math inline">\(Cov(x, y)\)</span> quantifies the linear relationship between two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. It is calculated as: <span class="math display">\[
+Cov(x, y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})
+\]</span> A positive covariance indicates that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> increase together, while a negative covariance suggests an inverse relationship.</p>
+<hr>
+<ul>
+<li>Compute &amp; Interpret the sample correlation coefficient</li>
+</ul>
+<p>Sample Correlation Coefficient The <strong>sample correlation coefficient</strong> <span class="math inline">\(r\)</span> standardizes the covariance, giving a dimensionless measure of linear association between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>: <span class="math display">\[
+r = \frac{Cov(x, y)}{s_x s_y}
+\]</span> It ranges between <span class="math inline">\(-1\)</span> (perfect negative linear relationship) and <span class="math inline">\(+1\)</span> (perfect positive linear relationship), with <span class="math inline">\(0\)</span> indicating no linear relationship.</p>
+<hr>
+<ul>
+<li>Explain sample covariance using a scatter plot</li>
+</ul>
+<p><a href="#fig-covarainceexplain" class="quarto-xref">Figure&nbsp;6</a></p>
+<p>Covariance measures the linear relationship between two variables, x and y. It evaluates how changes in x correspond to changes in y:</p>
+<ul>
+<li><p>Positive covariance: y increases as x increases (points cluster in the lower-left and upper-right quadrants).</p></li>
+<li><p>Negative covariance: y decreases as x increases (points cluster in the upper-left and lower-right quadrants).</p></li>
+<li><p>Zero covariance: No linear relationship (points are scattered with no clear pattern).</p></li>
+</ul>
+<hr>
+</details>
+<section id="index" class="level1">
+<h1>index</h1>
+<p>This is code and definitions use in outcomes</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-stochastic" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
@@ -780,9 +844,24 @@ Figure&nbsp;5
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-covarainceexplain" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-covarainceexplain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="outcomes_files/figure-html/fig-covarainceexplain-1.png" id="fig-covarainceexplain" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-covarainceexplain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
