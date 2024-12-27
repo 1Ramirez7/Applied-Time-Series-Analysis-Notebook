@@ -103,9 +103,11 @@ monthly additive effect[^15]
 , is then used to compute the monthly additive effect
 
 
-definition[^]
+ergodic[^16]
 
-[^]:
+[^16]: A time series model that is stationary in the mean is ergodic in the mean if
+ the time average for a single time series tends to the ensemble mean as the
+ length of the time series increases (2.2 2.2.3).
 
 
 

@@ -13,6 +13,107 @@ format:
 
 
 
+
+2.1
+
+$$
+\gamma(x, y) = E[(x - \mu_x)(y - \mu_y)]
+$$
+
+2.2 
+
+$$
+Cov(x, y) = \sum(x_i - \bar{x})(y_i - \bar{y}) / (n - 1)
+$$
+
+2.3
+
+mean((x - mean(x))*(y - mean(y))) $\to$ $E[(x - \mu_x)(y - \mu_y)]$
+
+2.4 
+
+$$
+p(x, y) = \frac{E[(x - \mu_x)(y - \mu_y)]}{\sigma_x\sigma_y} = \frac{\gamma(x, y)}{\sigma_x\sigma_y}
+$$
+
+2.5
+
+$$
+Cor(x, y) = \frac{Cov(x, y)}{sd(x)sd(y)} 
+$$
+
+
+2.6
+
+$$
+\mu(t) = E[x_t]
+$$
+
+2.7
+
+$$
+\bar{x} =  \sum_{t=1}^n \frac{x_t}{n}
+$$
+
+2.8 
+
+$$
+\lim_{ \to \infty} \frac{\sum x_t}{n} = \mu
+$$
+
+2.9
+
+$$
+\sigma^2(t) = E[(x_t - \mu)^2]
+$$
+
+2.10
+
+$$
+Var(x) = \frac{\sum (x_t - \bar{x})^2}{n - 1}
+$$
+
+2.11
+
+$$
+\gamma_k = E[(x_t - \mu)(x_{t+k} - \mu)]
+$$
+
+2.12
+
+$$
+\rho_k = \frac{\gamma_k}{\sigma^2}
+$$
+
+
+2.13
+
+$$
+c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
+$$
+
+2.14
+
+$$
+r_k = \frac{c_k}{c_0}
+$$
+
+2.15
+
+In subsequent chapters, second-order properties for several time series models
+are derived using the result shown in Equation (2.15). Let x1,x2,...,xn and y1, y2,...,ym be random variables. Then
+ 
+$$
+Cov( \sum_{i=1}^{n} x_i, \sum_{j=1}^{m} y_j ) = \sum_{i=1}^{n} \sum_{j=1}^{m} Cov(x_i , y_j)
+$$
+
+where $Cov(x,y)$ is the covariance between a pair of random variables $x$ and $y$. The result tells us that the covariance of two sums of variables is the sum of all possible covariance pairs of the variables. Note that the special case of $n = m$ and $x_i = y_i$ (i = 1,...,n) occurs in subsequent chapters for a time series {$x_t$}.The proof of Equation (2.15) is left to Exercise 5a
+
+
+
+
+
+
 **Autoregressive (AR) Model** 
 
 4.3 lesson (book reference 4.15)

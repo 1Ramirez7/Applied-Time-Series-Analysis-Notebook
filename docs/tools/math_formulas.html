@@ -5245,6 +5245,66 @@ window.Quarto = {
 </header>
 
 
+<p>2.1</p>
+<p><span class="math display">\[
+\gamma(x, y) = E[(x - \mu_x)(y - \mu_y)]
+\]</span></p>
+<p>2.2</p>
+<p><span class="math display">\[
+Cov(x, y) = \sum(x_i - \bar{x})(y_i - \bar{y}) / (n - 1)
+\]</span></p>
+<p>2.3</p>
+<p>mean((x - mean(x))*(y - mean(y))) <span class="math inline">\(\to\)</span> <span class="math inline">\(E[(x - \mu_x)(y - \mu_y)]\)</span></p>
+<p>2.4</p>
+<p><span class="math display">\[
+p(x, y) = \frac{E[(x - \mu_x)(y - \mu_y)]}{\sigma_x\sigma_y} = \frac{\gamma(x, y)}{\sigma_x\sigma_y}
+\]</span></p>
+<p>2.5</p>
+<p><span class="math display">\[
+Cor(x, y) = \frac{Cov(x, y)}{sd(x)sd(y)}
+\]</span></p>
+<p>2.6</p>
+<p><span class="math display">\[
+\mu(t) = E[x_t]
+\]</span></p>
+<p>2.7</p>
+<p><span class="math display">\[
+\bar{x} =  \sum_{t=1}^n \frac{x_t}{n}
+\]</span></p>
+<p>2.8</p>
+<p><span class="math display">\[
+\lim_{ \to \infty} \frac{\sum x_t}{n} = \mu
+\]</span></p>
+<p>2.9</p>
+<p><span class="math display">\[
+\sigma^2(t) = E[(x_t - \mu)^2]
+\]</span></p>
+<p>2.10</p>
+<p><span class="math display">\[
+Var(x) = \frac{\sum (x_t - \bar{x})^2}{n - 1}
+\]</span></p>
+<p>2.11</p>
+<p><span class="math display">\[
+\gamma_k = E[(x_t - \mu)(x_{t+k} - \mu)]
+\]</span></p>
+<p>2.12</p>
+<p><span class="math display">\[
+\rho_k = \frac{\gamma_k}{\sigma^2}
+\]</span></p>
+<p>2.13</p>
+<p><span class="math display">\[
+c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
+\]</span></p>
+<p>2.14</p>
+<p><span class="math display">\[
+r_k = \frac{c_k}{c_0}
+\]</span></p>
+<p>2.15</p>
+<p>In subsequent chapters, second-order properties for several time series models are derived using the result shown in Equation (2.15). Let x1,x2,…,xn and y1, y2,…,ym be random variables. Then</p>
+<p><span class="math display">\[
+Cov( \sum_{i=1}^{n} x_i, \sum_{j=1}^{m} y_j ) = \sum_{i=1}^{n} \sum_{j=1}^{m} Cov(x_i , y_j)
+\]</span></p>
+<p>where <span class="math inline">\(Cov(x,y)\)</span> is the covariance between a pair of random variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The result tells us that the covariance of two sums of variables is the sum of all possible covariance pairs of the variables. Note that the special case of <span class="math inline">\(n = m\)</span> and <span class="math inline">\(x_i = y_i\)</span> (i = 1,…,n) occurs in subsequent chapters for a time series {<span class="math inline">\(x_t\)</span>}.The proof of Equation (2.15) is left to Exercise 5a</p>
 <p><strong>Autoregressive (AR) Model</strong></p>
 <p>4.3 lesson (book reference 4.15)</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of an Autoregressive (AR) Model">

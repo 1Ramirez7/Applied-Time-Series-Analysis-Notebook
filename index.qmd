@@ -505,3 +505,9 @@ If the random variation is modelled by a multiplicative factor and the variable 
 Models dominated by trend and seasonal effects.
 
 As the first two examples showed, many series are dominated by a trend and/or seasonal effects, so the models in this section are based on these components. A simple additive decomposition model is given by $x_t = m_t + s_t + z_t$ ($z_t = r_t$)
+
+
+
+**2.2.4 book Variance Function**
+
+If we assume the model is stationary in the variance, this constant population variance, σ2, can be estimated from the sample variance
