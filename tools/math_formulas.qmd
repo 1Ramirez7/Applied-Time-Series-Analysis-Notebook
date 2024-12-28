@@ -9,6 +9,7 @@ format:
     embed-resources: true
     toc: true
     code-fold: true
+    css: styles.css
 ---
 
 2.1

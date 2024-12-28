@@ -12,18 +12,13 @@ format:
     css: styles.css
 ---
 
-
-
-
-e3.1 cross covariance function ($ccvf$), $\gamma_k (x, y), as a function of the lag, k:
-
+e3.1 cross covariance function ($ccvf$), \$\gamma\_k (x, y), as a function of the lag, k:
 
 $$
 \gamma_k (x, y) = E[(x_{t + k} - \mu_x)(y_t - \mu_y)]
 $$
 
-
-e3.2 
+e3.2
 
 Some textbooks define ccvf with the variable y lagging when k is positive, but we have used the definition that is consistent with R. Whichever way you choose to define the ccvf
 
@@ -31,17 +26,15 @@ $$
 \gamma_k (x, y) = \gamma_{- k} (y, x)
 $$
 
-
 e3.3 cross-correlation function ($ccf$)
 
-When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, $γ_k(x,x)$. The lag $k$ cross-correlation function ($ccf$), $p_k(x,y)$, is defined by 
+When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, $γ_k(x,x)$. The lag $k$ cross-correlation function ($ccf$), $p_k(x,y)$, is defined by
 
 $$
 p_k(x, y) = \frac{\gamma_k(x, y)}{\sigma_x\sigma_y}
 $$
 
 The ccvf and ccf can be estimated from a time series by their sample equivalents.
- 
 
 e3.4 sample cross-covariance function ($ccvf$) or ($sccf$) is calculatred as
 
@@ -49,13 +42,11 @@ $$
 c_k(x, y) = \frac{1}{n} \sum_{t = 1}^{n - k} (x_{t + k} - \bar{x})(y_t - \bar{y})
 $$
 
-
-e3.5 sample autocorrelation function ($acf$) is define as 
+e3.5 sample autocorrelation function ($acf$) is define as
 
 $$
 r_k (x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
 $$
-
 
 e3.6 Bass Formula
 
@@ -75,17 +66,15 @@ $$
 
 It is easier to verify this result for the continuous-time version of the model.
 
-
 e3.8 hazard
 
 One interpretation of the Bass model is that the time from product launch until purchase is assumed to have a probability distribution that can be parametrised in terms of $p$ and $q$. A plot of sales per time unit against time is obtained by multiplying the probability density by the number of people, $m$, who eventually buy the product. Let $f(t)$, $F(t)$, and $h(t)$ be the density, cumulative distribution function ($cdf$), and hazard, respectively, of the distribution of time until purchase. The definition of the hazard ...
 
-the definition of the hazard is 
+the definition of the hazard is
 
 $$
 h(t) = \frac{f(t)}{1 - F(t)}
 $$
-
 
 The interpretation of the hazard is that if it is multiplied by a small time increment it gives the probability that a random purchaser who has not yet made the purchase will do so in the next small time increment (Exercise 2). Then the continuous time model of the Bass formula can be expressed in terms of the hazard (e3.9):
 
@@ -97,17 +86,15 @@ $$
 
 Equation (3.6) is the discrete form of Equation (3.9) (Exercise 2). The solution of Equation (3.8), with $h(t)$ given by Equation (3.9), for $F(t)$ is (e3.10)
 
-e3.10 
+e3.10
 
 $$
 F(t) = \frac {1 - e^{-(p+q)t}}{1 + (q/p) e^{-(p+q)t}}
 $$
- 
- 
+
 Two special cases of the distribution are the exponential distribution and logistic distribution, which arise when $q = 0$ and $p = 0$, respectively. The logistic distribution closely resembles the normal distribution (Exercise 3). Cumulative sales are given by the product of $m$ and $F(t)$. The pdf is the derivative of Equation (3.10):
 
-
-e3.11 
+e3.11
 
 $$
 f(t) = \frac{(p + q)^2 e^{-(p+q)t}}{p[1 + (q/p)e^{-(p+q)t}]^2}
@@ -123,25 +110,17 @@ $$
 
 The time to peak is (e3.13)
 
-
-e3.13 The time to peak is 
+e3.13 The time to peak is
 
 $$
 t_{peak} = \frac {log(q) - log(p)} {p + q}
 $$
 
+e3.14 Forecasting Sales
 
-e3.14 Forecasting Sales 
+3.4.1 Exponential smoothing:
 
-3.4.1 Exponential smoothing: 
-
-Our objective is to predict some future value $x_{n+k}$ given a past history
-${x1,x2,...,xn}$ of observations up to time $n$. In this subsection we assume
-there is no systematic trend or seasonal effects in the process, or that these
-have been identified and removed. The mean of the process can change from
-one time step to the next, but we have no information about the likely direction
-of these changes. A typical application is forecasting sales of a well-established
-product in a stable market. The model is
+Our objective is to predict some future value $x_{n+k}$ given a past history ${x1,x2,...,xn}$ of observations up to time $n$. In this subsection we assume there is no systematic trend or seasonal effects in the process, or that these have been identified and removed. The mean of the process can change from one time step to the next, but we have no information about the likely direction of these changes. A typical application is forecasting sales of a well-established product in a stable market. The model is
 
 $$
 x_t = \mu_t + w_t
