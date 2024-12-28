@@ -7,12 +7,12 @@ project:
     - "!githubpushnotes.md"
   
 
-
 freeze: auto
 
 
-execute: # testing to see if it re renders less things
-  cache: true
+#execute: # testing to see if it re renders less things
+#  cache: true
+#  cache-dir: .cache # test this a different day
 
 # resources: # testing to see if this will just copy this file and not delete.
 #  - styles.css # did not do anything, but resources is good to learn how to use

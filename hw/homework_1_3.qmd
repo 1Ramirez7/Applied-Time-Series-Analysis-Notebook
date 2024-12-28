@@ -3,7 +3,6 @@ title: "Time Series Homework: Chapter 1 Lesson 3"
 subtitle: "Eduardo Ramirez"
 format: 
   html:
-    embed-resources: true
     toc: true
 editor: source
 ---

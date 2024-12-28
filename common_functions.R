@@ -43,7 +43,7 @@ row_of_vdots <- function(df) {
 convert_df_to_char <- function(df, decimals = 3) {
   out_df <- df |>
     as.data.frame() |>
-    mutate_if(is.numeric, round, digits=decimals) |>
+    mutate_if(is.numeric, round, digits = decimals) |>
     mutate(across(everything(), as.character))
   return(out_df)
 }
@@ -60,7 +60,7 @@ concat_partial_table <- function(df, nrow_head, nrow_tail, decimals = 3) {
 
 display_table <- function(df, min_col_width = "0in") {
   df |>
-    knitr::kable(format = "html", align='ccccccccccccccccc', escape = FALSE, width = NA, row.names = FALSE) |>
+    knitr::kable(format = "html", align = 'ccccccccccccccccc', escape = FALSE, width = NA, row.names = FALSE) |>
     kable_styling(full_width = FALSE, "striped") |>
     column_spec(1:ncol(df), width_min = min_col_width)
 }
