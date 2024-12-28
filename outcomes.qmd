@@ -8,8 +8,10 @@ format:
     warning: false
     toc: true
     code-fold: true
+    css: styles.css
     math: katex # katex, mathjax, none 
 ---
+
 
 <!-- add eval: false when working on this so it renders faster -->
 

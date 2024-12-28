@@ -10,91 +10,195 @@ format:
     toc: true
     code-fold: true
     css: styles.css
+    math: katex
+# execute:
+#   cache: false
+# freeze: false
 ---
 
-2.1
+e2.1
 
 $$
 \gamma(x, y) = E[(x - \mu_x)(y - \mu_y)]
 $$
 
-2.2
+e2.2
 
 $$
 Cov(x, y) = \sum(x_i - \bar{x})(y_i - \bar{y}) / (n - 1)
 $$
 
-2.3
+e2.3
 
 mean((x - mean(x))\*(y - mean(y))) $\to$ $E[(x - \mu_x)(y - \mu_y)]$
 
-2.4
+e2.4
 
 $$
 p(x, y) = \frac{E[(x - \mu_x)(y - \mu_y)]}{\sigma_x\sigma_y} = \frac{\gamma(x, y)}{\sigma_x\sigma_y}
 $$
 
-2.5
+e2.5
 
 $$
 Cor(x, y) = \frac{Cov(x, y)}{sd(x)sd(y)} 
 $$
 
-2.6
+e2.6
 
 $$
 \mu(t) = E[x_t]
 $$
 
-2.7
+e2.7
 
 $$
 \bar{x} =  \sum_{t=1}^n \frac{x_t}{n}
 $$
 
-2.8
+e2.8
 
 $$
 \lim_{ \to \infty} \frac{\sum x_t}{n} = \mu
 $$
 
-2.9
+e2.9
 
 $$
 \sigma^2(t) = E[(x_t - \mu)^2]
 $$
 
-2.10
+e2.10
 
 $$
 Var(x) = \frac{\sum (x_t - \bar{x})^2}{n - 1}
 $$
 
-e2.11
+e2.11 second-order stationary autocovariance function *acvf**
+
+If a time series model is second-order stationary, we can define an autocovariance function (acvf), $γ_k$, as a function of the lag $k$:
 
 $$
 \gamma_k = E[(x_t - \mu)(x_{t+k} - \mu)]
 $$
 
-2.12
+1. **Definition**:
+   - $\gamma_k$: The second-order stationary autocovariance function (acvf) at lag $k$.
+   - Quantifies the covariance between $x_t$ and $x_{t+k}$, assuming the time series is second-order stationary.
+
+2. **Components**:
+   - **$x_t, x_{t+k}$**: Observations of the time series at time $t$ and $t+k$.
+   - **$\mu$**: The mean of the time series, which remains constant for second-order stationary series.
+   - **$E[\cdot]$**: The expectation operator, averaging across all realizations of the process.
+
+3. **Conditions**:
+   - The time series must be second-order stationary, meaning:
+     - The mean $\mu$ is constant over time.
+     - The variance $\sigma^2$ is finite and constant.
+     - The covariance between $x_t$ and $x_{t+k}$ depends only on the lag $k$, not on $t$.
+
+4. **Purpose**:
+   - $\gamma_k$ describes the strength and direction of the linear relationship between $x_t$ and $x_{t+k}$ for a stationary series.
+   - It captures patterns such as trends, cycles, and dependencies across time lags.
+
+5. **Interpretation**:
+   - $\gamma_k > 0$: Positive covariance, indicating similar deviations from the mean for $x_t$ and $x_{t+k}$.
+   - $\gamma_k < 0$: Negative covariance, indicating opposite deviations from the mean for $x_t$ and $x_{t+k}$.
+   - $\gamma_k = 0$: No linear relationship between $x_t$ and $x_{t+k}$ at lag $k$.
+
+
+
+e2.12 The lag k autocorrelation function (acf), $ρ_k$, is defined by
 
 $$
 \rho_k = \frac{\gamma_k}{\sigma^2}
 $$
 
-2.13
+1. **Definition**:
+   - $\rho_k$: The lag $k$ autocorrelation function (acf).
+   - Normalizes the autocovariance $\gamma_k$ by the variance $\sigma^2$ of the time series.
+
+2. **Components**:
+   - **Numerator**: $\gamma_k$ is the autocovariance at lag $k$, which measures the linear dependency between $x_t$ and $x_{t+k}$.
+   - **Denominator**: $\sigma^2$ is the constant variance of the time series under the assumption of second-order stationarity.
+
+3. **Conditions**:
+   - The time series must be second-order stationary, meaning:
+     - The mean $\mu$ is constant.
+     - The variance $\sigma^2$ is constant.
+     - The autocovariance $\gamma_k$ depends only on the lag $k$, not on $t$.
+
+4. **Purpose**:
+   - $\rho_k$ standardizes $\gamma_k$ to provide a dimensionless measure of the strength and direction of the relationship between $x_t$ and $x_{t+k}$.
+   - Values of $\rho_k$ are constrained to the range $[-1, 1]$.
+
+5. **Interpretation**:
+   - $\rho_k > 0$: Positive correlation at lag $k$, indicating that $x_t$ and $x_{t+k}$ move in the same direction.
+   - $\rho_k < 0$: Negative correlation at lag $k$, indicating that $x_t$ and $x_{t+k}$ move in opposite directions.
+   - $\rho_k = 0$: No linear relationship between $x_t$ and $x_{t+k}$ at lag $k$.
+
+
+
+e2.13  The sample autocovariance function **acvf** or **sacvf**, $c_k$, is calculated as
 
 $$
 c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
 $$
+(ai compile so need to confirm)
 
-2.14
+1. **Definition**:
+   - $c_k$: The sample autocovariance at lag $k$.
+   - Measures the covariance of the time series $x_t$ with itself, shifted by $k$ time steps.
+
+2. **Components**:
+   - **Numerator**: 
+     - $(x_t - \bar{x})(x_{t+k} - \bar{x})$: Calculates the product of deviations of $x_t$ and $x_{t+k}$ from their mean $\bar{x}$.
+     - $\sum_{t=1}^{n-k}$: Sums these products over all valid time indices $t$ where $t$ and $t+k$ are within the range of the data.
+   - **Denominator**: 
+     - Divides by the total number of observations, $n$, to normalize the covariance.
+
+3. **Purpose**:
+   - $c_k$ quantifies the degree of linear relationship (covariance) between observations in the series that are separated by a lag of $k$ time steps.
+   - Helps identify patterns like periodicity or trends in autocorrelation.
+
+4. **Interpretation**:
+   - $c_k > 0$: Positive covariance, indicating similar deviations at lag $k$.
+   - $c_k < 0$: Negative covariance, indicating opposite deviations at lag $k$.
+   - $c_k = 0$: No linear relationship between $x_t$ and $x_{t+k}$ at lag $k$.
+
+
+
+
+
+
+e2.14 The sample autocorrelation function **acf** is defined as
 
 $$
 r_k = \frac{c_k}{c_0}
 $$
+(ai compile so need to confirm)
 
-2.15
+1. **Definition**:
+   - $r_k$: The sample autocorrelation at lag $k$.
+   - Normalizes the sample autocovariance $c_k$ using $c_0$ (the variance of the series).
+
+2. **Components**:
+   - **Numerator**: $c_k$ is the sample autocovariance at lag $k$, representing the covariance between $x_t$ and $x_{t+k}$.
+   - **Denominator**: $c_0$ is the sample autocovariance at lag $0$, equivalent to the variance of the series (calculated with $n$ in the denominator).
+
+3. **Purpose**:
+   - $r_k$ measures the strength and direction of the linear relationship between observations in the series, separated by lag $k$.
+   - Normalization ensures $r_k$ values lie between $-1$ and $1$.
+
+4. **Interpretation**:
+   - $r_k > 0$: Positive correlation at lag $k$, indicating similar trends in $x_t$ and $x_{t+k}$.
+   - $r_k < 0$: Negative correlation at lag $k$, indicating opposing trends in $x_t$ and $x_{t+k}$.
+   - $r_k = 0$: No linear relationship between $x_t$ and $x_{t+k}$ at lag $k$.
+
+
+
+
+e2.15
 
 In subsequent chapters, second-order properties for several time series models are derived using the result shown in Equation (2.15). Let x1,x2,...,xn and y1, y2,...,ym be random variables. Then
 
@@ -103,6 +207,214 @@ Cov( \sum_{i=1}^{n} x_i, \sum_{j=1}^{m} y_j ) = \sum_{i=1}^{n} \sum_{j=1}^{m} Co
 $$
 
 where $Cov(x,y)$ is the covariance between a pair of random variables $x$ and $y$. The result tells us that the covariance of two sums of variables is the sum of all possible covariance pairs of the variables. Note that the special case of $n = m$ and $x_i = y_i$ (i = 1,...,n) occurs in subsequent chapters for a time series {$x_t$}.The proof of Equation (2.15) is left to Exercise 5a
+
+
+
+
+e3.1 cross covariance function ($ccvf$), \$\gamma\_k (x, y), as a function of the lag, k:
+
+$$
+\gamma_k (x, y) = E[(x_{t + k} - \mu_x)(y_t - \mu_y)]
+$$
+
+e3.2
+
+Some textbooks define ccvf with the variable y lagging when k is positive, but we have used the definition that is consistent with R. Whichever way you choose to define the ccvf
+
+$$
+\gamma_k (x, y) = \gamma_{- k} (y, x)
+$$
+
+e3.3 cross-correlation function ($ccf$)
+
+When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, $γ_k(x,x)$. The lag $k$ cross-correlation function ($ccf$), $p_k(x,y)$, is defined by
+
+$$
+p_k(x, y) = \frac{\gamma_k(x, y)}{\sigma_x\sigma_y}
+$$
+
+The ccvf and ccf can be estimated from a time series by their sample equivalents.
+
+e3.4 sample cross-covariance function ($ccvf$) or ($sccvf$) is calculatred as
+
+$$
+c_k(x, y) = \frac{1}{n} \sum_{t = 1}^{n - k} (x_{t + k} - \bar{x})(y_t - \bar{y})
+$$
+
+The formula for the **sample cross-covariance function (SCCVF)** quantifies the relationship between two time series $x_t$ and $y_t$ at different lags:
+
+1. **Definition**:
+   - $c_k(x, y)$: The sample cross-covariance at lag $k$.
+   - $k$: The lag (i.e., the amount by which one time series is shifted relative to the other).
+   - $\bar{x}$: The mean of the $x_t$ time series.
+   - $\bar{y}$: The mean of the $y_t$ time series.
+
+2. **Components**:
+   - $x_{t + k}$: The value of the $x_t$ time series shifted by $k$ time steps.
+   - $y_t$: The value of the $y_t$ time series at time $t$.
+   - $(x_{t + k} - \bar{x})$: The deviation of $x_{t + k}$ from its mean.
+   - $(y_t - \bar{y})$: The deviation of $y_t$ from its mean.
+
+3. **Summation**:
+   - $\sum_{t=1}^{n-k}$: The summation is over all overlapping time points, up to $n-k$ to ensure there are sufficient data points for $x_{t+k}$.
+
+4. **Normalization**:
+   - $\frac{1}{n}$: The normalization factor divides by $n$, the total number of observations in the time series.
+
+5. **Purpose**:
+   - Measures how much $x_t$ (shifted by $k$) and $y_t$ deviate from their respective means in a synchronized way.
+   - Positive $c_k(x, y)$: Indicates that $x_{t+k}$ and $y_t$ move in the same direction (positive relationship).
+   - Negative $c_k(x, y)$: Indicates an inverse relationship.
+
+This function is essential for identifying lagged dependencies between two time series??
+
+
+e3.5 sample autocorrelation function ($acf$) is define as
+
+$$
+r_k (x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+$$
+
+The formula for the **sample autocorrelation function (ACF)** quantifies the normalized relationship between two time series $x_t$ and $y_t$ at lag $k$:
+
+$$
+r_k(x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+$$
+
+### Explanation
+
+1. **Definition**:
+   - $r_k(x, y)$: The sample autocorrelation at lag $k$.
+   - $c_k(x, y)$: The sample cross-covariance at lag $k$.
+   - $c_0(x, x)$: The variance (or zero-lag covariance) of the $x_t$ time series?
+   - $c_0(y, y)$: The variance (or zero-lag covariance) of the $y_t$ time series?
+
+2. **Normalization**:
+   - The denominator $\sqrt{c_0(x, x)c_0(y, y)}$ ensures that $r_k(x, y)$ is normalized, resulting in values between $-1$ and $1$?
+   - This normalization allows $r_k(x, y)$ to measure the strength and direction of the linear relationship between $x_t$ and $y_t$ at lag $k$?
+
+3. **Purpose**:
+   - $r_k(x, y) > 0$: Indicates a positive correlation at lag $k$.
+   - $r_k(x, y) < 0$: Indicates a negative correlation at lag $k$.
+   - $r_k(x, y) = 0$: Indicates no linear relationship at lag $k$.
+
+This function is widely used to identify and interpret lagged dependencies in time series data.
+
+
+
+
+
+
+
+
+
+
+
+
+e3.6 Bass Formula
+
+The Bass formula for the number of people, $N_t$, who have bought a product at time $t$ depends on three parameters: the total number of people who eventually buy the product, $m$; the coefficient of innovation, $p$; and the coefficient of imitation, $q$. The Bass formula is
+
+$$
+N_{t +1} = N_t + p(m - N_t) + qN_t (m - N_t) / m
+$$
+
+According to the model, the increase in sales, $N_{t+1} − N_t$, over the next time period is equal to the sum of a fixed proportion p and a time varying proportion $q\frac{N_t}{m}$ of people who will eventually buy the product but have not yet done so. The rationale for the model is that initial sales will be to people who are interested in the novelty of the product, whereas later sales will be to people who are drawn to the product after seeing their friends and acquaintances use it. Equation (3.6) is a difference equation and its solution is (e3.7)
+
+e3.7 Bass Formula Solution?
+
+$$
+N_t = m\frac{1 - e^{-(p + q)t}}{1 + (q / p)e^{-(p + q)t}}
+$$
+
+It is easier to verify this result for the continuous-time version of the model.
+
+e3.8 hazard
+
+One interpretation of the Bass model is that the time from product launch until purchase is assumed to have a probability distribution that can be parametrised in terms of $p$ and $q$. A plot of sales per time unit against time is obtained by multiplying the probability density by the number of people, $m$, who eventually buy the product. Let $f(t)$, $F(t)$, and $h(t)$ be the density, cumulative distribution function ($cdf$), and hazard, respectively, of the distribution of time until purchase. The definition of the hazard ...
+
+the definition of the hazard is
+
+$$
+h(t) = \frac{f(t)}{1 - F(t)}
+$$
+
+The interpretation of the hazard is that if it is multiplied by a small time increment it gives the probability that a random purchaser who has not yet made the purchase will do so in the next small time increment (Exercise 2). Then the continuous time model of the Bass formula can be expressed in terms of the hazard (e3.9):
+
+e3.9 Continues time model of the Bass formula can be expressed in terms of the hazard
+
+$$
+h(t) = p + qF(t)
+$$
+
+Equation (3.6) is the discrete form of Equation (3.9) (Exercise 2). The solution of Equation (3.8), with $h(t)$ given by Equation (3.9), for $F(t)$ is (e3.10)
+
+e3.10
+
+$$
+F(t) = \frac {1 - e^{-(p+q)t}}{1 + (q/p) e^{-(p+q)t}}
+$$
+
+Two special cases of the distribution are the exponential distribution and logistic distribution, which arise when $q = 0$ and $p = 0$, respectively. The logistic distribution closely resembles the normal distribution (Exercise 3). Cumulative sales are given by the product of $m$ and $F(t)$. The pdf is the derivative of Equation (3.10):
+
+e3.11
+
+$$
+f(t) = \frac{(p + q)^2 e^{-(p+q)t}}{p[1 + (q/p)e^{-(p+q)t}]^2}
+$$
+
+Sales per unit time at time $t$ are (e3.12)
+
+e3.12
+
+$$
+S(t) = mf(t) = \frac{m(p + q)^2 e^{-(p + q)t}} {p [ 1 + (q/p)e^{-(p+q)t}]^2}
+$$
+
+The time to peak is (e3.13)
+
+e3.13 The time to peak is
+
+$$
+t_{peak} = \frac {log(q) - log(p)} {p + q}
+$$
+
+e3.14 Forecasting Sales
+
+3.4.1 Exponential smoothing:
+
+Our objective is to predict some future value $x_{n+k}$ given a past history ${x1,x2,...,xn}$ of observations up to time $n$. In this subsection we assume there is no systematic trend or seasonal effects in the process, or that these have been identified and removed. The mean of the process can change from one time step to the next, but we have no information about the likely direction of these changes. A typical application is forecasting sales of a well-established product in a stable market. The model is
+
+$$
+x_t = \mu_t + w_t
+$$
+
+where $\mu_t$ is the non-stationary mean of the process at time $t$ and $w_t$ are independent random deviations with a mean of 0 and a standard deviation $\sigma$. We will follow the notation in R and let at be our estimate of $\mu_t$. Given that there is no systematic trend, an intuitively reasonable estimate of the mean at time $t$ is given by a weighted average of our observation at time $t$ and our estimate of the mean at time $t−1$ (e3.15):
+
+e3.15 exponentially weighted moving average ($EWMA$)
+
+$$
+a_t = \alpha x_t + (1 - \alpha)a_{t-1}   \qquad \qquad     0 < \alpha < 1
+$$
+
+<!-- the \qquad is to add a space -->
+
+The $a_t$ in Equation (3.15) is the exponentially weighted moving average ($EWMA$) at time $t$. The value of $\alpha$ determines the amount of smoothing, and it is referred to as the smoothing parameter. If $\alpha$ is near 1, there is little smoothing and $a_t$ is approximately $x_t$. This would only be appropriate if the changes in the mean level were expected to be large by comparison with $\sigma$. At the other extreme, a value of $\alpha$ near $0$ gives highly smoothed estimates of the mean level and takes little account of the most recent observation. This would only be appropriate if the changes in the mean level were expected to be small compared with $\sigma$. A typical compromise figure for $\alpha$ is 0.2 since in practice we usually expect that the change in the mean between time $t − 1$ and time $t$ is likely to be smaller than $\sigma$. Alternatively, R can provide an estimate for $\alpha$, and we discuss this option below. Since we have assumed that there is no systematic trend and that there are no seasonal effects, forecasts made at time $n$ for any lead time are just the estimated mean at time $n$. The forecasting equation is
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Autoregressive (AR) Model**
 

@@ -4851,7 +4851,7 @@ window.Quarto = {
 };
 </script>
 
-<style type="text/css">.katex {color: #DDA0DD !important; }</style>
+<style type="text/css"></style>
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -5108,7 +5108,7 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../test.html">
- <span class="dropdown-text">Applied Time Series Analysis Outcomes</span></a>
+ <span class="dropdown-text">test</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Date &amp; Index formatting</li>
@@ -5186,7 +5186,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Applied Time Series Analysis Outcomes</span></a>
+ <span class="menu-text">test</span></a>
   </div>
 </li>
       </ul>
@@ -5230,8 +5230,14 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link active" data-scroll-target="#explanation">Explanation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -5256,66 +5262,322 @@ window.Quarto = {
 </header>
 
 
-<p>2.1</p>
+<p>e2.1</p>
 <p><span class="math display">\[
 \gamma(x, y) = E[(x - \mu_x)(y - \mu_y)]
 \]</span></p>
-<p>2.2</p>
+<p>e2.2</p>
 <p><span class="math display">\[
 Cov(x, y) = \sum(x_i - \bar{x})(y_i - \bar{y}) / (n - 1)
 \]</span></p>
-<p>2.3</p>
+<p>e2.3</p>
 <p>mean((x - mean(x))*(y - mean(y))) <span class="math inline">\(\to\)</span> <span class="math inline">\(E[(x - \mu_x)(y - \mu_y)]\)</span></p>
-<p>2.4</p>
+<p>e2.4</p>
 <p><span class="math display">\[
 p(x, y) = \frac{E[(x - \mu_x)(y - \mu_y)]}{\sigma_x\sigma_y} = \frac{\gamma(x, y)}{\sigma_x\sigma_y}
 \]</span></p>
-<p>2.5</p>
+<p>e2.5</p>
 <p><span class="math display">\[
 Cor(x, y) = \frac{Cov(x, y)}{sd(x)sd(y)}
 \]</span></p>
-<p>2.6</p>
+<p>e2.6</p>
 <p><span class="math display">\[
 \mu(t) = E[x_t]
 \]</span></p>
-<p>2.7</p>
+<p>e2.7</p>
 <p><span class="math display">\[
 \bar{x} =  \sum_{t=1}^n \frac{x_t}{n}
 \]</span></p>
-<p>2.8</p>
+<p>e2.8</p>
 <p><span class="math display">\[
 \lim_{ \to \infty} \frac{\sum x_t}{n} = \mu
 \]</span></p>
-<p>2.9</p>
+<p>e2.9</p>
 <p><span class="math display">\[
 \sigma^2(t) = E[(x_t - \mu)^2]
 \]</span></p>
-<p>2.10</p>
+<p>e2.10</p>
 <p><span class="math display">\[
 Var(x) = \frac{\sum (x_t - \bar{x})^2}{n - 1}
 \]</span></p>
-<p>e2.11</p>
+<p>e2.11 second-order stationary autocovariance function *acvf**</p>
+<p>If a time series model is second-order stationary, we can define an autocovariance function (acvf), <span class="math inline">\(γ_k\)</span>, as a function of the lag <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
 \gamma_k = E[(x_t - \mu)(x_{t+k} - \mu)]
 \]</span></p>
-<p>2.12</p>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(\gamma_k\)</span>: The second-order stationary autocovariance function (acvf) at lag <span class="math inline">\(k\)</span>.</li>
+<li>Quantifies the covariance between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>, assuming the time series is second-order stationary.</li>
+</ul></li>
+<li><strong>Components</strong>:
+<ul>
+<li><strong><span class="math inline">\(x_t, x_{t+k}\)</span></strong>: Observations of the time series at time <span class="math inline">\(t\)</span> and <span class="math inline">\(t+k\)</span>.</li>
+<li><strong><span class="math inline">\(\mu\)</span></strong>: The mean of the time series, which remains constant for second-order stationary series.</li>
+<li><strong><span class="math inline">\(E[\cdot]\)</span></strong>: The expectation operator, averaging across all realizations of the process.</li>
+</ul></li>
+<li><strong>Conditions</strong>:
+<ul>
+<li>The time series must be second-order stationary, meaning:
+<ul>
+<li>The mean <span class="math inline">\(\mu\)</span> is constant over time.</li>
+<li>The variance <span class="math inline">\(\sigma^2\)</span> is finite and constant.</li>
+<li>The covariance between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> depends only on the lag <span class="math inline">\(k\)</span>, not on <span class="math inline">\(t\)</span>.</li>
+</ul></li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li><span class="math inline">\(\gamma_k\)</span> describes the strength and direction of the linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> for a stationary series.</li>
+<li>It captures patterns such as trends, cycles, and dependencies across time lags.</li>
+</ul></li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\(\gamma_k &gt; 0\)</span>: Positive covariance, indicating similar deviations from the mean for <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><span class="math inline">\(\gamma_k &lt; 0\)</span>: Negative covariance, indicating opposite deviations from the mean for <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><span class="math inline">\(\gamma_k = 0\)</span>: No linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> at lag <span class="math inline">\(k\)</span>.</li>
+</ul></li>
+</ol>
+<p>e2.12 The lag k autocorrelation function (acf), <span class="math inline">\(ρ_k\)</span>, is defined by</p>
 <p><span class="math display">\[
 \rho_k = \frac{\gamma_k}{\sigma^2}
 \]</span></p>
-<p>2.13</p>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(\rho_k\)</span>: The lag <span class="math inline">\(k\)</span> autocorrelation function (acf).</li>
+<li>Normalizes the autocovariance <span class="math inline">\(\gamma_k\)</span> by the variance <span class="math inline">\(\sigma^2\)</span> of the time series.</li>
+</ul></li>
+<li><strong>Components</strong>:
+<ul>
+<li><strong>Numerator</strong>: <span class="math inline">\(\gamma_k\)</span> is the autocovariance at lag <span class="math inline">\(k\)</span>, which measures the linear dependency between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><strong>Denominator</strong>: <span class="math inline">\(\sigma^2\)</span> is the constant variance of the time series under the assumption of second-order stationarity.</li>
+</ul></li>
+<li><strong>Conditions</strong>:
+<ul>
+<li>The time series must be second-order stationary, meaning:
+<ul>
+<li>The mean <span class="math inline">\(\mu\)</span> is constant.</li>
+<li>The variance <span class="math inline">\(\sigma^2\)</span> is constant.</li>
+<li>The autocovariance <span class="math inline">\(\gamma_k\)</span> depends only on the lag <span class="math inline">\(k\)</span>, not on <span class="math inline">\(t\)</span>.</li>
+</ul></li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li><span class="math inline">\(\rho_k\)</span> standardizes <span class="math inline">\(\gamma_k\)</span> to provide a dimensionless measure of the strength and direction of the relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li>Values of <span class="math inline">\(\rho_k\)</span> are constrained to the range <span class="math inline">\([-1, 1]\)</span>.</li>
+</ul></li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\(\rho_k &gt; 0\)</span>: Positive correlation at lag <span class="math inline">\(k\)</span>, indicating that <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> move in the same direction.</li>
+<li><span class="math inline">\(\rho_k &lt; 0\)</span>: Negative correlation at lag <span class="math inline">\(k\)</span>, indicating that <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> move in opposite directions.</li>
+<li><span class="math inline">\(\rho_k = 0\)</span>: No linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> at lag <span class="math inline">\(k\)</span>.</li>
+</ul></li>
+</ol>
+<p>e2.13 The sample autocovariance function <strong>acvf</strong> or <strong>sacvf</strong>, <span class="math inline">\(c_k\)</span>, is calculated as</p>
 <p><span class="math display">\[
 c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
-\]</span></p>
-<p>2.14</p>
+\]</span> (ai compile so need to confirm)</p>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(c_k\)</span>: The sample autocovariance at lag <span class="math inline">\(k\)</span>.</li>
+<li>Measures the covariance of the time series <span class="math inline">\(x_t\)</span> with itself, shifted by <span class="math inline">\(k\)</span> time steps.</li>
+</ul></li>
+<li><strong>Components</strong>:
+<ul>
+<li><strong>Numerator</strong>:
+<ul>
+<li><span class="math inline">\((x_t - \bar{x})(x_{t+k} - \bar{x})\)</span>: Calculates the product of deviations of <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> from their mean <span class="math inline">\(\bar{x}\)</span>.</li>
+<li><span class="math inline">\(\sum_{t=1}^{n-k}\)</span>: Sums these products over all valid time indices <span class="math inline">\(t\)</span> where <span class="math inline">\(t\)</span> and <span class="math inline">\(t+k\)</span> are within the range of the data.</li>
+</ul></li>
+<li><strong>Denominator</strong>:
+<ul>
+<li>Divides by the total number of observations, <span class="math inline">\(n\)</span>, to normalize the covariance.</li>
+</ul></li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li><span class="math inline">\(c_k\)</span> quantifies the degree of linear relationship (covariance) between observations in the series that are separated by a lag of <span class="math inline">\(k\)</span> time steps.</li>
+<li>Helps identify patterns like periodicity or trends in autocorrelation.</li>
+</ul></li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\(c_k &gt; 0\)</span>: Positive covariance, indicating similar deviations at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(c_k &lt; 0\)</span>: Negative covariance, indicating opposite deviations at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(c_k = 0\)</span>: No linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> at lag <span class="math inline">\(k\)</span>.</li>
+</ul></li>
+</ol>
+<p>e2.14 The sample autocorrelation function <strong>acf</strong> is defined as</p>
 <p><span class="math display">\[
 r_k = \frac{c_k}{c_0}
-\]</span></p>
-<p>2.15</p>
+\]</span> (ai compile so need to confirm)</p>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(r_k\)</span>: The sample autocorrelation at lag <span class="math inline">\(k\)</span>.</li>
+<li>Normalizes the sample autocovariance <span class="math inline">\(c_k\)</span> using <span class="math inline">\(c_0\)</span> (the variance of the series).</li>
+</ul></li>
+<li><strong>Components</strong>:
+<ul>
+<li><strong>Numerator</strong>: <span class="math inline">\(c_k\)</span> is the sample autocovariance at lag <span class="math inline">\(k\)</span>, representing the covariance between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><strong>Denominator</strong>: <span class="math inline">\(c_0\)</span> is the sample autocovariance at lag <span class="math inline">\(0\)</span>, equivalent to the variance of the series (calculated with <span class="math inline">\(n\)</span> in the denominator).</li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li><span class="math inline">\(r_k\)</span> measures the strength and direction of the linear relationship between observations in the series, separated by lag <span class="math inline">\(k\)</span>.</li>
+<li>Normalization ensures <span class="math inline">\(r_k\)</span> values lie between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</li>
+</ul></li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\(r_k &gt; 0\)</span>: Positive correlation at lag <span class="math inline">\(k\)</span>, indicating similar trends in <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><span class="math inline">\(r_k &lt; 0\)</span>: Negative correlation at lag <span class="math inline">\(k\)</span>, indicating opposing trends in <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>.</li>
+<li><span class="math inline">\(r_k = 0\)</span>: No linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span> at lag <span class="math inline">\(k\)</span>.</li>
+</ul></li>
+</ol>
+<p>e2.15</p>
 <p>In subsequent chapters, second-order properties for several time series models are derived using the result shown in Equation (2.15). Let x1,x2,…,xn and y1, y2,…,ym be random variables. Then</p>
 <p><span class="math display">\[
 Cov( \sum_{i=1}^{n} x_i, \sum_{j=1}^{m} y_j ) = \sum_{i=1}^{n} \sum_{j=1}^{m} Cov(x_i , y_j)
 \]</span></p>
 <p>where <span class="math inline">\(Cov(x,y)\)</span> is the covariance between a pair of random variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The result tells us that the covariance of two sums of variables is the sum of all possible covariance pairs of the variables. Note that the special case of <span class="math inline">\(n = m\)</span> and <span class="math inline">\(x_i = y_i\)</span> (i = 1,…,n) occurs in subsequent chapters for a time series {<span class="math inline">\(x_t\)</span>}.The proof of Equation (2.15) is left to Exercise 5a</p>
+<p>e3.1 cross covariance function (<span class="math inline">\(ccvf\)</span>), $_k (x, y), as a function of the lag, k:</p>
+<p><span class="math display">\[
+\gamma_k (x, y) = E[(x_{t + k} - \mu_x)(y_t - \mu_y)]
+\]</span></p>
+<p>e3.2</p>
+<p>Some textbooks define ccvf with the variable y lagging when k is positive, but we have used the definition that is consistent with R. Whichever way you choose to define the ccvf</p>
+<p><span class="math display">\[
+\gamma_k (x, y) = \gamma_{- k} (y, x)
+\]</span></p>
+<p>e3.3 cross-correlation function (<span class="math inline">\(ccf\)</span>)</p>
+<p>When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, <span class="math inline">\(γ_k(x,x)\)</span>. The lag <span class="math inline">\(k\)</span> cross-correlation function (<span class="math inline">\(ccf\)</span>), <span class="math inline">\(p_k(x,y)\)</span>, is defined by</p>
+<p><span class="math display">\[
+p_k(x, y) = \frac{\gamma_k(x, y)}{\sigma_x\sigma_y}
+\]</span></p>
+<p>The ccvf and ccf can be estimated from a time series by their sample equivalents.</p>
+<p>e3.4 sample cross-covariance function (<span class="math inline">\(ccvf\)</span>) or (<span class="math inline">\(sccvf\)</span>) is calculatred as</p>
+<p><span class="math display">\[
+c_k(x, y) = \frac{1}{n} \sum_{t = 1}^{n - k} (x_{t + k} - \bar{x})(y_t - \bar{y})
+\]</span></p>
+<p>The formula for the <strong>sample cross-covariance function (SCCVF)</strong> quantifies the relationship between two time series <span class="math inline">\(x_t\)</span> and <span class="math inline">\(y_t\)</span> at different lags:</p>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(c_k(x, y)\)</span>: The sample cross-covariance at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(k\)</span>: The lag (i.e., the amount by which one time series is shifted relative to the other).</li>
+<li><span class="math inline">\(\bar{x}\)</span>: The mean of the <span class="math inline">\(x_t\)</span> time series.</li>
+<li><span class="math inline">\(\bar{y}\)</span>: The mean of the <span class="math inline">\(y_t\)</span> time series.</li>
+</ul></li>
+<li><strong>Components</strong>:
+<ul>
+<li><span class="math inline">\(x_{t + k}\)</span>: The value of the <span class="math inline">\(x_t\)</span> time series shifted by <span class="math inline">\(k\)</span> time steps.</li>
+<li><span class="math inline">\(y_t\)</span>: The value of the <span class="math inline">\(y_t\)</span> time series at time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\((x_{t + k} - \bar{x})\)</span>: The deviation of <span class="math inline">\(x_{t + k}\)</span> from its mean.</li>
+<li><span class="math inline">\((y_t - \bar{y})\)</span>: The deviation of <span class="math inline">\(y_t\)</span> from its mean.</li>
+</ul></li>
+<li><strong>Summation</strong>:
+<ul>
+<li><span class="math inline">\(\sum_{t=1}^{n-k}\)</span>: The summation is over all overlapping time points, up to <span class="math inline">\(n-k\)</span> to ensure there are sufficient data points for <span class="math inline">\(x_{t+k}\)</span>.</li>
+</ul></li>
+<li><strong>Normalization</strong>:
+<ul>
+<li><span class="math inline">\(\frac{1}{n}\)</span>: The normalization factor divides by <span class="math inline">\(n\)</span>, the total number of observations in the time series.</li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li>Measures how much <span class="math inline">\(x_t\)</span> (shifted by <span class="math inline">\(k\)</span>) and <span class="math inline">\(y_t\)</span> deviate from their respective means in a synchronized way.</li>
+<li>Positive <span class="math inline">\(c_k(x, y)\)</span>: Indicates that <span class="math inline">\(x_{t+k}\)</span> and <span class="math inline">\(y_t\)</span> move in the same direction (positive relationship).</li>
+<li>Negative <span class="math inline">\(c_k(x, y)\)</span>: Indicates an inverse relationship.</li>
+</ul></li>
+</ol>
+<p>This function is essential for identifying lagged dependencies between two time series??</p>
+<p>e3.5 sample autocorrelation function (<span class="math inline">\(acf\)</span>) is define as</p>
+<p><span class="math display">\[
+r_k (x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+\]</span></p>
+<p>The formula for the <strong>sample autocorrelation function (ACF)</strong> quantifies the normalized relationship between two time series <span class="math inline">\(x_t\)</span> and <span class="math inline">\(y_t\)</span> at lag <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[
+r_k(x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+\]</span></p>
+<section id="explanation" class="level3">
+<h3 class="anchored" data-anchor-id="explanation">Explanation</h3>
+<ol type="1">
+<li><strong>Definition</strong>:
+<ul>
+<li><span class="math inline">\(r_k(x, y)\)</span>: The sample autocorrelation at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(c_k(x, y)\)</span>: The sample cross-covariance at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(c_0(x, x)\)</span>: The variance (or zero-lag covariance) of the <span class="math inline">\(x_t\)</span> time series?</li>
+<li><span class="math inline">\(c_0(y, y)\)</span>: The variance (or zero-lag covariance) of the <span class="math inline">\(y_t\)</span> time series?</li>
+</ul></li>
+<li><strong>Normalization</strong>:
+<ul>
+<li>The denominator <span class="math inline">\(\sqrt{c_0(x, x)c_0(y, y)}\)</span> ensures that <span class="math inline">\(r_k(x, y)\)</span> is normalized, resulting in values between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>?</li>
+<li>This normalization allows <span class="math inline">\(r_k(x, y)\)</span> to measure the strength and direction of the linear relationship between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(y_t\)</span> at lag <span class="math inline">\(k\)</span>?</li>
+</ul></li>
+<li><strong>Purpose</strong>:
+<ul>
+<li><span class="math inline">\(r_k(x, y) &gt; 0\)</span>: Indicates a positive correlation at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(r_k(x, y) &lt; 0\)</span>: Indicates a negative correlation at lag <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(r_k(x, y) = 0\)</span>: Indicates no linear relationship at lag <span class="math inline">\(k\)</span>.</li>
+</ul></li>
+</ol>
+<p>This function is widely used to identify and interpret lagged dependencies in time series data.</p>
+<p>e3.6 Bass Formula</p>
+<p>The Bass formula for the number of people, <span class="math inline">\(N_t\)</span>, who have bought a product at time <span class="math inline">\(t\)</span> depends on three parameters: the total number of people who eventually buy the product, <span class="math inline">\(m\)</span>; the coefficient of innovation, <span class="math inline">\(p\)</span>; and the coefficient of imitation, <span class="math inline">\(q\)</span>. The Bass formula is</p>
+<p><span class="math display">\[
+N_{t +1} = N_t + p(m - N_t) + qN_t (m - N_t) / m
+\]</span></p>
+<p>According to the model, the increase in sales, <span class="math inline">\(N_{t+1} − N_t\)</span>, over the next time period is equal to the sum of a fixed proportion p and a time varying proportion <span class="math inline">\(q\frac{N_t}{m}\)</span> of people who will eventually buy the product but have not yet done so. The rationale for the model is that initial sales will be to people who are interested in the novelty of the product, whereas later sales will be to people who are drawn to the product after seeing their friends and acquaintances use it. Equation (3.6) is a difference equation and its solution is (e3.7)</p>
+<p>e3.7 Bass Formula Solution?</p>
+<p><span class="math display">\[
+N_t = m\frac{1 - e^{-(p + q)t}}{1 + (q / p)e^{-(p + q)t}}
+\]</span></p>
+<p>It is easier to verify this result for the continuous-time version of the model.</p>
+<p>e3.8 hazard</p>
+<p>One interpretation of the Bass model is that the time from product launch until purchase is assumed to have a probability distribution that can be parametrised in terms of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. A plot of sales per time unit against time is obtained by multiplying the probability density by the number of people, <span class="math inline">\(m\)</span>, who eventually buy the product. Let <span class="math inline">\(f(t)\)</span>, <span class="math inline">\(F(t)\)</span>, and <span class="math inline">\(h(t)\)</span> be the density, cumulative distribution function (<span class="math inline">\(cdf\)</span>), and hazard, respectively, of the distribution of time until purchase. The definition of the hazard …</p>
+<p>the definition of the hazard is</p>
+<p><span class="math display">\[
+h(t) = \frac{f(t)}{1 - F(t)}
+\]</span></p>
+<p>The interpretation of the hazard is that if it is multiplied by a small time increment it gives the probability that a random purchaser who has not yet made the purchase will do so in the next small time increment (Exercise 2). Then the continuous time model of the Bass formula can be expressed in terms of the hazard (e3.9):</p>
+<p>e3.9 Continues time model of the Bass formula can be expressed in terms of the hazard</p>
+<p><span class="math display">\[
+h(t) = p + qF(t)
+\]</span></p>
+<p>Equation (3.6) is the discrete form of Equation (3.9) (Exercise 2). The solution of Equation (3.8), with <span class="math inline">\(h(t)\)</span> given by Equation (3.9), for <span class="math inline">\(F(t)\)</span> is (e3.10)</p>
+<p>e3.10</p>
+<p><span class="math display">\[
+F(t) = \frac {1 - e^{-(p+q)t}}{1 + (q/p) e^{-(p+q)t}}
+\]</span></p>
+<p>Two special cases of the distribution are the exponential distribution and logistic distribution, which arise when <span class="math inline">\(q = 0\)</span> and <span class="math inline">\(p = 0\)</span>, respectively. The logistic distribution closely resembles the normal distribution (Exercise 3). Cumulative sales are given by the product of <span class="math inline">\(m\)</span> and <span class="math inline">\(F(t)\)</span>. The pdf is the derivative of Equation (3.10):</p>
+<p>e3.11</p>
+<p><span class="math display">\[
+f(t) = \frac{(p + q)^2 e^{-(p+q)t}}{p[1 + (q/p)e^{-(p+q)t}]^2}
+\]</span></p>
+<p>Sales per unit time at time <span class="math inline">\(t\)</span> are (e3.12)</p>
+<p>e3.12</p>
+<p><span class="math display">\[
+S(t) = mf(t) = \frac{m(p + q)^2 e^{-(p + q)t}} {p [ 1 + (q/p)e^{-(p+q)t}]^2}
+\]</span></p>
+<p>The time to peak is (e3.13)</p>
+<p>e3.13 The time to peak is</p>
+<p><span class="math display">\[
+t_{peak} = \frac {log(q) - log(p)} {p + q}
+\]</span></p>
+<p>e3.14 Forecasting Sales</p>
+<p>3.4.1 Exponential smoothing:</p>
+<p>Our objective is to predict some future value <span class="math inline">\(x_{n+k}\)</span> given a past history <span class="math inline">\({x1,x2,...,xn}\)</span> of observations up to time <span class="math inline">\(n\)</span>. In this subsection we assume there is no systematic trend or seasonal effects in the process, or that these have been identified and removed. The mean of the process can change from one time step to the next, but we have no information about the likely direction of these changes. A typical application is forecasting sales of a well-established product in a stable market. The model is</p>
+<p><span class="math display">\[
+x_t = \mu_t + w_t
+\]</span></p>
+<p>where <span class="math inline">\(\mu_t\)</span> is the non-stationary mean of the process at time <span class="math inline">\(t\)</span> and <span class="math inline">\(w_t\)</span> are independent random deviations with a mean of 0 and a standard deviation <span class="math inline">\(\sigma\)</span>. We will follow the notation in R and let at be our estimate of <span class="math inline">\(\mu_t\)</span>. Given that there is no systematic trend, an intuitively reasonable estimate of the mean at time <span class="math inline">\(t\)</span> is given by a weighted average of our observation at time <span class="math inline">\(t\)</span> and our estimate of the mean at time <span class="math inline">\(t−1\)</span> (e3.15):</p>
+<p>e3.15 exponentially weighted moving average (<span class="math inline">\(EWMA\)</span>)</p>
+<p><span class="math display">\[
+a_t = \alpha x_t + (1 - \alpha)a_{t-1}   \qquad \qquad     0 &lt; \alpha &lt; 1
+\]</span></p>
+<!-- the \qquad is to add a space -->
+<p>The <span class="math inline">\(a_t\)</span> in Equation (3.15) is the exponentially weighted moving average (<span class="math inline">\(EWMA\)</span>) at time <span class="math inline">\(t\)</span>. The value of <span class="math inline">\(\alpha\)</span> determines the amount of smoothing, and it is referred to as the smoothing parameter. If <span class="math inline">\(\alpha\)</span> is near 1, there is little smoothing and <span class="math inline">\(a_t\)</span> is approximately <span class="math inline">\(x_t\)</span>. This would only be appropriate if the changes in the mean level were expected to be large by comparison with <span class="math inline">\(\sigma\)</span>. At the other extreme, a value of <span class="math inline">\(\alpha\)</span> near <span class="math inline">\(0\)</span> gives highly smoothed estimates of the mean level and takes little account of the most recent observation. This would only be appropriate if the changes in the mean level were expected to be small compared with <span class="math inline">\(\sigma\)</span>. A typical compromise figure for <span class="math inline">\(\alpha\)</span> is 0.2 since in practice we usually expect that the change in the mean between time <span class="math inline">\(t − 1\)</span> and time <span class="math inline">\(t\)</span> is likely to be smaller than <span class="math inline">\(\sigma\)</span>. Alternatively, R can provide an estimate for <span class="math inline">\(\alpha\)</span>, and we discuss this option below. Since we have assumed that there is no systematic trend and that there are no seasonal effects, forecasts made at time <span class="math inline">\(n\)</span> for any lead time are just the estimated mean at time <span class="math inline">\(n\)</span>. The forecasting equation is</p>
 <p><strong>Autoregressive (AR) Model</strong></p>
 <p>4.3 lesson (book reference 4.15)</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Definition of an Autoregressive (AR) Model">
@@ -5520,6 +5782,8 @@ Lesson 1.3: Vocabulary and Nomenclature activity
 </div>
 
 
+
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

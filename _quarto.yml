@@ -5,6 +5,8 @@ project:
     - "*.qmd"
     - "!extra_files/"
     - "!githubpushnotes.md"
+  
+
 
 freeze: auto
 
@@ -177,7 +179,6 @@ website:
             - tools/math_formulas.qmd
 
 
-
 format:  
   html:
     theme: #see this link to customize the theme with css (https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
@@ -187,3 +188,4 @@ format:
       #dark: [cosmo, theme-dark.scss]
     css: styles.css
     toc: true
+
