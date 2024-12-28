@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -448,6 +482,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#using-definitons-or-footnotes" id="toc-using-definitons-or-footnotes" class="nav-link" data-scroll-target="#using-definitons-or-footnotes">using Definitons or footnotes</a></li>
   <li><a href="#streamline-code" id="toc-streamline-code" class="nav-link" data-scroll-target="#streamline-code">Streamline code</a></li>
   <li><a href="#color-definitions" id="toc-color-definitions" class="nav-link" data-scroll-target="#color-definitions">color definitions</a></li>
+  <li><a href="#add-a-concernsdoubs" id="toc-add-a-concernsdoubs" class="nav-link" data-scroll-target="#add-a-concernsdoubs">add a concerns/doubs?</a></li>
+  <li><a href="#notes-for-my-statistics-journal" id="toc-notes-for-my-statistics-journal" class="nav-link" data-scroll-target="#notes-for-my-statistics-journal">notes for my statistics journal</a>
+  <ul class="collapse">
+  <li><a href="#key-differences-between-general-and-sampling-distributions" id="toc-key-differences-between-general-and-sampling-distributions" class="nav-link" data-scroll-target="#key-differences-between-general-and-sampling-distributions">Key Differences Between General and Sampling Distributions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -514,8 +553,166 @@ ul.task-list li input[type="checkbox"] {
 <li>purple: purple is assign for variables or important subjects that are been define and or main topic of that paragraph and or just need to stand out.</li>
 </ul>
 <p>Pink: Pink will be assign to words that I don’t know the definition and or meaning, and or words that need a definition link to them. This will help as I know that I can add the definition link later if I don’t do it then</p>
+</section>
+<section id="add-a-concernsdoubs" class="level1">
+<h1>add a concerns/doubs?</h1>
+<p>thinking of having a place where I can have my doubts and concerns, but maybe I can just do github issues for this since once it gets solve it will no longer be needed. doing issues will have more urgency to solve the problem. ok, I’m going to do issues</p>
+</section>
+<section id="notes-for-my-statistics-journal" class="level1">
+<h1>notes for my statistics journal</h1>
+<p><strong>Sampling Distributions</strong></p>
+<p>Key points about modality and skewness in sampling distributions:</p>
+<p>Modality:</p>
+<ul>
+<li><p>Unimodal: A sampling distribution with only one prominent peak.</p></li>
+<li><p>Bimodal: A sampling distribution with two distinct peaks.</p></li>
+<li><p>Multimodal: A sampling distribution with more than two peaks.</p></li>
+<li><p>Uniform: In a uniform distribution, every value within a specified range has an equal probability of occurring, creating a flat horizontal line when visualized on a graph.</p></li>
+</ul>
+<p>Skewness:</p>
+<ul>
+<li><p>Positive Skewness (Right Skewed): The tail of the distribution extends further to the right side, meaning there are a few very high values compared to the majority of lower values.</p></li>
+<li><p>Negative Skewness (Left Skewed): The tail of the distribution extends further to the left side, indicating a few very low values compared to most higher values.</p></li>
+<li><p>Zero Skewness (Symmetrical): The distribution is balanced with the left and right sides mirroring each other.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Unimodal</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Unimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bimodal</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">2</span>))), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Bimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multimodal</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="sc">-</span><span class="dv">4</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">0</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">4</span>))), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"purple"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Multimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Uniform Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
+ℹ Please use `after_stat(density)` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Positive Skew</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="at">rate =</span> <span class="dv">1</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Positive Skew (Right Skewed)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Negative Skew</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="at">rate =</span> <span class="dv">1</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Negative Skew (Left Skewed)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetrical</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Zero Skewness (Symmetrical)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="key-differences-between-general-and-sampling-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="key-differences-between-general-and-sampling-distributions">Key Differences Between General and Sampling Distributions</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 41%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Aspect</strong></th>
+<th><strong>General Distributions</strong></th>
+<th><strong>Sampling Distributions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Focus</strong></td>
+<td>Distribution of raw data or random variables</td>
+<td>Distribution of a statistic (e.g., sample mean, proportion)</td>
+</tr>
+<tr class="even">
+<td><strong>Population or Sample</strong></td>
+<td>Describes population or a single sample</td>
+<td>Derived from repeated sampling of a population</td>
+</tr>
+<tr class="odd">
+<td><strong>Examples</strong></td>
+<td>Normal, Uniform, Exponential</td>
+<td>Sampling distribution of sample mean, proportion, etc.</td>
+</tr>
+<tr class="even">
+<td><strong>Derived From</strong></td>
+<td>Directly observed data</td>
+<td>Repeatedly calculated from samples</td>
+</tr>
+<tr class="odd">
+<td><strong>Shape</strong></td>
+<td>Depends on the data (e.g., normal, skewed)</td>
+<td>Depends on sample size and population (Central Limit Theorem often applies)</td>
+</tr>
+<tr class="even">
+<td><strong>Role in Statistics</strong></td>
+<td>Describe the data or population characteristics</td>
+<td>Used for inferential statistics (e.g., confidence intervals, hypothesis testing)</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 

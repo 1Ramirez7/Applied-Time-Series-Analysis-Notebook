@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tools, Resources and Help Ideas – Applied Time Series Notebook</title>
+<title>Applied Time Series Analysis Outcomes – Applied Time Series Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -104,11 +70,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -388,115 +383,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tools_help_ideas.html">Tools, Help &amp; Ideas</a></li><li class="breadcrumb-item"><a href="./tools_help_ideas.html">Tools, Resources and Help Ideas</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Tools, Help &amp; Ideas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tools_help_ideas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tools, Resources and Help Ideas</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tools/markdown_visuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markdown Visuals</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tools/git_yml_term.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git and Terminal Commands</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Date &amp; Index formatting</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tools/stepsforDate_index_formatting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Steps for formatting Date and Creating Index</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Math Formulas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tools/math_formulas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Formulas</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#yml-code-to-fix" id="toc-yml-code-to-fix" class="nav-link active" data-scroll-target="#yml-code-to-fix">.yml code to fix</a></li>
-  <li><a href="#using-definitons-or-footnotes" id="toc-using-definitons-or-footnotes" class="nav-link" data-scroll-target="#using-definitons-or-footnotes">using Definitons or footnotes</a></li>
-  <li><a href="#streamline-code" id="toc-streamline-code" class="nav-link" data-scroll-target="#streamline-code">Streamline code</a></li>
-  <li><a href="#color-definitions" id="toc-color-definitions" class="nav-link" data-scroll-target="#color-definitions">color definitions</a></li>
-  <li><a href="#add-a-concernsdoubs" id="toc-add-a-concernsdoubs" class="nav-link" data-scroll-target="#add-a-concernsdoubs">add a concerns/doubs?</a></li>
-  <li><a href="#notes-for-my-statistics-journal" id="toc-notes-for-my-statistics-journal" class="nav-link" data-scroll-target="#notes-for-my-statistics-journal">notes for my statistics journal</a>
-  <ul class="collapse">
-  <li><a href="#key-differences-between-general-and-sampling-distributions" id="toc-key-differences-between-general-and-sampling-distributions" class="nav-link" data-scroll-target="#key-differences-between-general-and-sampling-distributions">Key Differences Between General and Sampling Distributions</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tools_help_ideas.html">Tools, Help &amp; Ideas</a></li><li class="breadcrumb-item"><a href="./tools_help_ideas.html">Tools, Resources and Help Ideas</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tools, Resources and Help Ideas</h1>
-<p class="subtitle lead">draft</p>
+<h1 class="title">Applied Time Series Analysis Outcomes</h1>
+<p class="subtitle lead">MATH 494R</p>
 </div>
 
 
@@ -513,215 +414,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page is to include pontential ideas to do for resources, tools, and ideas for time series</p>
-<section id="yml-code-to-fix" class="level1">
-<h1>.yml code to fix</h1>
-<ol type="1">
-<li>_quarto.yml code. the sidebar code is different from time series and mine
-<ul>
-<li>time series sidebar does not appear on the side while my does. theme looks different</li>
-<li>I think it just has to do w/ the theme</li>
-</ul></li>
-<li>back-to-top-navigation: true * This is my original code and it works normally. * Time series uses this one: page-navigation: true
-<ul>
-<li>When I use the time series I started getting this warning message
-<ul>
-<li>[WARNING] Could not fetch resource ../projects/project2.html</li>
-<li>What is the difference between the two?</li>
-</ul></li>
-</ul></li>
-</ol>
-</section>
-<section id="using-definitons-or-footnotes" class="level1">
-<h1>using Definitons or footnotes</h1>
-<p>The following is working code to use footnotes but works great for definitions. Obviously not the best way to reference def, but this seems like a simple and straight forward process. Seems super static so it wont take long to load as well.</p>
-<p>White noise<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</section>
-<section id="streamline-code" class="level1">
-<h1>Streamline code</h1>
-<p>chapter_3_overview_code_draft.qmd is streamline</p>
-<ul>
-<li><p>Edits to variables happen in first code chunk and qmd runs all code for that chapter.</p></li>
-<li><p>May need to data frame set according to data</p></li>
-</ul>
-</section>
-<section id="color-definitions" class="level1">
-<h1>color definitions</h1>
-<p>so far I’m using the color purple for like definitions or the main topic of that paragraph but mostly definitions or explaining of a variable.</p>
-<p>I should make like a color code for the different colors I use.</p>
-<ul>
-<li>purple: purple is assign for variables or important subjects that are been define and or main topic of that paragraph and or just need to stand out.</li>
-</ul>
-<p>Pink: Pink will be assign to words that I don’t know the definition and or meaning, and or words that need a definition link to them. This will help as I know that I can add the definition link later if I don’t do it then</p>
-</section>
-<section id="add-a-concernsdoubs" class="level1">
-<h1>add a concerns/doubs?</h1>
-<p>thinking of having a place where I can have my doubts and concerns, but maybe I can just do github issues for this since once it gets solve it will no longer be needed. doing issues will have more urgency to solve the problem. ok, I’m going to do issues</p>
-</section>
-<section id="notes-for-my-statistics-journal" class="level1">
-<h1>notes for my statistics journal</h1>
-<p><strong>Sampling Distributions</strong></p>
-<p>Key points about modality and skewness in sampling distributions:</p>
-<p>Modality:</p>
-<ul>
-<li><p>Unimodal: A sampling distribution with only one prominent peak.</p></li>
-<li><p>Bimodal: A sampling distribution with two distinct peaks.</p></li>
-<li><p>Multimodal: A sampling distribution with more than two peaks.</p></li>
-<li><p>Uniform: In a uniform distribution, every value within a specified range has an equal probability of occurring, creating a flat horizontal line when visualized on a graph.</p></li>
-</ul>
-<p>Skewness:</p>
-<ul>
-<li><p>Positive Skewness (Right Skewed): The tail of the distribution extends further to the right side, meaning there are a few very high values compared to the majority of lower values.</p></li>
-<li><p>Negative Skewness (Left Skewed): The tail of the distribution extends further to the left side, indicating a few very low values compared to most higher values.</p></li>
-<li><p>Zero Skewness (Symmetrical): The distribution is balanced with the left and right sides mirroring each other.</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Unimodal</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Unimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bimodal</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">2</span>))), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Bimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multimodal</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="sc">-</span><span class="dv">4</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">0</span>), <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="dv">4</span>))), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"purple"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Multimodal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Uniform Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
-ℹ Please use `after_stat(density)` instead.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Positive Skew</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="at">rate =</span> <span class="dv">1</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Positive Skew (Right Skewed)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Negative Skew</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="at">rate =</span> <span class="dv">1</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Negative Skew (Left Skewed)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetrical</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Zero Skewness (Symmetrical)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tools_help_ideas_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="key-differences-between-general-and-sampling-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="key-differences-between-general-and-sampling-distributions">Key Differences Between General and Sampling Distributions</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 41%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Aspect</strong></th>
-<th><strong>General Distributions</strong></th>
-<th><strong>Sampling Distributions</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Focus</strong></td>
-<td>Distribution of raw data or random variables</td>
-<td>Distribution of a statistic (e.g., sample mean, proportion)</td>
-</tr>
-<tr class="even">
-<td><strong>Population or Sample</strong></td>
-<td>Describes population or a single sample</td>
-<td>Derived from repeated sampling of a population</td>
-</tr>
-<tr class="odd">
-<td><strong>Examples</strong></td>
-<td>Normal, Uniform, Exponential</td>
-<td>Sampling distribution of sample mean, proportion, etc.</td>
-</tr>
-<tr class="even">
-<td><strong>Derived From</strong></td>
-<td>Directly observed data</td>
-<td>Repeatedly calculated from samples</td>
-</tr>
-<tr class="odd">
-<td><strong>Shape</strong></td>
-<td>Depends on the data (e.g., normal, skewed)</td>
-<td>Depends on sample size and population (Central Limit Theorem often applies)</td>
-</tr>
-<tr class="even">
-<td><strong>Role in Statistics</strong></td>
-<td>Describe the data or population characteristics</td>
-<td>Used for inferential statistics (e.g., confidence intervals, hypothesis testing)</td>
-</tr>
-</tbody>
-</table>
+<p>e3.1 cross covariance function (<span class="math inline">\(ccvf\)</span>), $_k (x, y), as a function of the lag, k:</p>
+<p><span class="math display">\[
+\gamma_k (x, y) = E[(x_{t + k} - \mu_x)(y_t - \mu_y)]
+\]</span></p>
+<p>e3.2</p>
+<p>Some textbooks define ccvf with the variable y lagging when k is positive, but we have used the definition that is consistent with R. Whichever way you choose to define the ccvf</p>
+<p><span class="math display">\[
+\gamma_k (x, y) = \gamma_{- k} (y, x)
+\]</span></p>
+<p>e3.3 cross-correlation function (<span class="math inline">\(ccf\)</span>)</p>
+<p>When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, <span class="math inline">\(γ_k(x,x)\)</span>. The lag <span class="math inline">\(k\)</span> cross-correlation function (<span class="math inline">\(ccf\)</span>), <span class="math inline">\(p_k(x,y)\)</span>, is defined by</p>
+<p><span class="math display">\[
+p_k(x, y) = \frac{\gamma_k(x, y)}{\sigma_x\sigma_y}
+\]</span></p>
+<p>The ccvf and ccf can be estimated from a time series by their sample equivalents.</p>
+<p>e3.4 sample cross-covariance function (<span class="math inline">\(ccvf\)</span>) or (<span class="math inline">\(sccf\)</span>) is calculatred as</p>
+<p><span class="math display">\[
+c_k(x, y) = \frac{1}{n} \sum_{t = 1}^{n - k} (x_{t + k} - \bar{x})(y_t - \bar{y})
+\]</span></p>
+<p>e3.5 sample autocorrelation function (<span class="math inline">\(acf\)</span>) is define as</p>
+<p><span class="math display">\[
+r_k (x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+\]</span></p>
+<p>e3.6 Bass Formula</p>
+<p>The Bass formula for the number of people, <span class="math inline">\(N_t\)</span>, who have bought a product at time <span class="math inline">\(t\)</span> depends on three parameters: the total number of people who eventually buy the product, <span class="math inline">\(m\)</span>; the coefficient of innovation, <span class="math inline">\(p\)</span>; and the coefficient of imitation, <span class="math inline">\(q\)</span>. The Bass formula is</p>
+<p><span class="math display">\[
+N_{t +1} = N_t + p(m - N_t) + qN_t (m - N_t) / m
+\]</span></p>
+<p>According to the model, the increase in sales, <span class="math inline">\(N_{t+1} − N_t\)</span>, over the next time period is equal to the sum of a fixed proportion p and a time varying proportion <span class="math inline">\(q\frac{N_t}{m}\)</span> of people who will eventually buy the product but have not yet done so. The rationale for the model is that initial sales will be to people who are interested in the novelty of the product, whereas later sales will be to people who are drawn to the product after seeing their friends and acquaintances use it. Equation (3.6) is a difference equation and its solution is (e3.7)</p>
+<p>e3.7 Bass Formula Solution?</p>
+<p><span class="math display">\[
+N_t = m\frac{1 - e^{-(p + q)t}}{1 + (q / p)e^{-(p + q)t}}
+\]</span></p>
+<p>It is easier to verify this result for the continuous-time version of the model.</p>
+<p>e3.8 hazard</p>
+<p>One interpretation of the Bass model is that the time from product launch until purchase is assumed to have a probability distribution that can be parametrised in terms of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. A plot of sales per time unit against time is obtained by multiplying the probability density by the number of people, <span class="math inline">\(m\)</span>, who eventually buy the product. Let <span class="math inline">\(f(t)\)</span>, <span class="math inline">\(F(t)\)</span>, and <span class="math inline">\(h(t)\)</span> be the density, cumulative distribution function (<span class="math inline">\(cdf\)</span>), and hazard, respectively, of the distribution of time until purchase. The definition of the hazard …</p>
+<p>the definition of the hazard is</p>
+<p><span class="math display">\[
+h(t) = \frac{f(t)}{1 - F(t)}
+\]</span></p>
+<p>The interpretation of the hazard is that if it is multiplied by a small time increment it gives the probability that a random purchaser who has not yet made the purchase will do so in the next small time increment (Exercise 2). Then the continuous time model of the Bass formula can be expressed in terms of the hazard (e3.9):</p>
+<p>e3.9 Continues time model of the Bass formula can be expressed in terms of the hazard</p>
+<p><span class="math display">\[
+h(t) = p + qF(t)
+\]</span></p>
+<p>Equation (3.6) is the discrete form of Equation (3.9) (Exercise 2). The solution of Equation (3.8), with <span class="math inline">\(h(t)\)</span> given by Equation (3.9), for <span class="math inline">\(F(t)\)</span> is (e3.10)</p>
+<p>e3.10</p>
+<p><span class="math display">\[
+F(t) = \frac {1 - e^{-(p+q)t}}{1 + (q/p) e^{-(p+q)t}}
+\]</span></p>
+<p>Two special cases of the distribution are the exponential distribution and logistic distribution, which arise when <span class="math inline">\(q = 0\)</span> and <span class="math inline">\(p = 0\)</span>, respectively. The logistic distribution closely resembles the normal distribution (Exercise 3). Cumulative sales are given by the product of <span class="math inline">\(m\)</span> and <span class="math inline">\(F(t)\)</span>. The pdf is the derivative of Equation (3.10):</p>
+<p>e3.11</p>
+<p><span class="math display">\[
+f(t) = \frac{(p + q)^2 e^{-(p+q)t}}{p[1 + (q/p)e^{-(p+q)t}]^2}
+\]</span></p>
+<p>Sales per unit time at time <span class="math inline">\(t\)</span> are (e3.12)</p>
+<p>e3.12</p>
+<p><span class="math display">\[
+S(t) = mf(t) = \frac{m(p + q)^2 e^{-(p + q)t}} {p [ 1 + (q/p)e^{-(p+q)t}]^2}
+\]</span></p>
+<p>The time to peak is (e3.13)</p>
+<p>e3.13 The time to peak is</p>
+<p><span class="math display">\[
+t_{peak} = \frac {log(q) - log(p)} {p + q}
+\]</span></p>
+<p>e3.14 Forecasting Sales</p>
+<p>3.4.1 Exponential smoothing:</p>
+<p>Our objective is to predict some future value <span class="math inline">\(x_{n+k}\)</span> given a past history <span class="math inline">\({x1,x2,...,xn}\)</span> of observations up to time <span class="math inline">\(n\)</span>. In this subsection we assume there is no systematic trend or seasonal effects in the process, or that these have been identified and removed. The mean of the process can change from one time step to the next, but we have no information about the likely direction of these changes. A typical application is forecasting sales of a well-established product in a stable market. The model is</p>
+<p><span class="math display">\[
+x_t = \mu_t + w_t
+\]</span></p>
+<p>where <span class="math inline">\(\mu_t\)</span> is the non-stationary mean of the process at time <span class="math inline">\(t\)</span> and <span class="math inline">\(w_t\)</span> are independent random deviations with a mean of 0 and a standard deviation <span class="math inline">\(\sigma\)</span>. We will follow the notation in R and let at be our estimate of <span class="math inline">\(\mu_t\)</span>. Given that there is no systematic trend, an intuitively reasonable estimate of the mean at time <span class="math inline">\(t\)</span> is given by a weighted average of our observation at time <span class="math inline">\(t\)</span> and our estimate of the mean at time <span class="math inline">\(t−1\)</span> (e3.15):</p>
+<p>e3.15 exponentially weighted moving average (<span class="math inline">\(EWMA\)</span>)</p>
+<p><span class="math display">\[
+a_t = \alpha x_t + (1 - \alpha)a_{t-1}   \qquad \qquad     0 &lt; \alpha &lt; 1
+\]</span></p>
+<!-- the \qquad is to add a space -->
+<p>The <span class="math inline">\(a_t\)</span> in Equation (3.15) is the exponentially weighted moving average (<span class="math inline">\(EWMA\)</span>) at time <span class="math inline">\(t\)</span>. The value of <span class="math inline">\(\alpha\)</span> determines the amount of smoothing, and it is referred to as the smoothing parameter. If <span class="math inline">\(\alpha\)</span> is near 1, there is little smoothing and <span class="math inline">\(a_t\)</span> is approximately <span class="math inline">\(x_t\)</span>. This would only be appropriate if the changes in the mean level were expected to be large by comparison with <span class="math inline">\(\sigma\)</span>. At the other extreme, a value of <span class="math inline">\(\alpha\)</span> near <span class="math inline">\(0\)</span> gives highly smoothed estimates of the mean level and takes little account of the most recent observation. This would only be appropriate if the changes in the mean level were expected to be small compared with <span class="math inline">\(\sigma\)</span>. A typical compromise figure for <span class="math inline">\(\alpha\)</span> is 0.2 since in practice we usually expect that the change in the mean between time <span class="math inline">\(t − 1\)</span> and time <span class="math inline">\(t\)</span> is likely to be smaller than <span class="math inline">\(\sigma\)</span>. Alternatively, R can provide an estimate for <span class="math inline">\(\alpha\)</span>, and we discuss this option below. Since we have assumed that there is no systematic trend and that there are no seasonal effects, forecasts made at time <span class="math inline">\(n\)</span> for any lead time are just the estimated mean at time <span class="math inline">\(n\)</span>. The forecasting equation is</p>
 
 
-</section>
-</section>
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>White noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

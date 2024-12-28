@@ -53,3 +53,108 @@ I should make like a color code for the different colors I use.
 
 Pink: Pink will be assign to words that I don't know the definition and or meaning, and or words that need a definition link to them. This will help as I know that I can add the definition link later if I don't do it then
 
+
+
+
+# add a concerns/doubs?
+
+thinking of having a place where I can have my doubts and concerns, but maybe I can just do github issues for this since once it gets solve it will no longer be needed. doing issues will have more urgency to solve the problem.
+ok, I'm going to do issues
+
+
+
+
+
+# notes for my statistics journal
+
+
+**Sampling Distributions**
+
+Key points about modality and skewness in sampling distributions:
+
+Modality:
+
+- Unimodal: A sampling distribution with only one prominent peak.
+
+- Bimodal: A sampling distribution with two distinct peaks.
+
+- Multimodal: A sampling distribution with more than two peaks.
+
+- Uniform: In a uniform distribution, every value within a specified range has an equal probability of occurring, creating a flat horizontal line when visualized on a graph.
+
+Skewness:
+
+- Positive Skewness (Right Skewed): The tail of the distribution extends further to the right side, meaning there are a few very high values compared to the majority of lower values.
+
+- Negative Skewness (Left Skewed): The tail of the distribution extends further to the left side, indicating a few very low values compared to most higher values.
+
+- Zero Skewness (Symmetrical): The distribution is balanced with the left and right sides mirroring each other. 
+
+
+
+```{r}
+
+library(ggplot2)
+
+# Unimodal
+ggplot(data.frame(x = rnorm(1000)), aes(x)) +
+  geom_density(fill = "blue", alpha = 0.5) +
+  ggtitle("Unimodal Distribution")
+
+# Bimodal
+ggplot(data.frame(x = c(rnorm(500, -2), rnorm(500, 2))), aes(x)) +
+  geom_density(fill = "green", alpha = 0.5) +
+  ggtitle("Bimodal Distribution")
+
+# Multimodal
+ggplot(data.frame(x = c(rnorm(300, -4), rnorm(300, 0), rnorm(300, 4))), aes(x)) +
+  geom_density(fill = "purple", alpha = 0.5) +
+  ggtitle("Multimodal Distribution")
+
+# Uniform
+ggplot(data.frame(x = runif(1000, -5, 5)), aes(x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "orange", color = "black", alpha = 0.5) +
+  ggtitle("Uniform Distribution")
+
+
+```
+
+
+
+
+
+```{r}
+
+# Positive Skew
+ggplot(data.frame(x = rexp(1000, rate = 1)), aes(x)) +
+  geom_density(fill = "red", alpha = 0.5) +
+  ggtitle("Positive Skew (Right Skewed)")
+
+# Negative Skew
+ggplot(data.frame(x = -rexp(1000, rate = 1)), aes(x)) +
+  geom_density(fill = "cyan", alpha = 0.5) +
+  ggtitle("Negative Skew (Left Skewed)")
+
+# Symmetrical
+ggplot(data.frame(x = rnorm(1000)), aes(x)) +
+  geom_density(fill = "blue", alpha = 0.5) +
+  ggtitle("Zero Skewness (Symmetrical)")
+
+
+```
+
+
+
+Key Differences Between General and Sampling Distributions
+----------------------------------------------------------
+
+| **Aspect**            | **General Distributions**                                               | **Sampling Distributions**                                                     |
+|------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| **Focus**             | Distribution of raw data or random variables                           | Distribution of a statistic (e.g., sample mean, proportion)                   |
+| **Population or Sample** | Describes population or a single sample                               | Derived from repeated sampling of a population                                 |
+| **Examples**          | Normal, Uniform, Exponential                                           | Sampling distribution of sample mean, proportion, etc.                        |
+| **Derived From**      | Directly observed data                                                 | Repeatedly calculated from samples                                            |
+| **Shape**             | Depends on the data (e.g., normal, skewed)                             | Depends on sample size and population (Central Limit Theorem often applies)   |
+| **Role in Statistics**| Describe the data or population characteristics                        | Used for inferential statistics (e.g., confidence intervals, hypothesis testing) |
+
+

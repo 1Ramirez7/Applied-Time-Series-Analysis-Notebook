@@ -1,0 +1,160 @@
+---
+title: "Applied Time Series Analysis Outcomes"
+subtitle: "MATH 494R"
+format: 
+  html:
+    error: false
+    message: false
+    warning: false
+    toc: true
+    code-fold: true
+    math: katex # katex, mathjax, none 
+    css: styles.css
+---
+
+
+
+
+e3.1 cross covariance function ($ccvf$), $\gamma_k (x, y), as a function of the lag, k:
+
+
+$$
+\gamma_k (x, y) = E[(x_{t + k} - \mu_x)(y_t - \mu_y)]
+$$
+
+
+e3.2 
+
+Some textbooks define ccvf with the variable y lagging when k is positive, but we have used the definition that is consistent with R. Whichever way you choose to define the ccvf
+
+$$
+\gamma_k (x, y) = \gamma_{- k} (y, x)
+$$
+
+
+e3.3 cross-correlation function ($ccf$)
+
+When we have several variables and wish to refer to the acvf of one rather than the ccvf of a pair, we can write it as, for example, $γ_k(x,x)$. The lag $k$ cross-correlation function ($ccf$), $p_k(x,y)$, is defined by 
+
+$$
+p_k(x, y) = \frac{\gamma_k(x, y)}{\sigma_x\sigma_y}
+$$
+
+The ccvf and ccf can be estimated from a time series by their sample equivalents.
+ 
+
+e3.4 sample cross-covariance function ($ccvf$) or ($sccf$) is calculatred as
+
+$$
+c_k(x, y) = \frac{1}{n} \sum_{t = 1}^{n - k} (x_{t + k} - \bar{x})(y_t - \bar{y})
+$$
+
+
+e3.5 sample autocorrelation function ($acf$) is define as 
+
+$$
+r_k (x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
+$$
+
+
+e3.6 Bass Formula
+
+The Bass formula for the number of people, $N_t$, who have bought a product at time $t$ depends on three parameters: the total number of people who eventually buy the product, $m$; the coefficient of innovation, $p$; and the coefficient of imitation, $q$. The Bass formula is
+
+$$
+N_{t +1} = N_t + p(m - N_t) + qN_t (m - N_t) / m
+$$
+
+According to the model, the increase in sales, $N_{t+1} − N_t$, over the next time period is equal to the sum of a fixed proportion p and a time varying proportion $q\frac{N_t}{m}$ of people who will eventually buy the product but have not yet done so. The rationale for the model is that initial sales will be to people who are interested in the novelty of the product, whereas later sales will be to people who are drawn to the product after seeing their friends and acquaintances use it. Equation (3.6) is a difference equation and its solution is (e3.7)
+
+e3.7 Bass Formula Solution?
+
+$$
+N_t = m\frac{1 - e^{-(p + q)t}}{1 + (q / p)e^{-(p + q)t}}
+$$
+
+It is easier to verify this result for the continuous-time version of the model.
+
+
+e3.8 hazard
+
+One interpretation of the Bass model is that the time from product launch until purchase is assumed to have a probability distribution that can be parametrised in terms of $p$ and $q$. A plot of sales per time unit against time is obtained by multiplying the probability density by the number of people, $m$, who eventually buy the product. Let $f(t)$, $F(t)$, and $h(t)$ be the density, cumulative distribution function ($cdf$), and hazard, respectively, of the distribution of time until purchase. The definition of the hazard ...
+
+the definition of the hazard is 
+
+$$
+h(t) = \frac{f(t)}{1 - F(t)}
+$$
+
+
+The interpretation of the hazard is that if it is multiplied by a small time increment it gives the probability that a random purchaser who has not yet made the purchase will do so in the next small time increment (Exercise 2). Then the continuous time model of the Bass formula can be expressed in terms of the hazard (e3.9):
+
+e3.9 Continues time model of the Bass formula can be expressed in terms of the hazard
+
+$$
+h(t) = p + qF(t)
+$$
+
+Equation (3.6) is the discrete form of Equation (3.9) (Exercise 2). The solution of Equation (3.8), with $h(t)$ given by Equation (3.9), for $F(t)$ is (e3.10)
+
+e3.10 
+
+$$
+F(t) = \frac {1 - e^{-(p+q)t}}{1 + (q/p) e^{-(p+q)t}}
+$$
+ 
+ 
+Two special cases of the distribution are the exponential distribution and logistic distribution, which arise when $q = 0$ and $p = 0$, respectively. The logistic distribution closely resembles the normal distribution (Exercise 3). Cumulative sales are given by the product of $m$ and $F(t)$. The pdf is the derivative of Equation (3.10):
+
+
+e3.11 
+
+$$
+f(t) = \frac{(p + q)^2 e^{-(p+q)t}}{p[1 + (q/p)e^{-(p+q)t}]^2}
+$$
+
+Sales per unit time at time $t$ are (e3.12)
+
+e3.12
+
+$$
+S(t) = mf(t) = \frac{m(p + q)^2 e^{-(p + q)t}} {p [ 1 + (q/p)e^{-(p+q)t}]^2}
+$$
+
+The time to peak is (e3.13)
+
+
+e3.13 The time to peak is 
+
+$$
+t_{peak} = \frac {log(q) - log(p)} {p + q}
+$$
+
+
+e3.14 Forecasting Sales 
+
+3.4.1 Exponential smoothing: 
+
+Our objective is to predict some future value $x_{n+k}$ given a past history
+${x1,x2,...,xn}$ of observations up to time $n$. In this subsection we assume
+there is no systematic trend or seasonal effects in the process, or that these
+have been identified and removed. The mean of the process can change from
+one time step to the next, but we have no information about the likely direction
+of these changes. A typical application is forecasting sales of a well-established
+product in a stable market. The model is
+
+$$
+x_t = \mu_t + w_t
+$$
+
+where $\mu_t$ is the non-stationary mean of the process at time $t$ and $w_t$ are independent random deviations with a mean of 0 and a standard deviation $\sigma$. We will follow the notation in R and let at be our estimate of $\mu_t$. Given that there is no systematic trend, an intuitively reasonable estimate of the mean at time $t$ is given by a weighted average of our observation at time $t$ and our estimate of the mean at time $t−1$ (e3.15):
+
+e3.15 exponentially weighted moving average ($EWMA$)
+
+$$
+a_t = \alpha x_t + (1 - \alpha)a_{t-1}   \qquad \qquad     0 < \alpha < 1
+$$
+
+<!-- the \qquad is to add a space -->
+
+The $a_t$ in Equation (3.15) is the exponentially weighted moving average ($EWMA$) at time $t$. The value of $\alpha$ determines the amount of smoothing, and it is referred to as the smoothing parameter. If $\alpha$ is near 1, there is little smoothing and $a_t$ is approximately $x_t$. This would only be appropriate if the changes in the mean level were expected to be large by comparison with $\sigma$. At the other extreme, a value of $\alpha$ near $0$ gives highly smoothed estimates of the mean level and takes little account of the most recent observation. This would only be appropriate if the changes in the mean level were expected to be small compared with $\sigma$. A typical compromise figure for $\alpha$ is 0.2 since in practice we usually expect that the change in the mean between time $t − 1$ and time $t$ is likely to be smaller than $\sigma$. Alternatively, R can provide an estimate for $\alpha$, and we discuss this option below. Since we have assumed that there is no systematic trend and that there are no seasonal effects, forecasts made at time $n$ for any lead time are just the estimated mean at time $n$. The forecasting equation is
