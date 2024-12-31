@@ -16,6 +16,133 @@ format:
 # freeze: false
 ---
 
+
+Chapter 1
+
+test 
+
+::: {.callout-note icon="false" title="Lesson 1.3: Vocabulary and Nomenclature activity"}
+**Nomenclature Matching**
+
+|  |  |
+|----------------------------------------------------|--------------------|
+| 8\. Discrete observations of a time series, taken at times $1, 2, \ldots, n$. | $\{x_t\}$ |
+| 9\. Number of observations of a time series | $n$ |
+| 10\. Lead time | $k$ |
+| 11\. The trend as observed at time $t$ | $m_t$ |
+| 12\. The seasonal effect, as observed at time $t$ | $s_t$ |
+| 13\. The error term (a sequence of correlated random variables with mean zero), as observed at time $t$ | $z_t$ |
+| 14\. Centered moving average for obsrvations made monthly | $\hat m_t$ |
+| 15\. Estimate of monthly additive effect | $\hat s_t = x_t - \hat m_t$ |
+| 16\. Estimate of monthly multiplicative effect | $\hat s_t = \dfrac{x_t}{\hat m_t}$ |
+
+**Additional Nomenclature Matching**
+
+|  |  |
+|--------------------------------------------------|----------------------|
+| 17\. Forecast made at time $t$ for a future value $k$ time units in the future | $\hat x_{t+k \mid t}$ |
+| 18\. Additive decomposition model | $x_t = m_t + s_t + z_t$ |
+| 19\. Additive decomposition model after taking the logarithm | $\log(x_t) = m_t + s_t + z_t$ |
+| 20\. Multiplicative decomposition model | $x_t = m_t \cdot s_t + z_t$ |
+| 21\. Seasonally adjusted mean for the month corresponding to time $t$ | $\bar s_t$ |
+| 22\. Seasonal adjusted series (additive seasonal effect) | $x_t - \bar s_t$ |
+| 23\. Seasonal adjusted series (multiplicative seasonal effect) | $\frac{x_t}{\bar s_t}$ |
+:::
+
+
+
+e1.1
+
+$$
+\bar{x} =  \sum x_i / n
+$$
+
+
+e1.2 Additive Decomposition Model
+
+$$
+x_t = m_t + s_t + z_t 
+$$
+
+where, at time $t$, $x_t$ is the observed series, $m_t$ is the trend, $s_t$ is the seasonal effect, and $z_t$ (or $e_t$) is an error term that is, in general, a sequence of correlated random variables with mean zero.
+
+e1.3 Multiplicative Decomposition Model
+
+$$
+x_t = m_t* s_t + z_t
+$$
+
+
+e1.4  log Additive Decomposition Model
+
+If the random variation is modelled by a multiplicative factor and the variable is positive, an additive decomposition model for $log(x_t)$ can be used (To be consistent with R, we use log for the natural logarithm, which is often
+ written ln.): 
+
+$$
+log(x_t) = m_t + s_t + z_t
+$$
+Some care is required when the exponential function is applied to the predicted mean of $log(x_t)$ to obtain a prediction for the mean value $x_t$, as the effect is
+usually to bias the predictions. If the random series $z_t$ are normally distributed
+with mean 0 and variance $\sigma^2$, then the predicted mean value at time $t$ based
+on Equation (1.4) is given by (e1.5)
+
+e1.5
+
+$$
+\hat{x}_t = e^{m_t + s_t} + e^{\frac{1}{2}\sigma^2}
+$$
+
+However, if the error series is not normally distributed and is negatively skewed, as is often the case after taking logarithms, the bias correction factor will be an overcorrection (Exercise 4) and it is preferable to apply an empirical adjustment (which is discussed further in Chapter 5).
+
+
+e1.6 Centred Moving Average
+
+$$
+\hat{m}_t =\frac{\frac{1}{2}x_{t-6} + x_{t-5} +...+ x_{t-1} +...+ x_{t+5} + \frac{1}{2}x_{t+6}} {12}
+$$
+
+where t=7,...,n−6.The coefficients in Equation(1.6) for each month are 1/12(or sum to 1/12 in the case of the first and last coefficients),so that equal weight is given to each month and the coefficients sum to 1. By using the seasonal frequency for the coefficients in the moving average, the procedure generalises for any seasonal frequency (e.g., quarterlyseries), provided the condition that the coefficients sum to unity is still met.
+
+e1.7 Estimate of Monthly Additive Effect ($s_t$) 
+
+at time $t$ can be obtained by subtracting $\hat{m}_t$:
+
+$$
+\hat{s}_t = x_t - \hat{m}_t
+$$
+
+By averaging these estimates of the monthly effects for each month, we obtain a single estimate of the effect for each month. If the period of the time series is a whole number of years, the number of monthly effects averaged for each month is one less than the number of years of record. At this stage, the twelve monthly additive components should have an average value close to, but not usually exactly equal to, zero. It is usual to adjust them by subtracting this mean so that they do average zero.
+
+e1.7.5 Estimate of Monthly Multiplicative Effect ($s_t$)
+
+If the monthly effect is multiplicative, the estimate is given by division;
+
+$$
+\hat{s}_t = \frac {x_t}{\hat{m}_t}
+$$
+
+It is usual to adjust monthly multiplicative factors so that they average unity. The procedure generalises, using the same principle, to any seasonal frequency.
+
+e1.7.6 Seasonally Adjusted Series (additive & Multiplicative)
+
+It is common to present economic indicators, such as unemployment percentages, as seasonally adjusted series. This highlights any trend that might otherwise be masked by seasonal variation attributable, for instance, to the end of the academic year, when school and university leavers are seeking work. If the seasonal effect is additive, a seasonally adjusted series is given by.
+
+$$
+additive = x_t - \bar{s}_t
+$$
+
+whilst if it is multiplicative, an adjusted series is obtained from
+
+$$
+multiplicative = x_t / \bar{s}_t
+$$
+
+where $\bar{s}_t$ is the seasonally adjusted mean for the month corresponding to time $t$. 
+
+
+
+# Chapter 2
+
 e2.1
 
 $$
@@ -209,6 +336,7 @@ $$
 where $Cov(x,y)$ is the covariance between a pair of random variables $x$ and $y$. The result tells us that the covariance of two sums of variables is the sum of all possible covariance pairs of the variables. Note that the special case of $n = m$ and $x_i = y_i$ (i = 1,...,n) occurs in subsequent chapters for a time series {$x_t$}.The proof of Equation (2.15) is left to Exercise 5a
 
 
+# Chapter 3
 
 
 e3.1 cross covariance function ($ccvf$), \$\gamma\_k (x, y), as a function of the lag, k:
@@ -281,7 +409,6 @@ $$
 r_k(x, y) = \frac{c_k(x, y)}{\sqrt{c_0(x, x)c_0(y, y)}}
 $$
 
-### Explanation
 
 1. **Definition**:
    - $r_k(x, y)$: The sample autocorrelation at lag $k$.
@@ -403,132 +530,355 @@ The $a_t$ in Equation (3.15) is the exponentially weighted moving average ($EWMA
 
 
 
+# Chapter 4
 
 
+e4.1 Residual error
 
-
-
-
-
-
-
-
-
-
-
-**Autoregressive (AR) Model**
-
-4.3 lesson (book reference 4.15)
-
-::: {.callout-note icon="false" title="Definition of an Autoregressive (AR) Model"}
-The time series $\{x_t\}$ is an **autoregressive process of order** $p$, denoted as $AR(p)$, if $$
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t ~~~~~~~~~~~~~~~~~~~~~~~ (4.15)
-$$
-
-where $\{w_t\}$ is white noise and the $\alpha_i$ are the model parameters with $\alpha_p \ne 0$.
-:::
-
-**Exploring AR(1) Models** Lesson 4.3.
-
-**Definitino** Recall that an $AR(p)$ model is of the form $$
-  x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \alpha_3 x_{t-3} + \cdots + \alpha_{p-1} x_{t-(p-1)} + \alpha_p x_{t-p} + w_t
-$$ So, an $AR(1)$ model is expressed as $$
-  x_t = \alpha x_{t-1} + w_t
-$$ where $\{w_t\}$ is a white noise series with mean zero and variance $\sigma^2$.
-
-**Second-Order Properties of an AR(1) Model** Lesson 4.3.
-
-:::: {.callout-note icon="false" title="Second-Order Properties of an $AR(1)$ Model"}
-If $\{x_t\}_{t=1}^n$ is an $AR(1)$ prcess, then its the first- and second-order properties are summarized below.
+A residual error is the difference between the observed value and the model predicted value at time t. If we suppose the model is defined for the variable $y_t$ and $\hat{y}_t$ is the value predicted by the model, the residual error $x_t$ is
 
 $$
-\begin{align*}
-  \mu_x &= 0 \\  
-  \gamma_k = cov(x_t, x_{t+k}) &= \frac{\alpha^k \sigma^2}{1-\alpha^2}
-\end{align*}
+x_t = y_t - \hat{y}_t \tag{e4.1}
 $$
+ As the residual errors occur in time, they form a time series: x1,x2,...,xn.
+ 
+ e4.2 Second-Order properties and the correlogram 
+ 
+The second-order properties of a white noise series {$w_t$} are an immediate consequence of the definition in §4.2.2. However, as they are needed so often in the derivation of the second-order properties for more complex models, we explicitly state them here:
 
-::: {.callout-tip title="Click here for a proof of the equation for $cov(x_t,x_{t+k})$" collapse="true"}
-Why is $cov(x_t, x_{t+k}) = \dfrac{\alpha^k \sigma^2}{1-\alpha^2}$?
-
-If $\{x_t\}$ is a stable $AR(1)$ process (which means that \$\|\alpha\|\<1) can be written as:
-
-\begin{align*}
-  (1-\alpha \mathbf{B}) x_t &= w_t \\
-  \implies x_t &= (1-\alpha \mathbf{B})^{-1} w_t \\
-    &= w_t + \alpha w_{t-1} + \alpha^2 w_{t-2} + \alpha^3 w_{t-3} + \cdots \\
-    &= \sum\limits_{i=0}^\infty \alpha^i w_{t-i}
-\end{align*}
-
-From this, we can deduce that the mean is
+If $\{w_t\}_{t=1}^n$ is a DWN time series, then the population has the following properties.
 
 $$
-  E(x_t) 
-    = E\left( \sum\limits_{i=0}^\infty \alpha^i w_{t-i} \right)
-    = \sum\limits_{i=0}^\infty \alpha^i E\left( w_{t-i} \right)
-    = 0
+\left.\begin{matrix}
+ \mu_w = 0  \\
+  cov(w_t, w_{t+k}) = 
+    \begin{cases}
+      \sigma^2 \quad if & k = 0 \\
+      0 \quad if        & k \ne 0
+    \end{cases}  \\
+\end{matrix}\right\} \tag{e4.2}
 $$
 
-The autocovariance is computed similarly as:
 
-\begin{align*}
-  \gamma_k = cov(x_t, x_{t+k}) 
-    &= cov \left( 
-      \sum\limits_{i=0}^\infty \alpha^i w_{t-i}, \\
-      \sum\limits_{j=0}^\infty \alpha^j w_{t+k-j} \right) \\
-    &= \sum\limits_{j=k+i} \alpha^i \alpha^j cov ( w_{t-i}, w_{t+k-j} ) \\
-    &= \alpha^k \sigma^2 \sum\limits_{i=0}^\infty \alpha^{2i} \\
-    &= \frac{\alpha^k \sigma^2}{1-\alpha^2}
-\end{align*}
+The correlation (autocorrelation) function is therefore (e4.3)
 
-See Equations (2.15) and (4.2).
-:::
-::::
-
-**Characterisitc Equation**
-
-Lesson 4.3
-
-::: {.callout-note icon="false" title="Definition of the Characteristic Equation"}
-Treating the symbol $\mathbf{B}$ formally as a number (either real or complex), the polynomial
+e4.3
 
 $$
-  \theta_p(\mathbf{B}) x_t = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) x_t
+  \rho_k = 
+    \begin{cases}
+      1, & if \quad k = 0 \\
+      0, & if \quad k \ne 0
+    \end{cases}  \tag{e4.3}
 $$
 
-is called the **characteristic polynomial** of an AR process.
+e4.4 Random Walk
 
-If we set the characteristic polynomial to zero, we get the **characteristic equation**:
+let {$x_t$} be a time series. Then {$x_t$} is a <span style="color:purple;">random walk</span> if 
 
 $$
-  \theta_p(\mathbf{B}) = \left( 1 - \alpha_1 \mathbf{B} - \alpha_2 \mathbf{B}^2 - \cdots - \alpha_p \mathbf{B}^p \right) = 0
+x_t = x_{t-1} + w_t  \tag{e4.4}
 $$
-:::
 
-::: {.callout-note icon="false" title="Lesson 1.3: Vocabulary and Nomenclature activity"}
-**Nomenclature Matching**
+where {$w_t$} is a white noise series. 
 
-|  |  |
-|----------------------------------------------------|--------------------|
-| 8\. Discrete observations of a time series, taken at times $1, 2, \ldots, n$. | $\{x_t\}$ |
-| 9\. Number of observations of a time series | $n$ |
-| 10\. Lead time | $k$ |
-| 11\. The trend as observed at time $t$ | $m_t$ |
-| 12\. The seasonal effect, as observed at time $t$ | $s_t$ |
-| 13\. The error term (a sequence of correlated random variables with mean zero), as observed at time $t$ | $z_t$ |
-| 14\. Centered moving average for obsrvations made monthly | $\hat m_t$ |
-| 15\. Estimate of monthly additive effect | $\hat s_t = x_t - \hat m_t$ |
-| 16\. Estimate of monthly multiplicative effect | $\hat s_t = \dfrac{x_t}{\hat m_t}$ |
+e4.5 Back substitution??
 
-**Additional Nomenclature Matching**
+Substituting $x_{t-1} = x_{t-2} + w_{t-1}$ in equation (e4.4) and then substituting for $x_{t-2}$, followed by $x_{t-3}$ and so on (a process known as 'back substitution') gives (e4.5):
 
-|  |  |
-|--------------------------------------------------|----------------------|
-| 17\. Forecast made at time $t$ for a future value $k$ time units in the future | $\hat x_{t+k \mid t}$ |
-| 18\. Additive decomposition model | $x_t = m_t + s_t + z_t$ |
-| 19\. Additive decomposition model after taking the logarithm | $\log(x_t) = m_t + s_t + z_t$ |
-| 20\. Multiplicative decomposition model | $x_t = m_t \cdot s_t + z_t$ |
-| 21\. Seasonally adjusted mean for the month corresponding to time $t$ | $\bar s_t$ |
-| 22\. Seasonal adjusted series (additive seasonal effect) | $x_t - \bar s_t$ |
-| 23\. Seasonal adjusted series (multiplicative seasonal effect) | $\frac{x_t}{\bar s_t}$ |
-:::
+$$
+x_t = w_t + w_{t-1} + w_{t-2} + ...  \tag{e4.5}
+$$
+
+in practice, the series above will not be infinite but will start at some time t = 1. Hence, (e4.6):
+
+e4.6 
+
+$$
+x_t = w_1 + w_2 + ...+ w_t \tag{e4.6}
+$$
+
+e4.7 Backward shift operator $B$ is defined by
+
+$$
+Bx_t = x_{t-1} \tag{e4.7}
+$$
+
+The backward shift operator is sometimes called the ‘lag operator’. By repeatedly applying B, it follows that
+
+e4.8 Lag Operator
+
+$$
+B^n x_t = x_{t-n}  \tag{e4.8}
+$$
+
+
+using $B$, Equation e4.4 can be rewritten as
+
+$$
+x_t = Bx_t + w_t  \Rightarrow x_t = (1 - B)^{-1} w_t
+$$
+$$
+\Rightarrow x_t = (1 + B + B^2 + ...) w_t  \Rightarrow x_t = w_t + w_{t-1} + w_{t-2} + ... 
+$$
+
+and equation e4.5 is recovered. 
+
+
+
+
+e4.9 Second-Order properties of a Random Walk follow as
+
+$$
+\left.\begin{matrix}
+ \mu_x = 0 \\
+ \gamma_k(t) = Cov(x_t, x_{t+k}) = t\sigma^2  \\
+\end{matrix}\right\} \tag{e4.9}
+$$
+
+
+The covariance is a function of time, so the process is non-stationary. In particular, the variance is $t\sigma^2$ and so it increases without limit as $t$ increases. It follows that a random walk is only suitable for short term predictions.
+
+e4.10 Time-Varying autocorrelation function
+
+The time-varying autocorrelation function for $k > 0$follows from Equation (e4.9) as 
+
+$$
+p_k(t) = \frac {Cov(x_t, x_{t+k})}{\sqrt{Var(x_t)Var(x_{t+k})}} = \frac{t\sigma^2}{\sqrt{t\sigma^2 (t + k)\sigma^2}} = \frac{1}{\sqrt{1 + k/t}} \tag{e4.10}
+$$
+so that, for large $t$ with $k$ considerably less than $t$, $ρ_k$ is nearly 1. Hence, the correlogram for a random walk is characterised by positive autocorrelations that decay very slowly down from unity. This is demonstrated by simulation in §4.3.7.
+
+e4.10.5 Derivation of second-order properties
+
+Equation (e4.6) is a finite sum of white noise terms, each with zero mean and variance $\sigma^2$. Hence, the mean of $x_t$ is zero (Equation (e4.9)). The autocovariance in Equation (e4.9) can be derived using Equation (e2.15) as follows:
+
+$$
+\gamma_k(t) = Cov(x_t, x_{t+k}) = Cov( \sum_{i=1}^{t} w_i, \sum_{j=1}^{t+k} w_j ) = \sum_{i=j} Cov(w_i, w_j) = t\sigma^2 \tag{e4.10.5}
+$$
+
+
+4.3.6 The difference operator <!-- copy from book to have relative information  -->
+
+Differencing adjacent terms of a series can transform a non-stationary series to a stationary series. For example, if the series ${x_t}$ is a random walk, it is non-stationary. However, from Equation (4.4), the first-order differences of ${x_t}$ produce the stationary white noise series ${w_t}$ given by $x_t - x_{t-1} = w_t$.
+
+Hence, differencing turns out to be a useful "filtering" procedure in the study of non-stationary time series. The difference operator $\nabla$ is defined by e4.11
+
+e4.11 The Difference Operator 
+
+$$
+\nabla x_t = x_t - x_{t-1} \tag{e4.11}
+$$ 
+
+Note that $\nabla x_t = (1 - B)x_t$, so that $\nabla$ can be expressed in terms of the backward shift operator $B$. In general, higher-order differencing can be expressed as (e4.12)
+
+e4.12 Higher-Order Differencing 
+
+$$
+\nabla^n = (1 - B)^n \tag{e4.12}
+$$
+
+The proof of the last result is left to Exercise 7.
+
+
+e4.13  before this is how we get the alphas or coefficients estimates??
+
+Fig. 4.7. The correlogram of the residuals from the fitted Holt-Winters model for the exchange rate series (UK pounds to NZ dollars, 1991–2000). There are no significant correlations in the residual series, so the model provides a reasonable approximation
+to the exchange rate data.
+
+$$
+\left.\begin{matrix}
+ x_t = x_{t-1} + b_{t-1} + w_t \\
+ b_{t-1} = 0.167(x_{t-1} - x_{t-2}) + 0.833b_{t-2}  \\
+\end{matrix}\right\} \tag{e4.13}
+$$
+
+where {$w_t$} is white noise with zero mean.
+
+e4.14  The Integrated Autoregressive Model
+
+After some algebra, Equations (4.13) can be expressed as one equation in terms of the backward shift operator:
+
+$$
+(1 - 0.167B + 0.167B^2)(1 - B)x_t = w_t \tag{e4.14}
+$$
+
+Equation (4.14) is a special case—the integrated autoregressive model within the important class of models known as ARIMA models (Chapter 7). The proof of Equation (4.14) is left to Exercise 8.
+
+
+e4.14.5 Random Walk with Drift
+
+The random walk model can be adapted to allow for this by including a drift parameter $\delta$. 
+
+$$
+x_t = x_{t-1} + \delta + w_t
+$$
+
+4.5 Autoregressive models
+
+e4.15 Autoregressive Process
+
+4.5.1 defition
+
+The series $\{x_t\}$ is an autoregressive process of order $p$, abbreviated to AR($p$), if 
+
+$$
+x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \dots + \alpha_p x_{t-p} + w_t
+\tag{e4.15}
+$$
+
+where $\{w_t\}$ is white noise and the $\alpha_i$ are the model parameters with $\alpha_p \neq 0$ for an order $p$ process.Equation (4.15) can be expressed as a polynomial of order $p$ in terms of the backward shift operator (e4.16):
+
+**e4.16 Autoregressive Process in terms of the Backward Shift Operator**
+
+$$
+\theta_p(B)x_t = (1 - \alpha_1 B - \alpha_2 B^2 - \dots - \alpha_p B^p)x_t = w_t \tag{e4.16}
+$$
+The following points should be noted:
+
+(a) The random walk is the special case AR(1) with $\alpha_1 = 1$ (see Equation (4.4)).
+
+(b) The exponential smoothing model is the special case $\alpha_i = \alpha(1 - \alpha)^i$ for $i = 1, 2, \dots$ and $p \to \infty$.
+
+(c) The model is a regression of $x_t$ on past terms from the same series; hence the use of the term "autoregressive."
+
+(d) A prediction at time $t$ is given by (e4.17)
+
+**e4.17**
+
+$$
+\hat{x}_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \dots + \alpha_p x_{t-p}
+\tag{e4.17}
+$$
+
+(e) The model parameters can be estimated by minimizing the sum of squared errors.
+
+
+e4.18 Second-order properties of an AR(1) model
+
+From Equation (4.15), the AR(1) process is given by
+
+$$
+x_t = \alpha x_{t-1} + w_t
+\tag{e4.18}
+$$
+
+where $\{w_t\}$ is a white noise series with mean zero and variance $\sigma^2$. It can be shown (§4.5.4) that the second-order properties follow as (e4.19):
+
+e4.19
+
+$$
+\left.\begin{matrix}
+ \mu_x = 0 \\
+ \gamma_k = \frac{\alpha^k \sigma^2}{1 - \alpha^2} \\
+\end{matrix}\right\}
+\tag{e4.19}
+$$
+
+e4.20 Derivation of second-order properties for an AR(1) process*
+
+Using $B$, a stable AR(1) process ($|\alpha| < 1$) can be written as
+
+$$
+\left.\begin{matrix}
+ (1 - \alpha B)x_t = w_t \\
+ \Rightarrow x_t = (1 - \alpha B)^{-1}w_t \\
+ \Rightarrow x_t = w_t + \alpha w_{t-1} + \alpha^2 w_{t-2} + \dots = \sum_{i=0}^\infty \alpha^i w_{t-i} \\
+\end{matrix}\right\}
+\tag{e4.20}
+$$
+
+
+
+Hence, the mean is given by
+
+$$
+E(x_t) = E\left(\sum_{i=0}^\infty \alpha^i w_{t-i}\right) = \sum_{i=0}^\infty \alpha^i E(w_{t-i}) = 0
+$$
+
+and the autocovariance follows as 
+
+$$
+\gamma_k = \text{Cov}(x_t, x_{t+k}) = \text{Cov} \left(\sum_{i=0}^\infty \alpha^i w_{t-i}, \sum_{j=0}^\infty \alpha^j w_{t+k-j}\right)
+$$
+
+$$
+= \sum\nolimits_{j=k+i} \alpha^i \alpha^j \text{Cov}(w_{t-i}, w_{t+k-j})
+$$
+
+
+$$
+= \alpha^k \sigma^2 \sum\nolimits_{i=0}^\infty \alpha^{2i} = \frac{\alpha^k \sigma^2}{1 - \alpha^2}
+$$
+
+using Equation (e2.15) and (e4.2)
+
+
+
+e4.21 Autocorrelation function for an AR(1) process
+
+4.5.5 Correlogram of an AR(1) process
+
+From Equation (4.19), the autocorrelation function follows as
+
+$$
+\rho_k = \alpha^k \quad (k \geq 0)
+\tag{e4.21}
+$$
+
+where $|\alpha| < 1$. Thus, the correlogram decays to zero more rapidly for small $\alpha$. The book example for fig 4.11 gives two correlograms for positive and negative values of $\alpha$, respectively. 
+
+
+
+e4.22 Akaike Information Criterion
+
+The order $p$ of the process is chosen using the <span style="color:pink;">Akaike Information Criterion</span> (AIC; Akaike, 1974), which penalizes models with too many parameters:
+
+$$
+\text{AIC} = -2 \times \text{log-likelihood} + 2 \times \text{number of parameters}
+\tag{e4.22}
+$$
+
+In the function `ar`, the model with the smallest `AIC` is selected as the best-fitting AR model.
+
+
+
+e4.23 predicted value $\hat{z}_t$ for an `AR(1)` model
+
+a predicted value $\hat{z}_t$ at time $t$ based on the output above is given by
+
+$$
+\hat{z}_t = 2.8 + 0.89(z_{t-1} - 2.8) \tag{e4.23}
+$$
+
+
+
+
+e4.24 Predicted mean $\hat{x}_t$
+
+Consider the following AR model fitted to the mean annual temperature series (figure 4.14):
+
+Based on the output for fig 4.14 in the book, a predicted mean annual temperature $\hat{x}_t$ at time $t$ is given by
+
+$$
+\hat{x}_t = -0.14 + 0.59(x_{t-1} + 0.14) + 0.013(x_{t-2} + 0.14) \\ + 0.11(x_{t-3} + 0.14) + 0.27(x_{t-4} + 0.14)
+\tag{e4.24}
+$$
+
+
+e4.25 exercise 4 model
+
+$$
+x_t = \frac{5}{6}x_{t-1} - \frac{1}{6}x_{t-2} + w_t  \tag{e4.25}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
