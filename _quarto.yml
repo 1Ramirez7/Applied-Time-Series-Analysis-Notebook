@@ -170,14 +170,9 @@ website:
             - tools_help_ideas.qmd
             - tools/markdown_visuals.qmd  
             - tools/git_yml_term.qmd
-            - test.qmd
-        - section: "Date & Index formatting"
-          contents:
             - tools/stepsforDate_index_formatting.qmd
-        - section: "Math Formulas"
-          contents:
             - tools/math_formulas.qmd
-
+            - test.qmd
 
 format:  
   html:
