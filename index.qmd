@@ -3,20 +3,108 @@ title: "Applied Time Series Analysis Notebook"
 subtitle: "MATH 494R"
 format: 
   html:
+    page-layout: full
     error: false
     message: false
     warning: false
     embed-resources: true
     toc: true
-    code-fold: true
+    code-fold: true  
     math: katex # katex, mathjax, none
+    code-tools: # this is to show source code
+      source: true 
+      toggle: false
+      caption: none
 ---
+
+
+just testing panel tabset 
+
+
+::: {.columns}
+:::: {.column width="50%"}
+### Visual Render
+
+::: {.panel-tabset}
+#### Add
+$$
+x_t = m_t + s_t + z_t 
+$$
+
+#### MULT
+$$
+x_t = m_t * s_t + z_t
+$$
+
+#### log add
+$$
+log(x_t) = m_t + s_t + z_t
+$$
+:::
+
+::::
+:::: {.column width="50%"}
+
+
+### Source Code
+
+
+::: {.panel-tabset}
+## Add
+```
+$$
+x_t = m_t + s_t + z_t 
+$$
+```
+
+## MULT
+```
+$$
+x_t = m_t * s_t + z_t
+$$
+```
+
+## log add
+```
+$$
+log(x_t) = m_t + s_t + z_t
+$$
+```
+:::
+
+::::
+:::
+
+
+
+::: {.panel-tabset}
+## Add
+
+$$
+x_t = m_t + s_t + z_t 
+$$
+
+## MULT
+
+$$
+x_t = m_t* s_t + z_t
+$$
+
+## log add
+
+$$
+log(x_t) = m_t + s_t + z_t
+$$
+
+:::
 
 
 I'm first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples.
 
 
 # AR models
+
+
 
 ## AR(1) model lesson 4.3
 

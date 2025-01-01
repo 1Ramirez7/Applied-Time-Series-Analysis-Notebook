@@ -176,11 +176,13 @@ website:
 
 format:  
   html:
+    page-layout: full # article, custum
     theme: #see this link to customize the theme with css (https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
-      light: flatly # more themes can be found (https://quarto.org/docs/output-formats/html-themes.html)
-      dark: darkly
-      #light: cosmo
-      #dark: [cosmo, theme-dark.scss]
-    css: styles.css
+      light: [flatly, custom.scss] # more themes can be found (https://quarto.org/docs/output-formats/html-themes.html)
+      dark: [darkly, custom.scss]
+    fontsize: 0.9em # changes all fonts default is 1
+    linestretch: 1 # affects distance between lines of text defualt is 1.5
     toc: true
 
+
+#    paragraph-margin-bottom: 1em # 1rem default

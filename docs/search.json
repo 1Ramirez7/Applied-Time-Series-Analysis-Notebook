@@ -26,7 +26,7 @@
     "href": "tools_help_ideas.html#footnotes",
     "title": "Tools, Resources and Help Ideas",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nWhite noise consists of independent, identically distributed variables with mean 0, finite constant variance, and no correlation, representing purely random fluctuations over time.↩︎",
+    "text": "Footnotes\n\n\ndefintion here↩︎",
     "crumbs": [
       "Tools, Help & Ideas",
       "Tools, Resources and Help Ideas"
@@ -934,7 +934,7 @@
     "href": "index.html",
     "title": "Applied Time Series Analysis Notebook",
     "section": "",
-    "text": "I’m first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples."
+    "text": "just testing panel tabset\nI’m first going to work out this index file, to have the whole picture then I will branch out base on information here. As I branch out information here will be compress and have links to the lessons and samples."
   },
   {
     "objectID": "index.html#ar1-model-lesson-4.3",
