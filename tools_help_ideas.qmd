@@ -19,6 +19,7 @@ title: "Applied Time Series Analysis Notebook"
 subtitle: "MATH 494R"
 format: 
   html:
+    self-contained: true # true: embeds all resources (CSS, image, etc) so it can be viewed offline (con: large file size) false: only html content is stored w/ external links to css, images etc. 
     page-layout: full
     error: false
     message: false
