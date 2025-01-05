@@ -28,7 +28,7 @@ format:
     message: false
     warning: false
     embed-resources: true
-    toc: true
+    toc: false # overwrites project setting. cache must be clear or changes may not appear and/or errors will occur
     code-fold: true
     math: katex # katex, mathjax, none
     code-tools: # this is to show source code
@@ -100,10 +100,7 @@ format:
     fontsize: 0.9em # changes all fonts default is 1
     linestretch: 1 # default 1.5. affects distance between lines of text 
     css: styles.css
-    toc: false # if # are not in file. this makes it so the render html does not save space for a toc. when true there is an empty right space reserve for toc making the content page smaller
-    # cont of toc: for some reason individual toc settings does not work.
-    # for some reason, when # are use in file. toc automatically appears no matter the settings for it. 
-    # I might not be using the toc settings the right way. 
+    toc: true # controls toc visibility. cache needs to be clear for indi qmd or project wide or errors can and will accur. 
 
 
 ```
