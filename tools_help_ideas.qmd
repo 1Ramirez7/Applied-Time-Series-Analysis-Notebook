@@ -13,6 +13,9 @@ This page is to include pontential ideas to do for resources, tools, and ideas f
 
 This will have many different options for yaml
 
+
+**for individual qmd yaml code**
+
 ```
 ---
 title: "Applied Time Series Analysis Notebook"
@@ -35,6 +38,74 @@ format:
 ---
 
 ```
+
+**For yaml website**
+
+```
+project: 
+  type: website
+  output-dir: docs 
+  render:
+    - "*.qmd" # renders all .qmd files
+    - "!python.qmd" # using ! = ignores specific file
+    - "!extras/" # ignores folder
+    - "!readme.md" # ! can be use to ignore files and or folders
+
+freeze: auto # not re render code if not change. 
+
+website:
+  title: "Statistics Notebook"
+  favicon: Images/favicon.png
+  back-to-top-navigation: true
+
+  page-footer:
+    border: true
+    left: "Eduardo Ramirez 2024©"
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/eduardo-ramirez-lds
+
+  navbar:
+    background: primary
+    search: true
+    right:
+      - text: "Home"
+        file: index.qmd
+      - text: "Inference" # this section list names giving below only. it takes little space. name of navbar link is the one here "inference". 
+        menu: # when the navbar name is click, the following names will show up
+          - text: "Inference"  # this name will show up
+            file: inference.qmd
+          - text: "Distribution" # this name will show up
+            file: inference/distribution.qmd
+      - sidebar:describing_data
+
+  sidebar: # required if using sidebar
+    - id: describing_data 
+      title: "Describing Data"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - graphicalsummaries.qmd
+        - numericalsummaries.qmd
+
+    - id: spacer # add id's as needed
+
+format:  
+  html:
+    theme: #see this link to customize the theme with css (https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
+      light: flatly # more themes can be found [here](https://quarto.org/docs/output-formats/html-themes.html)
+      dark: darkly
+      #light: cosmo
+      #dark: [cosmo, theme-dark.scss]
+    fontsize: 0.9em # changes all fonts default is 1
+    linestretch: 1 # default 1.5. affects distance between lines of text 
+    css: styles.css
+    toc: false # this overwrites any toc yaml on individual yml code. 
+
+
+
+```
+
 
 
 
