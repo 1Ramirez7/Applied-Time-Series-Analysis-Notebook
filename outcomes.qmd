@@ -387,9 +387,12 @@ $$ where $n$ is the number of observations. Equation (2.7) does rely on an assum
 
 -   **Define the variance function of a time series model** (2.2.1 2.2.4 e2.9)
 
-The **variance function** of a time series model, denoted $\sigma^2(t)$, that is stationary in the mean is $$
-\sigma^2(t) = E[(x_t - \mu)^2]
-$$ (is the mean of the squared deviations pdf pg 27)
+The **variance function** of a time series model, denoted $\sigma^2(t)$, that is stationary in the mean is 
+
+$$
+\sigma^2(t) = E[(x_t - \mu)^2] \tag{e2.9}
+$$ 
+(is the mean of the squared deviations pdf pg 27)
 
 which can, in principle, take a different value at every time t. But we cannot estimate a different variance at each time point from a single time series. To progress, we must make some simplifying assumption. If we assume the model is stationary in the variance, this constant population variance, σ2, can be estimated from the sample variance
 
@@ -439,13 +442,13 @@ The mean and variance play an important role in the study of statistical distrib
 Consider a time series model that is stationary in the mean and the variance. The variables may be correlated, and the model is second-order stationary if the correlation between variables depends only on the number of time steps separating them. The number of time steps between the variables is known as the lag. A correlation of a variable with itself at different times is known as autocorrelation or serial correlation. If a time series model is second-order stationary, we can define an <span style="color:purple;">autocovariance function</span> (acvf), $y_k$, as a function of the lag $k$ (e2.11):
 
 $$
-\gamma(k) = E[(x_t - \mu)(x_{t+k} - \mu)]
+\gamma(k) = E[(x_t - \mu)(x_{t+k} - \mu)] \tag{e2.11}
 $$
 
 The function $\gamma_k$ does not depend on t because the expectation, which is across the ensemble, is the same at all times t. This definition follows naturally from Equation (2.1) by replacing $x$ with $x_t$ and $y$ with $x_{t+k}$ and noting that the mean $\mu$ is the mean of both $x_t$ and $x_{t+k}$. The lag $k$ <span style="color:purple;">autocorrelation function</span> (acf), $p_k$, is defined by(e2.12)
 
 $$
-\rho_k = \frac{\gamma_k}{\sigma^2}
+\rho_k = \frac{\gamma_k}{\sigma^2} \tag{e2.12}
 $$
 
 It follows from the definition that $p_0$ is 1. 
@@ -459,7 +462,7 @@ $$
 Note that the autocovariance at lag 0, $c_0$, is the variance calculated with a denominator $n$. Also, a denominator $n$ is used when calculating $c_k$, although  only $n − k$ terms are added to form the numerator. Adopting this definition constrains all sample autocorrelations to lie between −1 and 1. The **sample acf** is defined as (e2.14)
 
 $$
-r_k = \frac{c_k}{c_0}
+r_k = \frac{c_k}{c_0} \tag{e2.14}
 $$
 
 

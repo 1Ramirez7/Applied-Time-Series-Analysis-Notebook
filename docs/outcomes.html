@@ -801,8 +801,9 @@ r = \frac{Cov(x, y)}{s_x s_y}
 <ul>
 <li><strong>Define the variance function of a time series model</strong> (2.2.1 2.2.4 e2.9)</li>
 </ul>
-<p>The <strong>variance function</strong> of a time series model, denoted <span class="math inline">\(\sigma^2(t)\)</span>, that is stationary in the mean is <span class="math display">\[
-\sigma^2(t) = E[(x_t - \mu)^2]
+<p>The <strong>variance function</strong> of a time series model, denoted <span class="math inline">\(\sigma^2(t)\)</span>, that is stationary in the mean is</p>
+<p><span class="math display">\[
+\sigma^2(t) = E[(x_t - \mu)^2] \tag{e2.9}
 \]</span> (is the mean of the squared deviations pdf pg 27)</p>
 <p>which can, in principle, take a different value at every time t. But we cannot estimate a different variance at each time point from a single time series. To progress, we must make some simplifying assumption. If we assume the model is stationary in the variance, this constant population variance, σ2, can be estimated from the sample variance</p>
 <hr>
@@ -842,11 +843,11 @@ r = \frac{Cov(x, y)}{s_x s_y}
 <p>The mean and variance play an important role in the study of statistical distributions because they summarise two key distributional properties– a central location and the spread. Similarly, in the study of time series models, a key role is played by the <span style="color:purple;">second-order properties</span>, which include the mean, variance, and serial correlation (described below).</p>
 <p>Consider a time series model that is stationary in the mean and the variance. The variables may be correlated, and the model is second-order stationary if the correlation between variables depends only on the number of time steps separating them. The number of time steps between the variables is known as the lag. A correlation of a variable with itself at different times is known as autocorrelation or serial correlation. If a time series model is second-order stationary, we can define an <span style="color:purple;">autocovariance function</span> (acvf), <span class="math inline">\(y_k\)</span>, as a function of the lag <span class="math inline">\(k\)</span> (e2.11):</p>
 <p><span class="math display">\[
-\gamma(k) = E[(x_t - \mu)(x_{t+k} - \mu)]
+\gamma(k) = E[(x_t - \mu)(x_{t+k} - \mu)] \tag{e2.11}
 \]</span></p>
 <p>The function <span class="math inline">\(\gamma_k\)</span> does not depend on t because the expectation, which is across the ensemble, is the same at all times t. This definition follows naturally from Equation (2.1) by replacing <span class="math inline">\(x\)</span> with <span class="math inline">\(x_t\)</span> and <span class="math inline">\(y\)</span> with <span class="math inline">\(x_{t+k}\)</span> and noting that the mean <span class="math inline">\(\mu\)</span> is the mean of both <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t+k}\)</span>. The lag <span class="math inline">\(k\)</span> <span style="color:purple;">autocorrelation function</span> (acf), <span class="math inline">\(p_k\)</span>, is defined by(e2.12)</p>
 <p><span class="math display">\[
-\rho_k = \frac{\gamma_k}{\sigma^2}
+\rho_k = \frac{\gamma_k}{\sigma^2} \tag{e2.12}
 \]</span></p>
 <p>It follows from the definition that <span class="math inline">\(p_0\)</span> is 1.</p>
 <p>It is possible to set up a second-order stationary time series model that has skewness; for example, one that depends on time t. Applications for such models are rare, and it is customary to drop the term ‘second-order’ and use ‘stationary’ on its own for a time series model that is at least second order stationary. The term <span style="color:pink;">strictly stationary</span> is reserved for more rigorous conditions. The <strong>acvf</strong> and <strong>acf</strong> can be estimated from a time series by their sample equivalents. The sample <strong>acvf</strong>, <span class="math inline">\(c_k\)</span>, is calculated as (e2.13)</p>
@@ -855,7 +856,7 @@ c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x}) \tag{e2.13
 \]</span></p>
 <p>Note that the autocovariance at lag 0, <span class="math inline">\(c_0\)</span>, is the variance calculated with a denominator <span class="math inline">\(n\)</span>. Also, a denominator <span class="math inline">\(n\)</span> is used when calculating <span class="math inline">\(c_k\)</span>, although only <span class="math inline">\(n − k\)</span> terms are added to form the numerator. Adopting this definition constrains all sample autocorrelations to lie between −1 and 1. The <strong>sample acf</strong> is defined as (e2.14)</p>
 <p><span class="math display">\[
-r_k = \frac{c_k}{c_0}
+r_k = \frac{c_k}{c_0} \tag{e2.14}
 \]</span></p>
 <hr>
 <ul>
