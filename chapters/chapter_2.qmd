@@ -183,8 +183,22 @@ $$
 The function $\gamma_k$ does not depend on $t$ because the expectation, which is across the `ensemble`, is the same at all times $t$. This definition follows naturally from Equation (2.1) by replacing $x$ with $x_t$ and $y$ with $x_{t+k}$ and noting that the mean $\mu$ is the mean of both $x_t$ and $x_{t+k}$. The lag $k$ autocorrelation function ($acf$), $\rho_k$, is defined by:
 
 $$
-\rho_k = \frac{\gamma_k}{\sigma^2} \tag{2.13}
+\rho_k = \frac{\gamma_k}{\sigma^2} \tag{e2.12}
 $$
+
+It follows from the definition that $\rho_0$ is 1.  
+
+It is possible to set up a second-order stationary time series model that has skewness; for example, one that depends on time $t$. Applications for such models are rare, and it is customary to drop the term ‘second-order’ and use ‘stationary’ on its own for a time series model that is at least second-order stationary. The term strictly stationary is reserved for more rigorous conditions.  
+
+The `acvf` and `acf` can be estimated from a time series by their sample equivalents. The sample `acvf`, $c_k$, is calculated as:  
+
+$$
+c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
+\tag{2.13}
+$$
+
+
+
 Note that the autocovariance at lag $0$, $c_0$, is the variance calculated with a denominator $n$. Also, a denominator $n$ is used when calculating $c_k$, although only $n - k$ terms are added to form the numerator. Adopting this definition constrains all sample autocorrelations to lie between $-1$ and $1$. The sample acf is defined as:
 
 $$

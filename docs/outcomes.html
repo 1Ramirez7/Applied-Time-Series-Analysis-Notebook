@@ -74,8 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e3e2ec5412a9eb5ab38593fc64bd21dd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6dc023459391c1bd9e644fbe7ca3ad24.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-62cb7b77cff5b289b271f6b3a4cd6534.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a12158c5be234673de6e482bb094010f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -389,20 +389,16 @@ window.Quarto = {
  <span class="dropdown-text">Git and Terminal Commands</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./test.html">
- <span class="dropdown-text">test</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">Date &amp; Index formatting</li>
-        <li>
     <a class="dropdown-item" href="./tools/stepsforDate_index_formatting.html">
  <span class="dropdown-text">Steps for formatting Date and Creating Index</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">Math Formulas</li>
         <li>
     <a class="dropdown-item" href="./tools/math_formulas.html">
- <span class="dropdown-text">Formulas</span></a>
+ <span class="dropdown-text">Functions &amp; Formulas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./test.html">
+ <span class="dropdown-text">test</span></a>
   </li>  
     </ul>
   </li>
@@ -423,7 +419,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -436,7 +432,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -446,7 +442,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -855,7 +851,7 @@ r = \frac{Cov(x, y)}{s_x s_y}
 <p>It follows from the definition that <span class="math inline">\(p_0\)</span> is 1.</p>
 <p>It is possible to set up a second-order stationary time series model that has skewness; for example, one that depends on time t. Applications for such models are rare, and it is customary to drop the term ‘second-order’ and use ‘stationary’ on its own for a time series model that is at least second order stationary. The term <span style="color:pink;">strictly stationary</span> is reserved for more rigorous conditions. The <strong>acvf</strong> and <strong>acf</strong> can be estimated from a time series by their sample equivalents. The sample <strong>acvf</strong>, <span class="math inline">\(c_k\)</span>, is calculated as (e2.13)</p>
 <p><span class="math display">\[
-c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x})
+c_k = \frac{1}{n} \sum_{t=1}^{n-k} (x_t - \bar{x})(x_{t+k} - \bar{x}) \tag{e2.13}
 \]</span></p>
 <p>Note that the autocovariance at lag 0, <span class="math inline">\(c_0\)</span>, is the variance calculated with a denominator <span class="math inline">\(n\)</span>. Also, a denominator <span class="math inline">\(n\)</span> is used when calculating <span class="math inline">\(c_k\)</span>, although only <span class="math inline">\(n − k\)</span> terms are added to form the numerator. Adopting this definition constrains all sample autocorrelations to lie between −1 and 1. The <strong>sample acf</strong> is defined as (e2.14)</p>
 <p><span class="math display">\[
